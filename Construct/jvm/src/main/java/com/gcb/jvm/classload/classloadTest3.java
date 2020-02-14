@@ -3,7 +3,7 @@ package com.gcb.jvm.classload;
 import java.util.UUID;
 
 /**
- * 测试类的主动使用示例
+ * 测试类的主动使用示例（结论;当一个常量在编译器无法确定时，那么它的值是不会放到常量池中的，显然会导致这个类被初始化）
  */
 public class classloadTest3 {
 

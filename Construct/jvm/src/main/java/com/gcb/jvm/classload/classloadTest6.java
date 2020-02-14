@@ -1,5 +1,8 @@
 package com.gcb.jvm.classload;
 
+/**
+ * 测试类的准备和初始化阶段的静态变量的变化
+ */
 public class classloadTest6 {
     public static void main(String[] arg){
         Singleton singleton = Singleton.getSingleton();

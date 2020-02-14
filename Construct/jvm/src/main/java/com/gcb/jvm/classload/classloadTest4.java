@@ -3,7 +3,7 @@ package com.gcb.jvm.classload;
 import java.util.UUID;
 
 /**
- * 测试类的主动使用示例
+ * 测试类的主动使用示例 （得出结论：new数组对象不是主动使用）
  */
 public class classloadTest4 {
 
