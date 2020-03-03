@@ -1,10 +1,13 @@
 package com.gcb.jvm.classload;
 
+import java.util.Objects;
+
 /**
  * 测试类的主动使用（结论：Class.forName("com.gcb.jvm.classload.Chrild12")是对类的主动使用
  * 而systemClassLoader.loadClass不是对类的主动使用，只是属于类型的加载，）
  */
 public class classloadTest12 {
+
 
 
     public static void main(String[] srgs) throws ClassNotFoundException {

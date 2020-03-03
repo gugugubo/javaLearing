@@ -39,4 +39,14 @@ public class Employee {
     public void setYearsOfService(int yearsOfService) {
         this.yearsOfService = yearsOfService;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", title='" + title + '\'' +
+                ", skills=" + skills +
+                ", yearsOfService=" + yearsOfService +
+                '}';
+    }
 }

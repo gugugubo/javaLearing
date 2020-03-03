@@ -18,9 +18,9 @@ public class classloadTest13 {
     public static void main(String[] args) throws IOException {
         /**
          * getContextClassLoader 的javadoc文档如下：
-         * 上下文类加载器由线程的创建者提供，供加载类和资源时在此线程中运行的代码使用。
-         * 如果不是{@linkplain#set context ClassLoader set}，
-         * 则默认为父线程的上下文类加载器。原始线程的上下文类加载器通常设置为用于加载应用程序的类加载器(即system classloader)。
+         上下文类加载器由线程的创建者提供，供在此线程中运行的代码加载类和资源时使用。如果未设置，
+         则默认为父线程的上下文类加载器。
+         原始线程的上下文类加载器通常设置为用于加载应用程序的类加载器(即system classloader)
          */
         ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
 

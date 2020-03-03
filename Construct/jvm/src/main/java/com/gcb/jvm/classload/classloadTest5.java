@@ -1,7 +1,5 @@
 package com.gcb.jvm.classload;
 
-import java.time.LocalDateTime;
-import java.util.Random;
 
 /**
  * 接口和类初始化的区别
@@ -35,7 +33,7 @@ interface Parent5{
      */
     public static Thread thread = new Thread(){
         {
-            System.out.println("Parent is loading");
+            System.out.println("Parent5 is loading");
         }
     };
 }
@@ -51,7 +49,7 @@ interface test1{
      */
     public static Thread thread = new Thread(){
         {
-            System.out.println("Parent is loading");
+            System.out.println("test1 is loading");
         }
     };
 }
@@ -63,7 +61,7 @@ interface  test2 extends  test1{
      */
     public static Thread thread = new Thread(){
         {
-            System.out.println("Parent is loading");
+            System.out.println("test2 is loading");
         }
     };
 }

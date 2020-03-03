@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gcb.learning.mybatisplus.pms.mapper.ProductMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gcb.learning.mybatisplus.pms.entity.Product">
+        <id column="id" property="id"/>
+        <result column="brand_id" property="brandId"/>
+        <result column="product_category_id" property="productCategoryId"/>
+        <result column="feight_template_id" property="feightTemplateId"/>
+        <result column="product_attribute_category_id" property="productAttributeCategoryId"/>
+        <result column="seller_id" property="sellerId"/>
+        <result column="seller_name" property="sellerName"/>
+        <result column="name" property="name"/>
+        <result column="product_sn" property="productSn"/>
+        <result column="original_price" property="originalPrice"/>
+        <result column="price" property="price"/>
+        <result column="sale" property="sale"/>
+        <result column="product_category_name" property="productCategoryName"/>
+        <result column="brand_name" property="brandName"/>
+        <result column="detail_title" property="detailTitle"/>
+        <result column="sub_title" property="subTitle"/>
+        <result column="album_pics" property="albumPics"/>
+        <result column="pic" property="pic"/>
+        <result column="detail_mobile_html" property="detailMobileHtml"/>
+        <result column="detail_html" property="detailHtml"/>
+        <result column="stock" property="stock"/>
+        <result column="weight" property="weight"/>
+        <result column="unit" property="unit"/>
+        <result column="keywords" property="keywords"/>
+        <result column="delete_status" property="deleteStatus"/>
+        <result column="publish_status" property="publishStatus"/>
+        <result column="verify_status" property="verifyStatus"/>
+        <result column="low_stock" property="lowStock"/>
+        <result column="preview_status" property="previewStatus"/>
+        <result column="promotion_price" property="promotionPrice"/>
+        <result column="promotion_start_time" property="promotionStartTime"/>
+        <result column="promotion_end_time" property="promotionEndTime"/>
+        <result column="promotion_per_limit" property="promotionPerLimit"/>
+        <result column="promotion_type" property="promotionType"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, brand_id, product_category_id, feight_template_id, product_attribute_category_id, seller_id, seller_name, name, product_sn, original_price, price, sale, product_category_name, brand_name, detail_title, sub_title, album_pics, pic, detail_mobile_html, detail_html, stock, weight, unit, keywords, delete_status, publish_status, verify_status, low_stock, preview_status, promotion_price, promotion_start_time, promotion_end_time, promotion_per_limit, promotion_type
+    </sql>
+
+</mapper>

@@ -15,19 +15,24 @@ package com.gcb.jvm.classload;
  */
 public class classloadTest1 {
 
+    protected static void say(){
+        System.out.println(232323);
+    }
+
     public static void main(String[] args) {
         short a = 3;
         // System.out.println(Chirld.parentString);
         /**
          * 这是因为类的初始化仅在被主动使用时才进行初始化,只有用Chirld.parentString只是主动使用了Parent类
-         * 仅上面一条语句输出如下：
+         * 仅运行上面一条语句输出如下：
          * parent is loading
          * parent
          */
-        System.out.println("-------------'");
+
 
         System.out.println(Chirld.chirldString);
         /**
+         * 仅运行上面一条语句
          * 这里会主动使用父类！所以父类也被初始化
          * parent is loading
          * chirld is loading

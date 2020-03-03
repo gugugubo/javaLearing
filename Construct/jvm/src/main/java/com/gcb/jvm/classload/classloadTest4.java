@@ -10,7 +10,7 @@ public class classloadTest4 {
     public static void main(String[] args) {
 
         // 这个是主动使用
-        Parent4 parent4 = new Parent4();
+        //Parent4 parent4 = new Parent4();
 
         Parent4[] parent4s = new Parent4[1];
         System.out.println(parent4s.getClass());
@@ -26,13 +26,14 @@ public class classloadTest4 {
          */
 
         System.out.println(parent4s.getClass().getSuperclass());
-        //class java.lang.Object
+        //输出为： class java.lang.Object
 
         System.out.println("----------------------------");
 
         int[] ints = new int[1];
         System.out.println(ints.getClass());
-        //class [I
+        //输出为： class [I
+
         System.out.println(ints.getClass().getSuperclass());
         //class java.lang.Object
 

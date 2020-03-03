@@ -8,6 +8,8 @@ public class classloadTest2 {
 
     public static void main(String[] args) {
 
+        classloadTest1.say();
+
         System.out.println("-------------'");
 
         System.out.println(Parent2.parentString);
