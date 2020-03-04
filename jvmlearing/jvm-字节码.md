@@ -16,7 +16,7 @@
 
 - 字节码文件的整体结构如下，其中的类型就是指数据类型。看不懂没关系，下面将对每一个组成部分进行细致的分析。
 
-- ![1582167723572](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582167723572.png)
+- ![1582167723572](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120209-463078.png)
 
 
 
@@ -44,7 +44,7 @@
 java类所对应的常量池主要由常量池数量和常量池数组（也称常量表，以下混用）这两部分共同构成。常量池数量紧跟在主版本号后面，占据两个字节。常量池数组则紧跟在常量池数量后面。常量池数组和一般的数组是不同的。常量池数组中的不同元素的类型，结构都是不相同的，长度也当然不相同，但是每一种元素的第一个数据都是一个u1类型，占据一个字节，该字节是一个标志位。jvm在解析常量池时，就会根据这个u1类型来获取元素的具体类型。值得注意的是，常量池数组中元素的个数 =  常量池数量 -1 （其中0暂时不用）。其根本原因在于，索引为0也是一个常量（是一个保留常量），只不过 它不位于常量表中，这个常量就对应null值。所以常量池表索引从1开始而非从0开始。
 
 - 下表描述了常量池表中的11种数据类型，在jdk1.7之后又增加了3种跟动态代理相关的类型，这样一共是14种。
-- ![1582162861696](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582162861696.png)
+- ![1582162861696](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120214-401326.png)
 
 ### 描述符
 
@@ -108,41 +108,41 @@ java类所对应的常量池主要由常量池数量和常量池数组（也称�
 
 ## 类的访问控制权限(access_flags)
 
-![1582172615736](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582172615736.png)
+![1582172615736](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120544-233191.png)
 
 描述： U2类型，访问表示信息包括该Class文件是类还是接口，是否被定义为public ，是否是abstract ，如果是类，是否被声明为final。并且在字节码中，如果一个类是public 和 final ，它的字节码是 0001 + 0010 = 0011 。   通过上面的源代码，我们因该知道是类并且是public。
 
-![1582171506881](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582171506881.png) 
+![1582171506881](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120223-557162.png) 
 
 ## 类名和父类名接口个数和接口名
 
-![1582207491970](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582207491970.png)
+![1582207491970](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120335-889726.png)
 
 如上所示，类名，父类名，接口名都是U2类型两个字节，并且代表指向常量池的索引（下文说的索引一般也指指向常量池的索引）。如果接口数为零，则没有字节码是代表接口名的（感觉有点罗嗦了，哈哈哈，因为这很符合常识啊！）
 
 ## 域表(fields)
 
-![1582172648963](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582172648963.png)
+![1582172648963](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120351-825375.png)
 
 域表用于描述类和接口中声明的变量。这里的字段包含了类级别的变量，以及实例变量，但是不包括方法内部声明的局部变量。关于域的描述如上所示，包括域的个数和域的表。其中域的表结构信息如下，表中的索引是指向常量池当中的。
 
-![1582172527438](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582172527438.png)
+![1582172527438](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120408-720977.png)
 
 ## 方法表(methods)
 
-![1582185114086](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582185114086.png)
+![1582185114086](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120411-370598.png)
 
 关于方法的描述如上所示包括方法的个数和方法表，其中方法表的结构如下，表中的索引是指向常量池当中的。
 
-![1582185823776](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582185823776.png)
+![1582185823776](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120416-73254.png)
 
 方法表结构中的attributes 又是一个复合类型，attributes 的结构信息参考下面的附加属性表。 在JVM中预定了部分的attribute，但是编译器自己也可以实现自己的attribute写入class文件中，供运行时使用。不同的attribute通过attribute_name_index来区分。
 
-![1582186340273](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582186340273.png)
+![1582186340273](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120418-25918.png)
 
 attributes 中的其中一个attribute 叫做Code attribute ，是我们要重点研究的对象，它的作用是保存该方法的结构，它的结构如下（其实它的结构是attributes表的进一步展开时的结构）
 
-![1582201739954](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582201739954.png)
+![1582201739954](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120424-95967.png)
 
 Code attribute 的结构信息详解
 
@@ -151,7 +151,7 @@ Code attribute 的结构信息详解
 - max_locals 表示方法执行期间创建的局部变量的数目，包含用来表示传入的参数的局部变量
   - 在局部变量表中，至少有一个指向当前对象的局部变量this，具体原因下面有解释。
 - code_length 表示该方法所包含的指令码码的数量，code_length 后面code_length长度的字节码代表具体的指令码，具体的指令码是指该方法被调用时，虚拟机的行为，每一个十六进制的字节码都对应一个指定的指令码。示例如下图所示，并且可以发现，1.在字节码文件中多出了自动生成的名字叫做init的方法，这就是我们的构造方法，并且在这个构造方法完成对实例变量的赋值，这里是我们平常不知道的，谁能想到实例变量是在构造方法里面赋值的呢，因为我们写代码的时候实例变量都不在构造方法里啊，所以说叫做“构造方法”。2.所有的静态变量的赋值和静态代码块都是合并到是在一个clinit方法里面进行的。 MyTest2.java
-  - ![1582273306749](D:\JavaLearing\jvmlearing\assets\1582273306749.png)
+  - ![1582273306749](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120428-599977.png)
   - 看下面的内容之前，需要清楚的前置知识点一：什么是符号引用：符号引用以一组符号来描述所引用的目标。符号引用可以是任何形式的字面量，只要使用时能无歧义地定位到目标即可，符号引用和虚拟机的布局无关。（在编译的时候一个每个java类都会被编译成一个class文件，但在编译的时候虚拟机并不知道所引用类的地址，多以就用符号引用来代替，而在这个解析阶段就是为了把这个符号引用转化成为真正的地址的阶段。）什么是直接引用？直接引用：（1）直接指向目标的指针（指向对象，类变量和类方法的指针）（2）相对偏移量。（指向实例的变量或方法的指针）（3）一个间接定位到对象的句柄（**什么是句柄？我也还不清楚**）。
   - 二：符号引用如何转换为直接引用（即地址） ？ 有些符号引用是在类加载信息阶段或是第一次使用时就会转换为直接引用，这种转化叫做**静态解析**。另外一些符号引用则是在每次运行期转换为直接引用，这种转换叫做**动态链接**。这体现为java的多态性。
   - 前置知识三：什么是栈帧？栈帧是一种帮助虚拟机执行 方法调用和方法执行的数据结构栈帧本身是一种数据结构，封装了**方法的局部变量表，动态链接信息，方法的返回地址以及操作数栈信息**(如 3-1=2操作就是操作数栈中进行的)
@@ -179,22 +179,22 @@ Code attribute 的结构信息详解
   - hangder_pc：表示处理异常的代码的开始处。
   - catch_type：表示会被处理的异常类型，它指向常量池中的一个异常类。当catch_type=0时，表示处理所有的异常。
   - 在MyTest3.java 中可以看到具体的实例，FileNotFoundException异常就是处理0 - 26 的指令异常，处理代码从37开始。其它异常捕获以此类推。并且通过读指令可以发现，当异常处理存在finally语句时，现代化的jvm采用finally语句块的字节码拼接到每一个catch块的后面，换句话说，我们存在多少个catch块，就会在每个catch语句块块字节码后面重复多少个finally语句块的字节码。 部分指令和全部异常表如下
-    - ![1582286615836](D:\JavaLearing\jvmlearing\assets\1582286615836.png)
-    - ![1582289027099](D:\JavaLearing\jvmlearing\assets\1582289027099.png)
+    - ![1582286615836](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120433-575506.png)
+    - ![1582289027099](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120451-357281.png)
 - attributes 附加属性表  注意：这是Code attribute 结构 里面的！
   - attributes 表的结构在请看下面的说明。
   - Code attribute 的结构中的附加属性表中有属性叫做LineNumbeTable_attribute ，此处它的表结构也是 attributes 表的一种，此处将它拓展出来为
-    - ![1582199775565](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582199775565.png)
+    - ![1582199775565](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120437-701121.png)
   - 附加属性表中还有个属性叫做LocalVariableTable（局部变量表 ） ：结构类似于 LineNumbeTable_attribute
     对于Java中的任何一个非静态方法，至少会有一个局部变量，就是this，并且对于每一个非静态方法，都有一个隐藏的参数，就是this，跟python里的self差不多，有了这个this，我们就可以在java的示例方法中使用this来去访问当前对象的属性和其它方法。这个操作是在编译期间完成的即由javac编译器在编译的时候j将对this的访问转化为对一个普通实例方法的访问，接下来在运行期间，由jvm在调用实例方法时，自动向实例方法传入this参数，所以在局部变量表中，至少有一个指向当前对象的局部变量。
 
 ## 附加属性表(attributes)
 
-![1582185857335](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582185857335.png)
+![1582185857335](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120505-887928.png)
 
 关于附加属性表的描述如上所示，包括附加属性表的个数和附加属性表, 其中附加属性表的结构如下所示，表中的索引是指向常量池当中的。
 
-![1582185811139](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582185811139.png)
+![1582185811139](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304120457-746460.png)
 
 
 
