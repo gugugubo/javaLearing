@@ -58,11 +58,11 @@
 
 #### 生命周期图
 
-![1582708437476](D:\JavaLearing\jvmlearing\assets\1582708437476.png)
+![1582708437476](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115330-815834.png)
 
 #### 生命周期时序图
 
-![1581513570895](D:\BaiduNetdiskDownload\markdown图片\1581513570895.png)
+![1581513570895](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115323-982445.png)
 
 #### 什么是类型
 
@@ -70,7 +70,7 @@
 
 #### java虚拟机结束生命周期
 
-![1581346391243](D:\BaiduNetdiskDownload\markdown图片\1581346391243.png)
+![1581346391243](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115117-810738.png)
 
 
 
@@ -82,8 +82,8 @@
 - 拓展类加载器(Extemnsion)
 - 系统类加载器(System)：加载classpath或者java.lang.path下的类，一般来说就由系统下载类加载我们写的类
 - 以上几个加载器呈父子关系（classloadTest14.java）
-  - ![1581559224452](D:\BaiduNetdiskDownload\markdown图片\1581559224452.png)
-- ![1581517657115](D:\BaiduNetdiskDownload\markdown图片\1581517657115.png)
+  - ![1581559224452](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115122-567156.png)
+- ![1581517657115](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115124-502372.png)
   - Bootstrap classloader 启动类加载器：加载的是$JAVE_HOME(就是jdk的目录)中jre/lib/rt.jar 或者系统属性sun.boot.class.paht所指定的目录里 里所有的class（即我们jdk常有的一些类如Object类），由c++实现，不是classloader的子类
   - Extension classloader 拓展类加载器：负责加载java平台中拓展功能的一些jar包，包括$JAVE_HOME中jre/lib/*.jar 或 系统属性 java.ext.dirs 指定目录下的jar包(classloadTest19.java)
   - System classloader 系统类加载器： 负责加载classpath目录下的class 和系统属性java.class.path所指定目录的jar包（比如我们自己写的类）(classloadTest7.java) 
@@ -102,7 +102,7 @@
 
 #### 获取classloader的途径
 
-![1581581884052](D:\BaiduNetdiskDownload\markdown图片\1581581884052.png)
+![1581581884052](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115144-297217.png)
 
 - 1.当前上下文的classloader
   - getContextClassLoader 的javadoc文档如下：上下文类加载器由线程的创建者提供，供此线程中运行的代码在加载类和资源时使用。如果未设置，则默认为父线程的上下文类加载器。原始线程的上下文类加载器通常设置为用于加载应用程序的类加载器(即system classloader)。
@@ -272,11 +272,11 @@ public class classloadTest16 extends ClassLoader {
 
 #### 类加载器的(双亲委派机制)父亲委托机制
 
-![1581517870929](D:\BaiduNetdiskDownload\markdown图片\1581517870929.png)
+![1581517870929](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115226-969443.png)
 
 先自下而上检查是否已经加载，再自上而下尝试加载类。特别注意如下（此观点证明代码可参考classloadTest16.java）：
 
-![1582079158522](C:\Users\古春波\Desktop\JavaLearing\jvmlearing\assets\1582079158522.png)
+![1582079158522](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115148-998718.png)
 
 #### 双亲委托模型的好处
 
@@ -314,4 +314,6 @@ public class classloadTest16 extends ClassLoader {
 - 由java虚拟机自带的类加载器所加载的类，在虚拟机的生命周期中，始终不会被卸载。前面已经介绍过，java虚拟机自带的加载器包括根类加载器，系统加载器，拓展类加载器。java虚拟机本身会引用这些类加载器，而这些类加载器则是始终会应用它们所加载的Class对象，因此这些Class对象始终是可触及的。因此说，由用户自定义的类加载器所加载的类是可以被卸载的
 - 在实例程序中，Sample类由loader1加载，在类加载器的内部实现中，用一个java集合来存放所加载类的引用。另一方面一个Class对象总是会引用它的类加载器，调用Class对象的getClassLoader()方法，就能获得它的类加载器对象，由此可见，Sample类的Class对象与类加载器Loader1之间是双向关联关系
 - 一个类的实例总是应用代表这个类的Class对象，在Object类中定义了getClass()方法，这个方法返回代表对象的所属类的Class对象的引用，而所有的java类都有一个静态属性class，他引用代表这个类的Class对象
+
+
 
