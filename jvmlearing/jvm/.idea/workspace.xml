@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="32eda6ef-f5cf-4e9d-aea3-7662ddd04bab" name="Default Changelist" comment="test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gcb/jvm/bytecodetest/MyTest1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gcb/jvm/bytecodetest/MyTest1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gcb/jvm/gc/MyTest3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gcb/jvm/gc/MyTest3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../forjob/面经.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../forjob/面经.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jvmlearing/jvm-字节码.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../jvmlearing/jvm-字节码.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -50,20 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest3.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
+            <state relative-caret-position="331">
               <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/String.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="3149" column="24" lean-forward="true" selection-start-line="3149" selection-start-column="24" selection-end-line="3149" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -226,15 +212,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="jvm" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="jvm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jvm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jvm" type="462c0819:PsiDirectoryNode" />
-              <item name="bytecodetest" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -373,8 +350,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583394538025" />
-    <property name="last_opened_file_path" value="D:/下载/jvm-learn-master" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583407693593" />
+    <property name="last_opened_file_path" value="D:/java笔记/java并发" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -597,7 +574,7 @@
       <workItem from="1583109933912" duration="1958000" />
       <workItem from="1583204537513" duration="1817000" />
       <workItem from="1583325948758" duration="2282000" />
-      <workItem from="1583378236061" duration="5973000" />
+      <workItem from="1583378236061" duration="8477000" />
     </task>
     <task id="LOCAL-00001" summary="冲冲冲！！！">
       <created>1581516673544</created>
@@ -617,7 +594,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="271138000" />
+    <option name="totallyTimeSpent" value="273642000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -631,7 +608,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27181208" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27181208" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -641,7 +618,7 @@
       <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.32954547" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.3181818" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.2556818" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.36363637" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -662,7 +639,7 @@
       <window_info anchor="right" id="Maven" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info active="true" anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="9" side_tool="true" visible="true" weight="0.25100672" />
+      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="9" side_tool="true" weight="0.25100672" />
       <window_info anchor="right" id="jclasslib" order="10" weight="0.38456374" />
     </layout>
   </component>
@@ -1088,17 +1065,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="169">
           <caret line="3149" column="24" lean-forward="true" selection-start-line="3149" selection-start-column="24" selection-end-line="3149" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
         </state>
       </provider>
     </entry>
