@@ -10,6 +10,11 @@ public class Test2 {
             @Override
             public void run() {
                 log.debug("线程任务");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         };
         // 可以使用lambda表达式呀
