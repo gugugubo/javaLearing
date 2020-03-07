@@ -26,4 +26,8 @@ public class Test10 {
         log.debug("结果为:{}", r);
         log.debug("结束");
     }
+
+    public void say1(){
+        System.out.println(2323);
+    }
 }

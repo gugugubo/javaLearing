@@ -1,5 +1,11 @@
 
 
+
+
+
+
+
+
 # 线程与进程
 
 ## 2.1 进程与进程
@@ -47,7 +53,7 @@
 
 ### 二者对比
 
-引用 Rob Pike 的一段描述：并发（concurrent）是同一时间应对（dealing with）多件事情的能力并行（parallel）是同一时间动手做（doing）多件事情的能力
+引用 Rob Pike 的一段描述：并发（concurrent）是同一时间应对（dealing with）多件事情的能力，并行（parallel）是同一时间动手做（doing）多件事情的能力
 
 - 家庭主妇做饭、打扫卫生、给孩子喂奶，她一个人轮流交替做这多件事，这时就是并发
 - 雇了3个保姆，一个专做饭、一个专打扫卫生、一个专喂奶，互不干扰，这时是并行
@@ -82,7 +88,7 @@
 #### 方法一，直接使用 Thread
 
 ```java
-// 构造方法的参数是给线程指定名字，推荐
+// 构造方法的参数是给线程指定名字，，推荐给线程起个名字
 Thread t1 = new Thread("t1") {
  @Override
  // run 方法内实现了要执行的任务
@@ -107,7 +113,7 @@ Runnable task2 = new Runnable() {
  log.debug("hello");
  }
 };
-// 参数1 是任务对象; 参数2 是线程名字，推荐
+// 参数1 是任务对象; 参数2 是线程名字，推荐给线程起个名字
 Thread t2 = new Thread(task2, "t2");
 t2.start();
 ```
@@ -118,7 +124,7 @@ t2.start();
 
 #### 方法三，FutureTask 配合 Thread
 
-FutureTask 能够接收 Callable 类型的参数，用来处理有返回结果的情况Test3.java
+FutureTask 能够接收 Callable 类型的参数，用来处理有返回结果的情况 Test3.java
 
 ```java
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -142,7 +148,7 @@ FutureTask 能够接收 Callable 类型的参数，用来处理有返回结果�
 
 ### 虚拟机栈与栈帧
 
-拟机栈描述的是Java方法执行的内存模型：每个方法被执行的时候都会同时创建一个栈帧(stack frame)用于存储局部变量表、操作数栈、动态链接、方法出口等信息，是属于线程的。当java中使用多线程时，每个线程都会维护它自己的栈帧！每个线程只能有一个活动栈帧，对应着当前正在执行的那个方法
+拟机栈描述的是Java方法执行的内存模型：每个方法被执行的时候都会同时创建一个栈帧(stack frame)用于存储局部变量表、操作数栈、动态链接、方法出口等信息，是属于线程的私有的。当java中使用多线程时，每个线程都会维护它自己的栈帧！每个线程只能有一个活动栈帧，对应着当前正在执行的那个方法
 
 ### 线程上下文切换（Thread Context Switch）
 
@@ -151,7 +157,7 @@ FutureTask 能够接收 Callable 类型的参数，用来处理有返回结果�
 - 线程的 cpu 时间片用完(每个线程轮流执行，看前面并行的概念)
 - 垃圾回收
 - 有更高优先级的线程需要运行
-- 线程自己调用了 sleep、yield、wait、join、park、synchronized、lock 等方法
+- 线程自己调用了 `sleep`、`yield`、`wait`、`join`、`park`、`synchronized`、`lock` 等方法
 
 当 Context Switch 发生时，需要由操作系统保存当前线程的状态，并恢复另一个线程的状态，Java 中对应的概念
 就是程序计数器（Program Counter Register），它的作用是记住下一条 jvm 指令的执行地址，是线程私有的
@@ -179,7 +185,7 @@ FutureTask 能够接收 Callable 类型的参数，用来处理有返回结果�
     }
 ```
 
-输出：程序在 t1 线程运行， FileReader.read() 方法调用是异步的Test4
+输出：程序在 t1 线程运行， `run()`方法里面内容的调用是异步的 Test4.java
 
 ```properties
 11:59:40.711 [main] DEBUG com.concurrent.test.Test4 - 主线程
@@ -190,7 +196,7 @@ FutureTask 能够接收 Callable 类型的参数，用来处理有返回结果�
 
 #### 调用run
 
-将上面代码的`thread.start();`改为 `thread.run();`输出结果如下：程序仍在 main 线程运行， FileReader.read() 方法调用还是同步的
+将上面代码的`thread.start();`改为 `thread.run();`输出结果如下：程序仍在 main 线程运行， `run()`方法里面内容的调用还是同步的
 
 ```properties
 12:03:46.711 [main] DEBUG com.concurrent.test.Test4 - 我是一个新建的线程正在运行中
@@ -201,17 +207,17 @@ FutureTask 能够接收 Callable 类型的参数，用来处理有返回结果�
 
 #### 小结
 
-直接调用 run 是在主线程中执行了 run，没有启动新的线程
-使用 start 是启动新的线程，通过新的线程间接执行 run 中的代码
+直接调用 `run()` 是在主线程中执行了 `run()`，没有启动新的线程
+使用 `start()` 是启动新的线程，通过新的线程间接执行 `run()`方法 中的代码
 
 ### 3.3.2 sleep 与 yield
 
 #### sleep
 
 1. 调用 sleep 会让当前线程从 Running 进入 Timed Waiting 状态（阻塞）
-2. 其它线程可以使用 interrupt 方法打断正在睡眠的线程，那么被打断的线程就会停止执行，并且这时 sleep 方法会抛出 InterruptedException【注意：这里打断的是正在休眠的线程，而不是其它状态的线程】
+2. 其它线程可以使用 interrupt 方法打断正在睡眠的线程，那么被打断的线程这时就会会抛出 `InterruptedException`异常【注意：这里打断的是正在休眠的线程，而不是其它状态的线程】
 3. 睡眠结束后的线程未必会立刻得到执行(需要分配到cpu时间片)
-4. 建议用 TimeUnit 的 sleep 代替 Thread 的 sleep 来获得更好的可读性
+4. 建议用 TimeUnit 的 `sleep()` 代替 Thread 的 `sleep()`来获得更好的可读性
 
 #### yield
 
@@ -374,7 +380,7 @@ class TwoParseTermination{
 
 五种状态的划分主要是从操作系统的层面进行划分的
 
-![1583507073055](assets/1583507073055.png)
+![1583507073055](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307093417-638644.png)
 
 1. 初始状态，仅仅是在语言层面上创建了线程对象，即`Thead thread = new Thead();`，还未与操作系统线程关联
 2. 可运行状态，也称就绪状态，指该线程已经被创建，与操作系统相关联，等待cpu给它分配时间片就可运行
@@ -391,7 +397,7 @@ class TwoParseTermination{
 这是从 Java API 层面来描述的
 根据 Thread.State 枚举，分为六种状态 Test12.java
 
-![1583507709834](assets/1583507709834.png)
+![1583507709834](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307093352-614933.png)
 
 1. NEW 跟五种状态里的初始状态是一个意思
 2. RUNNABLE 是当调用了 `start()` 方法之后的状态，注意，Java API 层面的 `RUNNABLE` 状态涵盖了操作系统层面的
@@ -399,3 +405,523 @@ class TwoParseTermination{
    是可运行）
 3. `BLOCKED` ， `WAITING` ， `TIMED_WAITING` 都是 Java API 层面对【阻塞状态】的细分，后面会在状态转换一节
    详述
+
+
+
+# 线程问题
+
+## 4.1 线程出现问题的根本原因分析
+
+线程出现问题的根本原因是因为线程上下文切换，导致线程里的指令没有执行完就切换执行其它线程了，下面举一个例子 Test13.java
+
+```java
+    static int count = 0;
+    public static void main(String[] args) throws InterruptedException {
+        Thread t1 = new Thread(()->{
+            for (int i = 1;i<5000;i++){
+                count++;
+            }
+        });
+        Thread t2 =new Thread(()->{
+            for (int i = 1;i<5000;i++){
+                count--;
+            }
+        });
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join();
+        log.debug("count的值是{}",count);
+    }
+```
+
+我将从字节码的层面进行分析：
+
+![1583568350082](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307160551-757236.png)
+
+![1583568587168](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307160948-54298.png)
+
+```java
+getstatic i // 获取静态变量i的值
+iconst_1 // 准备常量1
+iadd // 自增
+putstatic i // 将修改后的值存入静态变量i
+    
+getstatic i // 获取静态变量i的值
+iconst_1 // 准备常量1
+isub // 自减
+putstatic i // 将修改后的值存入静态变量i
+```
+
+可以看到`count++` 和 `count--` 操作实际都是需要这个4个指令完成的，那么这里问题就来了！Java 的内存模型如下，完成静态变量的自增，自减需要在主存和工作内存中进行数据交换：
+
+![1583569253392](assets/1583569253392.png)
+
+如果代码是正常按顺序运行的，那么count的值不会计算错
+
+![1583569326977](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307162207-752990.png)
+
+出现负数的情况：
+
+![1583569380639](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307162301-374560.png)
+
+出现正数的情况：
+
+![1583569416016](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307162337-43718.png)
+
+### 问题的进一步描述
+
+#### 临界区
+
+1. 一个程序运行多线程本身是没有问题的
+
+2. 问题出现在多个线程共享资源的时候
+
+   1. 多个线程同时对共享资源进行读操作本身也没有问题
+   2. 问题出现在对对共享资源同时进行读写操作时就有问题了 
+
+3. 先定义一个叫做临界区的概念：一段代码内如果存在对共享资源的多线程读写操作，那么称这段代码为临界区
+
+   1. 如
+
+      ```java
+      static int counter = 0;
+      static void increment()
+      {// 临界区
+       counter++;
+      }
+      static void decrement()
+      {// 临界区
+       counter--;
+      }
+      ```
+
+#### 竞态条件
+
+多个线程在临界区执行，那么由于代码指令的执行不确定而导致的结果问题，称为竞态条件
+
+## 4.2 synchronized 解决方案
+
+为了避免临界区中的竞态条件发生，由多种手段可以达到
+
+- 阻塞式解决方案：synchronized ，Lock
+- 非阻塞式解决方案：原子变量
+
+现在讨论使用synchronized来进行解决，即俗称的对象锁，它采用互斥的方式让同一时刻至多只有一个线程持有对象锁，其他线程如果想获取这个锁就会阻塞住，这样就能保证拥有锁的线程可以安全的执行临界区内的代码，不用担心线程上下文切换
+
+> 注意
+> 虽然 java 中互斥和同步都可以采用 synchronized 关键字来完成，但它们还是有区别的：                                          互斥是保证临界区的竞态条件发生，同一时刻只能有一个线程执行临界区的代码                                                                 同步是由于线程执行的先后，顺序不同但是需要一个线程等待其它线程运行到某个点
+
+### synchronized
+
+```java
+synchronized(对象) // 线程1获得锁， 那么线程2的状态是(blocked)
+{
+ 临界区
+}
+```
+
+上面的实例程序使用synchronized后如下，计算出的结果是正确！Test13.java
+
+```java
+static int counter = 0;
+static final Object room = new Object();
+public static void main(String[] args) throws InterruptedException {
+ Thread t1 = new Thread(() -> {
+ for (int i = 0; i < 5000; i++) {
+ synchronized (room) {
+ counter++;
+ }
+ }
+ }, "t1");
+ Thread t2 = new Thread(() -> {
+ for (int i = 0; i < 5000; i++) {
+ synchronized (room) {
+ counter--;
+ }
+ }
+ }, "t2");
+ t1.start();
+ t2.start();
+ t1.join();
+ t2.join();
+ log.debug("{}",counter);
+}
+
+```
+
+#### synchronized原理
+
+synchronized实际上利用对象保证了临界区代码的原子性，临界区内的代码在外界看来是不可分割的，不会被线程切换所打断
+
+![1583571633729](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307170035-215697.png)
+
+### synchronized 加在方法上
+
+```java
+    class Test{
+        public synchronized void test() {
+
+        }
+    }
+    //等价于
+    class Test{
+        public void test() {
+            synchronized(this) {
+
+            }
+        }
+    }
+//------------------------------------------------------------------------------------------------
+    class Test{
+        public synchronized static void test() {
+        }
+    }
+   // 等价于
+    class Test{
+        public static void test() {
+            synchronized(Test.class) {
+
+            }
+        }
+    }
+
+```
+
+
+
+## 4.3 变量的线程安全分析
+
+### 4.3.1 成员变量和静态变量的线程安全分析
+
+- 如果没有变量没有在线程间共享，那么变量是安全的
+- 如果变量在线程间共享
+  - 如果只有读操作，则线程安全
+  - 如果有读写操作，则这段代码是临界区，需要考虑线程安全
+
+### 4.3.2 局部变量线程安全分析
+
+- 局部变量【局部变量被初始化为基本数据类型】是安全的
+- 局部变量引用的对象未必是安全的
+  - 如果局部变量引用的对象没有引用线程共享的对象，那么是线程安全的
+  - 如果局部变量引用的对象引用了一个线程共享的对象，那么要考虑线程安全的
+
+#### 线程安全的情况
+
+局部变量【局部变量被初始化为基本数据类型】是安全的，示例如下
+
+```java
+public static void test1() {
+ int i = 10;
+ i++;
+}
+```
+
+每个线程调用 test1() 方法时局部变量 i，会在每个线程的栈帧内存中被创建多份，因此不存在共享
+
+![1583587166210](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307211927-566637.png)
+
+#### 线程不安全的情况
+
+如果局部变量引用的对象逃离方法的引用，那么要考虑线程安全的，代码示例如下 Test15.java
+
+```java
+public class Test15 {
+    public static void main(String[] args) {
+        UnsafeTest unsafeTest = new UnsafeTest();
+        for (int i =0;i<100;i++){
+            new Thread(()->{
+                unsafeTest.method1();
+            },"线程"+i).start();
+        }
+    }
+}
+class UnsafeTest{
+    ArrayList<String> arrayList = new ArrayList<>();
+    public void method1(){
+        for (int i = 0; i < 100; i++) {
+            method2();
+            method3();
+        }
+    }
+    private void method2() {
+        arrayList.add("1");
+    }
+    private void method3() {
+        arrayList.remove(0);
+    }
+}
+```
+
+##### 不安全原因分析
+
+无论哪个线程中的 method2 和method3 引用的都是同一个对象中的 list 成员变量：一个 ArrayList ，在添加一个元素的时候，它可能会有两步来完成： 
+       1. 在 arrayList[Size] 的位置存放此元素； 
+    2. 增大 Size 的值。 
+  在单线程运行的情况下，如果 Size = 0，添加一个元素后，此元素在位置 0，而且 Size=1；而如果是在多线程情况下，比如有两个线程，线程 A 先将元素存放在位置 0。但是此时 CPU 调线程A暂停，线程 B 得到运行的机会。线程B也向此 ArrayList 添加元素，因为此时 Size 仍等于 0 （注意哦，我们假设的是添加一个元素是要两个步骤哦，而线程A仅仅完成了步骤1），所以线程B也将元素存放在位置0。然后线程A和线程B都继续运行，都增加 Size 的值。 
+   那好，现在我们来看看 ArrayList 的情况，元素实际上只有一个，存放在位置 0，而 Size 却等于 2。这就是“线程不安全”了。 
+    3. ![1583589268096](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307215429-139261.png)
+
+![1583587571334](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307212611-483979.png)
+
+##### 解决方法
+
+可以将list修改成局部变量，那么就不会有上述问题了
+
+```java
+class safeTest{
+    public void method1(){
+        ArrayList<String> arrayList = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+        method2(arrayList);
+        method3(arrayList);}
+    }
+    private void method2(ArrayList arrayList) {
+        arrayList.add("1");
+    }
+    private void method3(ArrayList arrayList) {
+        arrayList.remove(0);
+    }
+}
+```
+
+##### 思考  private 或 final的重要性
+
+方法访问修饰符带来的思考，如果把 method2 和 method3 的方法修改为 public 会不会代理线程安全问题？情况1：有其它线程调用 method2 和 method3情况2：在情况1 的基础上，为 ThreadSafe 类添加子类，子类覆盖 method2 或 method3 方法，即如下所示： 从这个例子可以看出 private 或 final 提供【安全】的意义所在，请体会开闭原则中的【闭】
+
+```java
+class ThreadSafe {
+    public final void method1(int loopNumber) {
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < loopNumber; i++) {
+            method2(list);
+            method3(list);
+        }
+    }
+    private void method2(ArrayList<String> list) {
+        list.add("1");
+    }
+    private void method3(ArrayList<String> list) {
+        list.remove(0);
+    }
+}
+class ThreadSafeSubClass extends ThreadSafe{
+    @Override
+    public void method3(ArrayList<String> list) {
+        new Thread(() -> {
+            list.remove(0);
+        }).start();
+    }
+}
+```
+
+
+
+### 4.3.3 常见线程安全类
+
+1. String
+2. Integer
+3. StringBuffer
+4. Random
+5. Vector
+6. Hashtable
+7. java.util.concurrent 包下的类
+
+这里说它们是线程安全的是指，<span style ="color:red">多个线程调用它们同一个实例的某个方法时，是线程安全的</span>。也可以理解为
+它们的每个方法是原子的
+
+```java
+Hashtable table = new Hashtable();
+new Thread(()->{
+ table.put("key", "value1");
+}).start();
+new Thread(()->{
+ table.put("key", "value2");
+}).start();
+
+```
+
+#### 线程安全类方法的组合
+
+但注意它们多个方法的组合不是原子的，见下面分析
+
+```java
+Hashtable table = new Hashtable();
+// 线程1，线程2
+if( table.get("key") == null) {
+ table.put("key", value);
+}
+```
+
+![1583590979975](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307222301-656435.png)
+
+#### 不可变类的线程安全
+
+`String`和`Integer`类都是不可变的类，因为其类内部状态是不可改变的，因此它们的方法都是线程安全的，有同学或许有疑问，`String` 有 `replace`，`substring` 等方法【可以】改变值啊，其实调用这些方法返回的已经是一个新创建的对象了！
+
+```java
+public class Immutable{
+ private int value = 0;
+ public Immutable(int value){
+ this.value = value;
+ }
+ public int getValue(){
+ return this.value;
+ }
+ public Immutable add(int v){
+ return new Immutable(this.value + v);
+ }
+}
+```
+
+#### 示例分析-是否线程安全
+
+##### 示例一
+
+此类不是线程安全的，MyAspect只有一个实例，成员变量`start` 会被多个线程同时进行读写操作
+
+```java
+@Aspect
+@Component
+public class MyAspect {
+ // 是否安全？
+ private long start = 0L;
+ @Before("execution(* *(..))")
+ public void before() {
+ start = System.nanoTime();
+ }
+ @After("execution(* *(..))")
+ public void after() {
+ long end = System.nanoTime();
+ System.out.println("cost time:" + (end-start));
+ }
+}
+```
+
+##### 示例二
+
+此例是典型的三层模型调用，`MyServlet` `UserServiceImpl` `UserDaoImpl`类都只有一个实例，`UserDaoImpl`类中没有成员变量，`update`方法里的变量引用的对象不是线程共享的，所以是线程安全的；`UserServiceImpl`类中只有一个线程安全的`UserDaoImpl`类的实例，那么`UserServiceImpl`类也是线程安全的，同理 `MyServlet`也是线程安全的
+
+```java
+public class MyServlet extends HttpServlet {
+ // 是否安全
+ private UserService userService = new UserServiceImpl();
+
+ public void doGet(HttpServletRequest request, HttpServletResponse response) {
+ userService.update(...);
+ }
+}
+public class UserServiceImpl implements UserService {
+ // 是否安全
+ private UserDao userDao = new UserDaoImpl();
+ public void update() {
+ userDao.update();
+ }
+}
+public class UserDaoImpl implements UserDao {
+ public void update() {
+ String sql = "update user set password = ? where username = ?";
+ // 是否安全
+ try (Connection conn = DriverManager.getConnection("","","")){
+ // ...
+ } catch (Exception e) {
+ // ...
+ }
+ }
+}
+```
+
+##### 示例三
+
+跟示例二大体相似，`UserDaoImpl`类中有成员变量，那么多个线程可以对成员变量`conn` 同时进行操作，固是不安全的
+
+```java
+public class MyServlet extends HttpServlet {
+    // 是否安全
+    private UserService userService = new UserServiceImpl();
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
+        userService.update(...);
+    }
+}
+public class UserServiceImpl implements UserService {
+    // 是否安全
+    private UserDao userDao = new UserDaoImpl();
+    public void update() {
+        userDao.update();
+    }
+}
+public class UserDaoImpl implements UserDao {
+    // 是否安全
+    private Connection conn = null;
+    public void update() throws SQLException {
+        String sql = "update user set password = ? where username = ?";
+        conn = DriverManager.getConnection("","","");
+        // ...
+        conn.close();
+    }
+}
+```
+
+##### 示例四
+
+跟示例三大体相似，`UserServiceImpl`类的update方法中 UserDao是作为局部变量存在的，并且每个线程访问的时候都会新建有一个`UserDao`对象，新建的对象是线程独有的，所以是线程安全的
+
+```java
+public class MyServlet extends HttpServlet {
+    // 是否安全
+    private UserService userService = new UserServiceImpl();
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
+        userService.update(...);
+    }
+}
+public class UserServiceImpl implements UserService {
+    public void update() {
+        UserDao userDao = new UserDaoImpl();
+        userDao.update();
+    }
+}
+public class UserDaoImpl implements UserDao {
+    // 是否安全
+    private Connection = null;
+    public void update() throws SQLException {
+        String sql = "update user set password = ? where username = ?";
+        conn = DriverManager.getConnection("","","");
+        // ...
+        conn.close();
+    }
+}
+```
+
+##### 示例五
+
+```java
+public abstract class Test {
+    public void bar() {
+        // 是否安全
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        foo(sdf);
+    }
+    public abstract foo(SimpleDateFormat sdf);
+    public static void main(String[] args) {
+        new Test().bar();
+    }
+}
+```
+
+其中 foo 的行为是不确定的，可能导致不安全的发生，被称之为外星方法，因为foo方法可以被重写，导致线程不安全。在String类中就考虑到了这一点，String类是`finally`的，子类不能重写它的方法。
+
+```java
+    public void foo(SimpleDateFormat sdf) {
+        String dateStr = "1999-10-11 00:00:00";
+        for (int i = 0; i < 20; i++) {
+            new Thread(() -> {
+                try {
+                    sdf.parse(dateStr);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
+    }
+```
