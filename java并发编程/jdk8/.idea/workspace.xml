@@ -2,16 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f699918-eb33-484b-9dcb-1a1e2773d5d0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test13.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test14.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test15.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test18.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../forjob/面经.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../forjob/面经.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java基础/serialVersionUID的作用.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../java并发.md" beforeDir="false" afterPath="$PROJECT_DIR$/../java并发.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test10.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test10.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test11.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test11.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/concurrent/test/Test10.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/concurrent/test/Test10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/concurrent/test/TwoParseTermination.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/concurrent/test/TwoParseTermination.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jvmlearing/jvm-字节码.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../jvmlearing/jvm-字节码.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test16.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test16.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test17.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test17.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/concurrent/test/Test15.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/concurrent/test/Test15.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/concurrent/test/UnsafeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/concurrent/test/UnsafeTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/concurrent/test/safeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/concurrent/test/safeTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../jvmlearing/jvm-内存结构.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../jvmlearing/jvm-内存结构.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -24,85 +26,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test10.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
-              <folding>
-                <element signature="e#730#731#0" expanded="true" />
-                <element signature="e#770#771#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test11.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test1.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/Thread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4">
-              <caret line="511" column="5" lean-forward="true" selection-start-line="511" selection-start-column="5" selection-end-line="511" selection-end-column="5" />
-              <folding>
-                <element signature="e#15704#15705#0" expanded="true" />
-                <element signature="e#15770#15771#0" expanded="true" />
-                <element signature="e#17619#17620#0" expanded="true" />
-                <element signature="e#17660#17661#0" expanded="true" />
-                <element signature="e#36709#36710#0" expanded="true" />
-                <element signature="e#36767#36768#0" expanded="true" />
-                <element signature="e#37304#37305#0" expanded="true" />
-                <element signature="e#37347#37348#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test12.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/nio/channels/spi/AbstractInterruptibleChannel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3306">
-              <caret line="209" column="26" selection-start-line="209" selection-start-column="26" selection-end-line="209" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test7.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="418">
-              <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-              <folding>
-                <element signature="e#205#561#0" expanded="true" />
-                <element signature="e#560#561#0" expanded="true" />
-              </folding>
+              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -110,7 +37,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test13.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
+            <state relative-caret-position="551">
               <caret line="29" selection-start-line="29" selection-end-line="51" selection-end-column="5" />
             </state>
           </provider>
@@ -119,27 +46,94 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test14.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="836">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test15.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
               <folding>
-                <element signature="e#1068#1069#0" expanded="true" />
-                <element signature="e#1095#1096#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#590#591#0" expanded="true" />
+                <element signature="e#624#625#0" expanded="true" />
+                <element signature="e#653#654#0" expanded="true" />
+                <element signature="e#688#689#0" expanded="true" />
+                <element signature="e#942#943#0" expanded="true" />
+                <element signature="e#976#977#0" expanded="true" />
+                <element signature="e#1024#1025#0" expanded="true" />
+                <element signature="e#1059#1060#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test15.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/Hashtable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="6061">
+              <caret line="361" column="29" selection-start-line="361" selection-start-column="26" selection-end-line="361" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test16.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1102">
+              <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#624#625#0" expanded="true" />
-                <element signature="e#688#689#0" expanded="true" />
-                <element signature="e#976#977#0" expanded="true" />
-                <element signature="e#1059#1060#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test17.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test18.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="100" column="17" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/openjdk/jol/jol-core/0.10/jol-core-0.10.jar!/org/openjdk/jol/info/ClassLayout.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-679">
+              <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
+              <folding>
+                <element signature="e#1037#1038#0" expanded="true" />
+                <element signature="e#1106#1107#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,6 +155,13 @@
       <find>Interrupted</find>
       <find>isInterrupted</find>
       <find>interrupt</find>
+      <find>get</find>
+      <find>buyTicket</find>
+      <find>t</find>
+      <find>test1</find>
+      <find>ClassLayout</find>
+      <find>getObjectHeader</find>
+      <find>parseObjectHeader</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -182,6 +183,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test13.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test14.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test15.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test16.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test17.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test18.java" />
       </list>
     </option>
   </component>
@@ -275,14 +280,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583596535513" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583767375332" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -303,46 +308,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test15">
-    <configuration name="Test12" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test12" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test13" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test13" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test14" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test14" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Test18">
     <configuration name="Test15" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test15" />
       <module name="jdk8" />
@@ -356,8 +322,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test7" />
+    <configuration name="Test16" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test16" />
       <module name="jdk8" />
       <extension name="coverage">
         <pattern>
@@ -369,13 +335,59 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test17" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test17" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test18" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test18" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.test" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Test15" />
+      <item itemvalue="Application.Test16" />
+      <item itemvalue="Application.Test17" />
+      <item itemvalue="Application.Test18" />
+      <item itemvalue="Application.test" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test18" />
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.Test17" />
+        <item itemvalue="Application.Test16" />
         <item itemvalue="Application.Test15" />
-        <item itemvalue="Application.Test14" />
-        <item itemvalue="Application.Test13" />
-        <item itemvalue="Application.Test7" />
-        <item itemvalue="Application.Test12" />
       </list>
     </recent_temporary>
   </component>
@@ -392,18 +404,20 @@
       <workItem from="1583414543646" duration="25000" />
       <workItem from="1583414642441" duration="4599000" />
       <workItem from="1583465848660" duration="13245000" />
-      <workItem from="1583544625710" duration="9944000" />
+      <workItem from="1583544625710" duration="10031000" />
+      <workItem from="1583638523979" duration="3563000" />
+      <workItem from="1583741482263" duration="4839000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27813000" />
+    <option name="totallyTimeSpent" value="36302000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25973153" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2671141" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -412,7 +426,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23295455" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4190341" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39914772" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -424,7 +438,6 @@
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Spring" order="12" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32954547" />
-      <window_info anchor="right" id="jclasslib" weight="0.40201342" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -435,6 +448,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" />
       <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="9" side_tool="true" weight="0.3295302" />
+      <window_info anchor="right" id="jclasslib" order="10" weight="0.40201342" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,27 +595,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/nio/channels/spi/AbstractInterruptibleChannel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test10.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3306">
-          <caret line="209" column="26" selection-start-line="209" selection-start-column="26" selection-end-line="209" selection-end-column="26" />
+        <state relative-caret-position="551">
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test12.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test11.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="26" lean-forward="true" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="456">
+          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="511" column="5" lean-forward="true" selection-start-line="511" selection-start-column="5" selection-end-line="511" selection-end-column="5" />
+        <state relative-caret-position="8778">
+          <caret line="511" column="5" selection-start-line="511" selection-start-column="5" selection-end-line="511" selection-end-column="5" />
           <folding>
             <element signature="e#15704#15705#0" expanded="true" />
             <element signature="e#15770#15771#0" expanded="true" />
@@ -615,70 +633,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test1.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test12.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test10.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        <state relative-caret-position="133">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
           <folding>
-            <element signature="e#730#731#0" expanded="true" />
-            <element signature="e#770#771#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test11.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/nio/channels/spi/AbstractInterruptibleChannel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        <state relative-caret-position="3325">
+          <caret line="209" column="26" selection-start-line="209" selection-start-column="26" selection-end-line="209" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test7.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
-          <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-          <folding>
-            <element signature="e#205#561#0" expanded="true" />
-            <element signature="e#560#561#0" expanded="true" />
-          </folding>
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test13.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
+        <state relative-caret-position="551">
           <caret line="29" selection-start-line="29" selection-end-line="51" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test14.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="e#1068#1069#0" expanded="true" />
-            <element signature="e#1095#1096#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="836">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test15.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        <state relative-caret-position="646">
+          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#590#591#0" expanded="true" />
             <element signature="e#624#625#0" expanded="true" />
+            <element signature="e#653#654#0" expanded="true" />
             <element signature="e#688#689#0" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
             <element signature="e#976#977#0" expanded="true" />
+            <element signature="e#1024#1025#0" expanded="true" />
             <element signature="e#1059#1060#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/Hashtable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6061">
+          <caret line="361" column="29" selection-start-line="361" selection-start-column="26" selection-end-line="361" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test16.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1102">
+          <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/openjdk/jol/jol-core/0.10/jol-core-0.10.jar!/org/openjdk/jol/info/ClassLayout.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-679">
+          <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
+          <folding>
+            <element signature="e#1037#1038#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test17.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="100" column="17" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test18.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

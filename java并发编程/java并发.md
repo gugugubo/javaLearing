@@ -455,7 +455,7 @@ putstatic i // 将修改后的值存入静态变量i
 
 可以看到`count++` 和 `count--` 操作实际都是需要这个4个指令完成的，那么这里问题就来了！Java 的内存模型如下，完成静态变量的自增，自减需要在主存和工作内存中进行数据交换：
 
-![1583569253392](assets/1583569253392.png)
+![1583569253392](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309204444-155703.png)
 
 如果代码是正常按顺序运行的，那么count的值不会计算错
 
@@ -623,7 +623,7 @@ public static void test1() {
 
 #### 线程不安全的情况
 
-如果局部变量引用的对象逃离方法的引用，那么要考虑线程安全的，代码示例如下 Test15.java
+如果局部变量引用的对象逃离方法的方位，那么要考虑线程安全的，代码示例如下 Test15.java
 
 ```java
 public class Test15 {
@@ -656,11 +656,9 @@ class UnsafeTest{
 ##### 不安全原因分析
 
 无论哪个线程中的 method2 和method3 引用的都是同一个对象中的 list 成员变量：一个 ArrayList ，在添加一个元素的时候，它可能会有两步来完成： 
-       1. 在 arrayList[Size] 的位置存放此元素； 
-    2. 增大 Size 的值。 
-  在单线程运行的情况下，如果 Size = 0，添加一个元素后，此元素在位置 0，而且 Size=1；而如果是在多线程情况下，比如有两个线程，线程 A 先将元素存放在位置 0。但是此时 CPU 调线程A暂停，线程 B 得到运行的机会。线程B也向此 ArrayList 添加元素，因为此时 Size 仍等于 0 （注意哦，我们假设的是添加一个元素是要两个步骤哦，而线程A仅仅完成了步骤1），所以线程B也将元素存放在位置0。然后线程A和线程B都继续运行，都增加 Size 的值。 
-   那好，现在我们来看看 ArrayList 的情况，元素实际上只有一个，存放在位置 0，而 Size 却等于 2。这就是“线程不安全”了。 
-    3. ![1583589268096](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307215429-139261.png)
+          1. 第一步，在 arrayList[Size] 的位置存放此元素； 第二部增大 Size 的值。 
+          2. 在单线程运行的情况下，如果 Size = 0，添加一个元素后，此元素在位置 0，而且 Size=1；而如果是在多线程情下，比如有两个线程，线程 A 先将元素存放在位置 0。但是此时 CPU 调线程A暂停，线程 B 得到运行的机会。线程B也向此 ArrayList 添加元素，因为此时 Size 仍等于 0 （注意哦，我们假设的是添加一个元素是要两个步骤哦，而线程A仅仅完成了步骤1），所以线程B也将元素存放在位置0。然后线程A和线程B都继续运行，都增加 Size 的值。 那好，现在我们来看看 ArrayList 的情况，元素实际上只有一个，存放在位置 0，而 Size 却等于 2。这就是“线程不 安全”了。 
+                    3. ![1583589268096](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307215429-139261.png)
 
 ![1583587571334](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307212611-483979.png)
 
@@ -687,7 +685,7 @@ class safeTest{
 
 ##### 思考  private 或 final的重要性
 
-方法访问修饰符带来的思考，如果把 method2 和 method3 的方法修改为 public 会不会代理线程安全问题？情况1：有其它线程调用 method2 和 method3情况2：在情况1 的基础上，为 ThreadSafe 类添加子类，子类覆盖 method2 或 method3 方法，即如下所示： 从这个例子可以看出 private 或 final 提供【安全】的意义所在，请体会开闭原则中的【闭】
+方法访问修饰符带来的思考，如果把 method2 和 method3 的方法修改为 public 会不会导致线程安全问题？情况1：有其它线程调用 method2 和 method3；情况2：在情况1 的基础上，为 ThreadSafe 类添加子类，子类覆盖 method2 或 method3 方法，即如下所示： 从这个例子可以看出 private 或 final 提供【安全】的意义所在，请体会开闭原则中的【闭】
 
 ```java
 class ThreadSafe {
@@ -727,8 +725,7 @@ class ThreadSafeSubClass extends ThreadSafe{
 6. Hashtable
 7. java.util.concurrent 包下的类
 
-这里说它们是线程安全的是指，<span style ="color:red">多个线程调用它们同一个实例的某个方法时，是线程安全的</span>。也可以理解为
-它们的每个方法是原子的
+这里说它们是线程安全的是指，<span style ="color:red">多个线程调用它们同一个实例的某个方法时，是线程安全的</span>。也可以理解为它们的每个方法是原子的
 
 ```java
 Hashtable table = new Hashtable();
@@ -778,7 +775,7 @@ public class Immutable{
 
 ##### 示例一
 
-此类不是线程安全的，MyAspect只有一个实例，成员变量`start` 会被多个线程同时进行读写操作
+分析线程是否安全，先对类的成员变量，类变量，局部变量进行考虑，如果变量会在各个线程之间共享，那么就得考虑线程安全问题了，如果变量A引用的是线程安全类的实例，并且只调用该线程安全类的一个方法，那么该变量A是线程安全的的。下面对实例一进行分析：此类不是线程安全的，`MyAspect`切面类只有一个实例，成员变量`start` 会被多个线程同时进行读写操作
 
 ```java
 @Aspect
@@ -833,7 +830,7 @@ public class UserDaoImpl implements UserDao {
 
 ##### 示例三
 
-跟示例二大体相似，`UserDaoImpl`类中有成员变量，那么多个线程可以对成员变量`conn` 同时进行操作，固是不安全的
+跟示例二大体相似，`UserDaoImpl`类中有成员变量，那么多个线程可以对成员变量`conn` 同时进行操作，故是不安全的
 
 ```java
 public class MyServlet extends HttpServlet {
@@ -865,7 +862,7 @@ public class UserDaoImpl implements UserDao {
 
 ##### 示例四
 
-跟示例三大体相似，`UserServiceImpl`类的update方法中 UserDao是作为局部变量存在的，并且每个线程访问的时候都会新建有一个`UserDao`对象，新建的对象是线程独有的，所以是线程安全的
+跟示例三大体相似，`UserServiceImpl`类的update方法中 UserDao是作为局部变量存在的，所以每个线程访问的时候都会新建有一个`UserDao`对象，新建的对象是线程独有的，所以是线程安全的
 
 ```java
 public class MyServlet extends HttpServlet {
@@ -909,7 +906,7 @@ public abstract class Test {
 }
 ```
 
-其中 foo 的行为是不确定的，可能导致不安全的发生，被称之为外星方法，因为foo方法可以被重写，导致线程不安全。在String类中就考虑到了这一点，String类是`finally`的，子类不能重写它的方法。
+其中 foo 的行为是不确定的，可能导致不安全的发生，被称之为**外星方法**，因为foo方法可以被重写，导致线程不安全。在String类中就考虑到了这一点，String类是`finally`的，子类不能重写它的方法。
 
 ```java
     public void foo(SimpleDateFormat sdf) {
@@ -925,3 +922,241 @@ public abstract class Test {
         }
     }
 ```
+
+## 4.4 习题分析
+
+Test16.java
+
+## 4.5 Monitor 概念
+
+### Java 对象头
+
+以 32 位虚拟机为例,普通对象的对象头结构如下，其中的Klass Word为指针，指向对应的Class对象；
+
+![1583651065372](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200308223951-617147.png)
+
+数组对象
+
+![1583651088663](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200308150448-901728.png)
+
+其中 Mark Word 结构为
+
+![1583651590160](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200308151311-525787.png)
+
+所以一个对象的结构如下：
+
+![1583678624634](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200308224345-655905.png)
+
+
+
+### Monitor 原理
+
+Monitor被翻译为监视器或者说管程
+
+每个java对象都可以关联一个Monitor，如果使用`synchronized`给对象上锁（重量级），该对象头的Mark Word中就被设置为指向Monitor对象的指针
+
+![1583652360228](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309172316-799735.png)
+
+- 刚开始时Monitor中的Owner为null
+- 当Thread-2 执行synchronized(obj){}代码时就会将Monitor的所有者Owner 设置为 Thread-2，上锁成功，Monitor中同一时刻只能有一个Owner
+- 当Thread-2 占据锁时，如果线程Thread-3，Thread-4也来执行synchronized(obj){}代码，就会进入EntryList中变成BLOCKED状态
+- hread-2 执行完同步代码块的内容，然后唤醒 EntryList 中等待的线程来竞争锁，竞争时是非公平的
+- 图中 WaitSet 中的 Thread-0，Thread-1 是之前获得过锁，但条件不满足进入 WAITING 状态的线程，后面讲wait-notify 时会分析
+
+> 注意：synchronized 必须是进入同一个对象的 monitor 才有上述的效果不加 synchronized 的对象不会关联监视器，不遵从以上规则
+
+### synchronized原理
+
+代码如下 Test17.java
+
+```java
+    static final Object lock=new Object();
+    static int counter = 0;
+    public static void main(String[] args) {
+        synchronized (lock) {
+            counter++;
+        }
+    }
+```
+
+反编译后的部分字节码，**为什么要lock对象的Mark Word重置？？？？**
+
+```properties
+ 0 getstatic #2 <com/concurrent/test/Test17.lock>
+ # 取得lock的引用（synchronized开始了）
+ 3 dup    
+ # 复制操作数栈栈顶的值放入栈顶，即复制了一份lock的引用
+ 4 astore_1
+ # 操作数栈栈顶的值弹出，即将lock的引用存到局部变量表中
+ 5 monitorenter
+ # 将lock对象的Mark Word置为指向Monitor指针
+ 6 getstatic #3 <com/concurrent/test/Test17.counter>
+ 9 iconst_1
+10 iadd
+11 putstatic #3 <com/concurrent/test/Test17.counter>
+14 aload_1
+# 从局部变量表中取得lock的引用，放入操作数栈栈顶
+15 monitorexit
+# 将lock对象的Mark Word重置，唤醒EntryList
+16 goto 24 (+8)
+# 下面是异常处理指令，可以看到，如果出现异常，也能自动地释放锁
+19 astore_2
+20 aload_1
+21 monitorexit
+22 aload_2
+23 athrow
+24 return
+
+```
+
+> 注意：方法级别的 synchronized 不会在字节码指令中有所体现
+
+### synchronized 原理进阶
+
+#### 轻量级锁
+
+轻量级锁的使用场景是：如果一个对象虽然有多个线程要对它进行加锁，但是加锁的时间是错开的（也就是没有人可以竞争的），那么可以使用轻量级锁来进行优化。轻量级锁对使用者是透明的，即语法仍然是`synchronized`假设有两个方法同步块，利用同一个对象加锁
+
+```java
+static final Object obj = new Object();
+public static void method1() {
+ synchronized( obj ) {
+ // 同步块 A
+ method2();
+ }
+}
+public static void method2() {
+ synchronized( obj ) {
+ // 同步块 B
+ }
+}
+```
+
+1. 每次指向到synchronized代码块时，都会创建锁记录（Lock Record）对象，每个线程都会包括一个锁记录的结构，锁记录内部可以储存对象的Mark Word和对象引用reference
+   1. ![1583755737580](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309200902-382362.png)
+2. 让锁记录中的Object reference指向对象，并且尝试用cas(compare and sweep)替换Object对象的Mark Word ，将Mark Word 的值存入锁记录中
+   1. ![1583755888236](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309201132-961387.png)
+3. 如果cas替换成功，那么对象的对象头储存的就是锁记录的地址和状态01，如下所示
+   1. ![1583755964276](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309201247-989088.png)
+4. 如果cas失败，有两种情况
+   1. 如果是其它线程已经持有了该Object的轻量级锁，那么表示有竞争，将进入锁膨胀阶段
+   2. 如果是自己的线程已经执行了synchronized进行加锁，那么那么再添加一条 Lock Record 作为重入的计数
+      1. ![1583756190177](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309201634-451646.png)
+5. 当线程推出synchronized代码块的时候，**如果获取的是取值为 null 的锁记录 为什么叫做取值为null？？？？？**，表示有重入，这时重置锁记录，表示重入计数减一
+   1. ![1583756357835](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309201919-357425.png)
+6. 当线程退出synchronized代码块的时候，如果获取的锁记录取值不为 null，那么使用cas将Mark Word的值恢复给对象
+   1. 成功则解锁成功
+   2. 失败，则说明轻量级锁进行了锁膨胀或已经升级为重量级锁，进入重量级锁解锁流程
+
+#### 锁膨胀
+
+如果在尝试加轻量级锁的过程中，cas操作无法成功，这是有一种情况就是其它线程已经为这个对象加上了轻量级锁，这是就要进行锁膨胀，将轻量级锁变成重量级锁。
+
+1. 当 Thread-1 进行轻量级加锁时，Thread-0 已经对该对象加了轻量级锁
+   1. ![1583757433691](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309203715-909034.png)
+2. 这时 Thread-1 加轻量级锁失败，进入锁膨胀流程
+   1. 即为对象申请Monitor锁，让Object指向重量级锁地址，然后自己进入Monitor 的EntryList 变成BLOCKED状态
+   2. ![1583757586447](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309203947-654193.png)
+3. 当Thread-0 推出synchronized同步块时，使用cas将Mark Word的值恢复给对象头，失败，那么会进入重量级锁的解锁过程，即按照Monitor的地址找到Monitor对象，将Owner设置为null，唤醒EntryList 中的Thread-1线程
+
+#### 自旋优化
+
+重量级锁竞争的时候，还可以使用自旋来进行优化，如果当前线程自旋成功（即在自旋的时候持锁的线程释放了锁），那么当前线程就可以不用进行上下文切换就获得了锁
+
+1. 自旋重试成功的情况
+   1. ![1583758113724](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309204835-425698.png)
+2. 自旋重试失败的情况，自旋了一定次数还是没有等到持锁的线程释放锁
+   1. ![1583758136650](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309204915-424942.png)
+
+自旋会占用 CPU 时间，单核 CPU 自旋就是浪费，多核 CPU 自旋才能发挥优势。在 Java 6 之后自旋锁是自适应的，比如对象刚刚的一次自旋操作成功过，那么认为这次自旋成功的可能性会高，就多自旋几次；反之，就少自旋甚至不自旋，总之，比较智能。Java 7 之后不能控制是否开启自旋功能
+
+#### 偏向锁
+
+在轻量级的锁中，我们可以发现，如果同一个线程对同一个对象进行重入锁时，也需要执行CAS操作，这是有点耗时滴，那么java6开始引入了偏向锁的东东，只有第一次使用CAS时将对象的Mark Word头设置为入锁线程ID，**之后这个入锁线程再进行重入锁时，发现线程ID是自己的，那么就不用再进行CAS了**
+
+![1583760728806](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309213209-28609.png)
+
+
+
+##### 偏向状态
+
+![1583762169169](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309215610-51761.png)
+
+一个对象的创建过程
+
+1. 如果开启了偏向锁（默认是开启的），那么对象刚创建之后，Mark Word 最后三位的值101，并且这是它的Thread，epoch，age都是0，在加锁的时候进行设置这些的值
+
+2. 偏向锁默认是延迟的，不会在程序启动的时候立刻生效，如果想避免延迟，可以添加虚拟机参数来禁用延迟：-XX:BiasedLockingStartupDelay=0来禁用延迟
+
+3. 注意：处于偏向锁的对象解锁后，线程 id 仍存储于对象头中
+
+4. 实验Test18.java，加上虚拟机参数-XX:BiasedLockingStartupDelay=0进行测试
+
+   1. ```java
+          public static void main(String[] args) throws InterruptedException {
+              Test1 t = new Test1();
+              test.parseObjectHeader(getObjectHeader(t))；
+              synchronized (t){
+                  test.parseObjectHeader(getObjectHeader(t));
+              }
+              test.parseObjectHeader(getObjectHeader(t));
+          }
+      ```
+
+   2. 输出结果如下，三次输出的状态码都为101
+
+      ```properties
+      biasedLockFlag (1bit): 1
+      	LockFlag (2bit): 01
+      biasedLockFlag (1bit): 1
+      	LockFlag (2bit): 01
+      biasedLockFlag (1bit): 1
+      	LockFlag (2bit): 01
+      ```
+
+      
+
+
+
+测试禁用：如果没有开启偏向锁，那么对象创建后最后三位的值为001，这时候它的hashcode，age都为0，第一次用到hashcode时才赋值。在上面测试代码运行时在添加 VM 参数-XX:-UseBiasedLocking禁用偏向锁（禁用偏向锁则优先使用轻量级锁），退出synchronized状态变回001
+
+1. 测试代码Test18.java 虚拟机参数-XX:-UseBiasedLocking
+
+2. 输出结果如下，最开始状态为001，然后加轻量级锁变成00，最后恢复成001
+
+   ```properties
+   biasedLockFlag (1bit): 0
+   	LockFlag (2bit): 01
+   LockFlag (2bit): 00
+   biasedLockFlag (1bit): 0
+   	LockFlag (2bit): 01
+   ```
+
+测试 `hashCode`：当调用对象的hashcode方法的时候就会撤销这个对象的偏向锁，因为使用偏向锁时没有位置存`hashcode`的值了
+
+1. 测试代码如下，不使用虚拟机参数
+
+   ```java
+       public static void main(String[] args) throws InterruptedException {
+           Test1 t = new Test1();
+           t.hashCode();
+           test.parseObjectHeader(getObjectHeader(t));
+   
+           synchronized (t){
+               test.parseObjectHeader(getObjectHeader(t));
+           }
+           test.parseObjectHeader(getObjectHeader(t));
+       }
+   ```
+
+2. 输出结果
+
+   ```properties
+   biasedLockFlag (1bit): 0
+   	LockFlag (2bit): 01
+   LockFlag (2bit): 00
+   biasedLockFlag (1bit): 0
+   	LockFlag (2bit): 01
+   ```
+
+   
