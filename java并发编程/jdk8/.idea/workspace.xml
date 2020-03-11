@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f699918-eb33-484b-9dcb-1a1e2773d5d0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test18.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test19.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test20.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test21.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../forjob/面经.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../forjob/面经.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../java基础/serialVersionUID的作用.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../java并发.md" beforeDir="false" afterPath="$PROJECT_DIR$/../java并发.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test16.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test16.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test17.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test17.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/concurrent/test/Test15.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/concurrent/test/Test15.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/concurrent/test/UnsafeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/concurrent/test/UnsafeTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/concurrent/test/safeTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/concurrent/test/safeTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../jvmlearing/jvm-内存结构.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../jvmlearing/jvm-内存结构.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test18.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test18.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/concurrent/test/Test18.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/concurrent/test/Test18.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -25,33 +22,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test7.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test13.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="29" selection-start-line="29" selection-end-line="51" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test14.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test15.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -97,16 +67,49 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test17.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test18.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test20.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test19.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="34" column="55" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test18.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test21.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+            <state relative-caret-position="-156">
+              <caret line="24" column="42" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -117,7 +120,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
+            <state relative-caret-position="1729">
               <caret line="100" column="17" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -129,12 +132,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://$MAVEN_REPOSITORY$/org/openjdk/jol/jol-core/0.10/jol-core-0.10.jar!/org/openjdk/jol/info/ClassLayout.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-679">
+            <state relative-caret-position="1463">
               <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
-              <folding>
-                <element signature="e#1037#1038#0" expanded="true" />
-                <element signature="e#1106#1107#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -186,7 +185,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test16.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test17.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test19.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test18.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test20.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/concurrent/test/Test21.java" />
       </list>
     </option>
   </component>
@@ -213,7 +215,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-60" />
     <option name="y" value="75" />
     <option name="width" value="1940" />
@@ -227,6 +229,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -280,14 +283,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583767375332" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583824588537" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -308,49 +310,52 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test18">
-    <configuration name="Test15" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test15" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test16" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test16" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test17" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test17" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Test21">
     <configuration name="Test18" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test18" />
       <module name="jdk8" />
+      <option name="VM_PARAMETERS" value="-XX:BiasedLockingStartupDelay=0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test19" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test19" />
+      <module name="jdk8" />
+      <option name="VM_PARAMETERS" value="-XX:BiasedLockingStartupDelay=0" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test20" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test20" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test21" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test21" />
+      <module name="jdk8" />
+      <option name="VM_PARAMETERS" value="-XX:BiasedLockingStartupDelay=0" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.concurrent.test.*" />
@@ -375,19 +380,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Test15" />
-      <item itemvalue="Application.Test16" />
-      <item itemvalue="Application.Test17" />
       <item itemvalue="Application.Test18" />
       <item itemvalue="Application.test" />
+      <item itemvalue="Application.Test19" />
+      <item itemvalue="Application.Test20" />
+      <item itemvalue="Application.Test21" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test21" />
+        <item itemvalue="Application.Test19" />
         <item itemvalue="Application.Test18" />
+        <item itemvalue="Application.Test20" />
         <item itemvalue="Application.test" />
-        <item itemvalue="Application.Test17" />
-        <item itemvalue="Application.Test16" />
-        <item itemvalue="Application.Test15" />
       </list>
     </recent_temporary>
   </component>
@@ -406,18 +411,19 @@
       <workItem from="1583465848660" duration="13245000" />
       <workItem from="1583544625710" duration="10031000" />
       <workItem from="1583638523979" duration="3563000" />
-      <workItem from="1583741482263" duration="4839000" />
+      <workItem from="1583741482263" duration="5173000" />
+      <workItem from="1583809083587" duration="4924000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36302000" />
+    <option name="totallyTimeSpent" value="41560000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2671141" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27114093" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -426,7 +432,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4190341" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4588068" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39914772" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -706,27 +712,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/openjdk/jol/jol-core/0.10/jol-core-0.10.jar!/org/openjdk/jol/info/ClassLayout.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-679">
-          <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
-          <folding>
-            <element signature="e#1037#1038#0" expanded="true" />
-            <element signature="e#1106#1107#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test17.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
+        <state relative-caret-position="1729">
           <caret line="100" column="17" selection-start-line="100" selection-start-column="17" selection-end-line="100" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -734,10 +729,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/openjdk/jol/jol-core/0.10/jol-core-0.10.jar!/org/openjdk/jol/info/ClassLayout.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1463">
+          <caret line="102" column="18" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test18.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+        <state relative-caret-position="163">
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test20.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test19.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="34" column="55" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test21.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-156">
+          <caret line="24" column="42" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

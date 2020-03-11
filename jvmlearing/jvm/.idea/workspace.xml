@@ -5,8 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32eda6ef-f5cf-4e9d-aea3-7662ddd04bab" name="Default Changelist" comment="test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../forjob/assets/3d2cedbbf32c60de5164701ccb8c990573e0552f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../forjob/assets/3dfe485d602b8dc469b719598039abd.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/src/main/java/com/concurrent/test/Test19.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/src/main/java/com/concurrent/test/Test20.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/src/main/java/com/concurrent/test/Test21.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Dog.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Test19.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Test20.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Test21.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/1583848735097.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/1583852076452.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../forjob/面经.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../forjob/面经.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java基础/serialVersionUID的作用.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../java基础/SubFolder/serialVersionUID的作用.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java并发编程/java并发.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/java并发.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java并发编程/jdk8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java并发编程/jdk8/src/main/java/com/concurrent/test/Test18.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/src/main/java/com/concurrent/test/Test18.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Test18.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Test18.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jvm-内存结构.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jvm-内存结构.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jvm-垃圾回收.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jvm-垃圾回收.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -39,17 +56,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            <state relative-caret-position="418">
+              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest3.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="332">
+              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest5.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest3.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest4.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+            <state relative-caret-position="209">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -212,6 +247,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="jvm" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="jvm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jvm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jvm" type="462c0819:PsiDirectoryNode" />
+              <item name="gc" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -350,8 +394,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583407693593" />
-    <property name="last_opened_file_path" value="D:/java笔记/java并发" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583934596273" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -381,7 +425,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.MyTest1 (1)">
+  <component name="RunManager" selected="Application.MyTest5">
     <configuration name="MyTest1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.bytecodetest.MyTest1" />
       <module name="jvm" />
@@ -481,7 +525,7 @@
     <configuration name="MyTest5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.gc.MyTest5" />
       <module name="jvm" />
-      <option name="VM_PARAMETERS" value="-verbose：gc -Xmx20M -Xms20m -Xmn10M -XX:SurvivorRatio=8 -XX:+PrintGCDetails -XX:+UseConcMarkSweepGC" />
+      <option name="VM_PARAMETERS" value="-verbose:gc -Xmx20M -Xms20m -Xmn10M -XX:SurvivorRatio=8 -XX:+PrintGCDetails -XX:+UseConcMarkSweepGC" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.gcb.jvm.gc.*" />
@@ -531,11 +575,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MyTest5" />
         <item itemvalue="Application.MyTest1 (1)" />
         <item itemvalue="Application.MyTest3" />
         <item itemvalue="Application.MyTest3 (1)" />
         <item itemvalue="Application.MyTest1" />
-        <item itemvalue="Application.MyTest5" />
       </list>
     </recent_temporary>
   </component>
@@ -575,6 +619,7 @@
       <workItem from="1583204537513" duration="1817000" />
       <workItem from="1583325948758" duration="2282000" />
       <workItem from="1583378236061" duration="8477000" />
+      <workItem from="1583931745475" duration="1977000" />
     </task>
     <task id="LOCAL-00001" summary="冲冲冲！！！">
       <created>1581516673544</created>
@@ -594,7 +639,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="273642000" />
+    <option name="totallyTimeSpent" value="275619000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -607,8 +652,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27181208" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2751678" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -618,7 +664,7 @@
       <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.32954547" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.2556818" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.5" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.36363637" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -1006,13 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest4.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/memory/MyTest4.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
@@ -1037,10 +1076,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest5.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+        <state relative-caret-position="169">
+          <caret line="3149" column="24" lean-forward="true" selection-start-line="3149" selection-start-column="24" selection-end-line="3149" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1060,22 +1099,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="3149" column="24" lean-forward="true" selection-start-line="3149" selection-start-column="24" selection-end-line="3149" selection-end-column="24" />
+        <state relative-caret-position="418">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
+        <state relative-caret-position="332">
           <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest5.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -1156,6 +1202,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>Maven: cglib:cglib:3.2.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

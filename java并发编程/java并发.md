@@ -1086,7 +1086,7 @@ public static void method2() {
 
 1. 如果开启了偏向锁（默认是开启的），那么对象刚创建之后，Mark Word 最后三位的值101，并且这是它的Thread，epoch，age都是0，在加锁的时候进行设置这些的值
 
-2. 偏向锁默认是延迟的，不会在程序启动的时候立刻生效，如果想避免延迟，可以添加虚拟机参数来禁用延迟：-XX:BiasedLockingStartupDelay=0来禁用延迟
+2. 偏向锁默认是延迟的，不会在程序启动的时候立刻生效，如果想避免延迟，可以添加虚拟机参数来禁用延迟：-`XX:BiasedLockingStartupDelay=0`来禁用延迟
 
 3. 注意：处于偏向锁的对象解锁后，线程 id 仍存储于对象头中
 
@@ -1118,9 +1118,9 @@ public static void method2() {
 
 
 
-测试禁用：如果没有开启偏向锁，那么对象创建后最后三位的值为001，这时候它的hashcode，age都为0，第一次用到hashcode时才赋值。在上面测试代码运行时在添加 VM 参数-XX:-UseBiasedLocking禁用偏向锁（禁用偏向锁则优先使用轻量级锁），退出synchronized状态变回001
+测试禁用：如果没有开启偏向锁，那么对象创建后最后三位的值为001，这时候它的hashcode，age都为0，第一次用到`hashcode`时才赋值。在上面测试代码运行时在添加 VM 参数`-XX:-UseBiasedLocking`禁用偏向锁（禁用偏向锁则优先使用轻量级锁），退出`synchronized`状态变回001
 
-1. 测试代码Test18.java 虚拟机参数-XX:-UseBiasedLocking
+1. 测试代码Test18.java 虚拟机参数`-XX:-UseBiasedLocking`
 
 2. 输出结果如下，最开始状态为001，然后加轻量级锁变成00，最后恢复成001
 
@@ -1132,9 +1132,11 @@ public static void method2() {
    	LockFlag (2bit): 01
    ```
 
+##### 撤销偏向锁-hashcode方法
+
 测试 `hashCode`：当调用对象的hashcode方法的时候就会撤销这个对象的偏向锁，因为使用偏向锁时没有位置存`hashcode`的值了
 
-1. 测试代码如下，不使用虚拟机参数
+1. 测试代码如下，使用虚拟机参数`-XX:BiasedLockingStartupDelay=0`  ，确保我们的程序最开始使用了偏向锁！但是结果显示程序还是使用了轻量级锁。  Test20.java
 
    ```java
        public static void main(String[] args) throws InterruptedException {
@@ -1159,4 +1161,36 @@ public static void method2() {
    	LockFlag (2bit): 01
    ```
 
+
+##### 撤销偏向锁-其它线程使用对象
+
+这里我们演示的是偏向锁撤销变成轻量级锁的过程，那么就得满足轻量级锁的使用条件，就是没有线程对同一个对象进行锁竞争，我们使用`wait` 和 `notify` 来辅助实现
+
+1. 代码 Test19.java，虚拟机参数`-XX:BiasedLockingStartupDelay=0`确保我们的程序最开始使用了偏向锁！
+
+2. 输出结果，最开始使用的是偏向锁，但是第二个线程尝试获取对象锁时，发现本来对象偏向的是线程一，那么偏向锁就会失效，加的就是轻量级锁
+
+   ```properties
+   biasedLockFlag (1bit): 1
+   	LockFlag (2bit): 01
+   biasedLockFlag (1bit): 1
+   	LockFlag (2bit): 01
+   biasedLockFlag (1bit): 1
+   	LockFlag (2bit): 01
+   biasedLockFlag (1bit): 1
+   	LockFlag (2bit): 01
+   LockFlag (2bit): 00
+   biasedLockFlag (1bit): 0
+   	LockFlag (2bit): 01
+   ```
+
    
+
+##### 撤销 - 调用 wait/notify
+
+会使对象的锁变成重量级锁，因为wait/notify方法之后重量级锁才支持
+
+##### 批量重偏向
+
+如果对象被多个线程访问，但是没有竞争，这时候偏向了线程一的对象又有机会重新偏向线程二，即可以不用升级为轻量级锁，可这和我们之前做的实验矛盾了呀，其实要实现重新偏向是要有条件的：就是超过20对象对同一个线程如线程一撤销偏向时，那么第20个及以后的对象才可以将撤销对线程一的偏向这个动作变为将第20个及以后的对象偏向线程二。Test21.java
+
