@@ -411,7 +411,7 @@ alter table 'table_name' add index index_name('column');
 
 ### 复合索引
 
-- **复合索引：多个列构成的索引，相当于二级目录，一个表中含有多个单列索引不代表是组合索引,通俗一点讲 组合索引是:包含多个字段但是只有索引名称**
+- **复合索引：多个列构成的索引，相当于二级目录，一个表中含有多个单列索引不代表是组合索引,通俗一点讲 组合索引是:包含多个字段但是只有一个索引名称**
 
 ```sql
 #5.添加多列索引
@@ -433,7 +433,7 @@ alter table 'table_name' add fulltext(column1, column2);
 
 有了全文索引，就可以用SELECT查询命令去检索那些包含着一个或多个给定单词的数据记录了。
 
-```
+```sql
 ELECT * FROM tablename
 WHERE MATCH(column1, column2) AGAINST(‘xxx′, ‘sss′, ‘ddd′)
 ```
@@ -442,25 +442,11 @@ WHERE MATCH(column1, column2) AGAINST(‘xxx′, ‘sss′, ‘ddd′)
 
 
 
-## 索引的弊端
-
-- 索引本身很大，可以存放在内存/硬盘（通常为硬盘）
-- 索引不是所有的情况均适用，如少量数据，频繁更新，很少使用的字段都不适合
-- 索引会降低增删改的效率
-
-
-
-## 优势
-
-- 可以通过建立唯一索引或者主键索引,保证数据库表中每一行数据的唯一性.
-- 建立索引可以大大提高检索的数据,以及减少表的检索行数
-- 降低cpu使用频率（order by ..  就不用再排序了，因为索引的数据结构B+树就已经是拍好序的）
-
 
 
 ## 需要注意的地方
 
-- **在表与表的而连接条件上加上索引,可以加快连接查询的速度？？？**
+- **在表与表的而连接条件上加上索引,可以加快连接查询的速度**
 
 - 在经常需要排序(order by),分组(group by)和的distinct 列上加索引 可以加快排序查询的时间,  (单独order by 用不了索引，索引考虑加where 或加limit)
 
@@ -546,15 +532,31 @@ MYISAM会将表存储在两个文件中:数据文件和索引文件,分别以,MY
 
 分析sql执行计划：explain ，可以模拟sql优化器执行sql，从而让开发人员知道自己编写的sql具体的执行！
 
-![1584236446127](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200315094049-275269.png)
+- id:查询编号
+
+- select type:查询类型
+
+- table:表名
+
+- type:类型
+
+- possible_keys:预测用到的索引
+
+- key:实际使用的索引
+
+- key_len:由数据库编码决定
+
+- ref:表之间的引用
+
+- rows:优化器预计扫描的行数
+
+- Extra额外的信息
 
 
 
+### id
 
-
-###### id
-
-id值相同，从上往下顺序执行,就是行数少的表优先查询
+id值相同，从上往下顺序执行（就是行数少的表优先查询）
 
 ```sql
 EXPLAIN SELECT tc.tcdesc FROM teacherCard tc,teacher t , course c WHERE c.tid = t.tid and t.tcid = tc.tcid and c.cname = 'sql' # 查询教授sql课程老师的描述信息
@@ -585,43 +587,84 @@ and t.tid = (SELECT c.tid FROM course c WHERE c.cname = 'sql'); # 查询教授sq
 
 ![1584242734816](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200315112535-253662.png)
 
-###### select_type
+### select_type
 
-- PRIMAEY：包含子查询sql中的外层查询
+1. PRIMAEY：最外层的 select 查询
 
-- SUBQUERY：包含子查询sql中的非外层查询
+2. SUBQUERY：在select或者where中包含了子查询，子查询中的第一个 select 查询,不依赖于外部查询的结果集
 
-- SIMPLE：简单查询即不包含子查询和unique的查询
+3. DEPENDENT SUBQUERY：子查询中的第一个 select 查询,依赖于外部 查询的结果集 
 
-- DERIVED：衍生查询，在查询的时候用到了临时表的
+4. SIMPLE：简单查询即不包含子查询和union的查询
 
-  - **在from子查询中只有一张表，那么该表就是衍生查询，但是我的mysql5.7只是显示简单查询，那为何不是PRIMAEY查询？？**
+5. DERIVED：衍生查询，在查询的时候用到了临时表的在from子查询中只有一张表，那么该表就是衍生查询，但是我的mysql5.7只是显示简单查询，那为何不是PRIMAEY查询？？
+   EXPLAIN SELECT cr.cname FROM (SELECT * FROM course WHERE tid in (1,2 ) ) cr;
 
-    - EXPLAIN SELECT cr.cname  FROM  (SELECT *  FROM course  WHERE tid in (1,2 ) ) cr;
+6. 
+
+7. 在from子查询中，如果有table1 union table2 ，那么table1 就是DERIVED ，table2 就是UNION
+
+   ```sql
+   EXPLAIN SELECT cr.cname  FROM  (SELECT *  FROM course  WHERE tid =1 UNION SELECT * FROM course where tid = 2 )cr;
+   ```
+
+   
+
+| select_type查询类型 |                             说明                             |
+| ------------------- | :----------------------------------------------------------: |
+| PRIMARY             |                     最外层的 select 查询                     |
+| SIMPLE              |           简单的 select 查询,不使用 union 及子查询           |
+| SUBQUERY            | 在select或者where中包含了子查询，子查询中的第一个 select 查询,不依赖于外部查询的结果集 |
+| DEPENDENT SUBQUERY  |     子查询中的第一个 select 查询,依赖于外部 查询的结果集     |
+| DERIVED             | 用于 from 子句里有子查询的情况。 MySQL 会递归执行这些子查询, 把结果放在临时表里。 |
+| UNION               | UNION 中的第二个或随后的 select 查询,不 依赖于外部查询的结果集 |
+| DEPENDENT UNION     | UNION 中的第二个或随后的 select 查询,依 赖于外部查询的结果集 |
+| UNCACHEABLE UNION   |  UNION 中的第二个或随后的 select 查询,属 于不可缓存的子查询  |
+
+2.常见的selectType举例
+
+- SIMPLE：简单的 select 查询,不使用 union 及子查询
+
+- PRIMARY：也就是最后执行的语句
+
+- SUBQUERY：在select或者where中包含了子查询
+
+- DERIVED：临时表会增加MYSQL负担，但是有时候不得不用，类比：Java中两个变量交换数值
+
+  - ```sql
+    EXPLAIN SELECT cr.cname  FROM  (SELECT *  FROM course  WHERE tid =1 UNION SELECT * FROM course where tid = 2 )cr;
+    ```
 
   - 在from子查询中，如果有table1 union table2 ，那么table1 就是DERIVED ，table2 就是UNION
 
-    - ```sql
-      EXPLAIN SELECT cr.cname  FROM  (SELECT *  FROM course  WHERE tid =1 UNION SELECT * FROM course where tid = 2 )cr;
-      ```
+  - ![查询结果](https://gitee.com/gu_chun_bo/java-construct/raw/master/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/assets/1584244142524.png)
 
-      
+- UNION：两个表的查询结果合并
 
-    - ![1584244142524](assets/1584244142524.png)
+- ```ruby
+  mysql> EXPLAIN SELECT t1.id from t1 UNION SELECT t2.id from t2;
+  +----+--------------+------------+------+---------------+------+---------+------+------+-------+
+  | id | select_type  | table      | type | possible_keys | key  | key_len | ref  | rows | Extra |
+  +----+--------------+------------+------+---------------+------+---------+------+------+-------+
+  |  1 | PRIMARY      | t1         | ALL  | NULL          | NULL | NULL    | NULL |    3 |       |
+  |  2 | UNION        | t2         | ALL  | NULL          | NULL | NULL    | NULL |    3 |       |
+  | NULL | UNION RESULT | <union1,2> | ALL  | NULL          | NULL | NULL    | NULL | NULL |       |
+  +----+--------------+------------+------+---------------+------+---------+------+------+-------+
+  ```
 
-- UNION：上例
+- UNION RESULT：从合并的结果中进行再次查询，案例上面一张图就是
 
 
 
-###### type
+### type
 
 称为索引类型，类型
 
 system  const  eq_ref  ref  range  index  all  要对type进行优化的前提是有索引，其中system 和const只是理想情况，实际上只能达到ref 或者range
 
-- system 只有一条数据的系统表，或者衍生表只有一条数据的主查询
+- system 只有一条数据的系统表，或者衍生表（临时表）只有一条数据的主查询
 
-- const 仅能查到一条数据的sql，用于primary key 或 unique 索引
+- const 仅能查到一条数据的sql，只用于主键索引或唯一性索引
 
   - 设置表`tid`字段为主键，然后执行
 
@@ -631,7 +674,9 @@ system  const  eq_ref  ref  range  index  all  要对type进行优化的前提�
 
   - ![1584258005082](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200315154010-360960.png)
 
-- eq_ref:唯一性索引:对于每个索引键的査询,返回匹配唯一行数据(有且只有1个,不能多、不能0)  select .. from ...  where id= ..常见于唯一索引和主键索引。
+- eq_ref:唯一性索引:即对于每个索引键的査询,返回匹配唯一行数据(有且只有1个,不能多、不能0)  select .. from ...  where id= ..常见于唯一索引和主键索引。
+
+- ref：非唯一性索引，返回多条数据
 
 
 
