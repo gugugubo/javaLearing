@@ -388,7 +388,8 @@ SET 类型可以从允许值集合中选择任意 1 个或多个元素进行组�
 ​       MySQL有几种数据类型可以限制类型的"长度"，有CHAR(Length)、VARCHAR(Length)、TINYINT(Length)、SMALLINT(Length)、MEDIUMINT(Length)、INT(Length)、BIGINT(Length)、FLOAT(Length,  Decimals)、DOUBLE(Length, Decimals)和DECIMAL(Length, Decimals)。
 
   然而，这些数据类型的长度，并不是都指数据的大小。具体说就是：
-（1）对于CHAR、VARCAHR：4.0版本以下，varchar(20)，指的是20字节，如果存放UTF8汉字时，只能存6个（每个汉字3字节） ；5.0版本以上，varchar(20)，指的是20字符，无论存放的是数字、字母还是UTF8汉字（每个汉字3字节），都可以存放20个，最大大小是65532字节（[拓展：如何计算每个varchar储存时用了多少字节？](https://learn.blog.csdn.net/article/details/103341778#commentBox)）
+（1）对于CHAR、VARCAHR：4.0版本以下，varchar(20)，指的是20字节，如果存放UTF8汉字时，只能存6个（每个汉字3字节） ；5.0版本以上，varchar(20)，指的是20字符，无论存放的是数字、字母还是UTF8汉字（每个汉字3字节），都可以存放20个，最大大小是65532字节（[拓展：如何计算每个varchar储存时实际用了多少字节？(这篇文章的提到的计算公式其实还需要减去其他行包括非vachar类型占用的字节大小)](https://learn.blog.csdn.net/article/details/103341778#commentBox)）
 
 （2）TINYINT、SMALLINT、MEDIUMINT、INT和BIGINT的长度，其实和数据的大小无关！Length指的是显示宽度，[可以参考这篇文章](https://www.cnblogs.com/EasonJim/p/7737029.html)
 
+ （3）FLOAT(Length,  Decimals)、DOUBLE(Length, Decimals)和DECIMAL(Length, Decimals)，浮点数和定点数都可以用类型名称后加“(M,D)”的方式来进行表示，“(M,D)”表示该值一共显示 M 位数字（整数位+小数位），其中 D 位位于小数点后面，M 和 D 又称为精度和标度。例如，定义为 float(7,4)的一个列可以显示为-999.9999。MySQL 保存值时进行四舍五入，因此如果在 float(7,4)列内插入 999.00009，近似结果是 999.0001。
