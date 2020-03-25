@@ -4,7 +4,7 @@
 
 ## 3.1 数值类型
 
-MySQL 支持所有标准 SQL 中的数值类型，其中包括严格数值类型（INTEGER、SMALLINT、DECIMAL 和 NUMERIC），以及近似数值数据类型（FLOAT、REAL 和 DOUBLE PRECISION）表 3-1 中列出了 MySQL 5.0 中支持的所有数值类型，其中 INT 是 INTEGER 的同名词，DEC 是 DECIMAL 的同名词。
+MySQL 支持所有标准 SQL 中的数值类型，其中包括严格数值类型（INTEGER、SMALLINT、DECIMAL （即NUMERIC）），以及近似数值数据类型（FLOAT、REAL 和 DOUBLE PRECISION）表 3-1 中列出了 MySQL 5.0 中支持的所有数值类型，其中 INT 是 INTEGER 的同名词，DEC 是 DECIMAL 的同名词。
 
 ![1584924399447](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200323084639-514541.png)
 
@@ -105,12 +105,12 @@ mysql> select * from t1;
 2 rows in set (0.00 sec)
 ```
 
-可以发现，id1、id2、id3 都插入了表 t1，但是 id1 和 id2 由于标度的限制，舍去了最后一位，
-数据变为了 1.23。
+可以发现，id1、id2、id3 都插入了表 t1，但是 id1 和 id2 由于标度的限制，舍去了最后一位，数据变为了 1.23。
 
 （4）同时向 id1、id2、id3 字段中都插入数据 1.234。
 
 ```sql
+mysql> insert into t1 values(1.234,1.234,1.234);
 Query OK, 1 row affected, 1 warning (0.00 sec)
 mysql> show warnings;
 +-------+------+------------------------------------------+

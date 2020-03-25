@@ -191,7 +191,7 @@ B-Tree索引能够加快访问数据的速度，因为储存引擎不在需要�
 
 ### 全文索引
 
-全文索引是一种特殊的索引类型，它查找的是文本中的关键字，而不是直接比较索引中的值。全文搜索和其他几类索引的匹配方式完全不一样。它有许多需要注意的细节,如停用词、词干和复数、布尔搜索等。全文索引更类似于搜索引擎做的事情,而不是简单的WERE条件匹配。
+全文索引是一种特殊的索引类型，它查找的是文本中的关键字，而不是直接比较索引中的值。全文搜索和其他几类索引的匹配方式完全不一样。它有许多需要注意的细节,如停用词、词干和复数、布尔搜索等。全文索引更类似于搜索引擎做的事情,而不是简单的WERE条件匹配。但是当前最新版本中（5.0）只有 MyISAM 存储引擎支持 FULLTEXT 索引，并且只限于 CHAR、VARCHAR 和 TEXT列。索引总是对整个列进行的，不支持局部（前缀）索引。
 
 在相同的列上同时创建全文素引和基于值的B-Tree索引不会有冲突,全文索引适用于MATCH AGAINST操作,而不是普通的WHERE条件操作。
 
@@ -534,23 +534,23 @@ MYISAM会将表存储在两个文件中:数据文件和索引文件,分别以,MY
 
 - id:查询编号
 
-- select type:查询类型
+- select type：表示 SELECT 的类型
 
-- table:表名
+- table：输出结果集的表。
 
-- type:类型
+- type：表示表的连接类型
 
-- possible_keys:预测用到的索引
+- possible_keyss：表示查询时，可能使用的索引。
 
-- key:实际使用的索引
+- key：表示实际使用的索引。
 
 - key_len:由数据库编码决定
 
 - ref:表之间的引用
 
-- rows:优化器预计扫描的行数
+- rows：扫描行的数量。
 
-- Extra额外的信息
+- Extra：执行情况的说明和描述。
 
 
 
@@ -591,7 +591,7 @@ and t.tid = (SELECT c.tid FROM course c WHERE c.cname = 'sql'); # 查询教授sq
 
 1. PRIMAEY：最外层的 select 查询
 
-2. SUBQUERY：在select或者where中包含了子查询，子查询中的第一个 select 查询,不依赖于外部查询的结果集
+2. SUBQUERY：子查询中的第一个 select 查询,不依赖于外部查询的结果集
 
 3. DEPENDENT SUBQUERY：子查询中的第一个 select 查询,依赖于外部 查询的结果集 
 
@@ -614,7 +614,7 @@ and t.tid = (SELECT c.tid FROM course c WHERE c.cname = 'sql'); # 查询教授sq
 | ------------------- | :----------------------------------------------------------: |
 | PRIMARY             |                     最外层的 select 查询                     |
 | SIMPLE              |           简单的 select 查询,不使用 union 及子查询           |
-| SUBQUERY            | 在select或者where中包含了子查询，子查询中的第一个 select 查询,不依赖于外部查询的结果集 |
+| SUBQUERY            |    子查询中的第一个 select 查询,不依赖于外部查询的结果集     |
 | DEPENDENT SUBQUERY  |     子查询中的第一个 select 查询,依赖于外部 查询的结果集     |
 | DERIVED             | 用于 from 子句里有子查询的情况。 MySQL 会递归执行这些子查询, 把结果放在临时表里。 |
 | UNION               | UNION 中的第二个或随后的 select 查询,不 依赖于外部查询的结果集 |
@@ -658,13 +658,11 @@ and t.tid = (SELECT c.tid FROM course c WHERE c.cname = 'sql'); # 查询教授sq
 
 ### type
 
-称为索引类型，类型
-
-system  const  eq_ref  ref  range  index  all  要对type进行优化的前提是有索引，其中system 和const只是理想情况，实际上只能达到ref 或者range
+表示表的连接类型，[实例演示](https://www.cnblogs.com/heat-man/p/4945708.html)
 
 - system 只有一条数据的系统表，或者衍生表（临时表）只有一条数据的主查询
 
-- const 仅能查到一条数据的sql，只用于主键索引或唯一性索引
+- const 单表中最多有一个匹配行，例如 primary key 或者 unique index
 
   - 设置表`tid`字段为主键，然后执行
 
@@ -674,11 +672,23 @@ system  const  eq_ref  ref  range  index  all  要对type进行优化的前提�
 
   - ![1584258005082](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200315154010-360960.png)
 
-- eq_ref:唯一性索引:即对于每个索引键的査询,返回匹配唯一行数据(有且只有1个,不能多、不能0)  select .. from ...  where id= ..常见于唯一索引和主键索引。
+- eq_ref：对于前面的每一行，在此表中只查询一条记录，简单来说，就是多表连接中使用primary key或者unique index
 
-- ref：非唯一性索引，返回多条数据
+- ref：与eq_ref类似，区别在于不是使用primary key 或者 unique index，而是使用普通的索引
 
+- ref_or_null：与 ref 类似，区别在于条件中包含对 NULL 的查询
 
+- index_merge：索引合并优化
+
+- unique_subquery：in的后面是一个查询主键字段的子查询
+
+- index_subquery：与 unique_subquery 类似，区别在于 in 的后面是查询非唯一索引字段的子查询
+
+- range：单表中的范围查询
+
+- index：对于前面的每一行，都通过查询索引来得到数据
+
+- all：对于前面的每一行，都通过全表扫描来得到数据，未使用索引
 
 
 
