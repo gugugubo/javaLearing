@@ -80,7 +80,7 @@ mysql> show variables like '%storage_engine%';
 
 ### REPEATABLE READ(可重复读)
 
-REPEATABLE READ解决了脏读的问题。该级别保证了在同一个事务中多次读取同样记录的结果是一致的。但是理论上,可重复读隔离级别还是无法解决另外一个幻读( Phantom Read)的问题。所谓幻读,指的是当某个事务在读取某个范围内的记录时,另外一个事务又在该范围内插入了新的记录,当之前的事务再次读取该范围的记录另外一个事务又在该范围内插入了新的记录,当之前的事务再次读取该范围的记录时,会产生幻行(Phantom Row)。 INNODB和 Xtradb存储引擎通过多版本并发控制(MVCC, Multiversion Concurrency Control)解决了幻读的问题。稍后会做进一步的讨论，可重复读是 MYSQL的默认事务隔离级别
+REPEATABLE READ解决了脏读的问题。该级别保证了在同一个事务中多次读取同样记录的结果是一致的。但是理论上,可重复读隔离级别还是无法解决另外一个幻读( Phantom Read)的问题。所谓幻读,指的是当某个事务在读取某个范围内的记录时,另外一个事务又在该范围内插入了新的记录,当之前的事务再次读取该范围的记录另外一个事务又在该范围内插入了新的记录,当之前的事务再次以相同条件读取该范围的记录时,会产生幻行(Phantom Row)。 INNODB和 Xtradb存储引擎通过多版本并发控制(MVCC, Multiversion Concurrency Control)解决了幻读的问题。稍后会做进一步的讨论，可重复读是 MYSQL的默认事务隔离级别
 
 ### SERIIALIZABLE(可串行化)
 
