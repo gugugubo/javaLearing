@@ -392,13 +392,13 @@ MYISAM压缩每个索引块的方法是,先完全保存索引块中的第一个�
 ### 单值索引
 
 - **单值索引：单列，一个表可以有多个单值索引**
-  - **唯一索引：唯一索引,与普通索引类似,但是不同的是唯一索引要求列所有的值是唯一的,这一点和主键索引一样.但是他允许有空值**
+  - **唯一索引：唯一索引,与普通索引类似,但是不同的是唯一索引要求列的值是唯一的,这一点和主键索引一样.但是他允许有空值**
   - **主键索引,不允许有空值,(在B+TREE中的InnoDB引擎中,主键索引起到了至关重要的地位)，主键索引建立的规则是 int优于varchar,一般在建表如果设置了主键就会自动创建,最好是与表的其他字段不相关的列或者是业务不相关的列.**
   - **普通索引,这个是最基本的索引**
 
 ```sql
 #1.添加UNIQUE(唯一索引)
-alter table 'table_name' add unique('column');
+alter table 'table_name' add unique('column1','column2');
 
 #2.添加PRIMARY KEY(主键索引)
 alter table 'table_name' add primary key('column');
@@ -448,13 +448,15 @@ WHERE MATCH(column1, column2) AGAINST(‘xxx′, ‘sss′, ‘ddd′)
 
 - **在表与表的而连接条件上加上索引,可以加快连接查询的速度**
 
+- 查询中与其他表关联的字段，外键关系建立索引（两个表上都会自动创建索引）
+
 - 在经常需要排序(order by),分组(group by)和的distinct 列上加索引 可以加快排序查询的时间,  (单独order by 用不了索引，索引考虑加where 或加limit)
 
 - like语句的 如果你对nickname字段建立了一个索引.当查询的时候的语句是 nickname lick '%ABC%' 那么这个索引讲不会起到作用.而nickname lick 'ABC%' 那么将可以用到索引
 
-- **使用短索引,如果你的一个字段是Char(32)或者int(32),在创建索引的时候指定前缀长度 比如前10个字符 (前提是多数值是唯一的..)那么短索引可以提高查询速度,并且可以减少磁盘的空间,也可以减少I/0操作.  什么是短索引？？**
+- 使用短索引,如果你的一个字段是Char(32)或者int(32),在创建索引的时候指定前缀长度 比如前10个字符 (前提是多数值是唯一的..)那么短索引可以提高查询速度,并且可以减少磁盘的空间,也可以减少I/0操作.  
 
-- **很少数据的列也不应该建立索引,比如 一个性别字段 0或者1,在查询中,结果集的数据占了表中数据行的比例比较大,mysql需要扫描的行数很多,增加索引,并不能提高效率， 什么是结果集和数据行？？**
+- 很少数据的列也不应该建立索引,比如 一个性别字段 0或者1,在查询中,结果集的数据占了表中数据行的比例比较大,mysql需要扫描的行数很多,增加索引,并不能提高效率
 
   
 
@@ -530,27 +532,23 @@ MYISAM会将表存储在两个文件中:数据文件和索引文件,分别以,MY
 
 # sql性能问题
 
-分析sql执行计划：explain ，可以模拟sql优化器执行sql，从而让开发人员知道自己编写的sql具体的执行！
+分析sql执行计划：explain ，可以模拟sql优化器执行sql，从而知道 MYSQL是如何处理你的sqL语句的。分析你的査询语句或是表结构的性能瓶颈
 
 - id:查询编号
-
 - select type：表示 SELECT 的类型
-
 - table：输出结果集的表。
-
 - type：表示表的连接类型
-
 - possible_keyss：表示查询时，可能使用的索引。
-
 - key：表示实际使用的索引。
-
-- key_len:由数据库编码决定
-
-- ref:表之间的引用
-
-- rows：扫描行的数量。
-
+- key_len: 表示索引中使用的字节数,可通过该列计算査询中使用的索引的长度。在不损失精确性的情况下,长度越短越好，key_len显示的值为索引字段的最大可能长度,并非实际使用长度,即 key_len是根据表定义计算而得,不是通过表内检索出的
+- ref:表之间的引用，显示引用了某个常量或者另一个表的哪一列的值
+- rows：根据表统计信息及索引选用情况，大致估算出所需的记录所需要的扫描行的数量。
 - Extra：执行情况的说明和描述。
+  - Using filesort ：说明 mysql会对数据使用一个外部的索引排序,而不是按照表内的索引顺序进行读取。MYSQL中无法利用索引完成的排序操作称为文件排序
+  - Using temporary：使了用临时表保存中间结果,MYSQL在对查询结果排序时使用临时表。常见于排序 order by和分组查询 group by。
+  - Covering Index：表示相应的 select操作中使用了覆盖索引( Covering Index),避免访问了表的数据行,效率不错!如果同时出现 using where:表明索引被用米执行索引键值的查找如果没有同时出现 using where,表明索引用来读取数据而非执行查找动作。
+    - 理解方式一:就是 select的数据列只用从索引中就能够取得,不必读取数据行, MYSQL可以利用索引返回 select列表中的字段,而不必根据索引再次读取数据文件,换句话说查询列要被所建的索引覆盖
+    - 理解方式二:素引是高效找到行的一个方法,但是一般数据库也能使用素引找到一个列的数据,因此它不必读取整个行。毕竟素引叶子节点存储了它们素引的数据;当能通过读取索引就可以得到想要的数据,那就不需要读取行了。一个索引包含了(或覆盖了)满足查询结果的数据就叫做覆盖素引。
 
 
 
@@ -589,37 +587,16 @@ and t.tid = (SELECT c.tid FROM course c WHERE c.cname = 'sql'); # 查询教授sq
 
 ### select_type
 
-1. PRIMAEY：最外层的 select 查询
-
-2. SUBQUERY：子查询中的第一个 select 查询,不依赖于外部查询的结果集
-
-3. DEPENDENT SUBQUERY：子查询中的第一个 select 查询,依赖于外部 查询的结果集 
-
-4. SIMPLE：简单查询即不包含子查询和union的查询
-
-5. DERIVED：衍生查询，在查询的时候用到了临时表的在from子查询中只有一张表，那么该表就是衍生查询，但是我的mysql5.7只是显示简单查询，那为何不是PRIMAEY查询？？
-   EXPLAIN SELECT cr.cname FROM (SELECT * FROM course WHERE tid in (1,2 ) ) cr;
-
-6. 
-
-7. 在from子查询中，如果有table1 union table2 ，那么table1 就是DERIVED ，table2 就是UNION
-
-   ```sql
-   EXPLAIN SELECT cr.cname  FROM  (SELECT *  FROM course  WHERE tid =1 UNION SELECT * FROM course where tid = 2 )cr;
-   ```
-
-   
-
 | select_type查询类型 |                             说明                             |
 | ------------------- | :----------------------------------------------------------: |
 | PRIMARY             |                     最外层的 select 查询                     |
 | SIMPLE              |           简单的 select 查询,不使用 union 及子查询           |
-| SUBQUERY            |    子查询中的第一个 select 查询,不依赖于外部查询的结果集     |
-| DEPENDENT SUBQUERY  |     子查询中的第一个 select 查询,依赖于外部 查询的结果集     |
+| SUBQUERY            | 在select 或 where中子查询中的第一个 select 查询,不依赖于外部查询的结果集 |
+| DEPENDENT SUBQUERY  |     子查询中的第一个 select 查询,依赖于外部查询的结果集      |
 | DERIVED             | 用于 from 子句里有子查询的情况。 MySQL 会递归执行这些子查询, 把结果放在临时表里。 |
-| UNION               | UNION 中的第二个或随后的 select 查询,不 依赖于外部查询的结果集 |
-| DEPENDENT UNION     | UNION 中的第二个或随后的 select 查询,依 赖于外部查询的结果集 |
-| UNCACHEABLE UNION   |  UNION 中的第二个或随后的 select 查询,属 于不可缓存的子查询  |
+| UNION               | UNION 中的第二个或随后的 select 查询,不依赖于外部查询的结果集 |
+| DEPENDENT UNION     | UNION 中的第二个或随后的 select 查询,依赖于外部查询的结果集  |
+| UNCACHEABLE UNION   |  UNION 中的第二个或随后的 select 查询,属于不可缓存的子查询   |
 
 2.常见的selectType举例
 
@@ -639,7 +616,7 @@ and t.tid = (SELECT c.tid FROM course c WHERE c.cname = 'sql'); # 查询教授sq
 
   - ![查询结果](https://gitee.com/gu_chun_bo/java-construct/raw/master/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql/assets/1584244142524.png)
 
-- UNION：两个表的查询结果合并
+- UNION：两个表的查询结果合并，若第二个select出现在union之后，则被标记为union
 
 - ```ruby
   mysql> EXPLAIN SELECT t1.id from t1 UNION SELECT t2.id from t2;
@@ -648,11 +625,11 @@ and t.tid = (SELECT c.tid FROM course c WHERE c.cname = 'sql'); # 查询教授sq
   +----+--------------+------------+------+---------------+------+---------+------+------+-------+
   |  1 | PRIMARY      | t1         | ALL  | NULL          | NULL | NULL    | NULL |    3 |       |
   |  2 | UNION        | t2         | ALL  | NULL          | NULL | NULL    | NULL |    3 |       |
-  | NULL | UNION RESULT | <union1,2> | ALL  | NULL          | NULL | NULL    | NULL | NULL |       |
+  |NULL|  UNION RESULT| <union1,2> | ALL  | NULL          | NULL | NULL    | NULL | NULL |       |
   +----+--------------+------------+------+---------------+------+---------+------+------+-------+
   ```
 
-- UNION RESULT：从合并的结果中进行再次查询，案例上面一张图就是
+- UNION RESULT：从合并的结果中进行再次查询，案例上面就是
 
 
 
@@ -662,7 +639,7 @@ and t.tid = (SELECT c.tid FROM course c WHERE c.cname = 'sql'); # 查询教授sq
 
 - system 只有一条数据的系统表，或者衍生表（临时表）只有一条数据的主查询
 
-- const 单表中最多有一个匹配行，例如 primary key 或者 unique index
+- const 单表中有且只有一个匹配行（没有匹配行则type为null），例如 primary key 或者 unique index
 
   - 设置表`tid`字段为主键，然后执行
 
@@ -672,9 +649,9 @@ and t.tid = (SELECT c.tid FROM course c WHERE c.cname = 'sql'); # 查询教授sq
 
   - ![1584258005082](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200315154010-360960.png)
 
-- eq_ref：对于前面的每一行，在此表中只查询一条记录，简单来说，就是多表连接中使用primary key或者unique index
+- eq_ref：对于每一行，在此表中只查询一条记录，简单来说，常见于primary key或者unique index扫描
 
-- ref：与eq_ref类似，区别在于不是使用primary key 或者 unique index，而是使用普通的索引
+- ref：与eq_ref类似，区别在于不是使用primary key 或者 unique index，而是使用普通的索引，即查询的结果不唯一
 
 - ref_or_null：与 ref 类似，区别在于条件中包含对 NULL 的查询
 
@@ -684,11 +661,11 @@ and t.tid = (SELECT c.tid FROM course c WHERE c.cname = 'sql'); # 查询教授sq
 
 - index_subquery：与 unique_subquery 类似，区别在于 in 的后面是查询非唯一索引字段的子查询
 
-- range：单表中的范围查询
+- range：单表中的使用索引进行范围查询
 
-- index：对于前面的每一行，都通过查询索引来得到数据
+- index：对于每一行，都通过查询索引来得到数据
 
-- all：对于前面的每一行，都通过全表扫描来得到数据，未使用索引
+- all：对于每一行，都通过全表扫描来得到数据，未使用索引
 
 
 
