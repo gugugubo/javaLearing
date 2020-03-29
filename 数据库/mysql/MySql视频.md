@@ -76,7 +76,7 @@ mysql> show variables like '%storage_engine%';
 
 ### READ COMMITTED(提交读)
 
-大多数数据库系统的默认隔离级别都是 READ COMMITTED(但 MYSQL不是)。READCOMMITTED满足前面提到的隔离性的简单定义:一个事务开始时,只能“看见”已经提交的事务所做的修改。换句话说,一个事务从开始直到提交之前,所做的任何修改对其他事务都是不可见的。这个级别有时候也叫做不可重复读( nonrepeatableread),因为两次执行同样的査询,可能会得到不一样的结果
+大多数数据库系统的默认隔离级别都是 READ COMMITTED(但 MYSQL不是)。READCOMMITTED满足前面提到的隔离性的简单定义:一个事务开始时,只能“看见”已经提交的事务所做的修改。换句话说,一个事务从开始直到提交之前,所做的任何修改对其他事务都是不可见的。这个级别有时候也叫做不可重复读( nonrepeatableread),因为两次执行同样的査询,可能会得到不一样的结果【一个事务在读取某些数据后的某个时间,再次读取以前读过的数据,却发现其读出的数据已经发生了改变、或某些记录已经被删除了!这种现象就叫做“不可重复读”。一句话:事务A读取到了事务B已经提交的修改数据,不符合隔离性】一个事务A在读c表的一条数据某个时间后,事务A再次读取以前c表的该条数据,却发现其读出的数据已经发生了改变、或某些记录已经被删除了!这种现象就叫做“不可重复读”。一句话:事务A读取到了另一个事务B对c表的已经提交的修改数据,不符合隔离性https://www.bilibili.com/video/BV1RE41187Yo?p=58
 
 ### REPEATABLE READ(可重复读)
 
@@ -549,6 +549,7 @@ MYISAM会将表存储在两个文件中:数据文件和索引文件,分别以,MY
   - Covering Index：表示相应的 select操作中使用了覆盖索引( Covering Index),避免访问了表的数据行,效率不错!如果同时出现 using where:表明索引被用米执行索引键值的查找如果没有同时出现 using where,表明索引用来读取数据而非执行查找动作。
     - 理解方式一:就是 select的数据列只用从索引中就能够取得,不必读取数据行, MYSQL可以利用索引返回 select列表中的字段,而不必根据索引再次读取数据文件,换句话说查询列要被所建的索引覆盖
     - 理解方式二:素引是高效找到行的一个方法,但是一般数据库也能使用素引找到一个列的数据,因此它不必读取整个行。毕竟素引叶子节点存储了它们素引的数据;当能通过读取索引就可以得到想要的数据,那就不需要读取行了。一个索引包含了(或覆盖了)满足查询结果的数据就叫做覆盖素引。
+  - Using join Buffer：使用了连接缓存
 
 
 
@@ -663,9 +664,1532 @@ and t.tid = (SELECT c.tid FROM course c WHERE c.cname = 'sql'); # 查询教授sq
 
 - range：单表中的使用索引进行范围查询
 
-- index：对于每一行，都通过查询索引来得到数据
+- index：对于每一条记录，都通过查询索引来得到数据
 
-- all：对于每一行，都通过全表扫描来得到数据，未使用索引
+- all：对于每一条记录，都通过全表扫描来得到数据，未使用索引
+
+
+
+# 案例分析
+
+## 建表
+
+```
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE `article`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `author_id` int(10) NOT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `views` int(10) UNSIGNED NOT NULL,
+  `comments` int(10) UNSIGNED NOT NULL,
+  `title` varchar(255) CHARACTER  NOT NULL,
+  `cotent` text CHARACTER  NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB  ROW_FORMAT = Dynamic;
+
+INSERT INTO `article` VALUES (1, 1, 1, 1, 1, '1', '1');
+INSERT INTO `article` VALUES (2, 2, 2, 2, 2, '2', '2');
+INSERT INTO `article` VALUES (3, 3, 3, 3, 3, '3', '3');
+```
+
+## sql 查询
+
+### 单表
+
+查询 category_ id为1且 comments大于1的情况下vews最多的 article_id
+
+```sql
+mysql> explain select id,author_id from article where category_id = 1 and comments =1 order by views desc \G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: article
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 3
+     filtered: 33.33
+        Extra: Using where; Using filesort
+1 row in set, 1 warning (0.00 sec)
+
+```
+
+可以看到并没有使用索引all，并且使用了排序Using filesort
+
+那么我们新建一个索引
+
+```sql
+create index idx_article_ccv on article(category_id,comments,views);
+# 或者
+alter table 'article' add index idx_article_ccv('category_id','comments','views');
+# 查看索引
+mysql> show index from article \G;
+*************************** 1. row ***************************
+        Table: article
+   Non_unique: 0
+     Key_name: PRIMARY
+ Seq_in_index: 1
+  Column_name: id
+    Collation: A
+  Cardinality: 2
+     Sub_part: NULL
+       Packed: NULL
+         Null: 
+   Index_type: BTREE
+      Comment: 
+Index_comment: 
+*************************** 2. row ***************************
+        Table: article
+   Non_unique: 1
+     Key_name: idx_article_ccv
+ Seq_in_index: 1
+  Column_name: category_id
+    Collation: A
+  Cardinality: 3
+     Sub_part: NULL
+       Packed: NULL
+         Null: 
+   Index_type: BTREE
+      Comment: 
+Index_comment: 
+*************************** 3. row ***************************
+        Table: article
+   Non_unique: 1
+     Key_name: idx_article_ccv
+ Seq_in_index: 2
+  Column_name: comments
+    Collation: A
+  Cardinality: 3
+     Sub_part: NULL
+       Packed: NULL
+         Null: 
+   Index_type: BTREE
+      Comment: 
+Index_comment: 
+*************************** 4. row ***************************
+        Table: article
+   Non_unique: 1
+     Key_name: idx_article_ccv
+ Seq_in_index: 3
+  Column_name: views
+    Collation: A
+  Cardinality: 3
+     Sub_part: NULL
+       Packed: NULL
+         Null: 
+   Index_type: BTREE
+      Comment: 
+Index_comment: 
+4 rows in set (0.00 sec)
+
+再次进行查询
+mysql> explain select id,author_id from article where category_id = 1 and comments >1 order by views desc \G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: article
+   partitions: NULL
+         type: range
+possible_keys: idx_article_ccv
+          key: idx_article_ccv
+      key_len: 8
+          ref: NULL
+         rows: 1
+     filtered: 100.00
+        Extra: Using index condition; Using filesort
+1 row in set, 1 warning (0.00 sec)
+
+如果使用
+mysql> explain select id,author_id from article where category_id = 1 and comments =1 order by views desc \G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: article
+   partitions: NULL
+         type: ref
+possible_keys: idx_article_ccv
+          key: idx_article_ccv
+      key_len: 8
+          ref: const,const
+         rows: 1
+     filtered: 100.00
+        Extra: Using where
+1 row in set, 1 warning (0.00 sec)
+可以看到 type变成了 ref 性能提高了，因为之前> 后面的索引是会失效的（排序原理是这样的：先排序 category_id,如果遇到相同的 category_id则再排序 comments,如果遇到相同的 comments则再排序vews,当 comments字段在联合素引里处于中间位置时,因 comments>1条件是一个范围值(所谓 range)My SQL无法利用素引再对后面的vews部分进行检素,即 range类型查询字段后面的素引无效），因此由上所示改成=号会好很多，这个改是改了，但是无法满足我们‘查询 category_ id为1且 comments大于1的情况下vews最多的 article_id’的查询需求
+
+删掉现在的这个索引
+mysql> drop index idx_article_ccv on article;
+Query OK, 0 rows affected (0.01 sec)
+
+
+mysql> create index idx_article on article(category_id,views);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+mysql> show index from article\G;
+*************************** 1. row ***************************
+        Table: article
+   Non_unique: 0
+     Key_name: PRIMARY
+ Seq_in_index: 1
+  Column_name: id
+    Collation: A
+  Cardinality: 2
+     Sub_part: NULL
+       Packed: NULL
+         Null: 
+   Index_type: BTREE
+      Comment: 
+Index_comment: 
+*************************** 2. row ***************************
+        Table: article
+   Non_unique: 1
+     Key_name: idx_article
+ Seq_in_index: 1
+  Column_name: category_id
+    Collation: A
+  Cardinality: 3
+     Sub_part: NULL
+       Packed: NULL
+         Null: 
+   Index_type: BTREE
+      Comment: 
+Index_comment: 
+*************************** 3. row ***************************
+        Table: article
+   Non_unique: 1
+     Key_name: idx_article
+ Seq_in_index: 2
+  Column_name: views
+    Collation: A
+  Cardinality: 3
+     Sub_part: NULL
+       Packed: NULL
+         Null: 
+   Index_type: BTREE
+      Comment: 
+Index_comment: 
+3 rows in set (0.00 sec)
+
+再次进行查询
+mysql> explain select id,author_id from article where category_id = 1 and comments >1 order by views desc \G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: article
+   partitions: NULL
+         type: ref
+possible_keys: idx_article
+          key: idx_article
+      key_len: 4
+          ref: const
+         rows: 1
+     filtered: 33.33
+        Extra: Using where
+1 row in set, 1 warning (0.00 sec)
+结论:可以看到,tpe变为了ref,Exda中的 Using filesort也消失了,结果非常理想
+
+```
+
+### 双表
+
+建表
+
+```sql
+DROP TABLE IF EXISTS `book`;
+CREATE TABLE `book`  (
+  `book_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `card` int(10) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`book_id`) USING BTREE
+) ENGINE = InnoDB ROW_FORMAT = Dynamic;
+
+
+DROP TABLE IF EXISTS `class`;
+CREATE TABLE `class`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `card` int(10) UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB  ROW_FORMAT = Dynamic;
+
+执行多几次下列语句添加数据
+insert into class(card) values(FLOOR(1+RAND()*20));
+insert into book(card) values(FLOOR(1+RAND()*20));
+
+mysql> explain select * from class left join book on class.card = book.card\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: class
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 12
+     filtered: 100.00
+        Extra: NULL
+*************************** 2. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: book
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 13
+     filtered: 100.00
+        Extra: Using where; Using join buffer (Block Nested Loop)
+2 rows in set, 1 warning (0.00 sec)
+
+
+建立引索
+mysql> create index idx_book  on book(card);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> explain select * from class left join book on class.card = book.card\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: class
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 12
+     filtered: 100.00
+        Extra: NULL
+*************************** 2. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: book
+   partitions: NULL
+         type: ref
+possible_keys: idx_book
+          key: idx_book
+      key_len: 5
+          ref: test.class.card
+         rows: 1
+     filtered: 100.00
+        Extra: Using index
+2 rows in set, 1 warning (0.00 sec)
+
+可以看到有一个的type变为了 ref, rows也变成了优化比较明显。这是由左连接特性决定的。 LEFT JOIN条件用于确定如何从右表搜索行，左边的行一定都有，所以右边是我们的关键点一定需要建立索引。
+
+删除，在join另外一边建
+mysql> drop index idx_book on book;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create index idx_class  on class(card);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> explain select * from class left join book on class.card = book.card\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: class
+   partitions: NULL
+         type: index
+possible_keys: NULL
+          key: idx_class
+      key_len: 5
+          ref: NULL
+         rows: 12
+     filtered: 100.00
+        Extra: Using index
+*************************** 2. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: book
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 13
+     filtered: 100.00
+        Extra: Using where; Using join buffer (Block Nested Loop)
+2 rows in set, 1 warning (0.00 sec)
+```
+
+### 多表
+
+建表
+
+```sql
+DROP TABLE IF EXISTS `phone`;
+CREATE TABLE `phone`  (
+  `phoneid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `card` int(10) UNSIGNED NOT NULL,
+  PRIMARY KEY (`phoneid`) USING BTREE
+) ENGINE = InnoDB  ROW_FORMAT = Dynamic;
+
+插入一些数据
+insert into phone(card) values(FLOOR(1+RAND()*20));  ......
+
+删除 class 和 book表的索引
+drop index idx_class on class;
+drop index idx_book on book;
+
+mysql> EXPLAIN select * from class left join book on class.card=book.card left join phone on book.card = phone.card\G
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: class
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 12
+     filtered: 100.00
+        Extra: NULL
+*************************** 2. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: book
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 13
+     filtered: 100.00
+        Extra: Using where; Using join buffer (Block Nested Loop)
+*************************** 3. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: phone
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 24
+     filtered: 100.00
+        Extra: Using where; Using join buffer (Block Nested Loop)
+3 rows in set, 1 warning (0.00 sec)
+
+建索引
+create index idx_book  on book(card);
+create index idx_phone  on phone(card);
+mysql> EXPLAIN select * from class left join book on class.card=book.card left join phone on book.card = phone.card\G
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: class
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 12
+     filtered: 100.00
+        Extra: NULL
+*************************** 2. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: book
+   partitions: NULL
+         type: ref
+possible_keys: idx_book
+          key: idx_book
+      key_len: 5
+          ref: test.class.card
+         rows: 1
+     filtered: 100.00
+        Extra: NULL
+*************************** 3. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: phone
+   partitions: NULL
+         type: ref
+possible_keys: idx_phone
+          key: idx_phone
+      key_len: 4
+          ref: test.book.card
+         rows: 1
+     filtered: 100.00
+        Extra: Using index
+3 rows in set, 1 warning (0.00 sec)
+
+后2行的type都是ref且总rows优化很好,效果不错,因此家引最好设置在需要经常查询的字段中
+尽可能减少Join语句中的 Nested Loopl的循环总次数：“永远用小结果集驱动大的结果集，因为笛卡尔积”；
+优先优化 Nested Loop的内层循环;
+
+```
+
+### 防止索引失效
+
+> create index idx_staffs_nameAgePos  on staffs(name,age,pos);
+>
+> 提示：在以下的该书中，name，age，pos 列称为索引列
+
+建表
+
+```
+DROP TABLE IF EXISTS `staffs`;
+CREATE TABLE `staffs`  (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(24) CHARACTER  NOT NULL,
+  `age` int(10) NOT NULL DEFAULT 0,
+  `pos` varchar(20) CHARACTER  NOT NULL,
+  `add_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB  ROW_FORMAT = Dynamic;
+
+INSERT INTO `staffs` VALUES (1, 'z3', 22, 'manage', '2020-03-28 07:38:42');
+INSERT INTO `staffs` VALUES (2, 'july', 23, 'dev', '2020-03-28 07:38:54');
+INSERT INTO `staffs` VALUES (3, '2000', 23, 'dev', '2020-03-28 07:39:09');
+
+建立索引
+create index idx_staffs_nameAgePos  on staffs(name,age,pos);
+
+```
+
+#### 最佳左前缀
+
+```sql
+
+全值匹配
+mysql> explain select * from staffs where name = 'july'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 74
+          ref: const
+         rows: 1
+     filtered: 100.00
+        Extra: NULL
+1 row in set, 1 warning (0.00 sec)
+
+
+mysql> explain select * from staffs where name = 'july' and age=25\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 78
+          ref: const,const
+         rows: 1
+     filtered: 100.00
+        Extra: NULL
+1 row in set, 1 warning (0.00 sec)
+
+mysql> explain select * from staffs where name = 'july' and age=25 and pos='dev'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 140
+          ref: const,const,const
+         rows: 1
+     filtered: 100.00
+        Extra: NULL
+1 row in set, 1 warning (0.00 sec)
+
+可以看到随着匹配的条件越来越精确，key_len的值也越来越大
+如果不满足最佳左前缀法则，那么索引就会失效
+mysql>  explain select * from staffs where  age=23 and pos='dev'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 3
+     filtered: 33.33
+        Extra: Using where
+1 row in set, 1 warning (0.00 sec)
+
+mysql>  explain select * from staffs where  pos='dev'\G; 
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 3
+     filtered: 33.33
+        Extra: Using where
+1 row in set, 1 warning (0.00 sec)
+
+从左边开始就可以用到索引
+mysql>  explain select * from staffs where name = 'july' \G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 74
+          ref: const
+         rows: 1
+     filtered: 100.00
+        Extra: NULL
+1 row in set, 1 warning (0.00 sec)
+
+如果建立了复合索引，并且在where条件中索引了多列，那么要遵守最左前缀法则。指的是查询从索引的最左前列开始并且不跳过索引中的列，如果跳过了中间的，则索引只用到了多列索引左边的一部分，右边的索引列失效如下，只用到了name列作为索引。
+mysql>  explain select * from staffs where name = 'july' and pos='dev'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 74
+          ref: const
+         rows: 1
+     filtered: 33.33
+        Extra: Using index condition
+1 row in set, 1 warning (0.00 sec)
+
+
+
+```
+
+#### 不要在索引列做任何操作
+
+不在索引列上做任何操作(计算、函数、(自动or手动)类型转换)，会导致做了操作的索引列和后面的索引列都失效
+
+```sql
+mysql> explain select * from staffs where left(name,4)="july"\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ALL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 3
+     filtered: 100.00
+        Extra: Using where
+1 row in set, 1 warning (0.00 sec)
+可以看到索引失效了
+
+mysql> explain select * from staffs where name='july' and age +1=24 and pos='dev'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 74
+          ref: const
+         rows: 2
+     filtered: 25.00
+        Extra: Using index condition
+1 row in set, 1 warning (0.00 sec)
+可以看到只使用了一个索引列
+```
+
+#### 不能使用索引中范围条件
+
+存储引擎不能使用索引中范围条件右边的列（即右边索引列失效），使用范围的那一列还是可以使用的，如下的type表示为range说明使用了
+
+```sql
+mysql> explain select * from staffs where name='july' and age>25 and pos='manager'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: range
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 78
+          ref: NULL
+         rows: 1
+     filtered: 33.33
+        Extra: Using index condition
+1 row in set, 1 warning (0.00 sec)
+```
+
+#### 尽量使用覆盖索引
+
+尽量使用覆盖索引(只访问索引的查询(索引列和査询列一致),减少select *
+
+```sql
+mysql> explain select * from staffs where name = 'july' and age=23 and pos='dev'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 140
+          ref: const,const,const
+         rows: 2
+     filtered: 100.00
+        Extra: NULL
+1 row in set, 1 warning (0.00 sec)
+
+现在只访问索引覆盖的列，那么可以看到Extra为Using index，说明使用了覆盖索引，提高了效率
+mysql> explain select name,age,pos from staffs where name = 'july' and age=23 and pos='dev'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 140
+          ref: const,const,const
+         rows: 1
+     filtered: 100.00
+        Extra: Using index
+1 row in set, 1 warning (0.00 sec)
+
+以下也可以使用覆盖索引
+mysql> explain select name,age from staffs where name = 'july' and age=23 and pos='dev'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 140
+          ref: const,const,const
+         rows: 2
+     filtered: 100.00
+        Extra: Using index
+1 row in set, 1 warning (0.00 sec)
+
+mysql> explain select name,age from staffs where name = 'july' and age>23 and pos='dev'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: range
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 78
+          ref: NULL
+         rows: 1
+     filtered: 25.00
+        Extra: Using where; Using index
+1 row in set, 1 warning (0.00 sec)
+
+```
+
+
+
+#### 使用不等于符号
+
+mysq在使用不等于(=或者<>)的时候无法使用整个索引会导致全表扫描
+
+```sql
+mysql> explain select * from staffs where name != 'july'\G ;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ALL
+possible_keys: idx_staffs_nameAgePos
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 4
+     filtered: 50.00
+        Extra: Using where
+1 row in set, 1 warning (0.00 sec)
+
+我意外发现如果使用了覆盖索引，也是可以使用覆盖索引滴
+mysql> explain select name,age,pos from staffs where name != 'july' \G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: range
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 74
+          ref: NULL
+         rows: 2
+     filtered: 100.00
+        Extra: Using where; Using index
+1 row in set, 1 warning (0.00 sec)
+
+
+```
+
+#### is not null也无法使用索引
+
+会导致使用了和 is not null 的列和后面的索引列都失效
+
+```sql
+mysql> explain select * from staffs where name='july' and age=24 and pos is not null\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 79
+          ref: const,const
+         rows: 1
+     filtered: 75.00
+        Extra: Using index condition
+1 row in set, 1 warning (0.00 sec)
+
+
+
+如果本来字段不允许为null的列使用 is null ，则Extra会报Impossible Where,整个索引就会失效
+mysql> explain select * from staffs where name is null \G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: NULL
+   partitions: NULL
+         type: NULL
+possible_keys: NULL
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: NULL
+     filtered: NULL
+        Extra: Impossible WHERE
+1 row in set, 1 warning (0.00 sec)
+
+
+这里我将age字段修改为允许为null,
+alter table staffs modify age int DEFAULT NULL;
+那么索引没影响，正常使用
+mysql> explain select * from staffs where name='july'  and age is null  and pos='dev'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 141
+          ref: const,const,const
+         rows: 1
+     filtered: 100.00
+        Extra: Using index condition
+1 row in set, 1 warning (0.00 sec)
+
+再修改回去，后面备用
+alter table staffs modify age int  not null;
+```
+
+
+
+#### like 的使用
+
+要注使用like列及其后面的索引列会失效
+
+```sql
+mysql> explain select * from staffs where name ='july' and age=23 and pos like '%dev' \G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 78
+          ref: const,const
+         rows: 2
+     filtered: 25.00
+        Extra: Using index condition
+1 row in set, 1 warning (0.00 sec)
+
+
+发现没使用like列的索引列
+mysql> explain select * from staffs where name ='july' and age=23 and pos like '%dev%' \G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 78
+          ref: const,const
+         rows: 2
+     filtered: 25.00
+        Extra: Using index condition
+1 row in set, 1 warning (0.00 sec)
+
+
+如果是%是在后面则可以使用该索引列，并且该列后面的索引列也是可以使用的，这里跟>号的那种范围查询不一样
+mysql> explain select * from staffs where name ='july' and age=23 and pos like 'dev%' \G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: range
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 140
+          ref: NULL
+         rows: 2
+     filtered: 100.00
+        Extra: Using index condition
+1 row in set, 1 warning (0.00 sec)
+
+三个索引列都使用到了I(key_len很大)
+mysql>  explain select * from staffs where name like 'july%' and age=23 and pos ='dev' \G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: range
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 140
+          ref: NULL
+         rows: 2
+     filtered: 25.00
+        Extra: Using index condition
+1 row in set, 1 warning (0.00 sec)
+
+
+这使得以下查询也可以使用索引
+mysql> explain select * from staffs where name like 'july%'\G
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: range
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 74
+          ref: NULL
+         rows: 2
+     filtered: 100.00
+        Extra: Using index condition
+1 row in set, 1 warning (0.00 sec)
+
+
+```
+
+但是使用覆盖索引可以解锁这个问题
+
+```sql
+建表
+DROP TABLE IF EXISTS `tbl_user`;
+CREATE TABLE `tbl_user`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20)  DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `email` varchar(20)  DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+) ENGINE = InnoDB ROW_FORMAT = Dynamic;
+
+INSERT INTO `tbl_user` VALUES (1, '1aa1', 21, 'b@163.com');
+INSERT INTO `tbl_user` VALUES (2, '2aa2', 222, 'a@163.com');
+INSERT INTO `tbl_user` VALUES (3, '3aa3', 265, 'c@163.com');
+INSERT INTO `tbl_user` VALUES (4, '4aa4', 21, 'd@163.com');
+INSERT INTO `tbl_user` VALUES (5, '5aa5', 121, 'e@163.com');
+
+创建索引
+create index idx_user_nameAge on tbl_user(name,age);
+
+以下的查询都可以使用索引
+explain select name,age from staffs where name like '%july'\G;
+explain select id from staffs where name like '%july'\G;
+explain select name from staffs where name like '%july'\G;
+explain select id,name,age from staffs where name like '%july'\G;
+explain select id,name from staffs where name like '%july'\G;
+explain select name,age from staffs where name like '%july'\G;
+
+
+
+
+
+```
+
+
+
+#### 字符串不加单引号索引失效
+
+无法使用整个索引会导致该索引列及后面的索引列失效
+
+```sql
+mysql> explain select * from staffs where name ='july' and age=23 and pos=23\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 78
+          ref: const,const
+         rows: 2
+     filtered: 20.00
+        Extra: Using index condition
+1 row in set, 2 warnings (0.00 sec)
+
+
+使用了单引号就不会失效啦
+mysql> explain select * from staffs where name ='july' and age=23 and pos='23'\G;                                                                                          
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ref
+possible_keys: idx_staffs_nameAgePos
+          key: idx_staffs_nameAgePos
+      key_len: 140
+          ref: const,const,const
+         rows: 1
+     filtered: 100.00
+        Extra: NULL
+1 row in set, 1 warning (0.00 sec)
+
+
+
+```
+
+#### 使用or导致索引失效
+
+无法使用整个索引会导致全表扫描
+
+```sql
+mysql> explain select * from staffs where name ='july' and age=23 and pos='23' or pos ='dev'\G;
+*************************** 1. row ***************************
+           id: 1
+  select_type: SIMPLE
+        table: staffs
+   partitions: NULL
+         type: ALL
+possible_keys: idx_staffs_nameAgePos
+          key: NULL
+      key_len: NULL
+          ref: NULL
+         rows: 5
+     filtered: 20.64
+        Extra: Using where
+1 row in set, 1 warning (0.00 sec)
+
+```
+
+
+
+### 总结
+
+![1585454308136](assets/1585454308136.png)
+
+![1585454338884](assets/1585454338884.png)
+
+# 面试题
+
+[解决无法group by的问题](https://blog.csdn.net/qq_34707744/article/details/78031413)
+
+```sql
+建表
+CREATE TABLE `test03`  (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `c1` char(10) CHARACTER  DEFAULT NULL,
+  `c2` char(10) CHARACTER  DEFAULT NULL,
+  `c3` char(10) CHARACTER  DEFAULT NULL,
+  `c4` char(10) CHARACTER  DEFAULT NULL,
+  `c5` char(10) CHARACTER  DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+) ENGINE = InnoDB  ROW_FORMAT = Dynamic;
+
+INSERT INTO `test03` VALUES (1, 'a1', 'a2', 'a3', 'a4', 'a5');
+INSERT INTO `test03` VALUES (2, 'b1', 'b2', 'b3', 'b4', 'b5');
+INSERT INTO `test03` VALUES (3, 'c1', 'c2', 'c3', 'c4', 'c5');
+INSERT INTO `test03` VALUES (4, 'd1', 'd2', 'd3', 'd4', 'd5');
+INSERT INTO `test03` VALUES (5, 'e', 'e2', 'e3', 'e4', 'e5');
+
+建索引
+create index idx_test03_c1234 on test03(c1,c2,c3,c4);
+
+
+题目根据以下sql分析索引的使用情况
+以下的这种四个都有的随便排列组合都是可以使用到全部索引列的
+explain select * from test03 where c4='a4' and c3='a3' and c2='a2' and c1='a1'\G;
+explain select * from test03 where c4='a4'  and c2='a2' and c1='a1' and c3='a3'\G;
+explain select * from test03 where c4='a4'  and c2='a2' and c3='a3' and c1='a1' \G;
+
+
+只有前三个索引列由效
+explain select * from test03 where  c1='a1' and c2='a2' and c3>'a3' and c4='a4'\G;
+四个都有效
+explain select * from test03 where  c1='a1' and c2='a2' and  c4>'a4' and  c3='a3'\G;
+前两个有效
+mysql> explain select * from test03 where  c1='a1' and c2='a2' and  c4>'a4'\G;
+
+下两个都是用到了前三个索引列，第三个索引列用来排序了
+explain select * from test03 where  c1='a1' and c2='a2' and  c4='a4' order by c3\G;
+explain select * from test03 where  c1='a1' and c2='a2'  order by c3\G;
+只用到了前两个索引列，并且extra列会出现Using filesort，即没有用到索引进行排序
+explain select * from test03 where  c1='a1' and c2='a2'  order by c4\G;
+用到了三个个索引列，c2和c3用来排序了
+explain select * from test03 where  c1='a1' order by c2,c3\G;
+只用到了一个索引列，并且extra列会出现Using filesort，即没有用到索引进行排序
+mysql>  explain select * from test03 where  c1='a1' order by c3,c2\G;
+下面两个都是，用到了三个索引列，c2,c3用来排序，没有filesort
+explain select * from test03 where  c1='a1' and c2='a2'  order by c2,c3\G;
+explain select * from test03 where  c1='a1' and c2='a2' and c5='a5'  order by c2,c3\G;
+用到了三个索引列，本来按道理是会出现filesort的，但是这里没有，因为你c2列是常量了
+explain select * from test03 where  c1='a1' and c2='a2' and c5='a5'  order by c3,c2\G;
+只用到了一个索引列，c2列不是常量
+explain select * from test03 where  c1='a1'  and c5='a5'  order by c3,c2\G;
+用到了三个索引列，c2和c3用来分组
+explain select * from test03 where  c1='a1'  and c4='a4'  group by c2,c3\G;
+只用到了一个索引列，出现Using temporary（分组之前必排序，会有临时表产生） 和 Using filesort
+explain select * from test03 where  c1='a1'  and c4='a4'  group by c3,c2\G;
+```
+
+建议
+
+1. 对于单键索引,尽量选择针对当前 query过滤性更好的索引
+
+2. 在选择组合索引的时候,当前 Query中过滤性最好的字段在索引字段顺序中,位置越靠前越好。
+
+3. 在选择组合索引的时,尽量选择可以能够包含当前 query中的 where字句中更多字段的索引
+
+4. 
+   尽可能通过分析统计信息和调整 query的写法来达到选择合适索引的目的
+
+
+
+# 进一步优化
+
+## 小表驱动大表
+
+```sql
+当B表的数据集小于A时，优先有in
+select * from A where id in(select id from B)
+等价于
+for select id from B
+for select id from A where A.id = B.id
+
+当A表的数据集小于B时，优先用exists
+select * from A where exists (select 1 from B where A.id = B.id)
+等价于
+for select id from A
+for select id from B where A.id = B.id
+
+
+```
+
+## 
+
+## OrderBy
+
+order by 尽量使用index方式进行排序，尽量避免filesort方式排序
+
+```sql
+建表 
+CREATE TABLE `tblA`  (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `age` int(10) DEFAULT NULL,
+  `birth` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`id`) USING BTREE,
+) ENGINE = InnoDB  ROW_FORMAT = Dynamic;
+
+INSERT INTO `tblA` VALUES (1, 22, '2020-03-29 07:42:11.420958');
+INSERT INTO `tblA` VALUES (2, 23, '2020-03-29 07:42:17.065939');
+INSERT INTO `tblA` VALUES (3, 24, '2020-03-29 07:42:20.220961');
+
+
+加索引
+create index idx_A_agebirth on tblA(age,birth);
+
+下面两个都使用了索引进行排序
+explain select * from tblA where age>20 order by age;
+explain select * from tblA where age>20 order by age,birth;
+
+没使用索引进行排序，产生filesort
+explain select * from tblA where age>20 order by birth;
+explain select * from tblA where age>20 order by birth,age;
+explain select * from tblA  order by birth;
+explain select * from tblA where birth>'2016-01-28 00:00:00' order by birth;
+explain select * from tblA order by age ASC,birth DESC;
+
+使用index进行排序的两种情况
+ORDER BY语句使用索引最左前列使用
+Where子句与 Order BY子句条件列组合满足索引最左前列
+ 
+```
+
+排序有两种算法：
+
+双路排序：MySQL4.1之前是使用双路排序，字面意思是两次扫描磁盘，最终得到数据。读取行指针和order by列，对他们进行排序，然后扫描已经排序好的列表，按照列表中的值重新从列表中读取对应的数据传输。从磁盘取排序字段，在buffer进行排序，再从磁盘取其他字段。取一批数据，要对磁盘进行两次扫描，众所周知，I\O是很耗时的，所以在mysql4.1之后，出现了第二种改进的算法，就是单路排序。
+
+单路排序：从磁盘读取查询需要的所有列，按照orderby列在buffer对它们进行排序，然后扫描排序后的列表进行输出，
+它的效率更快一些，避免了第二次读取数据，并且把随机IO变成顺序IO，但是它会使用更多的空间，因为它把每一行都保存在内存中了。
+
+单路缺点：在 sort buffers中,方法B比方法A要多占用很多空间,因为方法B是把所有字段都取出,所以有可能取出的数据的总大小超出了sort buffer的容量,导致每次只能取 sort buffer容量大小的数据,进行排序(创建tmp文件,多路合并),排完再取sort _buffer容量大小,再排…从而多次IO本来想省一次IO操作,反而导致了大量的IO操作,反而得不偿失。优化策略：服务器参数调优：增大sort_buffer_size参数的设置，增大max_length_for_sort_data参数的设置
+
+总结：
+
+1. Order bya时 select是一个大忌，只 Query需要的字段,这点非常重要。在这里的影响是:
+  1.  当 Query的字段大小总和小于 max_length_for_sort_data而且排序字段不是 TEXT BLOB类型时,会用改进后的算法一一单路排序,否则用老算法一一多路排序。
+  2.  两种算法的数据都有可能超出 sort_buffere的容量,超出之后,会创建mp文件进行合并排序,导致多次IO,但是用单路排序算法的风险会更大一些,所以要提高 sort_buffer_size
+2. 尝试提高 sort_buffer_size不管用哪种算法,提高这个参数都会提高效率,当然,要根据系统的能力去提高,因为这个参数是针对每个进程的
+3. 尝试提高 max_length_for_ sort_data提高这个参数,会增加用改进算法的概率。但是如果设的太高,数据总容量超出 sort_buffer_size的概率就增大,明显症状是高的磁盘IO活动和低的处理器使用率
+
+![1585470776976](assets/1585470776976.png)
+
+
+
+## Group By
+
+group by 实质是先排序后分组，遵循索引的最佳左前缀原则，规则跟order by一样，有一个小不同就是。where高于 having,能写在 where限定的条件就不要去having限定了。
+
+
+
+# 慢查询日志
+
+MYSQL的慢查询日志是 MYSQL提供的一种日志记录,它用来记录在 MYSQL中响应时间超过阀值的语句,具体指运行时间超过Iong_query_time值的SQL,则会被记录到慢查询日志中
+具体指运行时间超过long_query_timef值的SQL,则会被记录到慢查询日志中。Iong_query_timef的默认值为10,意思是运行10秒以上的语句。
+由他来查看哪些SQL超出了我们的最大忍耐时间值,比如一条Sql执行超过5秒钟,我们就算慢SQL,希望能收集超过5秒的sql,结合之前 explain进行全面分析
+
+默认情况下, MYSQL数据库没有开启慢查询日志,需要我们手动来设置这个参数。当然,如果不是调优需要的话,一般不建议启动该参数,因为开启慢查询日志会或多或少带来一定的性能影响。慢査询日志支持将日志记录写入文件
+
+查看时候开启，及如何开启？
+
+SHOW VARIABLES LIKE '%slow_query_log%'   可以查看状态，使用`set global slow_query_log = 1` 开启。使用 `set global slow_ query_log=1`开启了慢查询日志只对当前数据库生效如果 MYSQL重启后则会失效。
+如果要永久生效,就必须修改配置文件my.cnf(其它系统变量也是如此)修改my.cnf文件,[mysq]下增加或修改参数`slow_ query_log和slow_ query_log_fIe`后,然后重启 MYSQL服务器。也即将如下两行配置进my.cnf文件`slow_query_log =1` 和`slow_query_log_file=/var/lib/mysql/atguigu-slow.log`。关于慢查询的参数slow_ query_log_file,它指定慢查询日志文件的存放路径,系統默认会给一个缺省的文件host_name-slow.log(如果没有指定参数slow_ query_log_file的话）
+
+```sql
+mysql> SHOW VARIABLES LIKE '%slow_query_log%';
++---------------------+--------------------------------------+
+| Variable_name       | Value                                |
++---------------------+--------------------------------------+
+| slow_query_log      | OFF                                  |
+| slow_query_log_file | /var/lib/mysql/976cba6dbb0d-slow.log |
++---------------------+--------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> set global slow_query_log = 1;
+Query OK, 0 rows affected (0.00 sec)
+
+
+这个是由参数long_query_time控制,默认情况下long_query_time的值为10秒的，
+命令:
+mysql> SHOW VARIABLES LIKE 'long_query_time%';
++-----------------+-----------+
+| Variable_name   | Value     |
++-----------------+-----------+
+| long_query_time | 10.000000 |
++-----------------+-----------+
+1 row in set (0.01 sec)
+
+可以使用命令修改,也可以在 my.conf参数里面修改，假如运行时间正好等于long_query_time的情况,并不会被记录下来。也就是说,在mysql源码里是判断大于long_query_time,而非大于等于。
+
+设置时间
+mysql> set global long_query_time = 3;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SHOW VARIABLES LIKE 'long_query_time%';
++-----------------+-----------+
+| Variable_name   | Value     |
++-----------------+-----------+
+| long_query_time | 10.000000 |
++-----------------+-----------+
+1 row in set (0.01 sec)
+
+发现时间没有改变，原因是因为需要重新新开一个连接
+
+
+mysql> select sleep(4);
++----------+
+| sleep(4) |
++----------+
+|        0 |
++----------+
+1 row in set (4.00 sec)
+
+退出mysql
+cd /var/lib/mysql 
+查看.log结尾的文件就可以了
+
+也可以通过以下命令直接查看有几条慢查询日志
+mysql> show global status like '%slow_queries%';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| Slow_queries  | 2     |
++---------------+-------+
+1 row in set (0.00 sec)
+
+
+```
+
+
+
+## 日志分析工具mysqldumpshow
+
+![1585473946234](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200329172546-394819.png)
+
+![1585473958624](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200329172559-949700.png)
+
+
+
+
+
+# 存储过程
+
+储存过程和函数的区别就是储存过程没有返回值
+
+```sql
+
+
+
+建表，准备插入百万条数据
+
+
+DROP TABLE IF EXISTS `emp`;
+CREATE TABLE `emp`  (
+  `id` mediumint(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ename` varchar(20)  NOT NULL DEFAULT '',
+  `job` varchar(9)  NOT NULL DEFAULT '',
+  `mgr` mediumint(10) UNSIGNED NOT NULL DEFAULT 0,
+  `hiredate` date NOT NULL,
+  `sal` decimal(7, 2) NOT NULL,
+  `deptno` mediumint(10) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB  ROW_FORMAT = Dynamic;
+
+
+DROP TABLE IF EXISTS `dept`;
+CREATE TABLE `dept`  (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `deptno` mediumint(10) UNSIGNED NOT NULL DEFAULT 0,
+  `dname` varchar(20)  NOT NULL DEFAULT '',
+  `loc` varchar(13)  NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB  ROW_FORMAT = Dynamic;
+
+2.设置参数log_trust_function_createors
+创建函数,假如报错: This function has none of DETERMINISTIC 是由于开启过慢查询日志,因为我们开启了bin-log,我们就必须为我们的 Function指定一个参数
+mysql> show variables like 'log_bin_trust_function_creators';
++---------------------------------+-------+
+| Variable_name                   | Value |
++---------------------------------+-------+
+| log_bin_trust_function_creators | OFF   |
++---------------------------------+-------+
+1 row in set (0.00 sec)
+mysql> set global log_bin_trust_function_creators=1;
+Query OK, 0 rows affected (0.00 sec)
+
+这样添加了参数,如果 mysqld重启,上述参数又会消失,水久方法windows下 my.ini[mysqld]加上
+log_bin_trust_function_ creators=1
+linux下 /etc/my.cnf下的  my.cnf[mysqld] log_bin_trust_function_creators=1
+
+
+随机产生字符串的函数
+mysql> DELIMITER $$
+mysql> Create FUNCTION rand_string(n int) returns varchar(255)
+    -> BEGIN
+    -> DECLARE char_str VARCHAR(100) DEFAULT 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    -> DECLARE return_str VARCHAR(255) DEFAULT '';
+    -> DECLARE i int DEFAULT 0;
+    -> WHILE i<n DO
+    -> set return_str = CONCAT(return_str,substring(chars_str,floor(1+RAND()*52),1));
+    -> set i = i+1;
+    -> END WHILE;
+    -> return return_str;
+    -> END $$
+Query OK, 0 rows affected (0.00 sec)
+
+
+随机产生部门编号的函数
+mysql> DELIMITER $$
+mysql> Create FUNCTION rand_num() returns int(5)
+    -> begin
+    -> DECLARE i int DEFAULT 0;
+    -> set i = FLOOR(100+RAND(rand())*10);
+    -> return i;
+    -> END $$
+Query OK, 0 rows affected (0.00 sec)
+
+创建储存过程
+mysql> CREATE PROCEDURE insert_emp(IN START INT (10) , IN max_num INT (10))
+    -> BEGIN
+    -> DECLARE i INT DEFAULT 0; 
+    -> SET autocommit = 0;
+    -> REPEAT 
+    -> SET i = i + 1 ;
+    -> INSERT INTO emp (empno,ename,job,mgr,hiredate,sal,comm,deptno) VALUES ((START + i),rand_string(6) , 'SALESMAN' , 0001  , CURDATE() , 2000 , 400 , rand_num ());
+    -> UNTIL i = max_num
+    -> END REPEAT;
+    -> COMMIT;
+    -> END $$
+Query OK, 0 rows affected (0.00 sec)
+创建往emp表中插入数据的存储过程
+
+创建往dept表中插入数据的存储过程
+mysql> CREATE PROCEDURE insert_dept(IN START INT (10) , IN max_num INT (10))
+    -> BEGIN
+    -> DECLARE i INT DEFAULT 0; 
+    -> SET autocommit = 0;
+    -> REPEAT 
+    -> SET i = i + 1 ;
+    -> INSERT INTO dept (deptno,dname,loc) VALUES ((START + i),rand_string(10), rand_string(8));
+    -> UNTIL i = max_num
+    -> END REPEAT;
+    -> COMMIT;
+    -> END $$
+Query OK, 0 rows affected (0.00 sec)
+
+恢复结束符
+mysql>  DELIMITER ;$$
+
+插入数据
+call insert_dept(100,10)
+
+```
+
+
+
+# show profile
+
+是mysql提供的可以用来分析当前会话中语句执行资源消耗情况的，可以用来sql的调优
+
+```sql
+查看状态
+mysql> show variables like 'profiling';
++---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| profiling     | OFF   |
++---------------+-------+
+1 row in set (0.01 sec)
+
+将profiling打开
+mysql> set profiling=on;
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+查看记录的状态
+mysql> show profiles;
++----------+------------+---------------------------------+
+| Query_ID | Duration   | Query                           |
++----------+------------+---------------------------------+
+|        1 | 0.00176550 | show variables like 'profiling' |
+|        2 | 0.00029150 | select * from staffs            |
++----------+------------+---------------------------------+
+2 rows in set, 1 warning (0.00 sec)
+
+5.诊断SQL，show profile cpu,block io for query 上一步前面的问题SQL 数字号码；
+mysql> show profile cpu,block io for query 2;
++----------------------+----------+----------+------------+--------------+---------------+
+| Status               | Duration | CPU_user | CPU_system | Block_ops_in | Block_ops_out |
++----------------------+----------+----------+------------+--------------+---------------+
+| starting             | 0.000067 | 0.000000 |   0.000000 |            0 |             0 |
+| checking permissions | 0.000008 | 0.000000 |   0.000000 |            0 |             0 |
+| Opening tables       | 0.000021 | 0.000000 |   0.000000 |            0 |             0 |
+| init                 | 0.000020 | 0.000000 |   0.000000 |            0 |             0 |
+| System lock          | 0.000010 | 0.000000 |   0.000000 |            0 |             0 |
+| optimizing           | 0.000005 | 0.000000 |   0.000000 |            0 |             0 |
+| statistics           | 0.000014 | 0.000000 |   0.000000 |            0 |             0 |
+| preparing            | 0.000012 | 0.000000 |   0.000000 |            0 |             0 |
+| executing            | 0.000003 | 0.000000 |   0.000000 |            0 |             0 |
+| Sending data         | 0.000075 | 0.000000 |   0.000000 |            0 |             0 |
+| end                  | 0.000006 | 0.000000 |   0.000000 |            0 |             0 |
+| query end            | 0.000021 | 0.000000 |   0.000000 |            0 |             0 |
+| closing tables       | 0.000008 | 0.000000 |   0.000000 |            0 |             0 |
+| freeing items        | 0.000011 | 0.000000 |   0.000000 |            0 |             0 |
+| cleaning up          | 0.000013 | 0.000000 |   0.000000 |            0 |             0 |
++----------------------+----------+----------+------------+--------------+---------------+
+
+
+```
+
+还可以查看其它信息
+
+![1585485248383](assets/1585485248383.png)
+
+
+
+在`show profile cpu,block io for query 2;`查询结果中显示了整个查询的生命周期，我们不可能全记住吧，需要重点理解下面四个
+
+1. converting HEAP to MyISAM 查询结果太大，内存都不够用了往磁盘上搬了。
+2. Creating tmp table 创建临时表
+3. Copying to tmp table on disk 把内存中临时表复制到磁盘，危险！！！
+4. locked
+
+
+
+
+
+# 主从复制
+
+## 原理
+
+![1585492788157](assets/1585492788157.png)
+
+MYSQL复制过程分成三步master
+
+1. 将改变记录到二进制日志( binary log)。这些记录过程叫做二进制日志事件, binary log events
+2. slave将 master的 binary log events拷贝到它的中继日志( relay log)
+3. slave重做中继日志中的事件,将改变应用到自己的数据库中。 MYSQL复制是异步的且串行化的
+
+
+
+
+
+
 
 
 

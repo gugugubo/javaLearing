@@ -210,7 +210,7 @@ OPTIMIZE [LOCAL | NO_WRITE_TO_BINLOG] TABLE tbl_name [, tbl_name] ...
 如果已经删除了表的一大部分，或者如果已经对含有可变长度行的表（含有 VARCHAR、BLOB 或 TEXT 列的表）进行了很多更改，则应使用 OPTIMIZE TABLE 命令来进行表优化。这个命令可以将表中的空间碎片进行合并，并且可以消除由于删除或者更新造成的空间浪费，但OPTIMIZE TABLE 命令只对 MyISAM、BDB 和 InnoDB 表起作用。
 以下例子显示了优化表 sales 的过程：
 
-```
+```sql
 mysql> optimize table sales;
 +--------------+----------+----------+----------+
 | Table        | Op       | Msg_type | Msg_text |
