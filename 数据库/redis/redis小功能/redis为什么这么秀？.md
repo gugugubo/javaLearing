@@ -1,20 +1,20 @@
-## Redis 和 Memcached 有什么区别？
+## 1. Redis 和 Memcached 有什么区别？
 
-### redis 支持复杂的数据结构
+### 1.1 redis 支持复杂的数据结构
 
 `Redis`不仅仅支持简单的k/v类型的数据，同时还提供`list，set，zset，hash`等数据结构的存储。memcache支持简单的数据类型，`String`。
 
-### redis 原生支持集群模式
+### 1.2 redis 原生支持集群模式
 
 在 `redis3.x` 版本中，原生便能支持 `cluster`（集群） 模式，而 `memcached` 没有原生的集群模式，需要依靠客户端来实现往集群中分片写入数据。
 
-### 性能对比
+### 1.3 性能对比
 
 由于 `redis` 只使用单核，而 `memcached` 可以使用多核，所以平均每一个核上 redis 在存储小数据时比 `memcached`  性能更高。而在 100k 以上的数据中，`memcached` 性能要高于 `redis`，虽然 `redis`  最近也在存储大数据的性能上进行优化，但是比起 `memcached`，还是稍有逊色。
 
 ![redis 和 memcached 的区别](http://my-blog-to-use.oss-cn-beijing.aliyuncs.com/18-9-24/61603179.jpg)
 
-## redis 的线程模型
+## 2. redis 的线程模型
 
 **`redis` 内部使用文件事件处理器 `file event handler`，这个文件事件处理器是单线程的，所以 redis 才叫做单线程的模型。它采用 `IO` 多路复用机制（[什么是IO多路复用？](https://www.zhihu.com/question/32163005)）同时监听多个 `socket`**，根据 `socket` 上的事件来选择对应的事件处理器进行处理。
 
@@ -39,7 +39,7 @@
 
 这样便完成了一次通信。
 
-## 为啥 redis 单线程模型也能效率这么高？
+## 3. 为啥 redis 单线程模型也能效率这么高？
 
 1. 第一，纯内存访问，`Redis`将所有数据放在内存中，内存的响应时长大约为100纳秒，这是Redis达到每秒万级别访问的重要基础。
 2. 第二，非阻塞`I/O`，`Redis`使用`epoll`作为`I/O`多路复用技术的实现，再加上`Redis`自身的事件处理模型将`epoll`中的连接、读写、关闭都转换为事件。
@@ -47,7 +47,7 @@
 
 但是单线程会有一个问题：对于每个命令的执行时间是有要求的。如果某个命令执行过长，会造成其他命令的阻塞，对于`Redis`这种高性能的服务来说是致命的，所以`Redis`是面向快速执行场景的数据库。
 
-## 参考
+## 4. 参考
 
 - https://www.javazhiyin.com/22943.html#m
 
