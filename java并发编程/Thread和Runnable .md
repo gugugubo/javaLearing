@@ -1,6 +1,6 @@
 
 
-Thread类的javadoc文档
+#### Thread类的javadoc文档
 
 ```
 When a Java Virtual Machine starts up, there is usually a single non-daemon thread (which typically calls the method named main of some designated class). The Java Virtual Machine continues to execute threads until either of the following occurs:
@@ -51,7 +51,7 @@ Every thread has a name for identification purposes. More than one thread may ha
 
 
 
-Thread 的start() 方法
+##### Thread 的start() 方法
 
 ```
 Causes this thread to begin execution; the Java Virtual Machine calls the run method of this thread.
@@ -63,7 +63,7 @@ The result is that two threads are running concurrently: the current thread  (wh
 
 
 
-  Thread 的run()方法的javadoc文档
+#####   Thread 的run()方法的javadoc文档
 
 ```
  1.如果此线程是使用单独的Runnable run对象构造的，则调用该Runnable对象的run方法；否则，此方法不执行任何操作并返回。 
@@ -76,7 +76,7 @@ The result is that two threads are running concurrently: the current thread  (wh
 
 
 
-Runnable 类得javadoc文档
+#### Runnable 类得javadoc文档
 
 ```
 
@@ -89,5 +89,8 @@ This interface is designed to provide a common protocol for objects that wish to
 
 In addition, Runnable provides the means for a class to be active while not subclassing Thread. A class that implements Runnable can run without subclassing Thread by instantiating a Thread instance and passing itself in as the target. In most cases, the Runnable interface should be used if you are only planning to override the run() method and no other Thread methods. This is important because classes should not be subclassed unless the programmer intends on modifying or enhancing the fundamental behavior of the class.
 此外，Runnable提供了一种方法，使类在不继承Thread类的情况下处于活动状态。实现Runnable的类可以通过实例化一个Thread实例并将其自身作为目标传入来运行，而无需继承Thread类。在大多数情况下，如果只计划重写run()方法，而不打算重写其他线程方法，则应使用Runnable接口。这一点很重要，因为除非程序员打算修改或增强类的基本行为，否则不应该对类进行子类化。 
+
+This method should only be called by a thread that is the owner of this object's monitor. See the notify method for a description of the ways in which a thread can become the owner of a monitor.
+此方法只能由作为此对象监视器所有者的线程调用。有关线程成为监视器所有者的方式的描述，请参见notify方法。
 ```
 
