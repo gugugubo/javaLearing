@@ -150,14 +150,16 @@ ObjectMonitor() {
   }
 ```
 
+### 查看wait的源码实现
 
-
-查看wait方法中的代码：
+[打开网址](http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/9deea71d83dd/src/share/vm/runtime/objectMonitor.cpp)，查看wait方法中的代码：
 
 ```c
 ObjectWaiter node(Self);    //将当前线程封装成ObjectWatier
 ...
+Thread::SpinAcquire (&_WaitSetLock, "WaitSet - add") ;  // 自旋操作
 AddWaiter (&node) ;   // 添加到WaitSet节点中
+...
 ```
 
 查看AddWaiter()方法，就是将ObjectWaiter对象添加到WaitSet节点中，使用双向链表的数据结构
@@ -184,5 +186,30 @@ inline void ObjectMonitor::AddWaiter(ObjectWaiter* node) {
 }
 ```
 
+### 查看notify方法源码实现
 
+根据不同的策略，将从WaitSet集合中移出来的ObjectWaiter对象加入到EntryList集合中
+
+```c
+void ObjectMonitor::notify(TRAPS) {
+    ...
+     ObjectWaiter * iterator = DequeueWaiter() ;
+	...
+	 if (Policy == 0) {   // prepend to EntryList
+         ...
+         if (List == NULL) {
+             iterator->_next = iterator->_prev = NULL ;
+             _EntryList = iterator ;
+         } else {
+             List->_prev = iterator ;
+             iterator->_next = List ;
+             iterator->_prev = NULL ;
+             _EntryList = iterator ;}
+         ... }
+	 if (Policy == 1) {...}   // append to EntryList
+	 if (Policy == 2) {...}      // prepend to cxq
+	 if (Policy == 3) {...}      // append to cxq
+	...
+}
+```
 
