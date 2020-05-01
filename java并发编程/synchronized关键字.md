@@ -43,7 +43,7 @@ public class MyTest4 {
 
 对于synchronized关键字修饰方法来说，在方法的字节码指令中没有出现monitorenter与monitorexit指令，而是出现了一个ACC_SYNCHRONIZED标志。JVM使用了ACC_SYNCHRONIZED访问标志来区分一个方法是否为同步方法；当方法被调用时，调用指令会检查该方法是否拥有ACC_SYNCHRONIZED标志，如果有，那么执行线程将会先持有方法所在对象的monitor对象，然后再去执行方法体；在该方法执行起劲啊，其它任何线程均无法再获取到这个monitor对象，当线程执行完该方法后，他会释放掉这个monitor对象。
 
-对如下代码进行反编译：
+对如下代码进行反编译：MyTest5.java
 
 ```java
 public class MyTest5 {

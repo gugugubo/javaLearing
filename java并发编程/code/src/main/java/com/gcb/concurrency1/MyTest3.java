@@ -1,5 +1,8 @@
 package com.gcb.concurrency1;
 
+/**
+ * interrupt方法的使用
+ */
 public class MyTest3 {
 
     public static void main(String[] args) {
