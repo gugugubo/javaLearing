@@ -53,9 +53,9 @@ configure(WebSecurity web)：这个方法我代码中没有用，这个方法主
 
 #### 3. configure(AuthenticationManagerBuilder auth)
 
-这个方法是主要进行验证的地方，**其中userDetailsService() 代码待会会看**， passwordEncoder(passwordEncoderBean())是密码的一种加密方式。
+这个方法主要查询用户信息进行验证的地方，**其中userDetailsService() 代码待会会看**， passwordEncoder(passwordEncoderBean())是定义密码编码器。
 
-还有两个注解：@EnableWebSecurity，这个注解必须加，开启Security，@EnableGlobalMethodSecurity(prePostEnabled = true)，保证post之前的注解可以使用
+还有两个解：@EnableWebSecurity，这个注解必须加，开启Security，@EnableGlobalMethodSecurity(prePostEnabled = true)，保证post之前的注解可以使用
 
 以上，我们可以确定了哪些路径访问不需要任何权限了，至于哪些路径需要什么权限接着往下看。
 
@@ -318,7 +318,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                 UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
                 // 4.验证这个authToken 是否在有效期呢啊
                 if (jwtTokenUtil.validateToken(authToken, userDetails)) {
-                    // 5.生成主题信息
+                    // 5.生成主体信息
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     // 6.然后将主体信息————authentication，存入上下文环境
@@ -343,7 +343,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
 此处涉及到jjwt（java json web token）包的使用，详情参考s
 
-- [jjwt工具包相关是使用](https://www.cnblogs.com/jtlgb/p/10449899.html)
+- [jjwt工具包相关使用](https://www.cnblogs.com/jtlgb/p/10449899.html)
 - jwt[视频讲解](https://www.bilibili.com/video/av81717531?p=18)
 
 
@@ -395,7 +395,7 @@ public class JwtTokenUtil {
     private Claims getClaimsFromToken(String token){
         Claims claims = null;
         try {
-                Jwts.parser()
+               claims = Jwts.parser()
                         // 设置签名，得到token中的负载
                         .setSigningKey(secret)
                         .parseClaimsJws(token)
@@ -546,7 +546,7 @@ public class JwtTokenUtil {
 ```java
 
 /**
- * 当用户没有访问权限时的处理器，用于返回JSON格式的处理结果；
+ * 当未登录或者token失效访问接口时，用于返回JSON格式的处理结果；
  */
 public class JWTAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
@@ -672,3 +672,28 @@ public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 - http://www.macrozheng.com/#/architect/mall_arch_09
 - https://github.com/echisan/springboot-jwt-demo/blob/master/blog_content.md
 
+
+
+
+
+![1591532454433](assets/1591532454433.png)
+
+AuthenticationManager认证管理器
+
+AccessDecisionManager决策管理器
+
+
+
+
+
+
+
+![1591537106375](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200607213827-702655.png)
+
+
+
+
+
+问题
+
+- [ ] session到底哪里不行？
