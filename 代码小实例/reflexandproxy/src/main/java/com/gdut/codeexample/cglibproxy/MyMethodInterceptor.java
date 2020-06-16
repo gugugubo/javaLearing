@@ -12,11 +12,11 @@ import java.lang.reflect.Method;
  * MethodInterceptor是 Callback接口 的子类
  */
 public class MyMethodInterceptor implements MethodInterceptor {
-    
-    
-    private Object target= null;
-    
-    public MyMethodInterceptor(Object target){
+
+
+    private Object target = null;
+
+    public MyMethodInterceptor(Object target) {
         this.target = target;
     }
 
@@ -32,6 +32,6 @@ public class MyMethodInterceptor implements MethodInterceptor {
         System.out.println("我可以在调用之后增加一些代码");
 
         return invoke;
-        
+
     }
 }

@@ -1,6 +1,6 @@
 package com.gdut.codeexample.jdkproxy;
 
-public class MyInterfaceImpl implements MyInterface{
+public class MyInterfaceImpl implements MyInterface {
     public void say() {
         System.out.println("I am saying");
     }

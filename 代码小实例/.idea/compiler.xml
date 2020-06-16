@@ -6,8 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="reflexandproxy" />
+        <module name="filterandinterceptor" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="codeexample" target="1.5" />
+      <module name="Interceptorandfilter" target="1.5" />
+      <module name="reflexandproxy" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="filterandinterceptor" options="-parameters" />
+    </option>
   </component>
 </project>

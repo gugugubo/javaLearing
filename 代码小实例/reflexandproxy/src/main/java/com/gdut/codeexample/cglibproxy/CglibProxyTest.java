@@ -13,9 +13,9 @@ public class CglibProxyTest {
         enhancer.setSuperclass(interfaceImpl.getClass());
         //设置回调接口
         enhancer.setCallback(myMethodInterceptor);
-      
+
         //创建代理对象
-        MyInterfaceImpl cglibproxy = (MyInterfaceImpl)enhancer.create();
+        MyInterfaceImpl cglibproxy = (MyInterfaceImpl) enhancer.create();
         // 输出：class com.gdut.codeexample.jdkproxy.MyInterfaceImpl   说明代理是MyInterfaceImpl的子类
         System.out.println(cglibproxy.getClass().getSuperclass());
         cglibproxy.say();
