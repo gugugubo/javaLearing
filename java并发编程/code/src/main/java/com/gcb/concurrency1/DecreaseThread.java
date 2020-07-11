@@ -1,6 +1,8 @@
 package com.gcb.concurrency1;
 
 public class DecreaseThread extends Thread{
+    
+    
     private MyObject myObject;
 
     public DecreaseThread(MyObject myObject){

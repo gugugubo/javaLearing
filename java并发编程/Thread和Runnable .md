@@ -29,7 +29,7 @@ class PrimeThread extends Thread {
        new Thread(p).start();
        
 The other way to create a thread is to declare a class that implements the Runnable interface. That class then implements the run method. An instance of the class can then be allocated, passed as an argument when creating Thread, and started. The same example in this other style looks like the following:
-创建线程的另一种方法是声明实现Runnable接口的类。然后，该类实现run方法。然后可以分配类的实例，在创建线程时作为参数传递，然后启动。相同示例如下所示：
+创建线程的另一种方法是声明实现Runnable接口的类。然后，该类实现run方法。然后可以分配类的实例，在创建Thread类时作为参数传递，然后启动。相同示例如下所示：
 
        class PrimeRun implements Runnable {
            long minPrime;

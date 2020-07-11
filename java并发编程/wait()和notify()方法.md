@@ -43,7 +43,7 @@ This method causes the current thread (call it T) to place itself in the wait se
 3.Some other thread interrupts thread T.
 另一个线程中断线程T。
 4.The specified amount of real time has elapsed, more or less. If timeout is zero, however, then real time is not taken into consideration and the thread simply waits until notified.
-指定的实时时间或多或少已经过去。但是，如果超时为零，则不考虑实时性，线程只需等待通知。
+指定的实时时间或多或少已经过去。但是，如果超时为零，则不考虑真实的时间，线程只需等待通知。
 
 A thread can also wake up without being notified, interrupted, or timing out, a so-called spurious wakeup. While this will rarely occur in practice, applications must guard against it by testing for the condition that should have caused the thread to be awakened, and continuing to wait if the condition is not satisfied. In other words, waits should always occur in loops, like this one
 线程也可以在不被通知、中断或超时的情况下唤醒，即所谓的虚假唤醒。虽然这种情况在实践中很少发生，但应用程序必须通过测试本应导致线程被唤醒的条件，并在条件不满足时也要继续等待来防范这种情况。换句话说，等待应该总是以循环的形式出现，就像下面这样  MyObject.java 中修改后带while的代码

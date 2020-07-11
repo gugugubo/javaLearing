@@ -48,7 +48,9 @@ public class Test21 {
                     System.out.print(i);
                     test.parseObjectHeader(getObjectHeader(d));
                 }
+//                Thread.sleep(1000);
                 System.out.print(i);
+//                Thread.interrupted();
                 test.parseObjectHeader(getObjectHeader(d));
             }
         }, "t2");

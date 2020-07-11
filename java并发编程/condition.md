@@ -31,19 +31,21 @@
 
 
 
- 
+
 
 
 传统上，我们可以通过synchromized关键字+wait+notify/notifyAll来实现多个线程之间的协调和通信，整个过程都是由JVM来帮助我们实现的，开发者无需了解底层的实现细节
 
 从JDK 5开始，并发包提供了Lock，condition(await与signal/signalAll)来实现多个线程之间的协调通信，整个过程都是由开发者来控制的，而且相比于传统的方式，更加灵活，功能也更加强大。
 
+先了解一些interrupt()方法的相关知识：[博客地址](https://www.cnblogs.com/noteless/p/10372826.html#0)
+
 ### Condition类的javadoc文档
 
 ```
 Condition
-Condition factors out the Object monitor methods (wait, notify and notifyAll) into distinct objects to give the effect of having multiple wait-sets per object, by combining them with the use of arbitrary Lock implementations. Where a Lock replaces the use of synchronized methods and statements, a Condition replaces the use of the Object monitor methods.
-Condition将对象监视器方法（wait、notify和notifyAll）分解为不同的对象，通过将它们与使用任意锁实现相结合，使每个对象具有多个wait-sets的效果。当Lock替换同步方法和语句的使用时，Condition将替换对象监视器方法的使用。 Lock->synchronized,Condition->Object monitor
+Condition factors out the Object mon itor methods (wait, notify and notifyAll) into distinct objects to give the effect of having multiple wait-sets per object, by combining them with the use of arbitrary Lock implementations. Where a Lock replaces the use of synchronized methods and statements, a Condition replaces the use of the Object monitor methods.
+Condition将对象监视器方法（wait、notify和notifyAll）分解为不同的对象，通过将它们与使用任意Lock实现相结合，使每个对象具有多个wait-sets的效果。当Lock替换同步方法和语句的使用时，Condition将替换对象监视器方法的使用。 Lock->synchronized,Condition->Object monitor
 
 Conditions (also known as condition queues or condition variables) provide a means for one thread to suspend execution (to "wait") until notified by another thread that some state condition may now be true. Because access to this shared state information occurs in different threads, it must be protected, so a lock of some form is associated with the condition. The key property that waiting for a condition provides is that it atomically releases the associated lock and suspends the current thread, just like Object.wait.
 Conditions（也称为Conditions队列或Conditions变量）为一个线程提供了一种暂停执行（等待）的方法，直到另一个线程notified认为某些状态条件现在可能为真(跟wait/notify的逻辑是一样的)。由于对共享状态信息的访问发生在不同的线程中，因此必须对其进行保护，因此某种形式的lock与该condition相关联。waiting for a condition提供的关键属性是，它自动释放关联的锁并挂起当前线程，就像Object.wait一样。
@@ -92,10 +94,10 @@ class BoundedBuffer {
    }
    
    A Condition implementation can provide behavior and semantics that is different from that of the Object monitor methods, such as guaranteed ordering for notifications, or not requiring a lock to be held when performing notifications. If an implementation provides such specialized semantics then the implementation must document those semantics.
-Condition实现可以提供不同于对象监视器方法的行为和语义，例如保证通知的顺序，或者在执行通知时不需要持有锁。如果一个实现implementation提供了这样的专门语义，那么该实现implementation必须记录这些语义。
+Condition实现可以提供不同于对象监视器方法的行为和语义，例如保证通知的顺序，或者在执行通知时不需要持有锁。如果一个implementation提供了这样的专门语义，那么该实现implementation必须记录这些语义。
 
 Note that Condition instances are just normal objects and can themselves be used as the target in a synchronized statement, and can have their own monitor wait and notification methods invoked. Acquiring the monitor lock of a Condition instance, or using its monitor methods, has no specified relationship with acquiring the Lock associated with that Condition or the use of its waiting and signalling methods. It is recommended that to avoid confusion you never use Condition instances in this way, except perhaps within their own implementation.
-请注意，条件实例只是普通对象，它们本身可以用作synchronized语句中的目标，并且可以调用它们自己的监视器等待和通知方法。获取Condition实例的监视锁或使用其监视方法与获取与该Condition相关联的Lock或使用其waiting和signalling方法没有指定的关系。为了避免混淆，建议您不要以这种方式使用条件实例，除非可能是在它们自己的实现中。
+请注意，Condition实例只是普通对象，它们本身可以用作synchronized语句中的目标，并且可以调用它们自己的监视器等待和通知方法。获取Condition实例的监视锁或使用其监视方法与获取与该Condition相关联的Lock或使用其waiting和signalling方法没有指定的关系。为了避免混淆，建议您不要以这种方式使用条件实例，除非可能是在它们自己的实现中。
 
 Except where noted, passing a null value for any parameter will result in a NullPointerException being thrown.
 除非另有说明，否则为任何参数传递空值将导致引发NullPointerException。
@@ -111,12 +113,12 @@ When waiting upon a Condition, a "spurious wakeup" is permitted to occur, in gen
 在等待条件时，通常允许出现“虚假唤醒”，作为对底层平台语义的让步。这对大多数应用程序几乎没有实际影响，因为应该始终在循环中等待Condition和测试正在等待的状态条件是否被满足。实现可以自由地消除虚假唤醒的可能性，但建议应用程序程序员始终假设它们可能发生，因此始终在循环中等待。
 
 The three forms of condition waiting (interruptible, non-interruptible, and timed) may differ in their ease of implementation on some platforms and in their performance characteristics. In particular, it may be difficult to provide these features and maintain specific semantics such as ordering guarantees. Further, the ability to interrupt the actual suspension of the thread may not always be feasible to implement on all platforms.
-condition等待的三种形式（可中断、不可中断和定时）在某些平台上的易实现性和性能特征上可能有所不同。特别是，可能很难提供这些特性并维护特定的语义，例如排序保证。此外，在所有平台上实现中断线程实际挂起的能力并不总是可行的。
+condition等待的三种形式（可中断、不可中断和定时）在某些平台上的易实现性和性能特征上可能有所不同。特别是，可能很难提供这些特性并维护例如排序保证这样的特定语义。此外，在所有平台上实现中断线程实际挂起的能力并不总是可行的。
 Consequently, an implementation is not required to define exactly the same guarantees or semantics for all three forms of waiting, nor is it required to support interruption of the actual suspension of the thread.
 因此，实现不需要为所有三种等待形式定义完全相同的保证或语义，也不需要支持中断线程的实际挂起。
 
 An implementation is required to clearly document the semantics and guarantees provided by each of the waiting methods, and when an implementation does support interruption of thread suspension then it must obey the interruption semantics as defined in this interface.
-实现implementation需要清楚地记录每个等待方法提供的语义和保证，当实现implementation确实支持中断线程挂起时，它必须遵守此接口中定义的中断语义。
+implementation需要清楚地记录每个等待方法提供的语义和保证，当implementation确实支持中断线程挂起时，它必须遵守此接口中定义的中断语义。
 As interruption generally implies cancellation, and checks for interruption are often infrequent, an implementation can favor responding to an interrupt over normal method return. This is true even if it can be shown that the interrupt occurred after another action that may have unblocked the thread. An implementation should document this behavior.
 由于中断通常意味着取消，并且对中断的检查通常是不经常的，所以实现可能倾向于响应中断，而不是普通的方法返回。即使可以显示中断发生在另一个可能已解除阻止线程的操作之后，也是如此。实现implementation应该记录此行为。
 ```
@@ -142,14 +144,14 @@ A "spurious wakeup" occurs.
 4.出现“虚假唤醒”。
 
 In all cases, before this method can return the current thread must re-acquire the lock associated with this condition. When the thread returns it is guaranteed to hold this lock.
-在所有情况下，在该方法返回之前，当前线程必须重新获取与此条件关联的锁。当线程返回时，它保证保持这个锁。
+在所有情况下，在该方法返回之前，当前线程必须重新获取与此condition关联的锁。当线程返回时，它保证持有这个锁。
 If the current thread:
 has its interrupted status set on entry to this method; or
 is interrupted while waiting and interruption of thread suspension is supported,
 then InterruptedException is thrown and the current thread's interrupted status is cleared. It is not specified, in the first case, whether or not the test for interruption occurs before the lock is released.
 如果当前线程：
 1.在进入此方法时设置了中断状态；或
-2.等待时中断，支持中断线程挂起，
+2.等待时被中断，支持中断线程挂起，
 那么就会抛出InterruptedException并清除当前线程的中断状态。在第一种情况下，未规定是否在释放锁之前要进行中断测试。
 
 Implementation Considerations
@@ -273,7 +275,7 @@ An implementation may (and typically does) require that the current thread hold 
 ```
 
 
-Wakes up all waiting threads.
+Wakes up all waiting threads.                                                                  
 唤醒所有等待的线程。
 If any threads are waiting on this condition then they are all woken up. Each thread must re-acquire the lock before it can return from await.
 如果有线程在此condition下等待，那么它们都会被唤醒。每个线程必须重新获取锁，然后才能从await返回。

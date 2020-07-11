@@ -37,7 +37,7 @@
 
 ## 2.2 并行与并发
 
-### 并行
+### 并发
 
 在单核 cpu 下，线程实际还是串行执行的。操作系统中有一个组件叫做任务调度器，将 cpu 的时间片（windows
 下时间片最小约为 15 毫秒）分给不同的程序使用，只是由于 cpu 在线程间（时间片很短）的切换非常快，人类感
@@ -215,9 +215,11 @@ FutureTask 能够接收 Callable 类型的参数，用来处理有返回结果�
 #### sleep
 
 1. 调用 sleep 会让当前线程从 Running 进入 Timed Waiting 状态（阻塞）
-2. 其它线程可以使用 interrupt 方法打断正在睡眠的线程，那么被打断的线程这时就会会抛出 `InterruptedException`异常【注意：这里打断的是正在休眠的线程，而不是其它状态的线程】
+2. 其它线程可以使用 interrupt 方法打断正在睡眠的线程，那么被打断的线程这时就会抛出 `InterruptedException`异常【注意：这里打断的是正在休眠的线程，而不是其它状态的线程】
 3. 睡眠结束后的线程未必会立刻得到执行(需要分配到cpu时间片)
 4. 建议用 TimeUnit 的 `sleep()` 代替 Thread 的 `sleep()`来获得更好的可读性
+
+
 
 #### yield
 
@@ -367,6 +369,20 @@ class TwoParseTermination{
 }
 ```
 
+### 3.3.6sleep，wait，join 对比
+
+关于join的原理和这几个方法的对比：[看这里](https://blog.csdn.net/dataiyangu/article/details/104956755)
+
+> 补充：
+>
+> 1. sleep，join，yield，interrupted是Thread类中的方法
+> 2. wait/notify是object中的方法
+>
+> sleep 不释放锁、释放cpu
+> join 释放锁、抢占cpu
+> yiled 不释放锁、释放cpu
+> wait 释放锁、释放cpu
+
 ## 3.4 守护线程
 
 默认情况下，java进程需要等待所有的线程结束后才会停止，但是有一种特殊的线程，叫做守护线程，在其他线程全部结束的时候即使守护线程还未结束代码未执行完java进程也会停止。普通线程t1可以调用`t1.setDeamon(true);` 方法变成守护线程 
@@ -394,7 +410,7 @@ class TwoParseTermination{
 
 ## 3.6 线程状态之六种状态
 
-这是从 Java API 层面来描述的
+这是从 Java API 层面来描述的，我们主要研究的就是这种。状态转换详情图：[地址](https://www.jianshu.com/p/ec94ed32895f)
 根据 Thread.State 枚举，分为六种状态 Test12.java
 
 ![1583507709834](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307093352-614933.png)
@@ -405,6 +421,10 @@ class TwoParseTermination{
    是可运行）
 3. `BLOCKED` ， `WAITING` ， `TIMED_WAITING` 都是 Java API 层面对【阻塞状态】的细分，后面会在状态转换一节
    详述
+
+
+
+
 
 
 
@@ -656,8 +676,8 @@ class UnsafeTest{
 ##### 不安全原因分析
 
 无论哪个线程中的 method2 和method3 引用的都是同一个对象中的 list 成员变量：一个 ArrayList ，在添加一个元素的时候，它可能会有两步来完成： 
-          1. 第一步，在 arrayList[Size] 的位置存放此元素； 第二部增大 Size 的值。 
-          2. 在单线程运行的情况下，如果 Size = 0，添加一个元素后，此元素在位置 0，而且 Size=1；而如果是在多线程情下，比如有两个线程，线程 A 先将元素存放在位置 0。但是此时 CPU 调线程A暂停，线程 B 得到运行的机会。线程B也向此 ArrayList 添加元素，因为此时 Size 仍等于 0 （注意哦，我们假设的是添加一个元素是要两个步骤哦，而线程A仅仅完成了步骤1），所以线程B也将元素存放在位置0。然后线程A和线程B都继续运行，都增加 Size 的值。 那好，现在我们来看看 ArrayList 的情况，元素实际上只有一个，存放在位置 0，而 Size 却等于 2。这就是“线程不 安全”了。 
+          1. 第一步，在 arrayList[Size] 的位置存放此元素； 第二步增大 Size 的值。 
+                    2. 在单线程运行的情况下，如果 Size = 0，添加一个元素后，此元素在位置 0，而且 Size=1；而如果是在多线程情下，比如有两个线程，线程 A 先将元素存放在位置 0。但是此时 CPU 调线程A暂停，线程 B 得到运行的机会。线程B也向此 ArrayList 添加元素，因为此时 Size 仍等于 0 （注意哦，我们假设的是添加一个元素是要两个步骤哦，而线程A仅仅完成了步骤1），所以线程B也将元素存放在位置0。然后线程A和线程B都继续运行，都增加 Size 的值。 那好，现在我们来看看 ArrayList 的情况，元素实际上只有一个，存放在位置 0，而 Size 却等于 2。这就是“线程不 安全”了。 
                     3. ![1583589268096](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307215429-139261.png)
 
 ![1583587571334](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307212611-483979.png)
@@ -960,7 +980,7 @@ Monitor被翻译为监视器或者说管程
 - 刚开始时Monitor中的Owner为null
 - 当Thread-2 执行synchronized(obj){}代码时就会将Monitor的所有者Owner 设置为 Thread-2，上锁成功，Monitor中同一时刻只能有一个Owner
 - 当Thread-2 占据锁时，如果线程Thread-3，Thread-4也来执行synchronized(obj){}代码，就会进入EntryList中变成BLOCKED状态
-- hread-2 执行完同步代码块的内容，然后唤醒 EntryList 中等待的线程来竞争锁，竞争时是非公平的
+- Thread-2 执行完同步代码块的内容，然后唤醒 EntryList 中等待的线程来竞争锁，竞争时是非公平的
 - 图中 WaitSet 中的 Thread-0，Thread-1 是之前获得过锁，但条件不满足进入 WAITING 状态的线程，后面讲wait-notify 时会分析
 
 > 注意：synchronized 必须是进入同一个对象的 monitor 才有上述的效果不加 synchronized 的对象不会关联监视器，不遵从以上规则
@@ -1015,7 +1035,7 @@ Monitor被翻译为监视器或者说管程
 
 #### 轻量级锁
 
-轻量级锁的使用场景是：如果一个对象虽然有多个线程要对它进行加锁，但是加锁的时间是错开的（也就是没有人可以竞争的），那么可以使用轻量级锁来进行优化。轻量级锁对使用者是透明的，即语法仍然是`synchronized`假设有两个方法同步块，利用同一个对象加锁
+轻量级锁的使用场景是：如果一个对象虽然有多个线程要对它进行加锁，但是加锁的时间是错开的（也就是没有人可以竞争的），那么可以使用轻量级锁来进行优化。轻量级锁对使用者是透明的，即语法仍然是`synchronized`，假设有两个方法同步块，利用同一个对象加锁
 
 ```java
 static final Object obj = new Object();
@@ -1042,7 +1062,7 @@ public static void method2() {
    1. 如果是其它线程已经持有了该Object的轻量级锁，那么表示有竞争，将进入锁膨胀阶段
    2. 如果是自己的线程已经执行了synchronized进行加锁，那么那么再添加一条 Lock Record 作为重入的计数
       1. ![1583756190177](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309201634-451646.png)
-5. 当线程推出synchronized代码块的时候，**如果获取的是取值为 null 的锁记录 为什么叫做取值为null？？？？？**，表示有重入，这时重置锁记录，表示重入计数减一
+5. 当线程退出synchronized代码块的时候，**如果获取的是取值为 null 的锁记录 为什么叫做取值为null？？？？？**，表示有重入，这时重置锁记录，表示重入计数减一
    1. ![1583756357835](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309201919-357425.png)
 6. 当线程退出synchronized代码块的时候，如果获取的锁记录取值不为 null，那么使用cas将Mark Word的值恢复给对象
    1. 成功则解锁成功
@@ -1118,7 +1138,7 @@ public static void method2() {
 
 
 
-测试禁用：如果没有开启偏向锁，那么对象创建后最后三位的值为001，这时候它的hashcode，age都为0，第一次用到`hashcode`时才赋值。在上面测试代码运行时在添加 VM 参数`-XX:-UseBiasedLocking`禁用偏向锁（禁用偏向锁则优先使用轻量级锁），退出`synchronized`状态变回001
+测试禁用：如果没有开启偏向锁，那么对象创建后最后三位的值为001，这时候它的hashcode，age都为0，hashcode是第一次用到`hashcode`时才赋值的。在上面测试代码运行时在添加 VM 参数`-XX:-UseBiasedLocking`禁用偏向锁（禁用偏向锁则优先使用轻量级锁），退出`synchronized`状态变回001
 
 1. 测试代码Test18.java 虚拟机参数`-XX:-UseBiasedLocking`
 
@@ -1193,4 +1213,29 @@ public static void method2() {
 ##### 批量重偏向
 
 如果对象被多个线程访问，但是没有竞争，这时候偏向了线程一的对象又有机会重新偏向线程二，即可以不用升级为轻量级锁，可这和我们之前做的实验矛盾了呀，其实要实现重新偏向是要有条件的：就是超过20对象对同一个线程如线程一撤销偏向时，那么第20个及以后的对象才可以将撤销对线程一的偏向这个动作变为将第20个及以后的对象偏向线程二。Test21.java
+
+
+
+## 4.6 wait和notify
+
+建议先看看wait和notify方法的javadoc文档
+
+### 4.6.1同步模式之保护性暂停
+
+即 Guarded Suspension，用在一个线程等待另一个线程的执行结果，要点：
+
+1. 有一个结果需要从一个线程传递到另一个线程，让他们关联同一个 GuardedObject
+2. 如果有结果不断从一个线程到另一个线程那么可以使用消息队列（见生产者/消费者）
+3. JDK 中，join 的实现、Future 的实现，采用的就是此模式
+4. 因为要等待另一方的结果，因此归类到同步模式
+
+代码：Test22.java
+
+![1594473284105](assets/1594473284105.png)
+
+
+
+
+
+
 
