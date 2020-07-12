@@ -369,7 +369,7 @@ class TwoParseTermination{
 }
 ```
 
-### 3.3.6sleep，wait，join 对比
+### 3.3.6 sleep，yiled，wait，join 对比
 
 关于join的原理和这几个方法的对比：[看这里](https://blog.csdn.net/dataiyangu/article/details/104956755)
 
@@ -417,7 +417,7 @@ class TwoParseTermination{
 
 1. NEW 跟五种状态里的初始状态是一个意思
 2. RUNNABLE 是当调用了 `start()` 方法之后的状态，注意，Java API 层面的 `RUNNABLE` 状态涵盖了操作系统层面的
-   【可运行状态】、【运行状态】和【阻塞状态】（由于 BIO 导致的线程阻塞，在 Java 里无法区分，仍然认为
+   【可运行状态】、【运行状态】和【io阻塞状态】（由于 BIO 导致的线程阻塞，在 Java 里无法区分，仍然认为
    是可运行）
 3. `BLOCKED` ， `WAITING` ， `TIMED_WAITING` 都是 Java API 层面对【阻塞状态】的细分，后面会在状态转换一节
    详述
@@ -1229,13 +1229,324 @@ public static void method2() {
 3. JDK 中，join 的实现、Future 的实现，采用的就是此模式
 4. 因为要等待另一方的结果，因此归类到同步模式
 
-代码：Test22.java
+代码：Test22.java    Test23.java这是带超时时间的
 
 ![1594473284105](assets/1594473284105.png)
 
+Test23.java中jiang'dao'de关于超时的增强，在join(long millis) 的源码中得到了体现：
+
+```java
+    public final synchronized void join(long millis)
+    throws InterruptedException {
+        long base = System.currentTimeMillis();
+        long now = 0;
+
+        if (millis < 0) {
+            throw new IllegalArgumentException("timeout value is negative");
+        }
+		
+        if (millis == 0) {
+            while (isAlive()) {
+                wait(0);
+            }
+        } else {
+        // join一个指定的时间
+            while (isAlive()) {
+                long delay = millis - now;
+                if (delay <= 0) {
+                    break;
+                }
+                wait(delay);
+                now = System.currentTimeMillis() - base;
+            }
+        }
+    }
+```
+
+
+
+多任务版 GuardedObject图中 Futures 就好比居民楼一层的信箱（每个信箱有房间编号），左侧的 t0，t2，t4 就好比等待邮件的居民，右侧的 t1，t3，t5 就好比邮递员如果需要在多个类之间使用 GuardedObject 对象，作为参数传递不是很方便，因此设计一个用来解耦的中间类，这样不仅能够解耦【结果等待者】和【结果生产者】，还能够同时支持多个任务的管理。和生产者消费者模式的区别就是：这个生产者和消费者之间是一一对应的关系，但是生产者消费者模式并不是。rpc框架的调用中就使用到了这种模式。  Test24.java
+
+![1594518049426](assets/1594518049426.png)
 
 
 
 
 
+### 4.6.2异步模式之生产者/消费者
 
+要点
+
+1. 与前面的保护性暂停中的 GuardObject 不同，不需要产生结果和消费结果的线程一一对应
+2. 消费队列可以用来平衡生产和消费的线程资源
+3. 生产者仅负责产生结果数据，不关心数据该如何处理，而消费者专心处理结果数据
+4. 消息队列是有容量限制的，满时不会再加入数据，空时不会再消耗数据
+5. JDK 中各种[阻塞队列](https://blog.csdn.net/yanpenglei/article/details/79556591)，采用的就是这种模式
+
+“异步”的意思就是生产者产生消息之后消息没有被立刻消费，而“同步模式”中，消息在产生之后被立刻消费了。
+
+![1594524622020](assets/1594524622020.png)
+
+我们写一个线程间通信的消息队列，要注意区别，像rabbit mq等消息框架是进程间通信的。
+
+
+
+## 4.7 park & unpack
+
+### 4.7.1 基本使用
+
+它们是 LockSupport 类中的方法   Test26.java
+
+```
+// 暂停当前线程
+LockSupport.park();
+// 恢复某个线程的运行
+LockSupport.unpark;
+```
+
+
+
+### 4.7.2 park unpark 原理
+
+每个线程都有自己的一个 Parker 对象，由三部分组成 _counter， _cond和 _mutex
+
+1. 打个比喻线程就像一个旅人，Parker 就像他随身携带的背包，条件变量 _ cond就好比背包中的帐篷。_counter 就好比背包中的备用干粮（0 为耗尽，1 为充足）
+2. 调用 park 就是要看需不需要停下来歇息
+   1. 如果备用干粮耗尽，那么钻进帐篷歇息
+   2. 如果备用干粮充足，那么不需停留，继续前进
+3. 调用 unpark，就好比令干粮充足
+   1. 如果这时线程还在帐篷，就唤醒让他继续前进
+   2. 如果这时线程还在运行，那么下次他调用 park 时，仅是消耗掉备用干粮，不需停留继续前进
+      1. 因为背包空间有限，多次调用 unpark 仅会补充一份备用干粮
+
+可以不看例子，直接看实现过程
+
+#### 先调用park再调用upark的过程
+
+1.先调用park
+
+1. 当前线程调用 Unsafe.park() 方法
+2. 检查 _counter ，本情况为 0，这时，获得 _mutex 互斥锁(mutex对象有个等待队列 _cond)
+3. 线程进入 _cond 条件变量阻塞
+4. 设置 _counter = 0
+
+![1594531894163](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200712133136-910801.png)
+
+2.调用upark
+
+1. 调用 Unsafe.unpark(Thread_0) 方法，设置 _counter 为 1
+2. 唤醒 _cond 条件变量中的 Thread_0
+3. Thread_0 恢复运行
+4. 设置 _counter 为 0
+
+![1594532057205](assets/1594532057205.png)
+
+#### 先调用upark再调用park的过程
+
+1. 调用 Unsafe.unpark(Thread_0) 方法，设置 _counter 为 1
+2.  当前线程调用 Unsafe.park() 方法
+3. 检查 _counter ，本情况为 1，这时线程无需阻塞，继续运行
+4. 设置 _counter 为 0
+
+![1594532135616](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200712133539-357066.png)
+
+
+
+## 4.8 线程状态转换
+
+![img](https://upload-images.jianshu.io/upload_images/4840092-f85e70e2262b7878.png?imageMogr2/auto-orient/strip|imageView2/2/w/1155)
+
+1. RUNNABLE <--> WAITING
+
+   1. 线程用synchronized(obj)获取了对象锁后
+      1. 调用obj.wait()方法时，t 线程从RUNNABLE --> WAITING
+      2. 调用obj.notify()，obj.notifyAll()，t.interrupt()时
+         1. 竞争锁成功，t 线程从WAITING --> RUNNABLE
+         2. 竞争锁失败，t 线程从WAITING --> BLOCKED
+   2. Test27.java
+
+2. RUNNABLE <--> WAITING
+
+   1. 当前线程调用 LockSupport.park() 方法会让当前线程从 RUNNABLE --> WAITING
+   2. 调用 LockSupport.unpark(目标线程) 或调用了线程 的 interrupt() ，会让目标线程从 WAITING -->
+      RUNNABLE
+
+3. RUNNABLE <--> WAITING
+
+   1. 当前线程调用 t.join() 方法时，当前线程从 RUNNABLE --> WAITING
+      注意是当前线程在t 线程对象的监视器上等待
+   2. t 线程运行结束，或调用了当前线程的 interrupt() 时，当前线程从 WAITING --> RUNNABLE
+
+4. RUNNABLE <--> TIMED_WAITING
+
+   t 线程用 synchronized(obj) 获取了对象锁后
+
+   1. 调用 obj.wait(long n) 方法时，t 线程从 RUNNABLE --> TIMED_WAITING
+   2. t 线程等待时间超过了 n 毫秒，或调用 obj.notify() ， obj.notifyAll() ， t.interrupt() 时
+      1. 竞争锁成功，t 线程从 TIMED_WAITING --> RUNNABLE
+      2. 竞争锁失败，t 线程从 TIMED_WAITING --> BLOCKED
+
+5. RUNNABLE <--> TIMED_WAITING
+
+   1. 当前线程调用 t.join(long n) 方法时，当前线程从 RUNNABLE --> TIMED_WAITING
+      注意是当前线程在t 线程对象的监视器上等待
+   2. 当前线程等待时间超过了 n 毫秒，或t 线程运行结束，或调用了当前线程的 interrupt() 时，当前线程从
+      TIMED_WAITING --> RUNNABLE
+
+6. RUNNABLE <--> TIMED_WAITING
+
+   1. 当前线程调用 Thread.sleep(long n) ，当前线程从 RUNNABLE --> TIMED_WAITING
+   2. 当前线程等待时间超过了 n 毫秒或调用了线程 的 interrupt() ，当前线程从 TIMED_WAITING --> RUNNABLE
+
+7. RUNNABLE <--> TIMED_WAITING
+
+   1. 当前线程调用 LockSupport.parkNanos(long nanos) 或 LockSupport.parkUntil(long millis) 时，当前线
+      程从 RUNNABLE --> TIMED_WAITING
+   2. 调用 LockSupport.unpark(目标线程) 或调用了线程 的 interrupt() ，或是等待超时，会让目标线程从
+      TIMED_WAITING--> RUNNABLE
+
+   
+
+
+
+## 4.9 活跃性
+
+活跃性相关的一系列问题都可以用ReentrantLock进行解决。
+
+### 4.9.1 死锁
+
+有这样的情况：一个线程需要同时获取多把锁，这时就容易发生死锁t1 线程获得A对象锁，接下来想获取B对象的锁；t2 线程获得B对象锁，接下来想获取A对象的锁例。Test28.java
+
+### 4.9.2 检测死锁
+
+检测死锁可以使用 jconsole工具；或者使用 jps 定位进程 id，再用 jstack 定位死锁：Test28.java
+
+下面使用jstack工具进行演示
+
+```
+D:\我的项目\JavaLearing\java并发编程\jdk8>jps
+1156 RemoteMavenServer36
+20452 Test25
+9156 Launcher
+23544 Jps
+23848
+22748 Test28
+
+D:\我的项目\JavaLearing\java并发编程\jdk8>jstack 22748
+2020-07-12 18:54:44
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (25.211-b12 mixed mode):
+
+"DestroyJavaVM" #14 prio=5 os_prio=0 tid=0x0000000002a03800 nid=0x5944 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+//................省略了大部分内容.............//
+Found one Java-level deadlock:
+=============================
+"线程二":
+  waiting to lock monitor 0x0000000002afc0e8 (object 0x00000000db9f76d0, a java.lang.Object),
+  which is held by "线程1"
+"线程1":
+  waiting to lock monitor 0x0000000002afe1e8 (object 0x00000000db9f76e0, a java.lang.Object),
+  which is held by "线程二"
+
+Java stack information for the threads listed above:
+===================================================
+"线程二":
+        at com.concurrent.test.Test28.lambda$main$1(Test28.java:39)
+        - waiting to lock <0x00000000db9f76d0> (a java.lang.Object)
+        - locked <0x00000000db9f76e0> (a java.lang.Object)
+        at com.concurrent.test.Test28$$Lambda$2/326549596.run(Unknown Source)
+        at java.lang.Thread.run(Thread.java:748)
+"线程1":
+        at com.concurrent.test.Test28.lambda$main$0(Test28.java:23)
+        - waiting to lock <0x00000000db9f76e0> (a java.lang.Object)
+        - locked <0x00000000db9f76d0> (a java.lang.Object)
+        at com.concurrent.test.Test28$$Lambda$1/1343441044.run(Unknown Source)
+        at java.lang.Thread.run(Thread.java:748)
+
+
+```
+
+
+
+### 4.9.3 哲学家就餐问题
+
+![1594553609905](assets/1594553609905.png)
+
+有五位哲学家，围坐在圆桌旁。
+他们只做两件事，思考和吃饭，思考一会吃口饭，吃完饭后接着思考。
+吃饭时要用两根筷子吃，桌上共有 5 根筷子，每位哲学家左右手边各有一根筷子。
+如果筷子被身边的人拿着，自己就得等待  Test29.java
+
+当每个哲学家即线程持有一根筷子时，他们都在等待另一个线程释放锁，因此造成了死锁。这种线程没有按预期结束，执行不下去的情况，归类为【活跃性】问题，除了死锁以外，还有活锁和饥饿者两种情
+况
+
+### 4.9.4 饥饿
+
+很多教程中把饥饿定义为，一个线程由于优先级太低，始终得不到 CPU 调度执行，也不能够结束，饥饿的情况不易演示，讲读写锁时会涉及饥饿问题下面我讲一下一个线程饥饿的例子，先来看看使用顺序加锁的方式解决之前的死锁问题，就是两个线程对两个不同的对象加锁的时候都使用相同的顺序进行加锁。 但是会产生饥饿问题Test29
+
+![1594558469826](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200712205431-675389.png)
+
+顺序加锁的解决方案
+
+![1594558499871](assets/1594558499871.png)
+
+
+
+## 4.10 ReentrantLock
+
+相对于 synchronized 它具备如下特点
+
+1. 可中断
+2. 可以设置超时时间
+3. 可以设置为公平锁
+4. 支持多个条件变量，即对与不满足条件的线程可以放到不同的集合中等待
+
+与 synchronized 一样，都支持可重入
+
+基本语法
+
+```java
+// 获取锁
+reentrantLock.lock();
+try {
+ // 临界区
+} finally {
+ // 释放锁
+ reentrantLock.unlock();
+}
+
+```
+
+### 可重入
+
+可重入是指同一个线程如果首次获得了这把锁，那么因为它是这把锁的拥有者，因此有权利再次获取这把锁如果是不可重入锁，那么第二次获得锁时，自己也会被锁挡住
+
+
+
+### 可打断
+
+直接看例子：Test31.java
+
+
+
+### 锁超时
+
+直接看例子：Test32.java
+
+使用锁超时解决哲学家就餐死锁问题：Test33.java
+
+
+
+### 公平锁
+
+synchronized锁中，在entrylist等待的锁在竞争时不是按照先到先得来获取锁的，所以说synchronized锁时不公平的；ReentranLock锁默认是不公平的，但是可以通过设置实现公平锁。本意是为了解决之前提到的饥饿问题，但是公平锁一般没有必要，会降低并发度，使用trylock也可以实现。
+
+
+
+# 问题
+
+
+
+1. 集合并发遇到的报错  Test24.java   [参考博客，未看](https://www.cnblogs.com/snowater/p/8024776.html)
+2. 

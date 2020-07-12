@@ -45,7 +45,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583824588537" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/concurrent/test" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -54,56 +54,23 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
-  <component name="RunManager" selected="应用程序.Test22">
-    <configuration name="Test18" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test18" />
-      <module name="jdk8" />
-      <option name="VM_PARAMETERS" value="-XX:BiasedLockingStartupDelay=0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test19" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test19" />
-      <module name="jdk8" />
-      <option name="VM_PARAMETERS" value="-XX:BiasedLockingStartupDelay=0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test21" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test21" />
-      <module name="jdk8" />
-      <option name="VM_PARAMETERS" value="-XX:BiasedLockingStartupDelay=0" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test22" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test22" />
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.concurrent.test" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\我的项目\JavaLearing\java并发编程\jdk8\src\main\java\com\concurrent\test" />
+    </key>
+  </component>
+  <component name="RunManager" selected="应用程序.Test33">
+    <configuration name="Test29" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test29" />
       <module name="jdk8" />
       <extension name="coverage">
         <pattern>
@@ -115,8 +82,47 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test3" />
+    <configuration name="Test30" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test30" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test31" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test31" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test32" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test32" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test33" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test33" />
       <module name="jdk8" />
       <extension name="coverage">
         <pattern>
@@ -129,19 +135,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="应用程序.Test21" />
-      <item itemvalue="应用程序.Test3" />
-      <item itemvalue="应用程序.Test18" />
-      <item itemvalue="应用程序.Test19" />
-      <item itemvalue="应用程序.Test22" />
+      <item itemvalue="应用程序.Test29" />
+      <item itemvalue="应用程序.Test30" />
+      <item itemvalue="应用程序.Test31" />
+      <item itemvalue="应用程序.Test32" />
+      <item itemvalue="应用程序.Test33" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.Test22" />
-        <item itemvalue="应用程序.Test21" />
-        <item itemvalue="应用程序.Test18" />
-        <item itemvalue="应用程序.Test19" />
-        <item itemvalue="应用程序.Test3" />
+        <item itemvalue="应用程序.Test33" />
+        <item itemvalue="应用程序.Test32" />
+        <item itemvalue="应用程序.Test31" />
+        <item itemvalue="应用程序.Test30" />
+        <item itemvalue="应用程序.Test29" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +168,8 @@
       <workItem from="1583638523979" duration="3563000" />
       <workItem from="1583741482263" duration="5173000" />
       <workItem from="1583809083587" duration="4924000" />
-      <workItem from="1594379983288" duration="7201000" />
+      <workItem from="1594379983288" duration="11251000" />
+      <workItem from="1594514619073" duration="23899000" />
     </task>
     <servers />
   </component>
@@ -174,34 +181,58 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594453194650" />
+    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1594553701917">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1594553701917" />
     <state x="549" y="166" key="FileChooserDialogImpl" timestamp="1594437111403">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="166" key="FileChooserDialogImpl/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594437111403" />
-    <state width="1493" height="33" key="GridCell.Tab.0.bottom" timestamp="1594473543277">
+    <state width="1493" height="203" key="GridCell.Tab.0.bottom" timestamp="1594566754258">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="33" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594473543277" />
+    <state width="1493" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594566754258" />
     <state width="1493" height="403" key="GridCell.Tab.0.bottom/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594454164480" />
-    <state width="1493" height="33" key="GridCell.Tab.0.center" timestamp="1594473543275">
+    <state width="1493" height="203" key="GridCell.Tab.0.center" timestamp="1594566754258">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="33" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594473543275" />
+    <state width="1493" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594566754258" />
     <state width="1493" height="403" key="GridCell.Tab.0.center/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594454164480" />
-    <state width="1493" height="33" key="GridCell.Tab.0.left" timestamp="1594473543273">
+    <state width="1493" height="203" key="GridCell.Tab.0.left" timestamp="1594566754257">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="33" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594473543273" />
+    <state width="1493" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594566754257" />
     <state width="1493" height="403" key="GridCell.Tab.0.left/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594454164479" />
-    <state width="1493" height="33" key="GridCell.Tab.0.right" timestamp="1594473543276">
+    <state width="1493" height="203" key="GridCell.Tab.0.right" timestamp="1594566754258">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="33" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594473543276" />
+    <state width="1493" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594566754258" />
     <state width="1493" height="403" key="GridCell.Tab.0.right/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594454164480" />
+    <state width="1493" height="250" key="GridCell.Tab.1.bottom" timestamp="1594566754243">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="250" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594566754243" />
+    <state width="1493" height="250" key="GridCell.Tab.1.center" timestamp="1594566754243">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="250" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1594566754243" />
+    <state width="1493" height="250" key="GridCell.Tab.1.left" timestamp="1594566754242">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="250" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1594566754242" />
+    <state width="1493" height="250" key="GridCell.Tab.1.right" timestamp="1594566754243">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="250" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1594566754243" />
     <state x="270" y="56" key="SettingsEditor" timestamp="1594437112313">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="56" key="SettingsEditor/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594437112313" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1594527815132">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1594527815132" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -233,6 +264,21 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test1.java</url>
           <line>11</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test12.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test12.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/concurrent/test/Test27.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
