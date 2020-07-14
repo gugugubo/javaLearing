@@ -24,6 +24,7 @@ public class Test31 {
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 log.info("被打断啦");
+                // 这里如果出了错不要再往下执行了
                 return;
             }
             

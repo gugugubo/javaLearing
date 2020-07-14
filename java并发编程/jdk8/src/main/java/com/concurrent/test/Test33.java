@@ -7,6 +7,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Slf4j
+/**
+ * 使用reentrantlock中的tryLock来获取锁来解决哲学家就餐问题，这样就不会造成死锁！
+ */
 public class Test33 extends Thread{
 
     public static void main(String[] args) {

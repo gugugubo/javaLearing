@@ -261,6 +261,8 @@ yield使cpu调用其它线程，但是cpu可能会再分配时间片给该线程
 
 #### 打断 sleep，wait，join 的线程
 
+先了解一些interrupt()方法的相关知识：[博客地址](https://www.cnblogs.com/noteless/p/10372826.html#0)
+
  sleep，wait，join 的线程，这几个方法都会让线程进入阻塞状态，以 sleep 为例Test7.java
 
 ```java
@@ -1543,6 +1545,63 @@ try {
 synchronized锁中，在entrylist等待的锁在竞争时不是按照先到先得来获取锁的，所以说synchronized锁时不公平的；ReentranLock锁默认是不公平的，但是可以通过设置实现公平锁。本意是为了解决之前提到的饥饿问题，但是公平锁一般没有必要，会降低并发度，使用trylock也可以实现。
 
 
+
+
+
+### 条件变量
+
+synchronized 中也有条件变量，就是我们讲原理时那个 waitSet 休息室，当条件不满足时进入 waitSet 等待
+ReentrantLock 的条件变量比 synchronized 强大之处在于，它是支持多个条件变量的，这就好比
+
+1. synchronized 是那些不满足条件的线程都在一间休息室等消息
+2. 而 ReentrantLock 支持多间休息室，有专门等烟的休息室、专门等早餐的休息室、唤醒时也是按休息室来唤
+   醒
+
+使用要点：  Test34.java
+
+1. await 前需要获得锁
+2. await 执行后，会释放锁，进入 conditionObject 等待
+3. await 的线程被唤醒（或打断、或超时）取重新竞争 lock 锁，执行唤醒的线程爷必须先获得锁
+4. 竞争 lock 锁成功后，从 await 后继续执行
+
+
+
+### 同步模式之顺序控制
+
+1. 固定运行顺序，比如，必须先 2 后 1 打印
+   1.  wait notify 版  Test35.java
+   2.  Park Unpark 版  Test36.java
+2. 交替输出，线程 1 输出 a 5 次，线程 2 输出 b 5 次，线程 3 输出 c 5 次。现在要求输出 abcabcabcabcabc 怎么实现
+   1. wait notify 版   Test37.java
+   2. Lock 条件变量版 Test38.java
+   3.  Park Unpark 版 Test39.java
+
+
+
+## 本章小结
+
+本章我们需要重点掌握的是
+
+1. 分析多线程访问共享资源时，哪些代码片段属于临界区
+2. 使用 synchronized 互斥解决临界区的线程安全问题
+   1. 掌握 synchronized 锁对象语法
+   2. 掌握 synchronzied 加载成员方法和静态方法语法
+   3. 掌握 wait/notify 同步方法
+3. 使用 lock 互斥解决临界区的线程安全问题
+   掌握 lock 的使用细节：可打断、锁超时、公平锁、条件变量
+4. 学会分析变量的线程安全性、掌握常见线程安全类的使用
+5. 了解线程活跃性问题：死锁、活锁、饥饿
+6. 应用方面
+   1. **互斥：使用 synchronized 或 Lock 达到共享资源互斥效果，实现原子性效果，保证线程安全。**
+   2. **同步：使用 wait/notify 或 Lock 的条件变量来达到线程间通信效果。**
+7. 原理方面
+   1. monitor、synchronized 、wait/notify 原理
+   2. synchronized 进阶原理
+   3. park & unpark 原理
+8. 模式方面
+   1. 同步模式之保护性暂停
+   2. 异步模式之生产者消费者
+   3. 同步模式之顺序控制
 
 # 问题
 

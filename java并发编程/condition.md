@@ -120,7 +120,7 @@ Consequently, an implementation is not required to define exactly the same guara
 An implementation is required to clearly document the semantics and guarantees provided by each of the waiting methods, and when an implementation does support interruption of thread suspension then it must obey the interruption semantics as defined in this interface.
 implementation需要清楚地记录每个等待方法提供的语义和保证，当implementation确实支持中断线程挂起时，它必须遵守此接口中定义的中断语义。
 As interruption generally implies cancellation, and checks for interruption are often infrequent, an implementation can favor responding to an interrupt over normal method return. This is true even if it can be shown that the interrupt occurred after another action that may have unblocked the thread. An implementation should document this behavior.
-由于中断通常意味着取消，并且对中断的检查通常是不经常的，所以实现可能倾向于响应中断，而不是普通的方法返回。即使可以显示中断发生在另一个可能已解除阻止线程的操作之后，也是如此。实现implementation应该记录此行为。
+由于中断通常意味着取消，并且对中断的检查通常是不经常的，所以实现可能倾向于响应中断，而不是普通的方法返回。即使可以显示中断发生在另一个可能已解除阻止线程的操作之后也是如此。实现implementation应该记录此行为。
 ```
 
 
@@ -183,7 +183,7 @@ A "spurious wakeup" occurs.
 In all cases, before this method can return the current thread must re-acquire the lock associated with this condition. When the thread returns it is guaranteed to hold this lock.
 在所有情况下，在该方法返回之前，当前线程必须重新获取与此条件关联的锁。当线程返回时，它保证保持这个锁。
 If the current thread's interrupted status is set when it enters this method, or it is interrupted while waiting, it will continue to wait until signalled. When it finally returns from this method its interrupted status will still be set.
-如果当前线程在进入此方法时设置了中断状态，或者在等待时中断，则它将继续等待，直到发出信号。当它最终从该方法返回时，它的中断状态仍将被设置。
+如果当前线程在进入此方法时设置了中断状态，或者在等待时中断，则它将继续等待，直到收到signalled。当它最终从该方法返回时，它的中断状态仍将被设置。
 Implementation Considerations
 实施注意事项
 The current thread is assumed to hold the lock associated with this Condition when this method is called. It is up to the implementation to determine if this is the case and if not, how to respond. Typically, an exception will be thrown (such as IllegalMonitorStateException) and the implementation must document that fact.

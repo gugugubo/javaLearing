@@ -45,7 +45,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583824588537" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/concurrent/test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/concurrent/test2" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -65,12 +65,52 @@
       <recent name="com.concurrent.test" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\我的项目\JavaLearing\java并发编程\jdk8\src\main\java\com\concurrent\test2" />
       <recent name="D:\我的项目\JavaLearing\java并发编程\jdk8\src\main\java\com\concurrent\test" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.Test33">
-    <configuration name="Test29" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test29" />
+  <component name="RunAnythingCache">
+    <myKeys>
+      <visibility group="Gradle tasks" flag="true" />
+      <visibility group="Grunt tasks" flag="true" />
+      <visibility group="Gulp tasks" flag="true" />
+      <visibility group="Maven goals" flag="true" />
+      <visibility group="Node.js" flag="true" />
+      <visibility group="Recent projects" flag="true" />
+      <visibility group="Run configurations" flag="true" />
+      <visibility group="npm" flag="true" />
+      <visibility group="yarn" flag="true" />
+    </myKeys>
+  </component>
+  <component name="RunManager" selected="应用程序.Test5">
+    <configuration name="Test1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test1" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test3" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test34" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test34" />
       <module name="jdk8" />
       <extension name="coverage">
         <pattern>
@@ -82,12 +122,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test30" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test30" />
+    <configuration name="Test4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test4" />
       <module name="jdk8" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="PATTERN" value="com.concurrent.test2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,38 +135,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test31" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test31" />
+    <configuration name="Test5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test5" />
       <module name="jdk8" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test32" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test32" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test33" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test33" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="PATTERN" value="com.concurrent.test2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -135,19 +149,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="应用程序.Test29" />
-      <item itemvalue="应用程序.Test30" />
-      <item itemvalue="应用程序.Test31" />
-      <item itemvalue="应用程序.Test32" />
-      <item itemvalue="应用程序.Test33" />
+      <item itemvalue="应用程序.Test1" />
+      <item itemvalue="应用程序.Test3" />
+      <item itemvalue="应用程序.Test34" />
+      <item itemvalue="应用程序.Test4" />
+      <item itemvalue="应用程序.Test5" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.Test33" />
-        <item itemvalue="应用程序.Test32" />
-        <item itemvalue="应用程序.Test31" />
-        <item itemvalue="应用程序.Test30" />
-        <item itemvalue="应用程序.Test29" />
+        <item itemvalue="应用程序.Test5" />
+        <item itemvalue="应用程序.Test3" />
+        <item itemvalue="应用程序.Test4" />
+        <item itemvalue="应用程序.Test34" />
+        <item itemvalue="应用程序.Test1" />
       </list>
     </recent_temporary>
   </component>
@@ -170,6 +184,9 @@
       <workItem from="1583809083587" duration="4924000" />
       <workItem from="1594379983288" duration="11251000" />
       <workItem from="1594514619073" duration="23899000" />
+      <workItem from="1594600353598" duration="12437000" />
+      <workItem from="1594645827780" duration="6356000" />
+      <workItem from="1594687723089" duration="12076000" />
     </task>
     <servers />
   </component>
@@ -181,34 +198,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594453194650" />
-    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1594553701917">
+    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser" timestamp="1594616100940">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1594553701917" />
+    <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1594616100940" />
     <state x="549" y="166" key="FileChooserDialogImpl" timestamp="1594437111403">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="166" key="FileChooserDialogImpl/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594437111403" />
-    <state width="1493" height="203" key="GridCell.Tab.0.bottom" timestamp="1594566754258">
+    <state width="1493" height="155" key="GridCell.Tab.0.bottom" timestamp="1594739717109">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="203" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594566754258" />
-    <state width="1493" height="403" key="GridCell.Tab.0.bottom/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594454164480" />
-    <state width="1493" height="203" key="GridCell.Tab.0.center" timestamp="1594566754258">
+    <state width="1493" height="152" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594689974430" />
+    <state width="1493" height="155" key="GridCell.Tab.0.bottom/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594739717109" />
+    <state width="1493" height="155" key="GridCell.Tab.0.center" timestamp="1594739717109">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="203" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594566754258" />
-    <state width="1493" height="403" key="GridCell.Tab.0.center/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594454164480" />
-    <state width="1493" height="203" key="GridCell.Tab.0.left" timestamp="1594566754257">
+    <state width="1493" height="152" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594689974429" />
+    <state width="1493" height="155" key="GridCell.Tab.0.center/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594739717109" />
+    <state width="1493" height="155" key="GridCell.Tab.0.left" timestamp="1594739717108">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="203" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594566754257" />
-    <state width="1493" height="403" key="GridCell.Tab.0.left/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594454164479" />
-    <state width="1493" height="203" key="GridCell.Tab.0.right" timestamp="1594566754258">
+    <state width="1493" height="152" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594689974429" />
+    <state width="1493" height="155" key="GridCell.Tab.0.left/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594739717108" />
+    <state width="1493" height="155" key="GridCell.Tab.0.right" timestamp="1594739717109">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="203" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594566754258" />
-    <state width="1493" height="403" key="GridCell.Tab.0.right/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594454164480" />
+    <state width="1493" height="152" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594689974429" />
+    <state width="1493" height="155" key="GridCell.Tab.0.right/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594739717109" />
     <state width="1493" height="250" key="GridCell.Tab.1.bottom" timestamp="1594566754243">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -229,6 +246,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="56" key="SettingsEditor/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594437112313" />
+    <state x="466" y="144" width="603" height="536" key="find.popup" timestamp="1594653249803">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="466" y="144" width="603" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1594653249803" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1594527815132">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

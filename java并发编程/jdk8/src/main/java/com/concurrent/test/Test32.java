@@ -20,11 +20,13 @@ public class Test32 {
             try {
                 if (!lock.tryLock(2, TimeUnit.SECONDS)){
                     log.debug("获取等待指定时间后失败，返回");
+                    // 这里如果出了错不要再往下执行了
                     return;
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 log.info("被打断啦");
+                // 这里如果出了错不要再往下执行了
                 return;
             }
             

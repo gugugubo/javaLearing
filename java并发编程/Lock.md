@@ -64,7 +64,7 @@ The three forms of lock acquisition (interruptible, non-interruptible, and timed
 锁获取的三种形式（可中断、不可中断和定时）在性能特征、顺序保证或其他实现质量方面可能有所不同。此外，在给定的Lock类中，中断正在进行的锁的获取的能力可能不可用。因此，一个实现implementation不需要为所有三种锁获取形式定义完全相同的保证或语义，也不需要支持正在进行的锁获取的中断。一个实现implementation需要清楚地记录每个锁定方法提供的语义和保证。它还必须遵守此接口中定义的中断语义，来支持锁获取的中断：要么完全中断，要么仅中断方法入口。
 
 As interruption generally implies cancellation, and checks for interruption are often infrequent, an implementation can favor responding to an interrupt over normal method return. This is true even if it can be shown that the interrupt occurred after another action may have unblocked the thread. An implementation should document this behavior.
-由于中断通常意味着取消，并且对中断的检查通常是不经常的，所以实现implementation可能倾向于响应中断，而不是普通的方法返回。即使可以显示在另一个操作可能已解除阻止线程之后发生的中断，这也是正确的。实现应该记录此行为。
+由于中断通常意味着取消，并且对中断的检查通常是不经常的，所以实现implementation可能倾向于响应中断，而不是普通的方法返回。即使可以显示在另一个操作可能已解除阻止线程之后发生的中断也是如此。implementation应该记录此行为。
 ```
 
 
@@ -180,7 +180,7 @@ Implementation Considerations
 The ability to interrupt a lock acquisition in some implementations may not be possible, and if possible may be an expensive operation. The programmer should be aware that this may be the case. An implementation should document when this is the case.
 在某些实现中中断锁获取的能力可能是不可能的，并且如果可能的话可能是一个昂贵的操作。程序员应该意识到情况可能是这样的。在这种情况下，实现应该记录下来。
 An implementation can favor responding to an interrupt over normal method return, or reporting a timeout.
-实现implementation可以支持响应中断，而不是普通的方法返回，也不是报告timeout。
+implementation可以支持响应中断，而不是普通的方法返回，也不是报告timeout。
 A Lock implementation may be able to detect erroneous use of the lock, such as an invocation that would cause deadlock, and may throw an (unchecked) exception in such circumstances. The circumstances and the exception type must be documented by that Lock implementation.
 Lock实现可能能够检测到锁的错误使用，例如可能导致死锁的调用，并且在这种情况下可能抛出（未经检查的）异常。该锁实现必须记录环境和异常类型。
 ```
