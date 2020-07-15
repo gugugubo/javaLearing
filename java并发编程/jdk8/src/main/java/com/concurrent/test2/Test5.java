@@ -4,13 +4,21 @@ import com.concurrent.test.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * 使用synchronized实现转账的小项目
+ */
 public class Test5 {
 
     public static void main(String[] args) {
+        // 使用synchronized 实现线程安全的测试类
         Account.demo(new AccountUnsafe(10000));
+
+        // 使用AtomicInteger 实现线程安全的测试类
+        Account.demo(new AccountSafe(10000));
+        
     }
-    
 }
 
 class AccountUnsafe implements Account {
@@ -23,12 +31,43 @@ class AccountUnsafe implements Account {
         return balance;
     }
     @Override
+    
     public void  withdraw(Integer amount) {
+        // 通过这里加锁就可以实现线程安全，不加就会导致结果异常
         synchronized (this){
             balance -= amount;
         }
     }
 }
+
+class AccountSafe implements Account{
+
+    AtomicInteger atomicInteger ;
+    
+    public AccountSafe(Integer balance){
+        this.atomicInteger =  new AtomicInteger(balance);
+    }
+    
+    @Override
+    public Integer getBalance() {
+        return atomicInteger.get();
+    }
+
+    @Override
+    public void withdraw(Integer amount) {
+        // 核心代码
+        while (true){
+            int pre = getBalance();
+            int next = pre - amount;
+            if (atomicInteger.compareAndSet(pre,next)){
+                break;
+            }
+        }
+        // 可以简化为下面的方法
+        // balance.addAndGet(-1 * amount);
+    }
+}
+
 
 
 interface Account {
