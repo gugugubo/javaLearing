@@ -10,6 +10,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * 步骤4：自定义线程池测试
+ */
 @Slf4j(topic = "Test18")
 public class Test18{
     public static void main(String[] args) {
@@ -40,6 +43,10 @@ public class Test18{
         }
 }
 
+/**
+ * 步骤2：自定义任务队列
+ * @param <T>
+ */
 @Slf4j(topic = "BlockingQueue")
 class BlockingQueue<T> {
     // 1. 任务队列
@@ -171,6 +178,10 @@ class BlockingQueue<T> {
     }
 }
 
+
+/**
+ * 步骤3：自定义线程池
+ */
 @Slf4j(topic = "ThreadPool")
 class ThreadPool{
 
@@ -257,7 +268,12 @@ class ThreadPool{
     
 }
 
+/**
+ * 步骤1：自定义拒绝策略接口
+ * @param <T>
+ */
 @FunctionalInterface // 拒绝策略   @FunctionalInterface的意思是这是一个函数式编程接口
 interface RejectPolicy<T> {
     void reject(BlockingQueue<T> queue, T task);
 }
+

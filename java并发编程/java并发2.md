@@ -1643,11 +1643,470 @@ public final class String
 
 
 
+# 8. 共享模型之工具
+
+
+
+## 8.1 线程池
+
+### 自定义线程池
+
+![1594948809337](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200717092010-722555.png)
+
+1. 步骤1：自定义拒绝策略接口
+2. 步骤2：自定义任务队列
+3. 步骤3：自定义线程池
+4. 步骤4：测试
+
+Test18.java
+
+### ThreadPoolExecutor
+
+![1594948992617](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200717092316-967093.png)
+
+#### 1) 线程池状态
+
+ThreadPoolExecutor 使用 int 的高 3 位来表示线程池状态，低 29 位表示线程数量
+
+![1594949019952](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200717092345-119571.png)
+
+从数字上比较，TERMINATED > TIDYING > STOP > SHUTDOWN > RUNNING
+这些信息存储在一个原子变量 ctl 中，目的是将线程池状态与线程个数合二为一，这样就可以用一次 cas 原子操作
+进行赋值
+
+```java
+// c 为旧值， ctlOf 返回结果为新值
+ctl.compareAndSet(c, ctlOf(targetState, workerCountOf(c))));
+// rs 为高 3 位代表线程池状态， wc 为低 29 位代表线程个数，ctl 是合并它们
+private static int ctlOf(int rs, int wc) { return rs | wc; }
+```
+
+#### 2) 构造方法
+
+下面看一下参数最多的 一个线程方法
+
+```java
+public ThreadPoolExecutor(int corePoolSize,
+ int maximumPoolSize,
+ long keepAliveTime,
+ TimeUnit unit,
+ BlockingQueue<Runnable> workQueue,
+ ThreadFactory threadFactory,
+RejectedExecutionHandler handler){
+}
+```
+
+1. corePoolSize 核心线程数目 (最多保留的线程数)
+2. maximumPoolSize 最大线程数目(核心线程数加上救急线程数)
+3. keepAliveTime 救急线程的生存时间(核心线程没有生存时间这个东西，核心线程会一直运行) 
+4. unit 时间单位 - 针对救急线程
+5. workQueue 阻塞队列
+6. threadFactory 线程工厂 - 可以为线程创建时起个好名字
+7. handler 拒绝策略
+
+
+
+![1594949542928](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200717093224-65960.png)
+
+1. 线程池中刚开始没有线程，当一个任务提交给线程池后，线程池会创建一个新线程来执行任务。
+2. 当线程数达到 corePoolSize 并没有线程空闲，这时再加入任务，新加的任务会被加入workQueue 队列排
+   队，直到有空闲的线程。
+3. 如果队列选择了有界队列，那么任务超过了队列大小时，会创建 maximumPoolSize - corePoolSize 数目的线
+   程来救急。
+4. 如果线程到达 maximumPoolSize 仍然有新任务这时会执行拒绝策略。拒绝策略 jdk 提供了 下面的前4 种实现，其它著名框架也提供了实现
+   1. AbortPolicy 让调用者抛出 RejectedExecutionException 异常，这是默认策略
+   2. CallerRunsPolicy 让调用者运行任务
+   3. DiscardPolicy 放弃本次任务
+   4. DiscardOldestPolicy 放弃队列中最早的任务，本任务取而代之
+   5. Dubbo 的实现，在抛出 RejectedExecutionException 异常之前会记录日志，并 dump 线程栈信息，方
+      便定位问题
+   6. Netty 的实现，是创建一个新线程来执行任务
+   7. ActiveMQ 的实现，带超时等待（60s）尝试放入队列，类似我们之前自定义的拒绝策略
+   8. PinPoint 的实现，它使用了一个拒绝策略链，会逐一尝试策略链中每种拒绝策略
+5. 当高峰过去后，超过corePoolSize 的救急线程如果一段时间没有任务做，需要结束节省资源，这个时间由
+   keepAliveTime 和 unit 来控制。
+
+![1594949648356](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200717093413-939231.png)
+
+根据这个构造方法，JDK Executors 类中提供了众多工厂方法来创建各种用途的线程池
 
 
 
 
 
+#### 3) newFixedThreadPool
+
+这个是Executors类提供的工厂方法来创建线程池！  Test19.java
+
+```java
+    public static ExecutorService newFixedThreadPool(int nThreads) {
+        return new ThreadPoolExecutor(nThreads, nThreads,
+                                      0L, TimeUnit.MILLISECONDS,
+                                      new LinkedBlockingQueue<Runnable>());
+    }
+```
+
+通过源码可以看到 new ThreadPoolExecutor(xxx)方法其实是是调用了之前说的完整参数的构造方法，使用了默认的线程工厂和拒绝策略!
+
+```java
+    public ThreadPoolExecutor(int corePoolSize,
+                              int maximumPoolSize,
+                              long keepAliveTime,
+                              TimeUnit unit,
+                              BlockingQueue<Runnable> workQueue) {
+        this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,
+             Executors.defaultThreadFactory(), defaultHandler);
+    }
+```
+
+特点
+
+1. 核心线程数 == 最大线程数（没有救急线程被创建），因此也无需超时时间
+2. 阻塞队列是无界的，可以放任意数量的任务
+3. 适用于任务量已知，相对耗时的任务
+
+
+
+#### 4) newCachedThreadPool
+
+```java
+public static ExecutorService newCachedThreadPool() {
+ return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+ 60L, TimeUnit.SECONDS,
+ new SynchronousQueue<Runnable>());
+}
+
+```
+
+特点
+
+1. 核心线程数是 0， 最大线程数是 Integer.MAX_VALUE，救急线程的空闲生存时间是 60s，意味着
+   1. 全部都是救急线程（60s 后可以回收）
+   2. 救急线程可以无限创建
+2. 队列采用了 SynchronousQueue 实现特点是，它没有容量，没有线程来取是放不进去的（一手交钱、一手交
+   货）SynchronousQueue测试代码  Test20.java
+3. 整个线程池表现为线程数会根据任务量不断增长，没有上限，当任务执行完毕，空闲 1分钟后释放线
+   程。 适合任务数比较密集，但每个任务执行时间较短的情况
+
+#### 5) newSingleThreadExecutor
+
+```java
+public static ExecutorService newSingleThreadExecutor() {
+ return new FinalizableDelegatedExecutorService
+ (new ThreadPoolExecutor(1, 1,
+ 0L, TimeUnit.MILLISECONDS,
+ new LinkedBlockingQueue<Runnable>()));
+}
+
+```
+
+使用场景：
+
+1. 希望多个任务排队执行。线程数固定为 1，任务数多于 1 时，会放入无界队列排队。任务执行完毕，这唯一的线程也不会被释放。
+2. 区别：
+   1. 和自己创建单线程执行任务的区别：自己创建一个单线程串行执行任务，如果任务执行失败而终止那么没有任何补救措施，而线程池还会新建一
+      个线程，保证池的正常工作
+   2. Executors.newSingleThreadExecutor() 线程个数始终为1，不能修改
+      1. FinalizableDelegatedExecutorService 应用的是装饰器模式，只对外暴露了 ExecutorService 接口，因
+         此不能调用 ThreadPoolExecutor 中特有的方法
+   3. 和Executors.newFixedThreadPool(1) 初始时为1时的区别：Executors.newFixedThreadPool(1) 初始时为1，以后还可以修改
+      对外暴露的是 ThreadPoolExecutor 对象，可以强转后调用 setCorePoolSize 等方法进行修改
+
+
+
+#### 6) 提交任务
+
+Test21.java
+
+```java
+// 执行任务
+void execute(Runnable command);
+// 提交任务 task，用返回值 Future 获得任务执行结果，Future就是使用我们之前讲到的保护性暂停模式来接受返回结果的
+<T> Future<T> submit(Callable<T> task);
+// 提交 tasks 中所有任务
+<T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)
+ throws InterruptedException;
+// 提交 tasks 中所有任务，带超时时间
+<T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks,
+ long timeout, TimeUnit unit)
+ throws InterruptedException;
+// 提交 tasks 中所有任务，哪个任务先成功执行完毕，返回此任务执行结果，其它任务取消
+<T> T invokeAny(Collection<? extends Callable<T>> tasks)
+ throws InterruptedException, ExecutionException;
+// 提交 tasks 中所有任务，哪个任务先成功执行完毕，返回此任务执行结果，其它任务取消，带超时时间
+<T> T invokeAny(Collection<? extends Callable<T>> tasks,
+ long timeout, TimeUnit unit)
+ throws InterruptedException, ExecutionException, TimeoutException;
+
+```
+
+#### 7) 关闭线程池
+
+Test22.java
+
+shutdown
+
+```java
+/*
+线程池状态变为 SHUTDOWN
+- 不会接收新任务
+- 但已提交任务会执行完，包括等待队列里面的
+- 此方法不会阻塞调用线程的执行
+*/
+void shutdown();
+```
+
+```java
+    public void shutdown() {
+        final ReentrantLock mainLock = this.mainLock;
+        mainLock.lock();
+        try {
+            checkShutdownAccess();
+            // 修改线程池状态
+            advanceRunState(SHUTDOWN);
+            // 仅会打断空闲线程
+            interruptIdleWorkers();
+            onShutdown(); // 扩展点 ScheduledThreadPoolExecutor
+        } finally {
+            mainLock.unlock();
+        }
+        // 尝试终结(没有运行的线程可以立刻终结，如果还有运行的线程也不会等)
+        tryTerminate();
+    }
+```
+
+
+
+shutdownNow
+
+```java
+/*
+线程池状态变为 STOP
+- 不会接收新任务
+- 会将队列中的任务返回
+- 并用 interrupt 的方式中断正在执行的任务
+*/
+List<Runnable> shutdownNow();
+```
+
+```java
+    public List<Runnable> shutdownNow() {
+
+        List<Runnable> tasks;
+        final ReentrantLock mainLock = this.mainLock;
+        mainLock.lock();
+        try {
+            checkShutdownAccess();
+            // 修改线程池状态
+            advanceRunState(STOP);
+            // 打断所有线程
+            interruptWorkers();
+            // 获取队列中剩余任务
+            tasks = drainQueue();
+        } finally {
+            mainLock.unlock();
+        }
+        // 尝试终结
+        tryTerminate();
+        return tasks;
+    }
+
+```
+
+
+
+
+
+其它方法
+
+```java
+// 不在 RUNNING 状态的线程池，此方法就返回 true
+boolean isShutdown();
+// 线程池状态是否是 TERMINATED
+boolean isTerminated();
+// 调用 shutdown 后，由于调用使线程结束线程的方法是异步的并不会等待所有任务运行结束，因此如果它想在线程池 TERMINATED 后做些事情，可以利用此方法等待
+boolean awaitTermination(long timeout, TimeUnit unit) throws InterruptedException;
+
+```
+
+
+
+#### 异步模式之工作线程
+
+1.定义
+
+让有限的工作线程（Worker Thread）来轮流异步处理无限多的任务。也可以将其归类为分工模式，它的典型实现就是线程池，也体现了经典设计模式中的享元模式。
+
+例如，海底捞的服务员（线程），轮流处理每位客人的点餐（任务），如果为每位客人都配一名专属的服务员，那
+么成本就太高了（对比另一种多线程设计模式：Thread-Per-Message）
+注意，不同任务类型应该使用不同的线程池，这样能够避免饥饿，并能提升效率
+例如，如果一个餐馆的工人既要招呼客人（任务类型A），又要到后厨做菜（任务类型B）显然效率不咋地，分成
+服务员（线程池A）与厨师（线程池B）更为合理，当然你能想到更细致的分工
+
+2.饥饿
+固定大小线程池会有饥饿现象   Test23.java
+
+1. 两个工人是同一个线程池中的两个线程
+2. 他们要做的事情是：为客人点餐和到后厨做菜，这是两个阶段的工作
+   1. 客人点餐：必须先点完餐，等菜做好，上菜，在此期间处理点餐的工人必须等待
+   2. 后厨做菜：没啥说的，做就是了
+3. 比如工人A 处理了点餐任务，接下来它要等着 工人B 把菜做好，然后上菜，他俩也配合的蛮好
+   但现在同时来了两个客人，这个时候工人A 和工人B 都去处理点餐了，这时没人做饭了，饥饿
+
+解决方法可以增加线程池的大小，不过不是根本解决方案，还是前面提到的，不同的任务类型，采用不同的线程池，例如：Test24.java
+
+3. 创建多少线程池合适? 
+
+   过小会导致程序不能充分地利用系统资源、容易导致饥饿，过大会导致更多的线程上下文切换，占用更多内存
+   1. CPU 密集型运算
+      通常采用 cpu 核数 + 1 能够实现最优的 CPU 利用率，+1 是保证当线程由于页缺失故障（操作系统）或其它原因
+      导致暂停时，额外的这个线程就能顶上去，保证 CPU 时钟周期不被浪费
+   2.  I/O 密集型运算
+      CPU 不总是处于繁忙状态，例如，当你执行业务计算时，这时候会使用 CPU 资源，但当你执行 I/O 操作时、远程RPC 调用时，包括进行数据库操作时，这时候 CPU 就闲下来了，你可以利用多线程提高它的利用率。
+      1. 经验公式如下：线程数 = 核数 * 期望 CPU 利用率 * 总时间(CPU计算时间+等待时间) / CPU 计算时间
+         例如 4 核 CPU 计算时间是 50% ，其它等待时间是 50%，期望 cpu 被 100% 利用，套用公式
+         4 * 100% * 100% / 50% = 8
+         例如 4 核 CPU 计算时间是 10% ，其它等待时间是 90%，期望 cpu 被 100% 利用，套用公式
+         4 * 100% * 100% / 10% = 40
+
+
+
+#### 8) 任务调度线程池
+
+在『任务调度线程池』功能加入之前，可以使用 java.util.Timer 来实现定时功能，Timer 的优点在于简单易用，但
+由于所有任务都是由同一个线程来调度，因此所有任务都是串行执行的，同一时间只能有一个任务在执行，前一个
+任务的延迟或异常都将会影响到之后的任务。Test25.java
+
+使用 ScheduledExecutorService 改写：Test26.java
+
+1. 整个线程池表现为：线程数固定，任务数多于线程数时，会放入无界队列排队。任务执行完毕，这些线
+   程也不会被释放。用来执行延迟或反复执行的任务
+2. ScheduledExecutorService 中scheduleAtFixedRate方法的使用  Test27.java
+3. ScheduledExecutorService 中scheduleWithFixedDelay方法的使用  Test27.java
+
+#### 9) 正确处理执行任务异常
+
+可以发现，如果线程池中的线程执行任务时，如果任务抛出了异常，默认是中断执行该任务而不是抛出异常或者打印异常信息。
+
+方法1：主动捉异常
+
+```
+ExecutorService pool = Executors.newFixedThreadPool(1);
+pool.submit(() -> {
+ try {
+ log.debug("task1");
+ int i = 1 / 0;
+ } catch (Exception e) {
+ log.error("error:", e);
+ }
+});
+
+```
+
+方法2：使用 Future，错误信息都被封装进submit方法的返回方法中！
+
+```
+ExecutorService pool = Executors.newFixedThreadPool(1);
+Future<Boolean> f = pool.submit(() -> {
+ log.debug("task1");
+ int i = 1 / 0;
+ return true;
+});
+log.debug("result:{}", f.get());
+```
+
+#### 10) Tomcat 线程池
+
+Tomcat 在哪里用到了线程池呢
+
+![1594993035182](assets/1594993035182.png)
+
+1. LimitLatch 用来限流，可以控制最大连接个数，类似 J.U.C 中的 Semaphore 后面再讲
+2. Acceptor 只负责【接收新的 socket 连接】
+3. Poller 只负责监听 socket channel 是否有【可读的 I/O 事件】
+4. 一旦可读，封装一个任务对象（socketProcessor），提交给 Executor 线程池处理
+5. Executor 线程池中的工作线程最终负责【处理请求】
+
+Tomcat 线程池扩展了 ThreadPoolExecutor，行为稍有不同
+
+1. 如果总线程数达到 maximumPoolSize，这时不会立刻抛 RejectedExecutionException 异常，而是再次尝试将任务放入队列，如果还失败，才抛出 RejectedExecutionException 异常
+
+源码 tomcat-7.0.42
+
+```java
+    public void execute(Runnable command, long timeout, TimeUnit unit) {
+        submittedCount.incrementAndGet();
+        try {
+            super.execute(command);
+        } catch (RejectedExecutionException rx) {
+            if (super.getQueue() instanceof TaskQueue) {
+                final TaskQueue queue = (TaskQueue)super.getQueue();
+                try {
+                    // 使任务从新进入阻塞队列
+                    if (!queue.force(command, timeout, unit)) {
+                        submittedCount.decrementAndGet();
+                        throw new RejectedExecutionException("Queue capacity is full.");
+                    }
+                } catch (InterruptedException x) {
+                    submittedCount.decrementAndGet();
+                    Thread.interrupted();
+                    throw new RejectedExecutionException(x);
+                }
+            } else {
+                submittedCount.decrementAndGet();
+                throw rx;
+            }
+        }
+    }
+```
+
+TaskQueue.java
+
+```java
+    public boolean force(Runnable o, long timeout, TimeUnit unit) throws InterruptedException {
+        if ( parent.isShutdown() )
+            throw new RejectedExecutionException(
+                    "Executor not running, can't force a command into the queue"
+            );
+        return super.offer(o,timeout,unit); //forces the item onto the queue, to be used if the task
+        is rejected
+    }
+```
+
+Connector 配置
+
+![1594993208807](assets/1594993208807.png)
+
+
+
+Executor 线程配置
+
+> 守护线程的意思就是线程会随着主线程的结束而结束
+
+![1594993228313](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200717214029-504239.png)
+
+下面的这张图好像有点错误，提交任务<核心线程的时候应该直接交给核心线程执行。
+
+![1594993241058](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200717214042-523741.png)
+
+
+
+### Fork/Join
+
+1) 概念
+
+1. Fork/Join 是 JDK 1.7 加入的新的线程池实现，它体现的是一种分治思想，适用于能够进行任务拆分的 cpu 密集型运算
+2. 所谓的任务拆分，是将一个大任务拆分为算法上相同的小任务，直至不能拆分可以直接求解。跟递归相关的一些计算，如归并排序、斐波那契数列、都可以用分治思想进行求解
+3. Fork/Join 在分治的基础上加入了多线程，可以把每个任务的分解和合并交给不同的线程来完成，进一步提升了运算效率
+4. Fork/Join 默认会创建与 cpu 核心数大小相同的线程池
+
+2) 使用
+提交给 Fork/Join 线程池的任务需要继承 RecursiveTask（有返回值）或 RecursiveAction（没有返回值），例如下
+面定义了一个对 1~n 之间的整数求和的任务    Test28.java   
+
+改进Test29.java  Test29的算法逻辑图
+
+![1594997724368](assets/1594997724368.png)
 
 
 
