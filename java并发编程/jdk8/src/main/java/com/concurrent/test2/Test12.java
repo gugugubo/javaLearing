@@ -4,6 +4,10 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
+
+/**
+ * 原子字段AtomicReferenceFieldUpdater 的使用
+ */
 public class Test12 {
 
     private volatile int field;

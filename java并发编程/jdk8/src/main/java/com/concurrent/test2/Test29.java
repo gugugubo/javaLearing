@@ -3,7 +3,12 @@ package com.concurrent.test2;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.RecursiveTask;
+import java.util.concurrent.locks.ReentrantLock;
 
+
+/**
+ * RecursiveTask的使用
+ */
 public class Test29 {
     
     
@@ -18,6 +23,7 @@ class AddTask3 extends RecursiveTask<Integer> {
     int end;
     public AddTask3(int begin, int end) {
         this.begin = begin;
+        new ReentrantLock();
         this.end = end;
     }
     @Override

@@ -89,6 +89,7 @@ public class Test17 {
         for (int i=0;i<poolSize;i++){
             if (connections[i] == connection){
                 states.set(i,0);
+                // 上面是没必要加锁的，因为不存在线程竞争，只有占有连接的线程才能归还连接
                 synchronized (this){
                     log.info("释放了连接 {}",connection);
                     notifyAll();
