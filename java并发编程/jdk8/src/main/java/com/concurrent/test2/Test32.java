@@ -5,6 +5,9 @@ import com.sun.corba.se.impl.orbutil.concurrent.Sync;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * 查看源码
+ */
 public class Test32 {
 
     public static void main(String[] args) {
@@ -23,6 +26,7 @@ public class Test32 {
             e.printStackTrace();
         }
         lock.lock();
+        lock.unlock();
     }
 }
 

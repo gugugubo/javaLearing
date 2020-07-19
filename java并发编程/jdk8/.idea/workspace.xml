@@ -86,46 +86,7 @@
       <visibility group="yarn" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="应用程序.Test31">
-    <configuration name="Test27" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test27" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test28" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test28" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test30" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test30" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="应用程序.Test38">
     <configuration name="Test31" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test31" />
       <module name="jdk8" />
@@ -152,20 +113,59 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test35" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test35" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test37" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test37" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test38" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test38" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="应用程序.Test27" />
-      <item itemvalue="应用程序.Test28" />
-      <item itemvalue="应用程序.Test30" />
       <item itemvalue="应用程序.Test31" />
       <item itemvalue="应用程序.Test32" />
+      <item itemvalue="应用程序.Test35" />
+      <item itemvalue="应用程序.Test37" />
+      <item itemvalue="应用程序.Test38" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.Test38" />
+        <item itemvalue="应用程序.Test37" />
+        <item itemvalue="应用程序.Test35" />
         <item itemvalue="应用程序.Test31" />
         <item itemvalue="应用程序.Test32" />
-        <item itemvalue="应用程序.Test30" />
-        <item itemvalue="应用程序.Test28" />
-        <item itemvalue="应用程序.Test27" />
       </list>
     </recent_temporary>
   </component>
@@ -200,6 +200,7 @@
       <workItem from="1594869667251" duration="15157000" />
       <workItem from="1594947552099" duration="17240000" />
       <workItem from="1595035171730" duration="28618000" />
+      <workItem from="1595118218659" duration="22168000" />
     </task>
     <servers />
   </component>
@@ -211,11 +212,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594453194650" />
-    <state x="1055" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1595042199730">
+    <state x="1055" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1595121412245">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="113" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1594616100940" />
-    <state x="1055" y="123" key="#com.intellij.ide.util.MemberChooser/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595042199730" />
+    <state x="1055" y="123" key="#com.intellij.ide.util.MemberChooser/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595121412245" />
     <state x="654" y="274" key="#通知" timestamp="1594869617889">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -228,26 +229,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="166" key="FileChooserDialogImpl/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594437111403" />
-    <state width="1493" height="218" key="GridCell.Tab.0.bottom" timestamp="1595086228838">
+    <state width="1493" height="198" key="GridCell.Tab.0.bottom" timestamp="1595172897820">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="152" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594689974430" />
-    <state width="1493" height="218" key="GridCell.Tab.0.bottom/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595086228838" />
-    <state width="1493" height="218" key="GridCell.Tab.0.center" timestamp="1595086228838">
+    <state width="1493" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595172897820" />
+    <state width="1493" height="158" key="GridCell.Tab.0.bottom/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595122666864" />
+    <state width="1493" height="198" key="GridCell.Tab.0.center" timestamp="1595172897820">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="152" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594689974429" />
-    <state width="1493" height="218" key="GridCell.Tab.0.center/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595086228838" />
-    <state width="1493" height="218" key="GridCell.Tab.0.left" timestamp="1595086228838">
+    <state width="1493" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595172897820" />
+    <state width="1493" height="158" key="GridCell.Tab.0.center/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595122666863" />
+    <state width="1493" height="198" key="GridCell.Tab.0.left" timestamp="1595172897820">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="152" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594689974429" />
-    <state width="1493" height="218" key="GridCell.Tab.0.left/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595086228838" />
-    <state width="1493" height="218" key="GridCell.Tab.0.right" timestamp="1595086228838">
+    <state width="1493" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595172897820" />
+    <state width="1493" height="158" key="GridCell.Tab.0.left/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595122666862" />
+    <state width="1493" height="198" key="GridCell.Tab.0.right" timestamp="1595172897820">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="152" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594689974429" />
-    <state width="1493" height="218" key="GridCell.Tab.0.right/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595086228838" />
+    <state width="1493" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595172897820" />
+    <state width="1493" height="158" key="GridCell.Tab.0.right/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595122666863" />
     <state width="1493" height="218" key="GridCell.Tab.1.bottom" timestamp="1595086228839">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -272,14 +273,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="56" key="SettingsEditor/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594437112313" />
-    <state x="490" y="154" width="540" height="524" key="StructurePopup" timestamp="1595081815678">
+    <state x="490" y="154" width="540" height="524" key="StructurePopup" timestamp="1595148135841">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="490" y="154" width="540" height="524" key="StructurePopup/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595081815678" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1595043812516">
+    <state x="490" y="154" width="540" height="524" key="StructurePopup/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595148135841" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1595131661217">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595043812516" />
+    <state width="498" height="446" key="SwitcherDM/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595131661217" />
     <state x="499" y="157" key="extract.method.dialog" timestamp="1594960840638">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -288,11 +289,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="466" y="144" width="603" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1594653249803" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595043808668">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595148080935">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1594527815132" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595043808668" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595148080935" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
