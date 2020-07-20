@@ -26,6 +26,7 @@ public class Test10 {
         }).start();
         Thread.sleep(1000);
         log.debug("主线程想换一只新垃圾袋？");
+        log.info("{}", ref.getReference() == prev);
         boolean success = ref.compareAndSet(prev, new GarbageBag("空垃圾袋"), true, false);
         log.debug("换了么？" + success);
         log.debug(ref.getReference().toString());

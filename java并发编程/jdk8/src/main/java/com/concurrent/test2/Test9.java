@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicStampedReference;
 
 @Slf4j
 /**
- * AtomicStampedReference 的使用
+ * AtomicStampedReference 的使用，解决aba问题
  */
 public class Test9 {
     
