@@ -23,7 +23,7 @@ public class Test16 implements Account{
     static {
         unsafe = Test14.getUnsafe();
         try {
-            valueOffset = unsafe.objectFieldOffset(Test15.class.getDeclaredField("value"));
+            valueOffset = unsafe.objectFieldOffset(Test16.class.getDeclaredField("value"));
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }

@@ -26,7 +26,7 @@ public class Test27 {
 //            log.debug("running...");
 //        }, 1, 1, TimeUnit.SECONDS);
         
-        // 如果第二个参数被设置为2s，那么任务的执行间隔变成了2s
+        // 如果睡眠时间被设置为s，那么任务的执行间隔变成了2s
 //        pool.scheduleAtFixedRate(() -> {
 //            log.debug("running...");
 //            utils.sleep(2);

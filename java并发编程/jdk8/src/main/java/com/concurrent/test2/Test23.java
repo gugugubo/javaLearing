@@ -10,7 +10,7 @@ import java.util.concurrent.*;
 
 @Slf4j
 /**
- * 测试固定大小的线程池导致的饥饿问题
+ * 测试固定大小的线程池由于没有进行任务划分导致的饥饿问题
  */
 public class Test23 {
 

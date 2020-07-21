@@ -76,6 +76,7 @@ class BlockingQueue<T> {
                     if (nanos<=0){
                         return null;
                     }
+                    // 返回的是剩余的等待时间，更改navos的值，使虚假唤醒的时候可以继续等待
                     nanos = emptyWaitSet.awaitNanos(nanos);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -161,7 +162,6 @@ class BlockingQueue<T> {
                 log.debug("加入任务队列 {}", task);
                 queue.addLast(task);
                 emptyWaitSet.signal();
-
             }
         }finally {
             lock.unlock();

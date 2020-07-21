@@ -15,7 +15,8 @@ public class Test12 {
         AtomicReferenceFieldUpdater fieldUpdater =
                 AtomicReferenceFieldUpdater.newUpdater(Testx.class, String.class,"field");
         Testx testx = new Testx();
-        fieldUpdater.compareAndSet(testx, null, "李华");
+
+        fieldUpdater.compareAndSet(testx, "3434", "李华");
         // 修改成功 field = "李华"
         System.out.println(testx.field);
         // 修改失败 field = "李华"
