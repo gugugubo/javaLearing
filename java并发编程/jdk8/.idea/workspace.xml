@@ -86,33 +86,7 @@
       <visibility group="yarn" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="应用程序.Test22">
-    <configuration name="Test12" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test12" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test16" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test16" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="应用程序.Test40">
     <configuration name="Test22" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test22" />
       <module name="jdk8" />
@@ -152,20 +126,46 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test39" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test39" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test40" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test40" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="应用程序.Test12" />
-      <item itemvalue="应用程序.Test16" />
       <item itemvalue="应用程序.Test34" />
       <item itemvalue="应用程序.Test26" />
       <item itemvalue="应用程序.Test22" />
+      <item itemvalue="应用程序.Test39" />
+      <item itemvalue="应用程序.Test40" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.Test40" />
         <item itemvalue="应用程序.Test22" />
-        <item itemvalue="应用程序.Test26" />
         <item itemvalue="应用程序.Test34" />
-        <item itemvalue="应用程序.Test16" />
-        <item itemvalue="应用程序.Test12" />
+        <item itemvalue="应用程序.Test39" />
+        <item itemvalue="应用程序.Test26" />
       </list>
     </recent_temporary>
   </component>
@@ -203,6 +203,7 @@
       <workItem from="1595118218659" duration="22168000" />
       <workItem from="1595209653200" duration="6502000" />
       <workItem from="1595292275786" duration="16560000" />
+      <workItem from="1595378491815" duration="18504000" />
     </task>
     <servers />
   </component>
@@ -231,54 +232,54 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="166" key="FileChooserDialogImpl/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594437111403" />
-    <state width="1493" height="172" key="GridCell.Tab.0.bottom" timestamp="1595345782900">
+    <state width="1493" height="172" key="GridCell.Tab.0.bottom" timestamp="1595431345624">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="172" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595345782900" />
+    <state width="1493" height="172" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595431345624" />
     <state width="1493" height="114" key="GridCell.Tab.0.bottom/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595295955466" />
-    <state width="1493" height="172" key="GridCell.Tab.0.center" timestamp="1595345782899">
+    <state width="1493" height="172" key="GridCell.Tab.0.center" timestamp="1595431345624">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="172" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595345782899" />
+    <state width="1493" height="172" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1595431345624" />
     <state width="1493" height="114" key="GridCell.Tab.0.center/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595295955465" />
-    <state width="1493" height="172" key="GridCell.Tab.0.left" timestamp="1595345782899">
+    <state width="1493" height="172" key="GridCell.Tab.0.left" timestamp="1595431345623">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="172" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595345782899" />
+    <state width="1493" height="172" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1595431345623" />
     <state width="1493" height="114" key="GridCell.Tab.0.left/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595295955462" />
-    <state width="1493" height="172" key="GridCell.Tab.0.right" timestamp="1595345782899">
+    <state width="1493" height="172" key="GridCell.Tab.0.right" timestamp="1595431345624">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="172" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595345782899" />
+    <state width="1493" height="172" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1595431345624" />
     <state width="1493" height="114" key="GridCell.Tab.0.right/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595295955465" />
-    <state width="1493" height="218" key="GridCell.Tab.1.bottom" timestamp="1595086228839">
+    <state width="1493" height="293" key="GridCell.Tab.1.bottom" timestamp="1595431345620">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="250" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594566754243" />
+    <state width="1493" height="293" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1595431345620" />
     <state width="1493" height="218" key="GridCell.Tab.1.bottom/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595086228839" />
-    <state width="1493" height="218" key="GridCell.Tab.1.center" timestamp="1595086228838">
+    <state width="1493" height="293" key="GridCell.Tab.1.center" timestamp="1595431345619">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="250" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1594566754243" />
+    <state width="1493" height="293" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1595431345619" />
     <state width="1493" height="218" key="GridCell.Tab.1.center/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595086228838" />
-    <state width="1493" height="218" key="GridCell.Tab.1.left" timestamp="1595086228838">
+    <state width="1493" height="293" key="GridCell.Tab.1.left" timestamp="1595431345619">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="250" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1594566754242" />
+    <state width="1493" height="293" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1595431345619" />
     <state width="1493" height="218" key="GridCell.Tab.1.left/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595086228838" />
-    <state width="1493" height="218" key="GridCell.Tab.1.right" timestamp="1595086228838">
+    <state width="1493" height="293" key="GridCell.Tab.1.right" timestamp="1595431345620">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="250" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1594566754243" />
+    <state width="1493" height="293" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1595431345620" />
     <state width="1493" height="218" key="GridCell.Tab.1.right/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595086228838" />
     <state x="270" y="56" key="SettingsEditor" timestamp="1594437112313">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="56" key="SettingsEditor/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1594437112313" />
-    <state x="523" y="157" width="540" height="524" key="StructurePopup" timestamp="1595331522238">
+    <state x="523" y="157" width="572" height="524" key="StructurePopup" timestamp="1595421668535">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="523" y="157" width="540" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1595331522238" />
+    <state x="523" y="157" width="572" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1595421668535" />
     <state x="490" y="154" width="540" height="524" key="StructurePopup/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595293250922" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1595131661217">
       <screen x="0" y="0" width="1536" height="824" />
@@ -292,10 +293,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="466" y="144" width="603" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1594653249803" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595148080935">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595403044641">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1594527815132" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1595403044641" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595148080935" />
   </component>
   <component name="XDebuggerManager">
@@ -353,27 +354,6 @@
           <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/String.java</url>
           <line>137</line>
           <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
-          <line>1516</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/Executor.java</url>
-          <line>139</line>
-          <properties class="java.util.concurrent.Executor" method="execute">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25-sources.jar!/org/slf4j/Logger.java</url>
-          <line>355</line>
-          <properties class="org.slf4j.Logger" method="info">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

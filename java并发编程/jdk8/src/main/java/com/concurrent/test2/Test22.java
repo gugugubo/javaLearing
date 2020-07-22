@@ -45,6 +45,8 @@ public class Test22 {
         });
 
         log.info("shutdown");
+        
+        
         pool.shutdown();
 
 

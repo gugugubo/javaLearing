@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
+/**
+ * Timer 类的使用
+ */
 @Slf4j
 public class Test25 {
     public static void main(String[] args) {

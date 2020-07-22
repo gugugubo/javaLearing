@@ -46,7 +46,7 @@ class TwoParseTermination{
     
     public void stop(){
         this.stop = true;
-        // 这里打断是为了防止如果线程在执行Thread.sleep(500);时，要等待一定时间才停止
+        // 这里打断是为了防止如果线程在执行Thread.sleep(500);时要等待一定时间才停止
         thread.interrupt();
     }
 }

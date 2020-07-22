@@ -14,9 +14,6 @@ public class Test4 {
         twoParseTermination.start();
         Thread.sleep(3000);  // 让监控线程执行一会儿
         twoParseTermination.stop(); // 停止监控线程
-
-
-
     }
     
     
@@ -40,7 +37,6 @@ class TwoParseTermination2{
             }
             starting = true;
         }
-        
         
         thread = new Thread(()->{
             while(true){

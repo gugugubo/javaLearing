@@ -11,7 +11,7 @@ public class Test2 {
     public static void main(String[] args) {
 //        Thread thread = new Thread(() -> {
 //            while (true){
-//                // 这样由于还是有可见性问题
+//                // 这样还是有可见性问题
 //                if (!run){
 //                    break;
 //                }

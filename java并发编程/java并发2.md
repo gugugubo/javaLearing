@@ -6,8 +6,7 @@
 
 ## 5.1 Java 内存模型
 
-JMM 即 Java Memory Model，它从java层面定义了主存、工作内存抽象概念，底层对应着 CPU 寄存器、缓存、硬件内存、
-CPU 指令优化等。JMM 体现在以下几个方面
+JMM 即 Java Memory Model，它从java层面定义了主存、工作内存抽象概念，底层对应着 CPU 寄存器、缓存、硬件内存、CPU 指令优化等。JMM 体现在以下几个方面
 
 1. 原子性 - 保证指令不会受到线程上下文切换的影响
 2. 可见性 - 保证指令不会受 cpu 缓存的影响
@@ -55,18 +54,14 @@ public class Test1 {
 
 ### 解决方法
 
-volatile（表示易变关键字的意思）
-它可以用来修饰成员变量和静态成员变量，他可以避免线程从自己的工作缓存中查找变量的值，必须到主存中获取
-它的值，线程操作 volatile 变量都是直接操作主存   Test1.java   
+volatile（表示易变关键字的意思），它可以用来修饰成员变量和静态成员变量，他可以避免线程从自己的工作缓存中查找变量的值，必须到主存中获取它的值，线程操作 volatile 变量都是直接操作主存   Test1.java   
 
 使用synchronized关键字也有相同的效果！在Java内存模型中，synchronized规定，线程在加锁时， 先清空工作内存→在主内存中拷贝最新变量的副本到工作内存 →执行完代码→将更改后的共享变量的值刷新到主内存中→释放互斥锁。Test2.java
 
 ### 可见性 vs 原子性
 
-前面
-
-例子体现的实际就是可见性，它保证的是在多个线程之间一个线程对 volatile 变量的修改对另一个线程可
-见， 而不能保证原子性，仅用在一个写线程，多个读线程的情况： 上例从字节码理解是这样的：
+前面例子体现的实际就是可见性，它保证的是在多个线程之间一个线程对 volatile 变量的修改对另一个线程可
+见， 而不能保证原子性，仅用在一个写线程，多个读线程的情况。 上例从字节码理解是这样的：
 
 ```
 getstatic run // 线程 t 获取 run true
@@ -91,8 +86,8 @@ isub // 线程2-自减 线程内i=-1
 putstatic i // 线程2-将修改后的值存入静态变量i 静态变量i=-1 
 ```
 
-> 注意 synchronized 语句块既可以保证代码块的原子性，也同时保证代码块内变量的可见性。但缺点是
-> synchronized 是属于重量级操作，性能相对更低
+> 注意 ：synchronized 语句块既可以保证代码块的原子性，也同时保证代码块内变量的可见性。但缺点是
+> synchronized 是属于重量级操作，性能相对更低。
 > 如果在前面示例的死循环中加入 System.out.println() 会发现即使不加 volatile 修饰符，线程 t 也能正确看到
 > 对 run 变量的修改了，想一想为什么？因为println方法里面有synchronized修饰。还有那个等烟的示例(Test34.java)为啥没有出现可见性问题?和synchrozized是一个道理。
 
@@ -104,9 +99,7 @@ putstatic i // 线程2-将修改后的值存入静态变量i 静态变量i=-1
 
 ### 模式之 Balking 
 
-1. 定义
-Balking （犹豫）模式用在一个线程发现另一个线程或本线程已经做了某一件相同的事，那么本线程就无需再做
-了，直接结束返回。有点类似与单例。 
+1. 定义：Balking （犹豫）模式用在一个线程发现另一个线程或本线程已经做了某一件相同的事，那么本线程就无需再做了，直接结束返回。有点类似于单例。 
 2. 实现  Test4.java
 
 
@@ -147,7 +140,7 @@ I_Result 是一个对象，有一个属性 r1 用来保存结果，问可能的�
 情况2：线程2 先执行 num = 2，但没来得及执行 ready = true，线程1 执行，还是进入 else 分支，结果为1
 情况3：线程2 执行到 ready = true，线程1 执行，这回进入 if 分支，结果为 4（因为 num 已经执行过了）
 
-但我告诉你，结果还有可能是 0 ，信不信吧！这种情况下是：线程2 执行 ready = true，切换到线程1，进入 if 分支，相加为 0，再切回线程2 执行 num = 2
+但我告诉你，结果还有可能是 0 ，信不信吧！这种情况下是：线程2 执行 ready = true，切换到线程1，进入 if 分支，相加为 0，再切回线程2 执行 num = 2。
 
 这种现象叫做指令重排，是 JIT 编译器在运行时的一些优化，这个现象需要通过大量测试才能复现，可以使用jcstress工具进行测试。上面仅是从代码层面体现出了有序性问题，下面在讲到 double-checked locking 问题时还会从java字节码的层面了解有序性的问题。
 
@@ -175,9 +168,9 @@ volatile 的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
 
   ```java
   public void actor2(I_Result r) {
-   num = 2;
-   ready = true; // ready 是 volatile 赋值带写屏障
-   // 写屏障
+       num = 2;
+       ready = true; // ready是被volatile修饰的 ，赋值带写屏障
+       // 写屏障
   }
   
   ```
@@ -187,11 +180,11 @@ volatile 的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
    ```java
    public void actor1(I_Result r) {
     // 读屏障
-    // ready 是 volatile 读取值带读屏障
+    //  ready是被volatile修饰的 ，读取值带读屏障
     if(ready) {
-    r.r1 = num + num;
+    	r.r1 = num + num;
     } else {
-    r.r1 = 1;
+    	r.r1 = 1;
     }
    }
    ```
@@ -204,10 +197,10 @@ volatile 的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
 
 1. 写屏障会确保指令重排序时，不会将写屏障之前的代码排在写屏障之后
 
-   ```
+   ```java
    public void actor2(I_Result r) {
     num = 2;
-    ready = true; // ready 是 volatile 赋值带写屏障
+    ready = true; //  ready是被volatile修饰的 ， 赋值带写屏障
     // 写屏障
    }
    ```
@@ -217,7 +210,7 @@ volatile 的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
    ```java
    public void actor1(I_Result r) {
     // 读屏障
-    // ready 是 volatile 读取值带读屏障
+    //  ready是被volatile修饰的 ，读取值带读屏障
     if(ready) {
     	r.r1 = num + num;
     } else {
@@ -232,7 +225,7 @@ volatile 的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
 
 还是那句话，不能解决指令交错：
 
-1. 写屏障仅仅是保证之后的读能够读到最新的结果，但不能保证读跑到它前面去
+1. 写屏障仅仅是保证之后的读能够读到最新的结果，但不能保证其它线程的读跑到它前面去
 2. 而有序性的保证也只是保证了本线程内相关代码不被重排序
 
 ![1594698671628](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200714115112-322421.png)
@@ -243,7 +236,7 @@ volatile 的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
 
 以著名的 double-checked locking 单例模式为例，这是volatile最常使用的地方。
 
-```
+```java
 //最开始的单例模式是这样的
     public final class Singleton {
         private Singleton() { }
@@ -1671,5 +1664,5 @@ public final class String
 
 # 问题
 
-1. 什么时候将导致用户态到内核态的转变？
+1. 什么时候将导致用户态到内核态的转变？在synchroniezed进行加锁的时候。
 2. final是怎么优化读取速度的？复习完jvm再看就懂了。[视频](https://www.bilibili.com/video/BV16J411h7Rd?p=197)

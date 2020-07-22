@@ -7,7 +7,7 @@ import java.util.concurrent.locks.StampedLock;
 
 /**
  * 
- * StampedLock测试
+ * StampedLock 测试
  * StampedLock 不支持条件变量
  * StampedLock 不支持可重入
  */
