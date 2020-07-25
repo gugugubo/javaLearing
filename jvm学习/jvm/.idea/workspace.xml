@@ -3,93 +3,40 @@
   <component name="AnalysisUIOptions">
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="32eda6ef-f5cf-4e9d-aea3-7662ddd04bab" name="Default Changelist" comment="test">
-      <change afterPath="$PROJECT_DIR$/../../forjob/assets/3d2cedbbf32c60de5164701ccb8c990573e0552f.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../forjob/assets/3dfe485d602b8dc469b719598039abd.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/src/main/java/com/concurrent/test/Test19.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/src/main/java/com/concurrent/test/Test20.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/src/main/java/com/concurrent/test/Test21.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Dog.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Test19.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Test20.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Test21.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../assets/1583848735097.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../assets/1583852076452.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../forjob/面经.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../forjob/面经.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../java基础/serialVersionUID的作用.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../java基础/SubFolder/serialVersionUID的作用.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../java并发编程/java并发.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/java并发.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jvm.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../java并发编程/jdk8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../java并发编程/jdk8/src/main/java/com/concurrent/test/Test18.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/src/main/java/com/concurrent/test/Test18.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Test18.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/com/concurrent/test/Test18.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jvm-内存结构.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jvm-内存结构.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../jvm-垃圾回收.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jvm-垃圾回收.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jvm-类加载过程.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jvm-类加载过程.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../数据结构与算法/数据结构.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../数据结构与算法/数据结构.md" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/g1/MyTest1.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/Client.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest1.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest3.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest5.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest4.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -99,303 +46,27 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>equals</find>
-      <find>key</find>
-      <find>refQueue</find>
-      <find>supplier</find>
-      <find>sun.misc.</find>
-      <find>saveGeneratedFiles</find>
-      <find>super.h.invoke</find>
-      <find>value</find>
-      <find>cl</find>
-      <find>loader</find>
-      <find>return</find>
-      <find>setAccessible</find>
-      <find>isPublic</find>
-      <find>h</find>
-      <find>apply</find>
-      <find>proxyClassCache</find>
-      <find>accessFlags</find>
-      <find>proxyName</find>
-      <find>proxyPkg</find>
-      <find>ih</find>
-      <find>getProxyClass0</find>
-      <find>ProxyClassFactory</find>
-      <find>cons</find>
-      <find>A</find>
-      <find>proxy</find>
-      <find>invokeSuper</find>
-      <find>obj</find>
-      <find>ags</find>
-      <find>contextClassLoader</find>
-      <find>109568K</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest4.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest13.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/MyCat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classTest17.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest18.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest17.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest21.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest20.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest22.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest27.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest10.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest5.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest12.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest16.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest17_1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest19.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest23.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest24.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/test1/extend.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/test1/testtest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest26.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecode/MyTest1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/MySample.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/Person.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest4.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest3.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest5.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest7.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest6.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest8.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/subject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/Subject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/RealSubject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/DynamicSubject.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/Client.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/memory/TestSerialversionUID.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/memory/MyTest2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/memory/MyTest3.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/memory/MyTest1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/memory/MyTest4.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest2.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest4.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest5.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/g1/MyTest1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest3.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest1.java" />
-      </list>
-    </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-60" />
-    <option name="y" value="75" />
-    <option name="width" value="1940" />
-    <option name="height" value="1040" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="jvm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jvm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jvm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jvm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jvm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jvm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jvm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jvm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jvm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jvm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jvm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jvm" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jvm" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="jvm" type="462c0819:PsiDirectoryNode" />
-              <item name="gc" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="gcb" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="gcb" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="jvm" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="gcb" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="jvm" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="bytecodetest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="gcb" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="gcb" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="jvm" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="gcb" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="jvm" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="bytecodetest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="target" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="target" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="classes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="target" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="classes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="target" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="classes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="gcb" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="jvm" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="jvm" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="target" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="classes" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="com" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="gcb" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="jvm" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectId" id="1fAmx779Os7Msqy7AghIiczuuTx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583934596273" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -413,64 +84,11 @@
       <recent name="C:\Users\古春波\Desktop\JavaLearing\Construct\jvm\src\main\java\com\gcb\jvm\classload" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Application.MyTest5">
-    <configuration name="MyTest1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.bytecodetest.MyTest1" />
-      <module name="jvm" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gcb.jvm.bytecodetest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MyTest1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.g1.MyTest1" />
-      <module name="jvm" />
-      <option name="VM_PARAMETERS" value="-XX:+UseG1GC -XX:MaxGCPauseMillis=200m -XX:+PrintGCDateStamps -XX:+PrintGCDetails -verbose：gc -Xms10m -Xmx10m" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gcb.jvm.g1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="应用程序.classloadTest10">
     <configuration name="MyTest1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.gc.MyTest1" />
       <module name="jvm" />
       <option name="VM_PARAMETERS" value="-XX:SurvivorRatio=8 -Xms20m -Xmx20m -Xmn10m -verbose：gc -XX:+PrintGCDetails" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gcb.jvm.gc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MyTest2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.gc.MyTest2" />
-      <module name="jvm" />
-      <option name="VM_PARAMETERS" value="-XX:SurvivorRatio=8 -Xms20m -Xmx20m -Xmn10m -XX:+PrintGCDetails  -verbose：gc  -XX:PretenureSizeThreshold=4194304  -XX:+UseSerialGC" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.gcb.jvm.gc.*" />
@@ -536,6 +154,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="classloadTest10" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.classload.classloadTest10" />
+      <module name="jvm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcb.jvm.classload.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="classloadTest3" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.classload.classloadTest3" />
       <module name="jvm" />
@@ -563,23 +194,17 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.classloadTest6" />
-      <item itemvalue="Application.classloadTest3" />
-      <item itemvalue="Application.MyTest2" />
-      <item itemvalue="Application.MyTest3" />
-      <item itemvalue="Application.MyTest4" />
-      <item itemvalue="Application.MyTest5" />
-      <item itemvalue="Application.MyTest1" />
-      <item itemvalue="Application.MyTest1 (1)" />
-      <item itemvalue="Application.MyTest3 (1)" />
+      <item itemvalue="应用程序.classloadTest3" />
+      <item itemvalue="应用程序.classloadTest6" />
+      <item itemvalue="应用程序.MyTest3" />
+      <item itemvalue="应用程序.MyTest3 (1)" />
+      <item itemvalue="应用程序.MyTest4" />
+      <item itemvalue="应用程序.MyTest5" />
+      <item itemvalue="应用程序.classloadTest10" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MyTest5" />
-        <item itemvalue="Application.MyTest1 (1)" />
-        <item itemvalue="Application.MyTest3" />
-        <item itemvalue="Application.MyTest3 (1)" />
-        <item itemvalue="Application.MyTest1" />
+        <item itemvalue="应用程序.classloadTest10" />
       </list>
     </recent_temporary>
   </component>
@@ -620,6 +245,7 @@
       <workItem from="1583325948758" duration="2282000" />
       <workItem from="1583378236061" duration="8477000" />
       <workItem from="1583931745475" duration="1977000" />
+      <workItem from="1595669518190" duration="7315000" />
     </task>
     <task id="LOCAL-00001" summary="冲冲冲！！！">
       <created>1581516673544</created>
@@ -638,9 +264,6 @@
     <option name="localTasksCounter" value="3" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="275619000" />
-  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -650,69 +273,15 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2751678" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.32954547" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.5" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.36363637" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="TODO" order="8" weight="0.32954547" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32954547" />
-      <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.2528409" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.203125" />
-      <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32954547" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24966443" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="9" side_tool="true" weight="0.25100672" />
-      <window_info anchor="right" id="jclasslib" order="10" weight="0.38456374" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -731,6 +300,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -738,393 +308,42 @@
     <MESSAGE value="test" />
     <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
+  <component name="WindowStateProjectService">
+    <state width="1493" height="263" key="GridCell.Tab.0.bottom" timestamp="1595691093546">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.0.bottom/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595691093546" />
+    <state width="1493" height="263" key="GridCell.Tab.0.center" timestamp="1595691093545">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.0.center/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595691093545" />
+    <state width="1493" height="263" key="GridCell.Tab.0.left" timestamp="1595691093545">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.0.left/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595691093545" />
+    <state width="1493" height="263" key="GridCell.Tab.0.right" timestamp="1595691093546">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="263" key="GridCell.Tab.0.right/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595691093546" />
+    <state x="497" y="161" width="540" height="524" key="StructurePopup" timestamp="1595686588766">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="497" y="161" width="540" height="524" key="StructurePopup/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595686588766" />
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595686582477">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595686582477" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/reflect/WeakCache.java</url>
           <line>107</line>
-          <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/jre/lib/rt.jar!/sun/instrument/TransformerManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="104" selection-start-line="104" selection-end-line="104" />
-          <folding>
-            <element signature="e#2416#2417#0" expanded="true" />
-            <element signature="e#2460#2461#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/jre/lib/rt.jar!/sun/instrument/InstrumentationImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="265" selection-start-line="265" selection-end-line="265" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/gcb/jvm/bytecodetest/$Proxy0.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="24" column="51" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#2413#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/DynamicSubject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#241#242#0" expanded="true" />
-            <element signature="e#277#278#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="60" column="19" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/reflect/Proxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13205">
-          <caret line="738" column="27" selection-start-line="738" selection-start-column="27" selection-end-line="738" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/jre/lib/rt.jar!/sun/misc/ProxyGenerator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2185">
-          <caret line="142" column="19" selection-start-line="142" selection-start-column="19" selection-end-line="142" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/reflect/Constructor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="421" column="8" selection-start-line="421" selection-start-column="8" selection-end-line="421" selection-end-column="8" />
-          <folding>
-            <element signature="e#14979#15009#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/Memory.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/io/Serializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="168" column="11" lean-forward="true" selection-start-line="168" selection-start-column="11" selection-end-line="168" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/memory/TestSerialversionUID.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/Runnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="64" column="6" lean-forward="true" selection-start-line="64" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="549" column="22" selection-start-line="549" selection-start-column="22" selection-end-line="549" selection-end-column="22" />
-          <folding>
-            <element signature="e#19132#19133#0" expanded="true" />
-            <element signature="e#19175#19176#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest19.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest20.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest21.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest22.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest23.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-310">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest27.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest17.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest17_1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest18.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest9.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-125">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest10.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest12.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest13.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-106">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest14.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest15.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest16.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest24.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest26.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="23" column="34" lean-forward="true" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest8.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/memory/MyTest3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="53" column="6" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/memory/MyTest1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/memory/MyTest2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/memory/MyTest4.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" selection-start-line="4" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="3149" column="24" lean-forward="true" selection-start-line="3149" selection-start-column="24" selection-end-line="3149" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/g1/MyTest1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/bytecodetest/MyTest1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest3.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="19" column="29" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest5.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gcb/jvm/gc/MyTest4.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
   </component>
   <component name="masterDetails">
     <states>

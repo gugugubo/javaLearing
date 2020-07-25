@@ -23,7 +23,7 @@ public class classloadTest1 {
         short a = 3;
         // System.out.println(Chirld.parentString);
         /**
-         * 这是因为类的初始化仅在被主动使用时才进行初始化,只有用Chirld.parentString只是主动使用了Parent类
+         * 这是因为类的初始化仅在被主动使用时才进行初始化,只用Chirld.parentString只是主动使用了Parent类
          * 仅运行上面一条语句输出如下：
          * parent is loading
          * parent

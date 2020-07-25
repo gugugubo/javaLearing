@@ -1,7 +1,7 @@
 package com.gcb.jvm.classload;
 
 /**
- * 测试类的准备和初始化阶段的静态变量的变化
+ * 测试  类的准备阶段和类型的初始化阶段的静态变量的变化
  */
 public class classloadTest6 {
     public static void main(String[] arg){
@@ -13,7 +13,7 @@ public class classloadTest6 {
          * 2
          * 0
          * 因为最开始是自上而下的准备阶段，a的值为0，singleton为null，b的值为0
-         * 然后开始是自上而下的初始化阶段，b的值会被覆盖为0
+         * 然后开始是自上而下的类型初始化阶段，b的值会被覆盖为0
          */
     }
 }

@@ -6,7 +6,7 @@
 
 - 类型的加载，在这个阶段，虚拟机要完成三个步骤
 
-  - 1.通过一个类的全限定名来获取定义此类的二进制字节流 （读取.class文件） 2.将这个字节流所代表的静态储存结构转化为方法区运行时数据结构 3. 在内存中创建一个代表这个类的java.lang.Class对象，Class对象封装了类在方法区的数据结构（虚拟机规范并没有说明Class对象放在哪里，HotSpot虚拟机将放在了方法区中，Class对象包含了类相关的许多信息），作为方法区这个类的各种数据的访问入口。(不懂的什么是方法区小伙伴可以先记住这里的方法区就是虚拟机内存的一块区域而已)
+  - 1.通过一个类的全限定名来获取定义此类的二进制字节流 （读取.class文件） 2.将这个字节流所代表的静态储存结构转化为方法区运行时数据结构 3. 在内存中创建一个代表这个类的java.lang.Class对象，Class对象封装了类在方法区的数据结构（虚拟机规范并没有说明Class对象放在哪里，HotSpot虚拟机将放在了方法区中，Class对象包含了类相关的许多信息），作为方法区对这个类的各种数据的访问入口。(不懂的什么是方法区小伙伴可以先记住这里的方法区就是虚拟机内存的一块区域而已)
 
   - #### 加载.class文件的方式
 
@@ -50,9 +50,9 @@
     #### **被动使用**
     
     - 除了主动使用，剩下的都是被动使用
-    - 新建数组对象不是对数组包含的元素的主动使用,因为对于数组实例来说，其Class对象是由jvm在运行期动态生成的，它并没有触发它包含的元素所属类型的初始化，但是出发的是一个名为class [Lcom.gcb.jvm.classload.Parent4 类的初始化，这不是一个合法的类名，这就是jvm动态生成的类的类名(classloadTest4.java)
-    - 引用在编译器可以知道的类常量也不是主动使用，因为类将编译器就可以确定的常量放进了常量池中(classloadTest2.java, classloadTest3.java)
-    - 通过子类引用父类的静态变量字段不是对子类的主动使用，而是对父类的主动使用。也就是说只有当程序访问的静态变量或者静态方法确实在当前类或当前接口时，才可以认为是对类的主动使用（主动使用和被动使用都做了实验验证,可以看代码文档(classloadTest1.java)）
+    - 新建数组对象不是对数组包含的元素的主动使用，因为对于数组实例来说，其Class对象是由jvm在运行期动态生成的，它并没有触发它包含的元素所属类型的初始化，但是触发的是一个名为class [Lcom.gcb.jvm.classload.Parent4 类的初始化，这不是一个合法的类名，这就是jvm动态生成的类的类名(classloadTest4.java)
+    - 引用在编译期可以知道的类常量也不是主动使用，因为类将编译期就可以确定的常量放进了常量池中(classloadTest2.java, classloadTest3.java)
+    - 通过子类引用父类的静态变量字段不是对子类的主动使用，而是对父类的主动使用。也就是说只有当程序访问的静态变量或者静态方法确实在当前类或当前接口时，才可以认为是对类的主动使用（主动使用和被动使用都做了实验验证，可以看代码文档(classloadTest1.java)）
 
 - 卸载
 
@@ -80,15 +80,15 @@
 
 - 根类加载器(Bootstrap)
 - 拓展类加载器(Extemnsion)
-- 系统类加载器(System)：加载classpath或者java.lang.path下的类，一般来说就由系统下载类加载我们写的类
+- 系统类加载器(System)：加载classpath或者java.lang.path下的类，一般来说就由系统类加载我们写的类
 - 以上几个加载器呈父子关系（classloadTest14.java）
   - ![1581559224452](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115122-567156.png)
 - ![1581517657115](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115124-502372.png)
-  - Bootstrap classloader 启动类加载器：加载的是$JAVE_HOME(就是jdk的目录)中jre/lib/rt.jar 或者系统属性sun.boot.class.paht所指定的目录里 里所有的class（即我们jdk常有的一些类如Object类），由c++实现，不是classloader的子类
+  - Bootstrap classloader 启动类加载器：加载的是$JAVE_HOME(就是jdk的目录)中jre/lib/rt.jar 或者系统属性sun.boot.class.paht所指定的目录里所有的class（即我们jdk常有的一些类如Object类），由c++实现，不是classloader的子类
   - Extension classloader 拓展类加载器：负责加载java平台中拓展功能的一些jar包，包括$JAVE_HOME中jre/lib/*.jar 或 系统属性 java.ext.dirs 指定目录下的jar包(classloadTest19.java)
   - System classloader 系统类加载器： 负责加载classpath目录下的class 和系统属性java.class.path所指定目录的jar包（比如我们自己写的类）(classloadTest7.java) 
   - 加入将自己的.class文件打包成jar包放入上面的系统属性所指定的目录中，可以发现我们自定义的类也是可以被加载的！(classloadTest22.java)。但是如果将sun.boot.class.paht参数改为其它目录，那么将无法加载Object类，然而java所有的类都依赖于Object类，就会导致加载失败。
-  - 那么类加载器是谁加载的呢？内建于java平台中的启动类加载器会加载java.lang.classloader类和其他的java平台类(即jre正常运行所需的基本组件，包括java.util 和java.lang包等等)。当jvm启动时，一块特殊的C++机器码会执行，它会加载拓展类加载器与系统类加载器（这两个加载器定义在Launcher类中，是Launcher的内部类，而跟类加载器相关的操作的定义在ClassLoader类中），这块特殊的机器码叫做启动类加载器。启动类加载器不是java类，而其他的类加载器是java类。(classloadTest23.java)
+  - 那么类加载器是谁加载的呢？内建于java平台中的启动类加载器会加载java.lang.classloader类和其他的java平台类(即jre正常运行所需的基本组件，包括java.util 和java.lang包等等)。当jvm启动时，一块特殊的C++机器码会执行，它会加载拓展类加载器与系统类加载器（这两个加载器定义在Launcher类中，是Launcher的内部类，而跟类加载器相关的操作的定义在ClassLoader类中），这块特殊的机器码叫做启动类加载器。启动类加载器不是java类，而其它的类加载器是java类。(classloadTest23.java)
   - 实验代码在classloadTest18.java
 
 
@@ -98,7 +98,7 @@
 - java.lang.ClassLoader的子类
 - 自定义类加载器的一般操作是用户可以自定义类的加载方式，一般仅此而已，而不是说要重写很多方法什么的。
 
-类加载器并不需要等到某个类被“首次主动使用”时再去加载它，jvm规范允许类加载器在预料某个类将要被使用时就预先加载它，如果在预先加载的过程中遇到了.class文件缺失或者存在错误，那么类加载器将在程序首次主动使用该类时才报告错误（LingkageError错误），如果一直都没有被程序主动使用，那么类加载器就不会报告错误  
+类加载器并不需要等到某个类被“首次主动使用”时再去加载它，jvm规范允许类加载器在预料某个类将要被使用时就预先加载它，如果在预先加载的过程中遇到了.class文件缺失或者存在错误，那么类加载器将在程序首次主动使用该类时才报告错误（LingkageError错误），如果一直都没有被程序主动使用，那么类加载器就不会报告错误。
 
 #### 获取classloader的途径
 
@@ -111,9 +111,9 @@
   - Class<classloadTest13> classloadTest13Class = classloadTest13.class;
     ClassLoader classLoader = classloadTest13Class.getClassLoader();
 - 3.获取系统的classloader
-  - getSystemClassLoader 的javadoc文档如下：返回用于系统类加载器。这是新类加载器实例的默认委托双亲，是默认用于启动应用程序的类加载器。此方法首先在运行时的启动序列的早期调用，此时它将创建系统类加载器并将其设置为调用此方法的线程的上下文类加载器。如果在首次调用此方法时定义了系统属性“java.system.class.loader”(该系统属性可以指定一个自定义类加载器的类名)，则该属性的值将被视为将作为系统类加载器返回的类的名称, 该系统属性指定的类变成系统类加载器。该系统属性指定的类将默认使用系统类加载器加载(这里不懂呀，原文是The class is loaded using the default system class loader and must define a public constructor that takes a single parameter of type ClassLoader which is used as the delegation parent.这里的The class 不知道指的是什么)，并且必须定义一个公共构造函数，该构造函数接受一个Classloader 类型的参数,此Classloader 作为此类的父加载器。然后使用此构造函数创建一个实例，并使用默认的系统类加载器作为参数。生成的类加载器被定义为系统类加载器。(classloadTest23.java)
+  - getSystemClassLoader 的javadoc文档如下：返回用于系统类加载器。这是新类加载器实例的默认委托双亲，是默认用于启动应用程序的类加载器。此方法首先在运行时的启动序列的早期调用，此时它将创建系统类加载器并将其设置为调用此方法的线程的上下文类加载器。如果在首次调用此方法时定义了系统属性“java.system.class.loader”(该系统属性可以指定一个自定义类加载器的类名)，则该属性的值将被视为将作为系统类加载器返回的类的名称，该系统属性指定的类变成系统类加载器。该系统属性指定的类将默认使用系统类加载器加载(这里不懂呀，原文是The class is loaded using the default system class loader and must define a public constructor that takes a single parameter of type ClassLoader which is used as the delegation parent.这里的The class 不知道指的是什么)，并且必须定义一个公共构造函数，该构造函数接受一个Classloader 类型的参数，此Classloader 作为此类的父加载器。然后使用此构造函数创建一个实例，并使用默认的系统类加载器作为参数。生成的类加载器被定义为系统类加载器。(classloadTest23.java)
   - ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
-- 注意：类加载器加载的是.class生成对应类的Class对象 
+- 注意：类加载器加载的是.class文件生成对应类的Class对象 
 
 实验代码（classloadTest13.java, classloadTest12.java）
 
@@ -168,7 +168,7 @@ class NetworkClassLoader extends ClassLoader {
 ```java
      ClassLoader loader = new NetworkClassLoader(host, port);
      Object main = loader.loadClass("Main", true).newInstance();
-          . . .
+     . . .
 ```
 
 网络类加载器子类必须定义findClass和loadClassData方法才能从网络加载类。一旦下载了构成类的字节，它就应该使用defineClass方法创建一个Class 实例。示例实现是：
