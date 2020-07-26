@@ -23,14 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32eda6ef-f5cf-4e9d-aea3-7662ddd04bab" name="Default Changelist" comment="test">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jvm.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../java并发编程/jdk8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jvm-类加载过程.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jvm-类加载过程.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest12.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest12.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest17_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest17_1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest19.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest19.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest21.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest21.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest23.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jvm/classload/classloadTest23.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../数据结构与算法/数据结构.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../数据结构与算法/数据结构.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,48 +83,7 @@
       <recent name="C:\Users\古春波\Desktop\JavaLearing\Construct\jvm\src\main\java\com\gcb\jvm\classload" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.classloadTest10">
-    <configuration name="MyTest1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.gc.MyTest1" />
-      <module name="jvm" />
-      <option name="VM_PARAMETERS" value="-XX:SurvivorRatio=8 -Xms20m -Xmx20m -Xmn10m -verbose：gc -XX:+PrintGCDetails" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gcb.jvm.gc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MyTest3 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.gc.MyTest3" />
-      <module name="jvm" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gcb.jvm.gc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MyTest3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.gc.MyTest3" />
-      <module name="jvm" />
-      <option name="VM_PARAMETERS" value="-XX:SurvivorRatio=8 -Xms20m -Xmx20m -Xmn10m -XX:+PrintGCDetails -verbose：gc -XX:+PrintCommandLineFlags -XX:MaxTenuringThreshold=5 -XX:+PrintTenuringDistribution" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gcb.jvm.gc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="应用程序.Person">
     <configuration name="MyTest4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.gc.MyTest4" />
       <module name="jvm" />
@@ -154,8 +112,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Person" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.classload.Person" />
+      <module name="jvm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcb.jvm.classload.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="classloadTest10" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.classload.classloadTest10" />
+      <module name="jvm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gcb.jvm.classload.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="classloadTest19" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.gcb.jvm.classload.classloadTest19" />
       <module name="jvm" />
       <extension name="coverage">
         <pattern>
@@ -196,14 +180,16 @@
     <list>
       <item itemvalue="应用程序.classloadTest3" />
       <item itemvalue="应用程序.classloadTest6" />
-      <item itemvalue="应用程序.MyTest3" />
-      <item itemvalue="应用程序.MyTest3 (1)" />
       <item itemvalue="应用程序.MyTest4" />
       <item itemvalue="应用程序.MyTest5" />
       <item itemvalue="应用程序.classloadTest10" />
+      <item itemvalue="应用程序.classloadTest19" />
+      <item itemvalue="应用程序.Person" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.Person" />
+        <item itemvalue="应用程序.classloadTest19" />
         <item itemvalue="应用程序.classloadTest10" />
       </list>
     </recent_temporary>
@@ -246,6 +232,8 @@
       <workItem from="1583378236061" duration="8477000" />
       <workItem from="1583931745475" duration="1977000" />
       <workItem from="1595669518190" duration="7315000" />
+      <workItem from="1595724078773" duration="615000" />
+      <workItem from="1595749367976" duration="11213000" />
     </task>
     <task id="LOCAL-00001" summary="冲冲冲！！！">
       <created>1581516673544</created>
@@ -309,25 +297,26 @@
     <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1493" height="263" key="GridCell.Tab.0.bottom" timestamp="1595691093546">
+    <state width="1493" height="263" key="GridCell.Tab.0.bottom" timestamp="1595769104047">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="263" key="GridCell.Tab.0.bottom/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595691093546" />
-    <state width="1493" height="263" key="GridCell.Tab.0.center" timestamp="1595691093545">
+    <state width="1493" height="263" key="GridCell.Tab.0.bottom/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595769104047" />
+    <state width="1493" height="263" key="GridCell.Tab.0.center" timestamp="1595769104047">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="263" key="GridCell.Tab.0.center/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595691093545" />
-    <state width="1493" height="263" key="GridCell.Tab.0.left" timestamp="1595691093545">
+    <state width="1493" height="263" key="GridCell.Tab.0.center/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595769104047" />
+    <state width="1493" height="263" key="GridCell.Tab.0.left" timestamp="1595769104047">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="263" key="GridCell.Tab.0.left/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595691093545" />
-    <state width="1493" height="263" key="GridCell.Tab.0.right" timestamp="1595691093546">
+    <state width="1493" height="263" key="GridCell.Tab.0.left/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595769104047" />
+    <state width="1493" height="263" key="GridCell.Tab.0.right" timestamp="1595769104047">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="263" key="GridCell.Tab.0.right/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595691093546" />
-    <state x="497" y="161" width="540" height="524" key="StructurePopup" timestamp="1595686588766">
+    <state width="1493" height="263" key="GridCell.Tab.0.right/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595769104047" />
+    <state x="497" y="161" width="540" height="524" key="StructurePopup" timestamp="1595771455160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="497" y="161" width="540" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1595771455160" />
     <state x="497" y="161" width="540" height="524" key="StructurePopup/1920.221.1536.824/0.0.1536.824@0.0.1536.824" timestamp="1595686588766" />
     <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1595686582477">
       <screen x="0" y="0" width="1536" height="824" />

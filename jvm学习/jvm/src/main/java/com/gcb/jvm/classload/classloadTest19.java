@@ -9,7 +9,8 @@ import com.sun.crypto.provider.AESKeyGenerator;
  */
 public class classloadTest19 {
     public static void main(String[] args) {
-        //该类默认有扩展类加载器加载的,但是如果我们把该类默认的加载路劲修改后，就会报错
+        System.out.println("testing");
+        //该类默认有扩展类加载器加载的,但是如果我们把该类默认的加载路径修改后，就会报错
         AESKeyGenerator aesKeyGenerator = new AESKeyGenerator();
         System.out.println(aesKeyGenerator.getClass().getClassLoader()); //sun.misc.Launcher$ExtClassLoader@4b67cf4d
     }

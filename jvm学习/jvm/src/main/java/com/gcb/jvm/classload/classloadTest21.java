@@ -23,7 +23,7 @@ public class classloadTest21 {
         System.out.println(aClass.hashCode());
         System.out.println(aClass1.hashCode());
 
-        // 获取对象的setPerson方法,Object.class是setPerson的参数类型
+        // 获取对象的setPerson方法,Object.class是的setPerson参数类型
         Method setPerson = aClass.getMethod("setPerson",Object.class);
         // 第一个参数是执行此方法的对象，第二个参数是传递给方法的参数
         setPerson.invoke(instance,instance1);

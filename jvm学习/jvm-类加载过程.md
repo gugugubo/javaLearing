@@ -58,6 +58,8 @@
 
 #### 生命周期图
 
+![img](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/类加载过程-完善.png)
+
 ![1582708437476](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115330-815834.png)
 
 #### 生命周期时序图
@@ -67,12 +69,6 @@
 #### 什么是类型
 
 指的是具体地class，类或者接口
-
-#### java虚拟机结束生命周期
-
-![1581346391243](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115117-810738.png)
-
-
 
 ## 类的加载器
 
@@ -84,7 +80,7 @@
 - 以上几个加载器呈父子关系（classloadTest14.java）
   - ![1581559224452](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115122-567156.png)
 - ![1581517657115](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115124-502372.png)
-  - Bootstrap classloader 启动类加载器：加载的是$JAVE_HOME(就是jdk的目录)中jre/lib/rt.jar 或者系统属性sun.boot.class.paht所指定的目录里所有的class（即我们jdk常有的一些类如Object类），由c++实现，不是classloader的子类
+  - Bootstrap classloader 启动类加载器：加载的是$JAVE_HOME(就是jdk的目录)中jre/lib/rt.jar 或者系统属性sun.boot.class.path所指定的目录里所有的class（即我们jdk常有的一些类如Object类），由c++实现，不是classloader的子类
   - Extension classloader 拓展类加载器：负责加载java平台中拓展功能的一些jar包，包括$JAVE_HOME中jre/lib/*.jar 或 系统属性 java.ext.dirs 指定目录下的jar包(classloadTest19.java)
   - System classloader 系统类加载器： 负责加载classpath目录下的class 和系统属性java.class.path所指定目录的jar包（比如我们自己写的类）(classloadTest7.java) 
   - 加入将自己的.class文件打包成jar包放入上面的系统属性所指定的目录中，可以发现我们自定义的类也是可以被加载的！(classloadTest22.java)。但是如果将sun.boot.class.paht参数改为其它目录，那么将无法加载Object类，然而java所有的类都依赖于Object类，就会导致加载失败。
@@ -113,7 +109,7 @@
 - 3.获取系统的classloader
   - getSystemClassLoader 的javadoc文档如下：返回用于系统类加载器。这是新类加载器实例的默认委托双亲，是默认用于启动应用程序的类加载器。此方法首先在运行时的启动序列的早期调用，此时它将创建系统类加载器并将其设置为调用此方法的线程的上下文类加载器。如果在首次调用此方法时定义了系统属性“java.system.class.loader”(该系统属性可以指定一个自定义类加载器的类名)，则该属性的值将被视为将作为系统类加载器返回的类的名称，该系统属性指定的类变成系统类加载器。该系统属性指定的类将默认使用系统类加载器加载(这里不懂呀，原文是The class is loaded using the default system class loader and must define a public constructor that takes a single parameter of type ClassLoader which is used as the delegation parent.这里的The class 不知道指的是什么)，并且必须定义一个公共构造函数，该构造函数接受一个Classloader 类型的参数，此Classloader 作为此类的父加载器。然后使用此构造函数创建一个实例，并使用默认的系统类加载器作为参数。生成的类加载器被定义为系统类加载器。(classloadTest23.java)
   - ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
-- 注意：类加载器加载的是.class文件生成对应类的Class对象 
+- 注意：类加载器加载的是.class文件生成对应类的Class对象，加载的作用就是将 .class文件加载到内存。
 
 实验代码（classloadTest13.java, classloadTest12.java）
 
@@ -192,10 +188,10 @@ class NetworkClassLoader extends ClassLoader {
 
 #### 自定义类加载器
 
-继承ClassLoader类，只需要重写findClass方法，findClass方法返回一个Class对象，findClass里面真正起作用的是defineClass方法，关于fingClass()方法和defineClass()方法的javadoc文档如下
+继承ClassLoader类，只需要重写findClass方法，findClass方法返回一个Class对象，findClass里面真正起作用的是defineClass方法，关于fingClass()方法和defineClass()方法的javadoc文档如下：
 
 - findclass方法的javadoc文档：
-  查找具有指定二进制名称的类。此方法应被 自定义的类加载器实现重写，
+  查找具有指定二进制名称的类。此方法应被自定义的类加载器实现重写，
   并将在检查父类加载器以获取请求的类后由loadClass方法调用。默认实现引发ClassNotFoundException。
 - findclass方法里面会调用defineClass方法，defineClass方法的javadoc文档为：
   将字节数组转换为Class类的实例。在Clsss类可以使用之前，必须对其进行解析。
@@ -282,7 +278,7 @@ public class classloadTest16 extends ClassLoader {
 
 - 可以确保java核心库的类型安全，所有的java应用都至少引用java.lang.Object类，也就是说在运行期，java.lang.Object这个类会被加载到java虚拟机中，用户自定义的类加载器不可能加载由父加载器加载的Object类，从而保证不可靠代码甚至恶意代码代替父加载器加载的可靠代码。
 - 可以确保java核心类型所提供的类不会被自定义的类所覆盖掉(因为会先向上查找)
-- 不同的类加载器可以为相同名称的类创建额外的命名空间，相同名称的类可以并存在java虚拟机中，只要用不同的类加载器来加载他们即可，不同的类加载器之间是不兼容的，这相当于java虚拟机内部创建了一个有一个的相互隔离的java类空间，这类技术在很多框架中都得到了实际应用
+- 不同的类加载器可以为相同名称的类创建额外的命名空间，相同名称的类可以并存在java虚拟机中，只要用不同的类加载器来加载他们即可，不同的类加载器之间是不兼容的，这相当于java虚拟机内部创建了一个又一个的相互隔离的java类空间，这类技术在很多框架中都得到了实际应用
 
   
 
@@ -292,7 +288,7 @@ public class classloadTest16 extends ClassLoader {
 - 每个类加载器都有自己的命名空间，命名空间由该加载器及所有父加载器所加载的类组成（一个类加载器加载的类只供它自己和它的子加载器加载的类使用）。如果一个类加载器已经加载过A类那么此加载器和此加载器的子类都不会再重复加载A类(子加载器可以访问父类加载的类)，但是父加载器是看不到子加载器加载的类，察觉不到子类加载器加载生成的的Class对象, 所以如果在父加载器加载的类中引用子加载器加载的Class对象就会报错（classloadTest16.java ，classloadTest17_1.class）
   - 上面的话正式一点说法如下：子加载器的命名空间包含所有父加载器的命名空间，因此子加载器能看见父加载器加载的类，例如系统加载器加载的类能看见根加载器加载的类。由父加载器加载的类无法看到子加载器加载的类，如果两个加载器没有直接或者间接的父子关系，那么 它们各自加载的类互不可见(classloadTest21.java)
   - 在运行期，一个java类的是由该类的完全限定名（binary name 二进制名）和用于加载该类的类加载器所共同决定的，如果同样名字（即相同的完全限定名）的类是由不同的类加载器加载的，那么这些类就是不同的，即便.class文件的字节码完全一样，并且从相同的目录下加载的也是一样
-- 在同一个命名空间中，不会出现类的完整名字（包括 类的包名）相同的两个类
+- 在同一个命名空间中，不会出现类的完整名字（包括类的包名）相同的两个类
 - 在不同的命名空间中，有可能会出现类的完整名字（包括类的包名）相同的两个类
 
 #### **类的上下文类加载器**
@@ -303,17 +299,17 @@ public class classloadTest16 extends ClassLoader {
 
 在双亲委托模型下，类加载器是自下而上的，即下层加载器会委托上层进行加载，但是比如对于SPI（service provider interface）来说，有些接口是由java核心库提供的（比如jdbc包），而java核心库是由启动类加载器加载的，而这些接口的实现却来自于不同的jar包（厂商提供），java的启动类加载器是不会加载其它来源的jar包，这样传统的双亲委托模型就无法满足SPI的需求。而通过上下文类加载器，**就可以由设置的上下文类加载器来实现对于接口实现类的加载。**
 
-类Thread中的getContextClassLoader和setContextClassLoader分别用来获取和设置上下文类加载器。如果没有通过setContextClassLoader设置上下文类加载器的话，线程将继承父线程的上下文加载器，(如果没有进行任何设置的话线程的默认加载器为系统类加载器) 【这里不太懂啦】 java应用运行时初始线程的上下文加载器是系统类加载器。父ClassLoader加载的类中可以使用Thread.getContextClassLoader 获取指定的ClassLoader加载类(比如在由根加载器加载的ServiceLoader类中先通过Thread.getContextClassLoader获取ClassLoader再通过反射方法Class.forName(....) 将获取的ClassLoader指定为加载类的类加载器, 这样就成功用指定的类加载器加载了类！)，就这改变了父ClassLoader 加载的类无法使用子ClassLoader或者其它没有直接父子关系的ClassLoader加载的类的情况，即改变了双亲委托模型。(classloadTest26.java)
+类Thread中的getContextClassLoader和setContextClassLoader分别用来获取和设置上下文类加载器。如果没有通过setContextClassLoader设置上下文类加载器的话，线程将继承父线程的上下文加载器，(如果没有进行任何设置的话线程的默认加载器为系统类加载器)  java应用运行时初始线程的上下文加载器是系统类加载器。父ClassLoader加载的类中可以使用Thread.getContextClassLoader 获取指定的ClassLoader加载类(比如在由根加载器加载的ServiceLoader类中先通过Thread.getContextClassLoader获取ClassLoader再通过反射方法Class.forName(....) 将获取的ClassLoader指定为加载类的类加载器， 这样就成功用指定的类加载器加载了类！)，就这改变了父ClassLoader 加载的类无法使用子ClassLoader或者其它没有直接父子关系的ClassLoader加载的类的情况，即改变了双亲委托模型。(classloadTest26.java)
 
 
 
 ## 类的卸载
 
 - 当MySample类被加载连接和初始化后它的生命周期就开始了，当代表MySample类的Class对象不再被引用，即不可触及时，Class对象就会结束周期，MyClass对象在方法区的数据也会被卸载，从而结束MySample的生命周期。
-- 一个类何时结束它的生命周期取决于代表它的Class对象核时结束生命周期
-- 由java虚拟机自带的类加载器所加载的类，在虚拟机的生命周期中，始终不会被卸载。前面已经介绍过，java虚拟机自带的加载器包括根类加载器，系统加载器，拓展类加载器。java虚拟机本身会引用这些类加载器，而这些类加载器则是始终会应用它们所加载的Class对象，因此这些Class对象始终是可触及的。因此说，由用户自定义的类加载器所加载的类是可以被卸载的
-- 在实例程序中，Sample类由loader1加载，在类加载器的内部实现中，用一个java集合来存放所加载类的引用。另一方面一个Class对象总是会引用它的类加载器，调用Class对象的getClassLoader()方法，就能获得它的类加载器对象，由此可见，Sample类的Class对象与类加载器Loader1之间是双向关联关系
-- 一个类的实例总是应用代表这个类的Class对象，在Object类中定义了getClass()方法，这个方法返回代表对象的所属类的Class对象的引用，而所有的java类都有一个静态属性class，他引用代表这个类的Class对象
+- 一个类何时结束它的生命周期取决于代表它的Class对象何时结束生命周期。
+- 由java虚拟机自带的类加载器所加载的类，在虚拟机的生命周期中，始终不会被卸载。前面已经介绍过，java虚拟机自带的加载器包括根类加载器，系统加载器，拓展类加载器。java虚拟机本身会引用这些类加载器，而这些类加载器则是始终会应用它们所加载的Class对象，因此这些Class对象始终是可触及的。因此说，由用户自定义的类加载器所加载的类是可以被卸载的。
+- 在示例程序中，Sample类由loader1加载，在类加载器的内部实现中，用一个java集合来存放所加载类的引用。另一方面一个Class对象总是会引用它的类加载器，调用Class对象的getClassLoader()方法，就能获得它的类加载器对象，由此可见，Sample类的Class对象与类加载器Loader1之间是双向关联关系。
+- 一个类的实例总是引用代表这个类的Class对象，在Object类中定义了getClass()方法，这个方法返回代表对象的所属类的Class对象的引用，而所有的java类都有一个静态属性class，它引用代表这个类的Class对象
 
 
 

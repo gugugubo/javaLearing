@@ -37,6 +37,4 @@ public class classloadTest17_1 {
          */
 
     }
-
-
 }

@@ -45,7 +45,8 @@ public class classloadTest23 {
          * 结论二
          */
 
-        /**在classloadTest16中添加一个构造方法，构造函数接受一个Classloader 类型的参数,此Classloader 作为此类的父加载器。
+        /**
+         * 在classloadTest16中添加一个构造方法，构造函数接受一个Classloader 类型的参数,此Classloader 作为此类的父加载器。
          * cd 到classes文件目录下，执行命令
          * java -Djava.system.class.loader=com.gcb.jvm.classload.classloadTest16 com.gcb.jvm.classload.classloadTest23
          */

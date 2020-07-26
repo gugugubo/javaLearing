@@ -7,9 +7,7 @@ import java.util.Objects;
  * 而systemClassLoader.loadClass不是对类的主动使用，只是属于类型的加载，）
  */
 public class classloadTest12 {
-
-
-
+    
     public static void main(String[] srgs) throws ClassNotFoundException {
         ClassLoader systemClassLoader = ClassLoader.getSystemClassLoader();
         Class<?> loadClass = systemClassLoader.loadClass("com.gcb.jvm.classload.Chrild12");
