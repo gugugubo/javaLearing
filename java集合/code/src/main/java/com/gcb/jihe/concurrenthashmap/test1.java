@@ -1,3 +1,4 @@
+/*
 package com.gcb.jihe.concurrenthashmap;
 
 import java.io.*;
@@ -9,24 +10,28 @@ import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+*/
 /**
  * @Author 古春波
  * @Description 使用不安全的集合类示例
  * @Date 2020/9/25 19:03
  * @Version 1.0
- **/
+ **//*
+
 public class test1 {
 
     static final String ALPHA = "abcedfghijklmnopqrstuvwxyz";
 
 
-    /**
+    */
+/**
      * 你要做的是实现两个参数
      * 一是提供一个 map 集合，用来存放每个单词的计数结果，key 为单词，value 为计数
      * 二是提供一组操作，保证计数的安全性，会传递 map 集合以及 单词 List
      * 正确结果输出应该是每个单词出现 200 次
      * @param args
-     */
+     *//*
+
     public static void main(String[] args) {
         saveString();
 
@@ -55,7 +60,8 @@ public class test1 {
     }
 
 
-    /**
+    */
+/**
      * 你要做的是实现两个参数
      * 
      * 
@@ -63,7 +69,8 @@ public class test1 {
      * @param supplier 一是提供一个 map 集合，用来存放每个单词的计数结果，key 为单词，value 为计数
      * @param consumer 二是提供一组操作，保证计数的安全性，会传递 map 集合以及 单词 List
      * @param <V> 计数的类型
-     */
+     *//*
+
     private static <V> void demo(Supplier<Map<String,V>> supplier,
                                  BiConsumer<Map<String,V>,List<String>> consumer) {
         Map<String, V> counterMap = supplier.get();
@@ -88,9 +95,11 @@ public class test1 {
     }
 
 
-    /**
+    */
+/**
      * 保存信息到文件
-     */
+     *//*
+
     public static void saveString() {
         int length = ALPHA.length();
         int count = 200;
@@ -118,11 +127,13 @@ public class test1 {
     }
     
     
-    /**
+    */
+/**
      * 从文件读取信息
      * @param i 文件名字
      * @return 文件信息
-     */
+     *//*
+
     public static List<String> readFromFile(int i) {
         ArrayList<String> words = new ArrayList<>();
         try (BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/resources/tmp/"
@@ -141,3 +152,4 @@ public class test1 {
     }
 
 }
+*/
