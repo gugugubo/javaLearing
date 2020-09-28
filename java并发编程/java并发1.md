@@ -45,7 +45,7 @@
 
 ![1583408729416](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200305194534-433138.png)
 
-### 并发
+### 并行
 
 多核 cpu下，每个核（core） 都可以调度运行线程，这时候线程可以是并行的，不同的线程同时使用不同的cpu在执行。
 
@@ -143,6 +143,34 @@ FutureTask 能够接收 Callable 类型的参数，用来处理有返回结果�
         log.debug("{}",futureTask.get());
     }
 ```
+
+Future就是对于具体的Runnable或者Callable任务的执行结果进行取消、查询是否完成、获取结果。必要时可以通过get方法获取执行结果，该方法会阻塞直到任务返回结果。
+
+```java
+public interface Future<V> {
+    boolean cancel(boolean mayInterruptIfRunning);
+    boolean isCancelled();
+    boolean isDone();
+    V get() throws InterruptedException, ExecutionException;
+    V get(long timeout, TimeUnit unit)
+        throws InterruptedException, ExecutionException, TimeoutException;
+}
+
+```
+
+  Future提供了三种功能：   　　
+
+1. 判断任务是否完成；   　　
+
+2. 能够中断任务；   　　
+
+3. 能够获取任务执行结果。   
+
+[FutureTask是Future和Runable的实现](https://mp.weixin.qq.com/s/RX5rVuGr6Ab0SmKigmZEag)
+
+   
+
+   
 
 ## 3.2 线程运行原理
 
@@ -418,9 +446,7 @@ class TwoParseTermination{
 ![1583507709834](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307093352-614933.png)
 
 1. NEW 跟五种状态里的初始状态是一个意思
-2. RUNNABLE 是当调用了 `start()` 方法之后的状态，注意，Java API 层面的 `RUNNABLE` 状态涵盖了操作系统层面的
-   【可运行状态】、【运行状态】和【io阻塞状态】（由于 BIO 导致的线程阻塞，在 Java 里无法区分，仍然认为
-   是可运行）
+2. RUNNABLE 是当调用了 `start()` 方法之后的状态，注意，Java API 层面的 `RUNNABLE` 状态涵盖了操作系统层面的【可运行状态】、【运行状态】和【io阻塞状态】（由于 BIO 导致的线程阻塞，在 Java 里无法区分，仍然认为是可运行）
 3. `BLOCKED` ， `WAITING` ， `TIMED_WAITING` 都是 Java API 层面对【阻塞状态】的细分，后面会在状态转换一节
    详述
 
@@ -1301,7 +1327,7 @@ Test23.java中jiang'dao'de关于超时的增强，在join(long millis) 的源码
 
 它们是 LockSupport 类中的方法   Test26.java
 
-```
+```java
 // 暂停当前线程
 LockSupport.park();
 // 恢复某个线程的运行

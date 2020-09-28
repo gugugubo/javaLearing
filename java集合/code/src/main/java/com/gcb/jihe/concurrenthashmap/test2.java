@@ -1,6 +1,8 @@
 package com.gcb.jihe.concurrenthashmap;
 
+import javax.swing.text.Segment;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @Author 古春波
@@ -8,7 +10,7 @@ import java.util.HashMap;
  * @Date 2020/9/25 21:51
  * @Version 1.0
  **/
-public class test2 {
+public class test2 extends ConcurrentHashMap{
     
     public static void main(String[] args) {
         // 测试 java 7 中哪些数字的 hash 结果相等
@@ -57,7 +59,7 @@ public class test2 {
             }
         }.start();
     }
-    
+
     final static int hash(Object k) {
         int h = 0;
         if (0 != h && k instanceof String) {
@@ -69,9 +71,4 @@ public class test2 {
         h ^= (h >>> 20) ^ (h >>> 12);
         return h ^ (h >>> 7) ^ (h >>> 4);
     }
-
-
-
-
-
 }
