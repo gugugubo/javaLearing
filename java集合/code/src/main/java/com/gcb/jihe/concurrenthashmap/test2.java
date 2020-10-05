@@ -1,7 +1,6 @@
 package com.gcb.jihe.concurrenthashmap;
 
-import javax.swing.text.Segment;
-import java.util.HashMap;
+import com.gcb.jihe.hashmap.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**

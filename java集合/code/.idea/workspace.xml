@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14f89651-3004-4cf4-ade9-1ba46c1d2a3f" name="默认的" comment="feat: 并发集合的了解&#10;&#10;CopyOnWriteArrayList和 ConcurrentLinkedQueue 和LinkedBlockingQueue">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jihe/concurrenthashmap/HashMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jihe/concurrenthashmap/Test3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/gcb/jihe/test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/gcb/jihe/concurrenthashmap/Test3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/gcb/jihe/test.class" afterDir="false" />
+    <list default="true" id="14f89651-3004-4cf4-ade9-1ba46c1d2a3f" name="默认的" comment="feat: hashmap&#10;&#10;hashmap的一些重要的方法和属性">
       <change afterPath="$PROJECT_DIR$/../../框架学习/SpringSecurity/assets/1595924525927.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../框架学习/SpringSecurity/assets/1595924879313.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../框架学习/SpringSecurity/assets/1595925002583.png" afterDir="false" />
@@ -40,61 +35,10 @@
       <change afterPath="$PROJECT_DIR$/../../框架学习/SpringSecurity/assets/1595991975664.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../框架学习/SpringSecurity/assets/1595992059093.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/14.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/15.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/16.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/17.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/18.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/19.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/20.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/21.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/22.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/23.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/24.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/25.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/26.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tmp/9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gcb/jihe/concurrenthashmap/test2$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gcb/jihe/concurrenthashmap/test2$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gcb/jihe/concurrenthashmap/test2$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gcb/jihe/concurrenthashmap/test2$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gcb/jihe/concurrenthashmap/test2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gcb/jihe/concurrenthashmap/test2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/14.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/15.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/16.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/17.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/18.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/19.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/20.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/21.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/22.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/23.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/24.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/25.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/26.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/tmp/9.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jihe/concurrenthashmap/HashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jihe/hashmap/HashMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jihe/concurrenthashmap/Test3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jihe/hashmap/Test3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gcb/jihe/concurrenthashmap/test2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/gcb/jihe/concurrenthashmap/test2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/gcb/jihe/concurrenthashmap/Test3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/gcb/jihe/concurrenthashmap/Test3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../数据结构与算法/数据结构.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../数据结构与算法/数据结构.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../框架学习/SpringSecurity/权限管理.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../框架学习/SpringSecurity/权限管理.md" afterDir="false" />
     </list>
@@ -170,13 +114,13 @@
       <visibility group="yarn" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="JUnit.com.gcb.jihe.source在jihe">
+  <component name="RunManager" selected="应用程序.Test3">
     <configuration name="Test3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.gcb.jihe.concurrenthashmap.Test3" />
+      <option name="MAIN_CLASS_NAME" value="com.gcb.jihe.hashmap.Test3" />
       <module name="jihe" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gcb.jihe.concurrenthashmap.*" />
+          <option name="PATTERN" value="com.gcb.jihe.hashmap.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -189,7 +133,7 @@
       <module name="jihe" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gcb.jihe.concurrenthashmap.*" />
+          <option name="PATTERN" value="com.gcb.jihe.hashmap.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -202,7 +146,7 @@
       <module name="jihe" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.gcb.jihe.concurrenthashmap.*" />
+          <option name="PATTERN" value="com.gcb.jihe.hashmap.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -241,8 +185,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.com.gcb.jihe.source在jihe" />
         <item itemvalue="应用程序.Test3" />
+        <item itemvalue="JUnit.com.gcb.jihe.source在jihe" />
         <item itemvalue="应用程序.test1" />
         <item itemvalue="应用程序.test2" />
         <item itemvalue="JUnit.JiebaSegmenterTest" />
@@ -274,7 +218,8 @@
       <workItem from="1601387137500" duration="983000" />
       <workItem from="1601450341207" duration="445000" />
       <workItem from="1601605365847" duration="737000" />
-      <workItem from="1601606891240" duration="23721000" />
+      <workItem from="1601606891240" duration="23898000" />
+      <workItem from="1601690074181" duration="13088000" />
     </task>
     <task id="LOCAL-00001" summary="集合相关只是">
       <created>1600843487162</created>
@@ -304,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601301379333</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: hashmap&#10;&#10;hashmap的一些重要的方法和属性">
+      <created>1601645063231</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1601645063231</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +280,8 @@
     <MESSAGE value="feat: 集合初体验&#10;&#10;初次使线程安全类ConcurrentHashmap" />
     <MESSAGE value="feat: HashMap 的并发死链发生测试" />
     <MESSAGE value="feat: 并发集合的了解&#10;&#10;CopyOnWriteArrayList和 ConcurrentLinkedQueue 和LinkedBlockingQueue" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: 并发集合的了解&#10;&#10;CopyOnWriteArrayList和 ConcurrentLinkedQueue 和LinkedBlockingQueue" />
+    <MESSAGE value="feat: hashmap&#10;&#10;hashmap的一些重要的方法和属性" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: hashmap&#10;&#10;hashmap的一些重要的方法和属性" />
   </component>
   <component name="WindowStateProjectService">
     <state x="651" y="274" key="#Notifications" timestamp="1601039566403">
@@ -347,54 +300,62 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1601210053269" />
-    <state width="1493" height="204" key="GridCell.Tab.0.bottom" timestamp="1601609073796">
+    <state width="1493" height="204" key="GridCell.Tab.0.bottom" timestamp="1601737058029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601609073796" />
-    <state width="1493" height="204" key="GridCell.Tab.0.center" timestamp="1601609073796">
+    <state width="1493" height="204" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601737058029" />
+    <state width="1493" height="204" key="GridCell.Tab.0.center" timestamp="1601737058029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601609073796" />
-    <state width="1493" height="204" key="GridCell.Tab.0.left" timestamp="1601609073796">
+    <state width="1493" height="204" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1601737058029" />
+    <state width="1493" height="204" key="GridCell.Tab.0.left" timestamp="1601737058029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601609073796" />
-    <state width="1493" height="204" key="GridCell.Tab.0.right" timestamp="1601609073796">
+    <state width="1493" height="204" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1601737058029" />
+    <state width="1493" height="204" key="GridCell.Tab.0.right" timestamp="1601737058029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601609073796" />
-    <state width="1493" height="204" key="GridCell.Tab.1.bottom" timestamp="1601609073796">
+    <state width="1493" height="204" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1601737058029" />
+    <state width="1493" height="204" key="GridCell.Tab.1.bottom" timestamp="1601737058029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601609073796" />
-    <state width="1493" height="204" key="GridCell.Tab.1.center" timestamp="1601609073796">
+    <state width="1493" height="204" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1601737058029" />
+    <state width="1493" height="204" key="GridCell.Tab.1.center" timestamp="1601737058029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1601609073796" />
-    <state width="1493" height="204" key="GridCell.Tab.1.left" timestamp="1601609073796">
+    <state width="1493" height="204" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1601737058029" />
+    <state width="1493" height="204" key="GridCell.Tab.1.left" timestamp="1601737058029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1601609073796" />
-    <state width="1493" height="204" key="GridCell.Tab.1.right" timestamp="1601609073796">
+    <state width="1493" height="204" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1601737058029" />
+    <state width="1493" height="204" key="GridCell.Tab.1.right" timestamp="1601737058029">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1601609073796" />
+    <state width="1493" height="204" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1601737058029" />
     <state x="270" y="0" key="SettingsEditor" timestamp="1601605430305">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="270" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1601605430305" />
-    <state x="490" y="154" width="540" height="524" key="StructurePopup" timestamp="1601641789503">
+    <state x="490" y="154" width="540" height="524" key="StructurePopup" timestamp="1601717084095">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="490" y="154" width="540" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1601641789503" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601301412470">
+    <state x="490" y="154" width="540" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1601717084094" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1601716012347">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1601301412470" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1601716012347" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1601645084814">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1601645084814" />
     <state x="340" y="14" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1601613413870">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="340" y="14" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1601613413870" />
+    <state x="582" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601717115155">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="582" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1601717115155" />
     <state x="467" y="144" width="601" height="594" key="find.popup" timestamp="1601450541978">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -403,17 +364,28 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="544" y="312" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.824@0.0.1536.824" timestamp="1601039608731" />
-    <state width="474" height="387" key="javadoc.popup.new" timestamp="1601640359757">
+    <state width="474" height="387" key="javadoc.popup.new" timestamp="1601716662093">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="474" height="387" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1601640359757" />
+    <state width="474" height="387" key="javadoc.popup.new/0.0.1536.824@0.0.1536.824" timestamp="1601716662093" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1601034972341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1601034972341" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1601641094667">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1601717121385">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1601641094667" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1601717121385" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/gcb/jihe/hashmap/Test3.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
