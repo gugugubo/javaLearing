@@ -1,4 +1,4 @@
-# BeanFactoryPostProcessor原理
+# 1. BeanFactoryPostProcessor原理
 
 
 
@@ -81,7 +81,7 @@ invokeBeanFactoryPostProcessors(beanFactory);执行BeanFactoryPostProcessors(bea
 
 
 
-# BeanDefinitionRegistryPostProcessor 
+# 2. BeanDefinitionRegistryPostProcessor 
 
 ```
 BeanDefinitionRegistryPostProcessor extends BeanFactoryPostProcessor
@@ -91,19 +91,19 @@ BeanDefinitionRegistryPostProcessor 是BeanFactoryPostProcessor的子接口，�
 
 postProcessBeanDefinitionRegistry()方法。这个方法的执行时机：在所有bean定义信息将要被加载，bean实例还未创建的；利用BeanDefinitionRegistryPostProcessor给容器中再额外添加一些组件
 
-![1602746251542](assets/1602746251542.png)
+![1602746251542](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015193155-260171.png)
 
 
 
 我们来实现BeanDefinitionRegistryPostProcessor接口：
 
-![1602746480796](assets/1602746480796.png)
+![1602746480796](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015193218-407149.png)
 
 
 
 可以看到，在我们注册了一个bean之后，数量增加了一个；BeanDefinitionRegistryPostProcessor 是先于BeanFactoryPostProcessor执行的
 
-![1602747002908](assets/1602747002908.png)
+![1602747002908](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015193152-802463.png)
 
 
 
@@ -120,13 +120,13 @@ postProcessBeanDefinitionRegistry()方法。这个方法的执行时机：在所
 
 refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 
-![1602747253595](assets/1602747253595.png)
+![1602747253595](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015193149-793913.png)
 
 
 
 
 
-![1602747270161](assets/1602747270161.png)
+![1602747270161](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015193145-209777.png)
 
 
 
@@ -156,7 +156,7 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 
 
 
-# 3、ApplicationListener
+# 3. ApplicationListener
 
 ```
 3、ApplicationListener：监听容器中发布的事件。事件驱动模型开发；
@@ -190,7 +190,7 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 
 我们写一个监听器（ApplicationListener实现类）来监听某个事件（必须是ApplicationEvent及其子类）；把监听器加入到容器；只要容器中有相关事件的发布，我们就能监听到这个事件；
 
-ContextRefreshedEvent：容器刷新完成（所有bean都完全创建）spring会发布这个事件；ContextClosedEvent：关闭容器spring会发布这个事件；
+我们之前遇到的两个事件1.ContextRefreshedEvent：容器刷新完成（所有bean都完全创建）spring会发布这个事件；2.ContextClosedEvent：关闭容器spring会发布这个事件；
 
 我们也可以自己发布一个事件：applicationContext.publishEvent()；
 
@@ -198,7 +198,180 @@ ContextRefreshedEvent：容器刷新完成（所有bean都完全创建）spring�
 
 
 
-![1602749273006](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015160753-633975.png)
+
+
+原理：我们一共有三个事件：
+ 	ContextRefreshedEvent、IOCTest_Ext$1[source=我发布的时间]、ContextClosedEvent；
+
+
+
+打个断点
+
+![1602762100523](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015194144-581874.png)
+
+
+
+ 1）、ContextRefreshedEvent事件：
+ 	1）、容器创建对象：refresh()；
+
+![1602768775314](assets/1602768775314.png)
+
+ 	2）、finishRefresh();容器刷新完成会发布ContextRefreshedEvent事件
+
+![1602768821736](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015213342-7529.png)
+
+
+
+![1602768916852](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015213517-392266.png)
+
+
+
+![1602768952597](assets/1602768952597.png)
+
+ 	3）、publishEvent(new ContextRefreshedEvent(this));
+ 			1）、获取事件的多播器（即派发器，多播器就是把时间发布到多个监听器，让他们同时感知）：getApplicationEventMulticaster()
+
+![1602768968206](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015213608-811687.png)
+
+​		2）、multicastEvent派发事件：
+
+​			1）、如果有Executor，可以支持使用Executor进行异步派发； Executor executor = getTaskExecutor(); 2）、否则，同步的方式直接执行listener方法；invokeListener(listener, event); 
+
+```java
+//获取到所有的ApplicationListener；	
+for (final ApplicationListener<?> listener : getApplicationListeners(event, type)) { }
+```
+
+![1602769334723](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015214216-258681.png)
+
+拿到listener回调onApplicationEvent方法；
+
+![1602769485504](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015214446-188589.png)
+
+拿到listener回调onApplicationEvent方法；
+
+![1602769500620](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015214501-743776.png)
+
+​	然后监听器收到事件
+
+![1602769875482](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015215117-421697.png)
+
+上面的事件是容器发布的事件
+
+放行，查看第二个事件的监听：第二个事件是我们自己发布的事件
+
+![1602770192183](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015215633-865444.png)
+
+![1602770312248](assets/1602770312248.png)
+
+![1602770321911](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015215842-709626.png)
+
+又是同样的流程啦
+
+![1602769957268](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015215237-88390.png)
+
+容器关闭也会发布ContextClosedEvent；流程同上
+
+## ApplicationEventMulticaster
+
+让我们再仔细看看这个事件多播器（派发器）
+
+initApplicationEventMulticaster();初始化ApplicationEventMulticaster；
+
+![1602774393225](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015230633-821407.png)
+
+先去容器中找有没有id=“applicationEventMulticaster”的组件；
+
+![1602774428486](assets/1602774428486.png)
+
+
+
+如果没有this.applicationEventMulticaster = new SimpleApplicationEventMulticaster(beanFactory);
+ 			并且加入到容器中，我们就可以在其他组件要派发事件，自动注入这个applicationEventMulticaster；
+
+![1602774559327](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015230920-287721.png)
+
+
+
+## ApplicationListener
+
+容器怎么知道容器中有哪些监听器？
+
+首先是我们将监听器加入到了容器中
+
+![1602775067759](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015231748-435416.png)
+
+ 	1）、容器创建对象：refresh();
+
+ 	2）、registerListeners();
+
+![1602774942915](assets/1602774942915.png)
+
+
+
+从容器中拿到所有的监听器，把他们注册到applicationEventMulticaster中；
+
+![1602775198426](assets/1602775198426.png)
+
+
+
+在这里还发布了一个事件：
+
+![1602775317950](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015232200-705258.png)
+
+
+
+我们也可以通过注解监听事件：
+
+![1602775411777](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015232334-406395.png)
+
+ 		
+
+让我们来看看他的原理：EventListenerMethodProcessor
+
+![1602775754110](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015232915-487123.png)
+
+
+
+![1602775827894](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015233028-285221.png)
+
+
+
+![1602775841702](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015233042-312184.png)
+
+
+
+我们来给他的实现类打个断点：
+
+
+
+![1602775990581](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015233313-161018.png)
+
+​	1）、ioc容器创建对象并refresh()；
+
+![1602776098614](assets/1602776098614.png)
+
+  
+
+2）、finishBeanFactoryInitialization(beanFactory);初始化剩下的单实例bean；
+
+![1602776159217](assets/1602776159217.png)
+
+​			
+
+![1602776265116](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015233746-35917.png)
+
+1）、先创建所有的单实例bean；getBean();
+
+2）、获取所有创建好的单实例bean，判断是否是SmartInitializingSingleton类型的；
+  				如果是就调用afterSingletonsInstantiated();
+
+![1602776318566](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015233838-866836.png)
+
+
+  	
+			
+  			
 
 
 
@@ -284,4 +457,10 @@ BeanFactoryPostProcessor原理:
   				如果是就调用afterSingletonsInstantiated();
 		
 ```
+
+
+
+
+
+
 

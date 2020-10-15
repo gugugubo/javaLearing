@@ -7,6 +7,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.atguigu.bean.Person;
 import com.atguigu.config.MainConfig;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 public class MainTest {
 	
 	@SuppressWarnings("resource")
@@ -23,7 +25,6 @@ public class MainTest {
 		for (String name : namesForType) {
 			System.out.println(name);
 		}
-	
 	}
 
 }
