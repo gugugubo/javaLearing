@@ -5,17 +5,13 @@
  1、BeanFactoryPostProcessor：beanFactory的后置处理器；
 		在BeanFactory标准初始化之后调用，来定制和修改BeanFactory的内容；所有的bean定义已经保存加载到beanFactory，但是bean的实例还未创建
 
-BeanFactoryPostProcessor实现了beanFactory接口
-
 ![1602727056656](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015095817-545011.png)
 
-![1602727219581](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015095933-939237.png)
-
-运行测试，可以发现BeanFactoryPostProcessor在BeanFactory标准初始化之后调用，但是bean的实例还未创建
+运行测试，可以发现BeanFactoryPostProcessor在BeanFactory标准初始化之后调用，此时bean的实例还未创建
 
 ![1602727331206](assets/1602727331206.png)
 
-```
+```properties
 BeanFactoryPostProcessor原理:
 1)、ioc容器创建对象
 2)、invokeBeanFactoryPostProcessors(beanFactory);
@@ -31,7 +27,7 @@ BeanFactoryPostProcessor原理:
 
 在这里打一个断点
 
-![1602728975864](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015102937-262925.png)
+![image-20201016173037922](assets/image-20201016173037922.png)
 
 
 
@@ -142,8 +138,6 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 
 
 
-
-
 2、再来触发postProcessBeanFactory()方法BeanFactoryPostProcessor；
 
 ![1602747810482](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015154332-218492.png)
@@ -151,8 +145,6 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 4）、再来从容器中找到BeanFactoryPostProcessor组件；然后依次触发postProcessBeanFactory()方法
 
 ![1602747895240](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015154456-259908.png)
-
-
 
 
 
@@ -186,8 +178,6 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 
 ![1602749178871](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015160619-239358.png)
 
-
-
 我们写一个监听器（ApplicationListener实现类）来监听某个事件（必须是ApplicationEvent及其子类）；把监听器加入到容器；只要容器中有相关事件的发布，我们就能监听到这个事件；
 
 我们之前遇到的两个事件1.ContextRefreshedEvent：容器刷新完成（所有bean都完全创建）spring会发布这个事件；2.ContextClosedEvent：关闭容器spring会发布这个事件；
@@ -198,12 +188,7 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 
 
 
-
-
-原理：我们一共有三个事件：
- 	ContextRefreshedEvent、IOCTest_Ext$1[source=我发布的时间]、ContextClosedEvent；
-
-
+让我们来分析一下原理：现在我们一共有三个事件：ContextRefreshedEvent、IOCTest_Ext$1[source=我发布的时间]、ContextClosedEvent；
 
 打个断点
 
@@ -238,7 +223,7 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 ​			1）、如果有Executor，可以支持使用Executor进行异步派发； Executor executor = getTaskExecutor(); 2）、否则，同步的方式直接执行listener方法；invokeListener(listener, event); 
 
 ```java
-//获取到所有的ApplicationListener；	
+//获取到所有的ApplicationListener 即监听器；	
 for (final ApplicationListener<?> listener : getApplicationListeners(event, type)) { }
 ```
 

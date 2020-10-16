@@ -170,6 +170,8 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 
 ![image-20200601103627304](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doLzEzOTI1MTcxMzgvaW1nUmVwb3NpdG9yeUBtYXN0ZXIvaW1hZ2UtMjAyMDA2MDExMDM2MjczMDQucG5n?x-oss-process=image/format,png)
 
+
+
 ![image-20200601103704464](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doLzEzOTI1MTcxMzgvaW1nUmVwb3NpdG9yeUBtYXN0ZXIvaW1hZ2UtMjAyMDA2MDExMDM3MDQ0NjQucG5n?x-oss-process=image/format,png)
 
 那么`AspectJAutoProxyRegistrar`注册了什么`bean`呢？我们打一个断点`debug`一下
@@ -205,7 +207,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 
 
 
-回到上上一步，他这个是判断容器中包含`org.springframework.aop.config.internalAutoProxyCreator`才执行if的内容
+他这个是判断容器中包含`org.springframework.aop.config.internalAutoProxyCreator`才执行if的内容
 
 ![image-20200601105132380](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doLzEzOTI1MTcxMzgvaW1nUmVwb3NpdG9yeUBtYXN0ZXIvaW1hZ2UtMjAyMDA2MDExMDUxMzIzODAucG5n?x-oss-process=image/format,png)
 
@@ -239,9 +241,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 
 
 
-4.3 上面这个后来再说
-
-如果为`true`，就做一些什么操作。
+4.3 上面这个后来再说，如果为`true`，就做一些什么操作。
 
 那么，重点就在于他给容器注册了一个**`AnnotationAwareAspectJAutoProxyCreator`**，把这个的功能研究出来了，那么`AOP`功能就出来了。以后也一样的，看见有`@EnableXX`的注解，就再去看看他给容器注册了什么组件，再去看这些组件的功能是什么
 
@@ -517,8 +517,6 @@ c）调用refresh
 
 
 
-
-
 ![image-20200602091327443](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doLzEzOTI1MTcxMzgvaW1nUmVwb3NpdG9yeUBtYXN0ZXIvaW1hZ2UtMjAyMDA2MDIwOTEzMjc0NDMucG5n?x-oss-process=image/format,png)
 
 查看初始化方法`initalizeBean()`
@@ -621,7 +619,7 @@ invokeInitMethods
 
 也是跟之前的后置处理器一样，一个是`Before`,一个是`After`,在初始化的前后。
 
-11.**我们还是回到我们的方法栈**
+11.我们还是回到我们的方法栈
 
 之前说它实现了`BeanFactoryAware`的
 
@@ -771,7 +769,7 @@ postProcessBeforeInitialization
 **`InstantiationAwareBeanPostProcessor`**做了什么，我们来重新debug
 
 ```java
- AnnotationAwareAspectJAutoProxyCreator【InstantiationAwareBeanPostProcessor】
+ //AnnotationAwareAspectJAutoProxyCreator【InstantiationAwareBeanPostProcessor】
 ```
 
 
@@ -888,7 +886,7 @@ ctrl + alt +b点进去看，发现会判断是否为切面
 
 **这一节建议先自己看多看几遍源码，不然看视频也跟不走**
 
-跟之前一样，也是判断是否为`isInfrastructureClass`等等
+跟之前一样，也是判断是否为`isInfrastructureClass()`等等
 
 然后进去这个方法：这个方法的作用是获取当前beans的所有通知方法和增强器
 
@@ -914,7 +912,7 @@ ctrl + alt +b点进去看，发现会判断是否为切面
 
 
 
-先找到能用增强器的eligibleAdvisors集合
+先找到能用增强器的集合eligibleAdvisors
 
 通过`for`循环判断每一个增强器是不是这个`IntroductionAdvisor`类型。（前面有说到我们的增强器是`InstantiationModelAwarePointcutAdvisorImpl`类型的）
 
@@ -940,7 +938,7 @@ ctrl + alt +b点进去看，发现会判断是否为切面
 
 继续返回上上上层：
 
-![1602404368209](assets/1602404368209.png)
+![1602404368209](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201016132518-683831.png)
 
 然后就是这
 
