@@ -10,7 +10,7 @@ Spring容器的refresh()【创建刷新】;
 
 刷新前的预处理;
 
-   1）、initPropertySources()这是一个空的方法，用来初始化一些属性设置;AbstractApplicationContext的子类自定义个性化的属性设置方法；
+   1）、initPropertySources()这是一个空的方法，用来初始化一些属性设置; 重写AbstractApplicationContext类的initPropertySources()来实现自定义
 
 ![image-20201016201411997](assets/image-20201016201411997.png)
 
@@ -31,7 +31,7 @@ Spring容器的refresh()【创建刷新】;
 # 2 obtainFreshBeanFactory()
 
 获取BeanFactory；
-   1）、GenericApplicationContext.refreshBeanFactory();刷新【创建】BeanFactory；
+   1）、GenericApplicationContext.refreshBeanFactory();作用：刷新【创建】BeanFactory；
          创建了一个this.beanFactory = new DefaultListableBeanFactory();设置id；
 
 ![image-20201016201156545](assets/image-20201016201156545.png)
@@ -135,8 +135,8 @@ BeanFactory准备工作完成后进行的后置处理工作；
 
 # 6 registerBeanPostProcessors(beanFactory)
 
-注册BeanPostProcessor（Bean的后置处理器）【 intercept bean creation 拦截bean的创建过程】
-      不同接口类型的BeanPostProcessor；在Bean创建前后的执行时机是不一样的
+注册BeanPostProcessor（Bean的后置处理器）【 intercept bean creation 拦截bean的创建过程，但是不同接口类型的BeanPostProcessor；在Bean创建前后的执行时机是不一样的】
+ 	
       BeanPostProcessor、
       DestructionAwareBeanPostProcessor、
       InstantiationAwareBeanPostProcessor、
@@ -294,7 +294,7 @@ MessageSource：取出国际化配置文件中的某个key的值；能按照区�
 
 ​               1）、createBean(beanName, mbd, args);
 ​               2）、Object bean = resolveBeforeInstantiation(beanName, mbdToUse);让BeanPostProcessor先拦截返回代理对象；
-​                  【InstantiationAwareBeanPostProcessor】：提前执行；
+​                  【InstantiationAwareBeanPostProcessor】：使用这个beanPostProcessor尝试返回代理对象；
 
 ![image-20201017002951719](assets/image-20201017002951719.png)
 
@@ -307,16 +307,150 @@ MessageSource：取出国际化配置文件中的某个key的值；能按照区�
 ![image-20201017003142329](assets/image-20201017003142329.png)
 
 ​               3）、如果前面的InstantiationAwareBeanPostProcessor没有返回代理对象；调用4）
+
 ​               4）、Object beanInstance = doCreateBean(beanName, mbdToUse, args);创建Bean
+
+![image-20201017111011850](assets/image-20201017111011850.png)
+
 ​                   1）、【创建Bean实例】；createBeanInstance(beanName, mbd, args);
+
+![image-20201017111135317](assets/image-20201017111135317.png)
+
 ​                     利用工厂方法或者对象的构造器创建出Bean实例；
+
+![image-20201017111253501](assets/image-20201017111253501.png)
+
+
+
 ​                   2）、applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);
 ​                     调用MergedBeanDefinitionPostProcessor的postProcessMergedBeanDefinition(mbd, beanType, beanName);
-​                   3）、【Bean属性赋值】populateBean(beanName, mbd, instanceWrapper);
-​                     赋值之前：
-​                     1）、拿到InstantiationAwareBeanPostProcessor后置处理器；
+
+![image-20201017111532273](assets/image-20201017111532273.png)
+
+​                 
+
+![image-20201017111615741](assets/image-20201017111615741.png)
+
+  3）、【Bean属性赋值】populateBean(beanName, mbd, instanceWrapper);
+
+​       赋值之前：1）、拿到InstantiationAwareBeanPostProcessor后置处理器；
 ​                        postProcessAfterInstantiation()；
-​                     2）、拿到InstantiationAwareBeanPostProcessor后置处理器；
+
+![image-20201017112017885](assets/image-20201017112017885.png)
+
+​      2）、继续拿到InstantiationAwareBeanPostProcessor后置处理器；
 ​                        postProcessPropertyValues()；
-​                     =====赋值之前：===
-​                     3）、应用Bean属性的值；为属性利用
+
+![image-20201017112146728](assets/image-20201017112146728.png)
+
+
+
+3）、应用Bean属性的值；为属性利用setter方法等进行赋值；
+                        applyPropertyValues(beanName, mbd, bw, pvs);
+
+![image-20201017112603221](assets/image-20201017112603221.png)
+
+4）、【Bean初始化】initializeBean(beanName, exposedObject, mbd);
+
+1）、【执行Aware接口方法】invokeAwareMethods(beanName, bean);执行xxxAware接口的方法
+
+ BeanNameAware\BeanClassLoaderAware\BeanFactoryAware
+
+![image-20201017112730959](assets/image-20201017112730959.png)
+
+
+
+  2）、【执行后置处理器初始化之前】applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
+                        BeanPostProcessor.postProcessBeforeInitialization（）;
+
+![image-20201017112752136](assets/image-20201017112752136.png)
+
+![image-20201017113016992](assets/image-20201017113016992.png)
+
+ 3）、【执行初始化方法】invokeInitMethods(beanName, wrappedBean, mbd);
+
+![image-20201017112803232](assets/image-20201017112803232.png)
+
+​                        1）、是否是InitializingBean接口的实现；执行接口规定的初始化；
+
+![image-20201017113522294](assets/image-20201017113522294.png)
+
+
+
+​                        	2）、是否自定义初始化方法；
+
+![image-20201017113549355](assets/image-20201017113549355.png)
+
+4）、【执行后置处理器初始化之后】applyBeanPostProcessorsAfterInitialization
+                        BeanPostProcessor.postProcessAfterInitialization()；
+
+![image-20201017112815531](assets/image-20201017112815531.png)
+
+​                   5）、注册Bean的销毁方法；
+
+![image-20201017113805096](assets/image-20201017113805096.png)
+
+
+
+5）、将创建的Bean添加到缓存中singletonObjects；
+
+​      ioc容器就是这些Map；很多的Map里面保存了单实例Bean，环境信息。。。。；
+
+![image-20201017115322633](assets/image-20201017115322633.png)
+
+![image-20201017115355587](assets/image-20201017115355587.png)
+
+![image-20201017115402659](assets/image-20201017115402659.png)
+
+
+
+
+
+​      所有Bean都利用getBean创建完成以后；
+​         检查所有的Bean是否是SmartInitializingSingleton接口的；如果是；就执行afterSingletonsInstantiated()；
+
+![image-20201017115653384](assets/image-20201017115653384.png)
+
+
+
+# 12、finishRefresh()
+
+![image-20201017115856188](assets/image-20201017115856188.png)
+
+完成BeanFactory的初始化创建工作；IOC容器就创建完成；
+      1）、initLifecycleProcessor();初始化和生命周期有关的后置处理器；LifecycleProcessor
+         默认从容器中找是否有lifecycleProcessor的组件【LifecycleProcessor】；如果没有new DefaultLifecycleProcessor();
+
+![image-20201017115920975](assets/image-20201017115920975.png)
+
+![image-20201017115938013](assets/image-20201017115938013.png)
+
+​         加入到容器；
+​        写一个LifecycleProcessor的实现类，可以在BeanFactory
+​            void onRefresh();
+​            void onClose();    
+
+![image-20201017120000728](assets/image-20201017120000728.png)
+
+![image-20201017115952861](assets/image-20201017115952861.png)
+
+​      2）、    getLifecycleProcessor().onRefresh();
+​         拿到前面定义的生命周期处理器（BeanFactory）；回调onRefresh()；
+
+![image-20201017120052262](assets/image-20201017120052262.png)
+
+​      3）、publishEvent(new ContextRefreshedEvent(this));发布容器刷新完成事件；
+
+![image-20201017120100692](assets/image-20201017120100692.png)
+
+​      4）、liveBeansView.registerApplicationContext(this);
+
+![image-20201017120112909](assets/image-20201017120112909.png)
+
+   ======总结===========
+   1）、Spring容器在启动的时候，先会保存所有注册进来的Bean的定义信息；
+      1）、xml注册bean；<bean>
+      2）、注解注册Bean；@Service、@Component、@Bean、xxx
+   2）、Spring容器会合适的时机创建这些Bean
+      1）、用到这个bean的时候；利用getBean创建bean；创建好以后保存在容器中；
+      2）、统一创建剩下所有的bean的时候；finishBeanFactoryInitialization(

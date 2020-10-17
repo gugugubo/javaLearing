@@ -2,6 +2,8 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/spring-annotation/src/main/java/com/atguigu/aop/LogAspects.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spring-annotation/src/main/java/com/atguigu/config/MainConfig2.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/spring-annotation/src/main/java/com/atguigu/config/MainConfigOfAOP.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/spring-annotation/src/main/java/com/atguigu/ext/MyApplicationListener.java" charset="GBK" />
     <file url="PROJECT" charset="GBK" />
   </component>
