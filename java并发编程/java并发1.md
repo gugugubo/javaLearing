@@ -1,4 +1,4 @@
-
+。
 
 
 
@@ -833,18 +833,20 @@ public class Immutable{
 @Aspect
 @Component
 public class MyAspect {
- // 是否安全？
- private long start = 0L;
- @Before("execution(* *(..))")
- public void before() {
- start = System.nanoTime();
- }
- @After("execution(* *(..))")
- public void after() {
- long end = System.nanoTime();
- System.out.println("cost time:" + (end-start));
- }
-}
+        // 是否安全？
+        private long start = 0L;
+
+        @Before("execution(* *(..))")
+        public void before() {
+            start = System.nanoTime();
+        }
+
+        @After("execution(* *(..))")
+        public void after() {
+            long end = System.nanoTime();
+            System.out.println("cost time:" + (end-start));
+        }
+    }
 ```
 
 ##### 示例二
@@ -1124,11 +1126,11 @@ public static void method2() {
 
 #### 偏向锁
 
-在轻量级的锁中，我们可以发现，如果同一个线程对同一个对象进行重入锁时，也需要执行CAS操作，这是有点耗时滴，那么java6开始引入了偏向锁的东东，只有第一次使用CAS时将对象的Mark Word头设置为入锁线程ID，**之后这个入锁线程再进行重入锁时，发现线程ID是自己的，那么就不用再进行CAS了**
+在轻量级的锁中，我们可以发现，如果同一个线程对同一个2对象进行重入锁时，也需要执行CAS操作，这是有点耗时滴，那么java6开始引入了偏向锁的东东，只有第一次使用CAS时将对象的Mark Word头设置为入锁线程ID，**之后这个入锁线程再进行重入锁时，发现线程ID是自己的，那么就不用再进行CAS了**
 
 ![1583760728806](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309213209-28609.png)
 
-
+ 
 
 ##### 偏向状态
 
@@ -1155,8 +1157,8 @@ public static void method2() {
           }
       ```
 
-   2. 输出结果如下，三次输出的状态码都为101
-
+      1. 输出结果如下，三次输出的状态码都为101
+   
       ```properties
       biasedLockFlag (1bit): 1
       	LockFlag (2bit): 01
@@ -1165,7 +1167,7 @@ public static void method2() {
       biasedLockFlag (1bit): 1
       	LockFlag (2bit): 01
       ```
-
+   
       
 
 测试禁用：如果没有开启偏向锁，那么对象创建后最后三位的值为001，这时候它的hashcode，age都为0，hashcode是第一次用到`hashcode`时才赋值的。在上面测试代码运行时在添加 VM 参数`-XX:-UseBiasedLocking`禁用偏向锁（禁用偏向锁则优先使用轻量级锁），退出`synchronized`状态变回001

@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 这个是一个异步操作演示的相关操作类
+ */
 @WebServlet("/hello")
 public class HelloServlet extends HttpServlet {
 	

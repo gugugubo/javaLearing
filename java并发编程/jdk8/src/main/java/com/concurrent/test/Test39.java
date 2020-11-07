@@ -11,7 +11,6 @@ public class Test39 {
     public static void main(String[] args) {
 
         ParkUnpark parkUnpark = new ParkUnpark(15);
-   
 
 
         thread1 = new Thread(() -> {

@@ -27,9 +27,11 @@ public class Test24 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        
-        for (Integer id : Mailbox.getIds()){
-//        for (int id=1;id<4;id++){
+        Set<Integer> ids = Mailbox.getIds();
+        System.out.println(ids);
+        // 使用此方法会报错，使用注释的方法不会，原因暂时不知
+//        for (Integer id : Mailbox.getIds()){
+        for (int id=1;id<16;id++){
             log.info("{}",id);
             new Postman(id, "内容" +id ).start();
         }
@@ -56,6 +58,7 @@ class Postman extends Thread{
 
     public Postman(int id, String mail) {
         this.id=id;
+        System.out.println("构造方法传入的参数" + mail);
         this.mail=mail;  
     }
     

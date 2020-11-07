@@ -326,9 +326,24 @@ https://note.youdao.com/ynoteshare1/index.html?id=6e316d7f2a7806df9a655b97f8c11f
 
 # **四、解析并注册BeanDefinitions**
 
-## 1.XmlBeanDefinitionRead.registerBeanDefinitions(..) 源码分析（ps：不涉及解析document）
+## 1.XmlBeanDefinitionReadr.registerBeanDefinitions(..) 源码分析（ps：不涉及解析document）
 
+```java
+public int registerBeanDefinitions(Document doc, Resource resource) throws BeanDefinitionStoreException {
+   //创建一个 BeanDefinitionDocumentReader ，每个document对象，都会创建一个 beanDefinitionDocumentReader对象。
+   BeanDefinitionDocumentReader documentReader = createBeanDefinitionDocumentReader();
 
+   //getRegistry() 会返回咱们程序创建的 beanFactory实例。   countBefore：解析该doc之前，bf中已有的bd数量。
+   int countBefore = getRegistry().getBeanDefinitionCount();
+
+   //解析doc 并且注册到 bf中。
+   //createReaderContext(resource)：包含最主要的参数是 当前 this(即XmlBeanDefinitionReader) XmlBeanDefinitionReader又包含了beanfactory，所以可以吧doc解析来的东西注册到beanfacotory
+   documentReader.registerBeanDefinitions(doc, createReaderContext(resource));
+
+   //返回的新注册的bd数量。
+   return getRegistry().getBeanDefinitionCount() - countBefore;
+}
+```
 
 
 
@@ -342,13 +357,134 @@ https://note.youdao.com/ynoteshare1/index.html?id=6e316d7f2a7806df9a655b97f8c11f
 
 ## 1.BeanDefinition继承关系 / AbstractBeanDefiniton属性
 
+https://www.processon.com/view/link/5f1167375653bb7fd23e18a4
+
+
+
+![image-20201021105254554](assets/image-20201021105254554.png)
+
+
+
 ## 2.bean标签的解析及注册 
+
+DefaultBeanDefinitionDocumentReader#registerBeanDefinitions()
+
+```java
+@Override
+public void registerBeanDefinitions(Document doc, XmlReaderContext readerContext) {
+   //将 上下文 context 保存到reader的字段中。
+   this.readerContext = readerContext;
+   //doc.getDocumentElement() => 拿出document代表的xml的顶层标签 => <beans> ... </beans>
+   doRegisterBeanDefinitions(doc.getDocumentElement());
+}
+```
+
+
+
+![image-20201021153754033](assets/image-20201021153754033.png)
+
+
+
+
+
+![image-20201021153832605](assets/image-20201021153832605.png)
+
+
+
+![image-20201021153854383](assets/image-20201021153854383.png)
+
+
+
+![image-20201021153918161](assets/image-20201021153918161.png)
+
+
+
+![image-20201021154023347](assets/image-20201021154023347.png)
+
+
+
+
 
 ## 3.解析BeanDefinition
 
+```java
+public AbstractBeanDefinition parseBeanDefinitionElement(
+      Element ele, String beanName, @Nullable BeanDefinition containingBean) {
+   //表示当前 解析器状态 ，因为接下来要解析bean标签，所以状态设置为了 BeanEntry
+   this.parseState.push(new BeanEntry(beanName));
+
+
+   String className = null;
+   //一般情况下 bean 标签都包含 class 属性，除非bean标签作为 parent 标签 让子标签继承时，class属性才为null。
+   if (ele.hasAttribute(CLASS_ATTRIBUTE)) {
+      //读取bean标签的className
+      className = ele.getAttribute(CLASS_ATTRIBUTE).trim();
+   }
+
+
+   String parent = null;
+   //bean标签可以继承parent标签，类似 子类 继承 父类。一般情况下，很少用到。
+   if (ele.hasAttribute(PARENT_ATTRIBUTE)) {
+      parent = ele.getAttribute(PARENT_ATTRIBUTE);
+   }
+
+   try {
+      //创建出来了 一个 bd对象，bd对象仅仅设置了 class 信息.
+      AbstractBeanDefinition bd = createBeanDefinition(className, parent);
+
+      //解析bean标签上面定义的attribute信息：lazy-init、init-method、depends-on...
+      parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
+
+      //<bean>
+      // <description>xxxxxx</description>
+      // </bean>
+      //将description子标签的信息 读取出来 保存到 bd中。
+      bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));
+
+      //解析
+      // <bean>
+      //    <meta key="meta_1" value="meta_val_1"/>
+      //    <meta key="meta_2" value="meta_val_2"/>
+      // </bean>
+      parseMetaElements(ele, bd);
+
+      //解析lookup-method子标签,bd.methodOverrides 属性 保存需要覆盖 复写的方法。 动态代理时实现。
+      parseLookupOverrideSubElements(ele, bd.getMethodOverrides());
+
+      //解析replace-method子标签
+      parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
+
+      //解析构造方法参数子标签
+      parseConstructorArgElements(ele, bd);
+      //解析 属性 子标签
+      parsePropertyElements(ele, bd);
+      //解析 qualifier 子标签
+      parseQualifierElements(ele, bd);
+
+      bd.setResource(this.readerContext.getResource());
+      bd.setSource(extractSource(ele));
+      return bd;
+   }
+   catch (ClassNotFoundException ex) {
+      error("Bean class [" + className + "] not found", ele, ex);
+   }
+   catch (NoClassDefFoundError err) {
+      error("Class that bean class [" + className + "] depends on not found", ele, err);
+   }
+   catch (Throwable ex) {
+      error("Unexpected failure during bean definition parsing", ele, ex);
+   }
+   finally {
+      this.parseState.pop();
+   }
+
+   return null;
+}
+```
+
  
 
-```
+```xml
 假设某个bean配置如下：
 <bean id="xxxComponent" name="xxxComponent" class="xx.xx.xx.xxxComponent">
     <meta key="meta_1" value="meta_val_1"/>
@@ -378,19 +514,37 @@ https://note.youdao.com/ynoteshare1/index.html?id=6e316d7f2a7806df9a655b97f8c11f
 
 ###    3.1：解析bean的各种属性（Attribute）
 
+
+
 ###    3.2：解析meta子元素
+
+
 
 ###    3.3：解析lookup-method子元素
 
+http://note.youdao.com/s/TZpskaeo
+
+
+
 ###    3.4：解析replaced-method子元素
+
+http://note.youdao.com/s/K3OMeOsU
+
+
 
 ###    3.5：解析constructor-arg子元素
 
+
+
+
+
 ###    3.6：解析property子元素
+
+
 
 ###    3.7：解析qualifier子元素
 
-```
+```xml
     对于qualifier元素的获取，我们接触更多的是注解的形式，在使用Spring框架中进行自动注入时，Spring容器中匹配的候选Bean数目必须有且仅有一个。
 当找不到一个匹配的Bean时，Spring容器将抛出BeanCreationException异常，并指出必须至少拥有一个匹配的Bean。
     Spring允许我们通过Qualifier指定注入Bean的名称，这样歧义就消除了，XML配置的方式如下：
@@ -407,13 +561,21 @@ https://note.youdao.com/ynoteshare1/index.html?id=6e316d7f2a7806df9a655b97f8c11f
 
 ## 1.通过BeanName注册BeanDefinition
 
+![image-20201021154358876](assets/image-20201021154358876.png)
+
 # 2.通过别名注册BeanDefinition
+
+
+
+![image-20201021154417786](assets/image-20201021154417786.png)
 
 # **七、alias标签解析**
 
+![image-20201021154617666](assets/image-20201021154617666.png)
+
 ​                
 
-```
+```xml
 <bean id="testBean" class="xx.xx.xx.xxBean"/>
 1.要给这个JavaBean增加别名，以方便使用时，我们可以直接使用bean标签中的name属性：
 <bean id="testBean" name="testBean,testBean2" class="xx.xx.xx.xxBean"/>
@@ -424,9 +586,11 @@ https://note.youdao.com/ynoteshare1/index.html?id=6e316d7f2a7806df9a655b97f8c11f
 
 # **八、import标签解析**
 
+![image-20201021154613244](assets/image-20201021154613244.png)
+
 ​         
 
-```
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.Springframework.org/schema/beans"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -439,3 +603,13 @@ https://note.youdao.com/ynoteshare1/index.html?id=6e316d7f2a7806df9a655b97f8c11f
 ```
 
   
+
+# 两个时序图：
+
+XmlBeanFactory初始化时序之加载bean流程图
+https://www.processon.com/view/link/5f1111fa5653bb7fd23cd8c0
+
+
+
+Bean标签解析及注册流程图
+https://www.processon.com/view/link/5f1168ce1e08537d50b09348

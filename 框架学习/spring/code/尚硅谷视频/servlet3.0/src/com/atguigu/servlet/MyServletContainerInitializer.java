@@ -24,15 +24,15 @@ public class MyServletContainerInitializer implements ServletContainerInitialize
 	 * Set<Class<?>> arg0：感兴趣的类型的所有子类型；
 	 * ServletContext arg1:代表当前Web应用的ServletContext；一个Web应用一个ServletContext；
 	 * 
-	 * 1）、使用ServletContext注册Web组件（Servlet、Filter、Listener）
-	 * 2）、使用编码的方式，在项目启动的时候给ServletContext里面添加组件；
-	 * 		必须在项目启动的时候来添加；
-	 * 		1）、ServletContainerInitializer得到的ServletContext；
-	 * 		2）、ServletContextListener得到的ServletContext；
+	 * 1）、使用 ServletContext 注册Web组件（Servlet、Filter、Listener）， 导入第三方jar包的时候可以用到
+	 * 2）、使用编码的方式，在项目启动的时候给 ServletContext 里面添加组件；
+	 * 		必须在项目启动的时候来添加；下面两种方法可以进行添加
+	 * 		1）、ServletContainerInitializer 得到的 ServletContext；
+	 * 		2）、ServletContextListener 得到的 ServletContext；
 	 */
 	@Override
 	public void onStartup(Set<Class<?>> arg0, ServletContext sc) throws ServletException {
-		// TODO Auto-generated method stub
+		// 如下就会讲HelloService.class 及其子类传递过来
 		System.out.println("感兴趣的类型：");
 		for (Class<?> claz : arg0) {
 			System.out.println(claz);
