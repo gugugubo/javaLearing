@@ -283,8 +283,9 @@ volatile 的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
 3: ifnonnull 37
 // ldc是获得类对象
 6: ldc #3 // class cn/itcast/n5/Singleton
-// 将类对象的引用地址复制了一份
+// 复制操作数栈栈顶的值放入栈顶, 将类对象的引用地址复制了一份
 8: dup
+// 操作数栈栈顶的值弹出，即将对象的引用地址存到局部变量表中
 // 将类对象的引用地址存储了一份，是为了将来解锁用
 9: astore_0
 10: monitorenter
@@ -496,7 +497,7 @@ INSTANCE 变量的值
 
 7. 具有传递性，如果 x hb-> y 并且 y hb-> z 那么有 x hb-> z ，配合 volatile 的防指令重排，有下面的例子
 
-   1. ​     
+   1. 
       ​    
       ​    ```
       ​      volatile static int x;
@@ -555,7 +556,7 @@ getInstance）时的线程安全，并思考注释中的问题
 饿汉式：类加载就会导致该单实例对象被创建
 懒汉式：类加载不会导致该单实例对象被创建，而是首次使用该对象时才会创建
 
-实现1：
+实现1： 饿汉式
 
 ```java
 // 问题1：为什么加 final，防止子类继承后更改
@@ -576,7 +577,7 @@ public final class Singleton implements Serializable {
 }
 ```
 
-实现2：
+实现2： 饿汉式
 
 ```java
 // 问题1：枚举单例是如何限制实例个数的：创建枚举类的时候就已经定义好了，每个枚举常量其实就是枚举类的一个静态成员变量
@@ -590,7 +591,7 @@ enum Singleton {
 }
 ```
 
-实现3：
+实现3：懒汉式
 
 ```java
 public final class Singleton {
@@ -610,7 +611,7 @@ public final class Singleton {
 
 
 
-实现4：DCL
+实现4：DCL  懒汉式
 
 ```java
 public final class Singleton {
@@ -637,7 +638,7 @@ public final class Singleton {
 
 实现5：
 
-```
+```java
 public final class Singleton {
     private Singleton() { }
     // 问题1：属于懒汉式还是饿汉式：懒汉式，这是一个静态内部类。类加载本身就是懒惰的，在没有调用getInstance方法时是没有执行LazyHolder内部类的类加载操作的。

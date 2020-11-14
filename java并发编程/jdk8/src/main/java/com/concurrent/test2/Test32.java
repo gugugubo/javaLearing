@@ -14,19 +14,34 @@ public class Test32 {
         ReentrantLock lock = new ReentrantLock();
         Condition condition = lock.newCondition();
 
+        Thread thread = new Thread(() -> {
+            lock.lock();
+            try {
+                condition.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } finally {
+                lock.unlock();
+            }
+        }, "测试线程");
+        thread.start();
         try {
-            condition.await();
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        try {
-            lock.lockInterruptibly();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        
+        
         lock.lock();
-        lock.unlock();
+        try {
+            thread.interrupt();
+            condition.signal();
+        }
+        finally {
+            lock.unlock();
+        }
+        
+     
     }
 }
 

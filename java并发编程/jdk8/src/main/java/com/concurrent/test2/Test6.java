@@ -32,6 +32,8 @@ public class Test6 {
         // 其中函数中的操作能保证原子，但函数需要无副作用
         // getAndUpdate 如果在 lambda 中引用了外部的局部变量，要保证该局部变量是 final 的
         // getAndAccumulate 可以通过 参数1 来引用外部的局部变量，但因为其不在 lambda 中因此不必是 final
+        // 比如下面可以改为：   Integer integer = new Integer(10);
+        //        System.out.println(i.getAndAccumulate(integer, (p, x) -> p + x));
         System.out.println(i.getAndAccumulate(10, (p, x) -> p + x));
         // 计算并获取（i = 10, p 为 i 的当前值, x 为参数1, 结果 i = 0, 返回 0）
     // 其中函数中的操作能保证原子，但函数需要无副作用

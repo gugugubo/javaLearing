@@ -46,7 +46,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583824588537" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -56,10 +56,10 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="项目" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="debugger.stepping" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -86,9 +86,48 @@
       <visibility group="yarn" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="应用程序.Test29">
-    <configuration name="Test24" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test24" />
+  <component name="RunManager" selected="应用程序.Test32">
+    <configuration name="Test11" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test11" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test12" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test12" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test18" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test18" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test26" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test26" />
       <module name="jdk8" />
       <extension name="coverage">
         <pattern>
@@ -100,51 +139,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test25" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test25" />
+    <configuration name="Test32" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test32" />
       <module name="jdk8" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test29" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test29" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test36" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test36" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test39" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test39" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="PATTERN" value="com.concurrent.test2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -153,19 +153,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="应用程序.Test24" />
-      <item itemvalue="应用程序.Test25" />
-      <item itemvalue="应用程序.Test36" />
-      <item itemvalue="应用程序.Test39" />
-      <item itemvalue="应用程序.Test29" />
+      <item itemvalue="应用程序.Test11" />
+      <item itemvalue="应用程序.Test12" />
+      <item itemvalue="应用程序.Test26" />
+      <item itemvalue="应用程序.Test18" />
+      <item itemvalue="应用程序.Test32" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.Test29" />
-        <item itemvalue="应用程序.Test39" />
-        <item itemvalue="应用程序.Test36" />
-        <item itemvalue="应用程序.Test25" />
-        <item itemvalue="应用程序.Test24" />
+        <item itemvalue="应用程序.Test32" />
+        <item itemvalue="应用程序.Test18" />
+        <item itemvalue="应用程序.Test26" />
+        <item itemvalue="应用程序.Test12" />
+        <item itemvalue="应用程序.Test11" />
       </list>
     </recent_temporary>
   </component>
@@ -211,7 +211,13 @@
       <workItem from="1604537106141" duration="6192000" />
       <workItem from="1604628914430" duration="9694000" />
       <workItem from="1604713699479" duration="7457000" />
-      <workItem from="1604740469117" duration="881000" />
+      <workItem from="1604740469117" duration="13034000" />
+      <workItem from="1604809358991" duration="29000" />
+      <workItem from="1604838206145" duration="7654000" />
+      <workItem from="1604883041535" duration="13546000" />
+      <workItem from="1604968356025" duration="619000" />
+      <workItem from="1605098175698" duration="21188000" />
+      <workItem from="1605319121189" duration="18363000" />
     </task>
     <servers />
   </component>
@@ -223,59 +229,86 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1604632966942" />
-    <state width="1506" height="277" key="GridCell.Tab.0.bottom" timestamp="1604726162975">
+    <state x="574" y="118" key="#com.intellij.ide.util.MemberChooser" timestamp="1604759344430">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1506" height="277" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604726162975" />
-    <state width="1877" height="253" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604721410611" />
-    <state width="1506" height="277" key="GridCell.Tab.0.center" timestamp="1604726162975">
+    <state x="574" y="118" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1604759344430" />
+    <state x="539" y="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1604747840818">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1506" height="277" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604726162975" />
-    <state width="1877" height="253" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604721410610" />
-    <state width="1506" height="277" key="GridCell.Tab.0.left" timestamp="1604726162975">
+    <state x="539" y="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1604747840818" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1605368605767">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1506" height="277" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604726162975" />
-    <state width="1877" height="253" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604721410610" />
-    <state width="1506" height="277" key="GridCell.Tab.0.right" timestamp="1604726162975">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605368605767" />
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1605354559257">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1506" height="277" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604726162975" />
-    <state width="1877" height="253" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604721410610" />
-    <state width="1877" height="444" key="GridCell.Tab.1.bottom" timestamp="1604726162969">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605354559257" />
+    <state width="1877" height="200" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1605354559256">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="444" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604726162969" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605354559256" />
+    <state width="1877" height="200" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1605354559256">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605354559256" />
+    <state width="1877" height="200" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1605354559257">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605354559257" />
+    <state width="1877" height="200" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1605354559995">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605354559995" />
     <state width="1877" height="444" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604717989637" />
-    <state width="1877" height="444" key="GridCell.Tab.1.center" timestamp="1604726162969">
+    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1605354559995">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="444" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1604726162969" />
+    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1605354559995" />
     <state width="1877" height="444" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604717989637" />
-    <state width="1877" height="444" key="GridCell.Tab.1.left" timestamp="1604726162969">
+    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1605354559995">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="444" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1604726162969" />
+    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1605354559995" />
     <state width="1877" height="444" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604717989637" />
-    <state width="1877" height="444" key="GridCell.Tab.1.right" timestamp="1604726162969">
+    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1605354559995">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1877" height="444" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1604726162969" />
+    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1605354559995" />
     <state width="1877" height="444" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604717989637" />
-    <state x="681" y="261" width="540" height="524" key="StructurePopup" timestamp="1604537197431">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1604537197431" />
-    <state x="466" y="144" width="603" height="665" key="find.popup" timestamp="1597071027772">
+    <state x="249" y="0" key="SettingsEditor" timestamp="1605324257162">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="466" y="144" width="603" height="665" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1597071027772" />
-    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1604537120758">
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605324257162" />
+    <state x="473" y="190" width="441" height="416" key="StructurePopup" timestamp="1605371092003">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="473" y="190" width="441" height="416" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1605371092003" />
+    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1605144817913" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1605358419621">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1605358419621" />
+    <state width="623" height="563" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1605150640561" />
+    <state x="466" y="144" width="603" height="665" key="find.popup" timestamp="1605322339146">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="466" y="144" width="603" height="665" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1605322339146" />
+    <state x="583" y="182" width="754" height="840" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605150012013" />
+    <state x="322" y="73" key="new project wizard" timestamp="1605368614937">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="322" y="73" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1605368614937" />
+    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1605144789592">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1604499875073" />
-    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604537120758" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1604907984581" />
+    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605144789592" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -305,101 +338,112 @@
           <line>137</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>2042</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>2039</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>1697</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/concurrent/test2/Test32.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>2040</line>
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>1698</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>1707</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>1708</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>1709</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedLongSynchronizer.java</url>
+          <line>639</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/concurrent/test2/Test32.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>2038</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>2037</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>1631</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>2036</line>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>1643</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>2032</line>
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/concurrent/test2/Test32.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/concurrent/test2/Test32.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/concurrent/test2/Test32.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://C:/Program Files/Java/jdk1.8.0_211/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java</url>
+          <line>2001</line>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="t" />
-        <watch expression="t" language="JAVA" />
-      </configuration>
-    </watches-manager>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>Spring</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>jdk8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: ch.qos.logback:logback-classic:1.2.3</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

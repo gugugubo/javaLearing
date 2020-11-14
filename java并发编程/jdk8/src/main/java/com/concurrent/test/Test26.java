@@ -29,7 +29,9 @@ public class Test26 {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        thread.interrupt();   // interrupt无影响
+        boolean interrupted = thread.isInterrupted();
+        System.out.println(interrupted);
         log.debug("unpark...");
         LockSupport.unpark(thread);
     }
