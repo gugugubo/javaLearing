@@ -1,6 +1,7 @@
 package com.gcb.jihe.hashmap;
 
-import com.gcb.jihe.hashmap.HashMap;
+
+import java.util.HashMap;
 
 /**
  * @Author 古春波

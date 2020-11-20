@@ -21,7 +21,8 @@
  *
  *
  *
- */
+ *//*
+
 
 package com.gcb.jihe.hashmap;
 
@@ -37,6 +38,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import sun.misc.SharedSecrets;
 
+*/
 /**
  * Hash table based implementation of the <tt>Map</tt> interface.  This
  * implementation provides all of the optional map operations, and permits
@@ -135,13 +137,15 @@ import sun.misc.SharedSecrets;
  * @see     TreeMap
  * @see     Hashtable
  * @since   1.2
- */
+ *//*
+
 public class HashMap<K,V> extends AbstractMap<K,V>
         implements Map<K,V>, Cloneable, Serializable {
 
     private static final long serialVersionUID = 362498820763181265L;
 
-    /*
+    */
+/*
      * Implementation notes.
      *
      * This map usually acts as a binned (bucketed) hash table, but
@@ -229,30 +233,38 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      *
      * The concurrent-programming-like SSA-based coding style helps
      * avoid aliasing errors amid all of the twisty pointer operations.
-     */
+     *//*
 
-    /**
+
+    */
+/**
      * The default initial capacity - MUST be a power of two.
      * 默认的初始容量，必须是二的次方
-     */
+     *//*
+
     static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // aka 16
 
-    /**
+    */
+/**
      * The maximum capacity, used if a higher value is implicitly specified
      * by either of the constructors with arguments.
      * MUST be a power of two <= 1<<30.
      * 
      * 最大容量，当通过构造函数隐式制定了一个大于MAXIMUM_CAPACITY的时候使用
-     */
+     *//*
+
     static final int MAXIMUM_CAPACITY = 1 << 30;
 
-    /**
+    */
+/**
      * The load factor used when none specified in constructor.
      * 加载因子，当构造函数没有指定加载因子的时候的默认值
-     */
+     *//*
+
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
 
-    /**
+    */
+/**
      * The bin count threshold for using a tree rather than list for a
      * bin.  Bins are converted to trees when adding an element to a
      * bin with at least this many nodes. The value must be greater
@@ -262,33 +274,40 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * 
      * TREEIFY_THRESHOLD为当一个bin从list转化为tree的阈值，当bin中元素的总元素最低超过这个值的时候，bin才被转化为tree；
      * 为了满足转化为简单bin时的要求，TREEIFY_THRESHOLD必须比2大而且比8要小
-     */
+     *//*
+
     static final int TREEIFY_THRESHOLD = 8;
 
-    /**
+    */
+/**
      * The bin count threshold for untreeifying a (split) bin during a
      * resize operation. Should be less than TREEIFY_THRESHOLD, and at
      * most 6 to mesh with shrinkage detection under removal.
      * 
      * bin反tree化时的阈值，应该比TREEIFY_THRESHOLD要小，
      * 为了在移除元素的时候能检测到移除动作，UNTREEIFY_THRESHOLD必须至少为6
-     */
+     *//*
+
     static final int UNTREEIFY_THRESHOLD = 6;
 
-    /**
+    */
+/**
      * The smallest table capacity for which bins may be treeified.
      * (Otherwise the table is resized if too many nodes in a bin.)
      * Should be at least 4 * TREEIFY_THRESHOLD to avoid conflicts
      * between resizing and treeification thresholds.
      * 
      * 树化的另外一个阈值，table的最小得为64。应该最小是 4 * TREEIFY_THRESHOLD 来避免修改大小和树化阈值之间的冲突
-     */
+     *//*
+
     static final int MIN_TREEIFY_CAPACITY = 64;
 
-    /**
+    */
+/**
      * Basic hash bin node, used for most entries.  (See below for
      * TreeNode subclass, and in LinkedHashMap for its Entry subclass.)
-     */
+     *//*
+
     static class Node<K,V> implements Map.Entry<K,V> {
         final int hash;
         final K key;
@@ -329,9 +348,12 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
     }
 
-    /* ---------------- Static utilities -------------- */
+    */
+/* ---------------- Static utilities -------------- *//*
 
-    /**
+
+    */
+/**
      * Computes key.hashCode() and spreads (XORs) higher bits of hash
      * to lower.  Because the table uses power-of-two masking, sets of
      * hashes that vary only in bits above the current mask will
@@ -355,16 +377,19 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      *     0b 0010 0101 1010 1100  0011 1111 0010 1110  ^ 
      *     0b 0000 0000 0000 0000  0010 0101 1010 1100 
      *     0b 0010 0101 1010 1100  0001 1010 1000 0010
-     */
+     *//*
+
     static final int hash(Object key) {
         int h;
         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
 
-    /**
+    */
+/**
      * Returns x's Class if it is of the form "class C implements
      * Comparable<C>", else null.
-     */
+     *//*
+
     static Class<?> comparableClassFor(Object x) {
         if (x instanceof Comparable) {
             Class<?> c; Type[] ts, as; Type t; ParameterizedType p;
@@ -384,17 +409,20 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         return null;
     }
 
-    /**
+    */
+/**
      * Returns k.compareTo(x) if x matches kc (k's screened comparable
      * class), else 0.
-     */
+     *//*
+
     @SuppressWarnings({"rawtypes","unchecked"}) // for cast to Comparable
     static int compareComparables(Class<?> kc, Object k, Object x) {
         return (x == null || x.getClass() != kc ? 0 :
                 ((Comparable)k).compareTo(x));
     }
 
-    /**
+    */
+/**
      * Returns a power of two size for the given target capacity.
      * 
      * 1.返回一个大于等于当前值cap的一个的数字，并且这个数字一定是2的次方数
@@ -410,7 +438,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * 
      * 3.这个方法就是为了把最高位1的后面都变为1
      * 0001 1101 1100 -> 0001 1111 1111 -> +1 -> 0010 1111 1111
-     */
+     *//*
+
     static final int tableSizeFor(int cap) {
         int n = cap - 1;
         n |= n >>> 1;
@@ -421,31 +450,40 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
     }
 
-    /* ---------------- Fields -------------- */
+    */
+/* ---------------- Fields -------------- *//*
 
-    /**
+
+    */
+/**
      * The table, initialized on first use, and resized as
      * necessary. When allocated, length is always a power of two.
      * (We also tolerate length zero in some operations to allow
      * bootstrapping mechanics that are currently not needed.)
      * 
      * table，第一次被使用的时候才进行加载
-     */
+     *//*
+
     transient Node<K,V>[] table;
 
-    /**
+    */
+/**
      * Holds cached entrySet(). Note that AbstractMap fields are used
      * for keySet() and values().
-     */
+     *//*
+
     transient Set<Map.Entry<K,V>> entrySet;
 
-    /**
+    */
+/**
      * The number of key-value mappings contained in this map.
      * table中元素的个数
-     */
+     *//*
+
     transient int size;
 
-    /**
+    */
+/**
      * The number of times this HashMap has been structurally modified
      * Structural modifications are those that change the number of mappings in
      * the HashMap or otherwise modify its internal structure (e.g.,
@@ -454,32 +492,40 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * 
      * HashMap在结构上被修改的次数，结构上被修改是指那些改变HashMap中映射的数量或者以其他方式修改其内部结构的次数（例如，rehash）。
      * 此字段用于使HashMap集合视图上的迭代器快速失败。
-     */
+     *//*
+
     transient int modCount;
 
-    /**
+    */
+/**
      * The next size value at which to resize (capacity * load factor).
      *
      * 下一次resize扩容阈值，当前table中的元素超过此值时，触发扩容
      * threshold = capacity * load factor
      * @serial
-     */
+     *//*
+
     // (The javadoc description is true upon serialization.
     // Additionally, if the table array has not been allocated, this
     // field holds the initial array capacity, or zero signifying
     // DEFAULT_INITIAL_CAPACITY.)
     int threshold;
 
-    /**
+    */
+/**
      * The load factor for the hash table.
      * 负载因子
      * @serial
-     */
+     *//*
+
     final float loadFactor;
 
-    /* ---------------- Public operations -------------- */
+    */
+/* ---------------- Public operations -------------- *//*
 
-    /**
+
+    */
+/**
      * Constructs an empty <tt>HashMap</tt> with the specified initial
      * capacity and load factor.
      *
@@ -487,7 +533,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * @param  loadFactor      the load factor
      * @throws IllegalArgumentException if the initial capacity is negative
      *         or the load factor is nonpositive
-     */
+     *//*
+
     public HashMap(int initialCapacity, float loadFactor) {
         if (initialCapacity < 0)
             throw new IllegalArgumentException("Illegal initial capacity: " +
@@ -501,26 +548,31 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         this.threshold = tableSizeFor(initialCapacity);
     }
 
-    /**
+    */
+/**
      * Constructs an empty <tt>HashMap</tt> with the specified initial
      * capacity and the default load factor (0.75).
      *
      * @param  initialCapacity the initial capacity.
      * @throws IllegalArgumentException if the initial capacity is negative.
-     */
+     *//*
+
     public HashMap(int initialCapacity) {
         this(initialCapacity, DEFAULT_LOAD_FACTOR);
     }
 
-    /**
+    */
+/**
      * Constructs an empty <tt>HashMap</tt> with the default initial capacity
      * (16) and the default load factor (0.75).
-     */
+     *//*
+
     public HashMap() {
         this.loadFactor = DEFAULT_LOAD_FACTOR; // all other fields defaulted
     }
 
-    /**
+    */
+/**
      * Constructs a new <tt>HashMap</tt> with the same mappings as the
      * specified <tt>Map</tt>.  The <tt>HashMap</tt> is created with
      * default load factor (0.75) and an initial capacity sufficient to
@@ -528,19 +580,22 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      *
      * @param   m the map whose mappings are to be placed in this map
      * @throws  NullPointerException if the specified map is null
-     */
+     *//*
+
     public HashMap(Map<? extends K, ? extends V> m) {
         this.loadFactor = DEFAULT_LOAD_FACTOR;
         putMapEntries(m, false);
     }
 
-    /**
+    */
+/**
      * Implements Map.putAll and Map constructor.
      *
      * @param m the map
      * @param evict false when initially constructing this map, else
      * true (relayed to method afterNodeInsertion).
-     */
+     *//*
+
     final void putMapEntries(Map<? extends K, ? extends V> m, boolean evict) {
         int s = m.size();
         if (s > 0) {
@@ -566,25 +621,30 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
     }
 
-    /**
+    */
+/**
      * Returns the number of key-value mappings in this map.
      *
      * @return the number of key-value mappings in this map
-     */
+     *//*
+
     public int size() {
         return size;
     }
 
-    /**
+    */
+/**
      * Returns <tt>true</tt> if this map contains no key-value mappings.
      *
      * @return <tt>true</tt> if this map contains no key-value mappings
-     */
+     *//*
+
     public boolean isEmpty() {
         return size == 0;
     }
 
-    /**
+    */
+/**
      * Returns the value to which the specified key is mapped,
      * or {@code null} if this map contains no mapping for the key.
      *
@@ -600,19 +660,22 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * distinguish these two cases.
      *
      * @see #put(Object, Object)
-     */
+     *//*
+
     public V get(Object key) {
         Node<K,V> e;
         return (e = getNode(hash(key), key)) == null ? null : e.value;
     }
 
-    /**
+    */
+/**
      * Implements Map.get and related methods.
      *
      * @param hash hash for key
      * @param key the key
      * @return the node, or null if none
-     */
+     *//*
+
     final Node<K,V> getNode(int hash, Object key) {
         // tab：引用当前hashmap的table
         // first：桶位中的头元素
@@ -645,19 +708,22 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         return null;
     }
 
-    /**
+    */
+/**
      * Returns <tt>true</tt> if this map contains a mapping for the
      * specified key.
      *
      * @param   key   The key whose presence in this map is to be tested
      * @return <tt>true</tt> if this map contains a mapping for the specified
      * key.
-     */
+     *//*
+
     public boolean containsKey(Object key) {
         return getNode(hash(key), key) != null;
     }
 
-    /**
+    */
+/**
      * Associates the specified value with the specified key in this map.
      * If the map previously contained a mapping for the key, the old
      * value is replaced.
@@ -669,12 +735,14 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      *         (A <tt>null</tt> return can also indicate that the map
      *         previously associated <tt>null</tt> with <tt>key</tt>.)
      *         返回先前key对应的value值（如果value为null，也返回null），如果先前不存在这个key，那么返回的就是null；
-     */
+     *//*
+
     public V put(K key, V value) {
         return putVal(hash(key), key, value, false, true);
     }
 
-    /**
+    */
+/**
      * Implements Map.put and related methods.
      *
      * @param hash hash for key
@@ -683,7 +751,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * @param onlyIfAbsent if true, don't change existing value
      * @param evict if false, the table is in creation mode.
      * @return previous value, or null if none
-     */
+     *//*
+
     final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
                    boolean evict) {
         // tab表示当前hashmap的table
@@ -750,7 +819,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         return null;
     }
 
-    /**
+    */
+/**
      * Initializes or doubles table size.  If null, allocates in
      * accord with initial capacity target held in field threshold.
      * Otherwise, because we are using power-of-two expansion, the
@@ -758,7 +828,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * with a power of two offset in the new table.
      *
      * @return the table
-     */
+     *//*
+
     final Node<K,V>[] resize() {
         Node<K,V>[] oldTab = table;
         // oldCap表示扩容之前table数组的长度
@@ -871,10 +942,12 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         return newTab;
     }
 
-    /**
+    */
+/**
      * Replaces all linked nodes in bin at index for given hash unless
      * table is too small, in which case resizes instead.
-     */
+     *//*
+
     final void treeifyBin(Node<K,V>[] tab, int hash) {
         int n, index; Node<K,V> e;
         if (tab == null || (n = tab.length) < MIN_TREEIFY_CAPACITY)
@@ -896,19 +969,22 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
     }
 
-    /**
+    */
+/**
      * Copies all of the mappings from the specified map to this map.
      * These mappings will replace any mappings that this map had for
      * any of the keys currently in the specified map.
      *
      * @param m mappings to be stored in this map
      * @throws NullPointerException if the specified map is null
-     */
+     *//*
+
     public void putAll(Map<? extends K, ? extends V> m) {
         putMapEntries(m, true);
     }
 
-    /**
+    */
+/**
      * Removes the mapping for the specified key from this map if present.
      *
      * @param  key key whose mapping is to be removed from the map
@@ -916,14 +992,16 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      *         <tt>null</tt> if there was no mapping for <tt>key</tt>.
      *         (A <tt>null</tt> return can also indicate that the map
      *         previously associated <tt>null</tt> with <tt>key</tt>.)
-     */
+     *//*
+
     public V remove(Object key) {
         Node<K,V> e;
         return (e = removeNode(hash(key), key, null, false, true)) == null ?
                 null : e.value;
     }
 
-    /**
+    */
+/**
      * Implements Map.remove and related methods.
      *
      * @param hash hash for key
@@ -932,7 +1010,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * @param matchValue if true only remove if value is equal  如果为ture，那么必须key和value都同时匹配上才可以删除
      * @param movable if false do not move other nodes while removing
      * @return the node, or null if none
-     */
+     *//*
+
     final Node<K,V> removeNode(int hash, Object key, Object value,
                                boolean matchValue, boolean movable) {
         // tab：引用当前hashmap的table
@@ -993,10 +1072,12 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         return null;
     }
 
-    /**
+    */
+/**
      * Removes all of the mappings from this map.
      * The map will be empty after this call returns.
-     */
+     *//*
+
     public void clear() {
         Node<K,V>[] tab;
         modCount++;
@@ -1007,14 +1088,16 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
     }
 
-    /**
+    */
+/**
      * Returns <tt>true</tt> if this map maps one or more keys to the
      * specified value.
      *
      * @param value value whose presence in this map is to be tested
      * @return <tt>true</tt> if this map maps one or more keys to the
      *         specified value
-     */
+     *//*
+
     public boolean containsValue(Object value) {
         Node<K,V>[] tab; V v;
         if ((tab = table) != null && size > 0) {
@@ -1029,7 +1112,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         return false;
     }
 
-    /**
+    */
+/**
      * Returns a {@link Set} view of the keys contained in this map.
      * The set is backed by the map, so changes to the map are
      * reflected in the set, and vice-versa.  If the map is modified
@@ -1043,7 +1127,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * operations.
      *
      * @return a set view of the keys contained in this map
-     */
+     *//*
+
     public Set<K> keySet() {
         Set<K> ks = keySet;
         if (ks == null) {
@@ -1080,7 +1165,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
     }
 
-    /**
+    */
+/**
      * Returns a {@link Collection} view of the values contained in this map.
      * The collection is backed by the map, so changes to the map are
      * reflected in the collection, and vice-versa.  If the map is
@@ -1094,7 +1180,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * support the <tt>add</tt> or <tt>addAll</tt> operations.
      *
      * @return a view of the values contained in this map
-     */
+     *//*
+
     public Collection<V> values() {
         Collection<V> vs = values;
         if (vs == null) {
@@ -1128,7 +1215,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
     }
 
-    /**
+    */
+/**
      * Returns a {@link Set} view of the mappings contained in this map.
      * The set is backed by the map, so changes to the map are
      * reflected in the set, and vice-versa.  If the map is modified
@@ -1143,7 +1231,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      * <tt>add</tt> or <tt>addAll</tt> operations.
      *
      * @return a set view of the mappings contained in this map
-     */
+     *//*
+
     public Set<Map.Entry<K,V>> entrySet() {
         Set<Map.Entry<K,V>> es;
         return (es = entrySet) == null ? (entrySet = new EntrySet()) : es;
@@ -1452,15 +1541,19 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
     }
 
-    /* ------------------------------------------------------------ */
+    */
+/* ------------------------------------------------------------ *//*
+
     // Cloning and serialization
 
-    /**
+    */
+/**
      * Returns a shallow copy of this <tt>HashMap</tt> instance: the keys and
      * values themselves are not cloned.
      *
      * @return a shallow copy of this map
-     */
+     *//*
+
     @SuppressWarnings("unchecked")
     @Override
     public Object clone() {
@@ -1484,7 +1577,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
                         DEFAULT_INITIAL_CAPACITY;
     }
 
-    /**
+    */
+/**
      * Save the state of the <tt>HashMap</tt> instance to a stream (i.e.,
      * serialize it).
      *
@@ -1494,7 +1588,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
      *             mappings), followed by the key (Object) and value (Object)
      *             for each key-value mapping.  The key-value mappings are
      *             emitted in no particular order.
-     */
+     *//*
+
     private void writeObject(java.io.ObjectOutputStream s)
             throws IOException {
         int buckets = capacity();
@@ -1505,13 +1600,15 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         internalWriteEntries(s);
     }
 
-    /**
+    */
+/**
      * Reconstitutes this map from a stream (that is, deserializes it).
      * @param s the stream
      * @throws ClassNotFoundException if the class of a serialized object
      *         could not be found
      * @throws IOException if an I/O error occurs
-     */
+     *//*
+
     private void readObject(java.io.ObjectInputStream s)
             throws IOException, ClassNotFoundException {
         // Read in the threshold (ignored), loadfactor, and any hidden stuff
@@ -1557,7 +1654,9 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
     }
 
-    /* ------------------------------------------------------------ */
+    */
+/* ------------------------------------------------------------ *//*
+
     // iterators
 
     abstract class HashIterator {
@@ -1621,7 +1720,9 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         public final Map.Entry<K,V> next() { return nextNode(); }
     }
 
-    /* ------------------------------------------------------------ */
+    */
+/* ------------------------------------------------------------ *//*
+
     // spliterators
 
     static class HashMapSpliterator<K,V> {
@@ -1875,17 +1976,21 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
     }
 
-    /* ------------------------------------------------------------ */
+    */
+/* ------------------------------------------------------------ *//*
+
     // LinkedHashMap support
 
 
-    /*
+    */
+/*
      * The following package-protected methods are designed to be
      * overridden by LinkedHashMap, but not by any other subclass.
      * Nearly all other internal methods are also package-protected
      * but are declared final, so can be used by LinkedHashMap, view
      * classes, and HashSet.
-     */
+     *//*
+
 
     // Create a regular (non-tree) node
     Node<K,V> newNode(int hash, K key, V value, Node<K,V> next) {
@@ -1907,9 +2012,11 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         return new TreeNode<>(p.hash, p.key, p.value, next);
     }
 
-    /**
+    */
+/**
      * Reset to initial default state.  Called by clone and readObject.
-     */
+     *//*
+
     void reinitialize() {
         table = null;
         entrySet = null;
@@ -1938,14 +2045,18 @@ public class HashMap<K,V> extends AbstractMap<K,V>
         }
     }
 
-    /* ------------------------------------------------------------ */
+    */
+/* ------------------------------------------------------------ *//*
+
     // Tree bins
 
-    /**
+    */
+/**
      * Entry for Tree bins. Extends LinkedHashMap.Entry (which in turn
      * extends Node) so can be used as extension of either regular or
      * linked node.
-     */
+     *//*
+
     static final class TreeNode<K,V> extends LinkedHashMap.Entry<K,V> {
         TreeNode<K,V> parent;  // red-black tree links
         TreeNode<K,V> left;
@@ -1956,9 +2067,11 @@ public class HashMap<K,V> extends AbstractMap<K,V>
             super(hash, key, val, next);
         }
 
-        /**
+        */
+/**
          * Returns root of tree containing this node.
-         */
+         *//*
+
         final TreeNode<K,V> root() {
             for (TreeNode<K,V> r = this, p;;) {
                 if ((p = r.parent) == null)
@@ -1967,9 +2080,11 @@ public class HashMap<K,V> extends AbstractMap<K,V>
             }
         }
 
-        /**
+        */
+/**
          * Ensures that the given root is the first node of its bin.
-         */
+         *//*
+
         static <K,V> void moveRootToFront(Node<K,V>[] tab, TreeNode<K,V> root) {
             int n;
             if (root != null && tab != null && (n = tab.length) > 0) {
@@ -1992,11 +2107,13 @@ public class HashMap<K,V> extends AbstractMap<K,V>
             }
         }
 
-        /**
+        */
+/**
          * Finds the node starting at root p with the given hash and key.
          * The kc argument caches comparableClassFor(key) upon first use
          * comparing keys.
-         */
+         *//*
+
         final TreeNode<K,V> find(int h, Object k, Class<?> kc) {
             TreeNode<K,V> p = this;
             do {
@@ -2024,20 +2141,24 @@ public class HashMap<K,V> extends AbstractMap<K,V>
             return null;
         }
 
-        /**
+        */
+/**
          * Calls find for root node.
-         */
+         *//*
+
         final TreeNode<K,V> getTreeNode(int h, Object k) {
             return ((parent != null) ? root() : this).find(h, k, null);
         }
 
-        /**
+        */
+/**
          * Tie-breaking utility for ordering insertions when equal
          * hashCodes and non-comparable. We don't require a total
          * order, just a consistent insertion rule to maintain
          * equivalence across rebalancings. Tie-breaking further than
          * necessary simplifies testing a bit.
-         */
+         *//*
+
         static int tieBreakOrder(Object a, Object b) {
             int d;
             if (a == null || b == null ||
@@ -2048,9 +2169,11 @@ public class HashMap<K,V> extends AbstractMap<K,V>
             return d;
         }
 
-        /**
+        */
+/**
          * Forms tree of the nodes linked from this node.
-         */
+         *//*
+
         final void treeify(Node<K,V>[] tab) {
             TreeNode<K,V> root = null;
             for (TreeNode<K,V> x = this, next; x != null; x = next) {
@@ -2093,10 +2216,12 @@ public class HashMap<K,V> extends AbstractMap<K,V>
             moveRootToFront(tab, root);
         }
 
-        /**
+        */
+/**
          * Returns a list of non-TreeNodes replacing those linked from
          * this node.
-         */
+         *//*
+
         final Node<K,V> untreeify(HashMap<K,V> map) {
             Node<K,V> hd = null, tl = null;
             for (Node<K,V> q = this; q != null; q = q.next) {
@@ -2110,9 +2235,11 @@ public class HashMap<K,V> extends AbstractMap<K,V>
             return hd;
         }
 
-        /**
+        */
+/**
          * Tree version of putVal.
-         */
+         *//*
+
         final TreeNode<K,V> putTreeVal(HashMap<K,V> map, Node<K,V>[] tab,
                                        int h, K k, V v) {
             Class<?> kc = null;
@@ -2159,7 +2286,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
             }
         }
 
-        /**
+        */
+/**
          * Removes the given node, that must be present before this call.
          * This is messier than typical red-black deletion code because we
          * cannot swap the contents of an interior node with a leaf
@@ -2168,7 +2296,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
          * linkages. If the current tree appears to have too few nodes,
          * the bin is converted back to a plain bin. (The test triggers
          * somewhere between 2 and 6 nodes, depending on tree structure).
-         */
+         *//*
+
         final void removeTreeNode(HashMap<K,V> map, Node<K,V>[] tab,
                                   boolean movable) {
             int n;
@@ -2267,7 +2396,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
                 moveRootToFront(tab, r);
         }
 
-        /**
+        */
+/**
          * Splits nodes in a tree bin into lower and upper tree bins,
          * or untreeifies if now too small. Called only from resize;
          * see above discussion about split bits and indices.
@@ -2276,7 +2406,8 @@ public class HashMap<K,V> extends AbstractMap<K,V>
          * @param tab the table for recording bin heads
          * @param index the index of the table being split
          * @param bit the bit of hash to split on
-         */
+         *//*
+
         final void split(HashMap<K,V> map, Node<K,V>[] tab, int index, int bit) {
             TreeNode<K,V> b = this;
             // Relink into lo and hi lists, preserving order
@@ -2324,7 +2455,9 @@ public class HashMap<K,V> extends AbstractMap<K,V>
             }
         }
 
-        /* ------------------------------------------------------------ */
+        */
+/* ------------------------------------------------------------ *//*
+
         // Red-black tree methods, all adapted from CLR
 
         static <K,V> TreeNode<K,V> rotateLeft(TreeNode<K,V> root,
@@ -2510,9 +2643,11 @@ public class HashMap<K,V> extends AbstractMap<K,V>
             }
         }
 
-        /**
+        */
+/**
          * Recursive invariant check
-         */
+         *//*
+
         static <K,V> boolean checkInvariants(TreeNode<K,V> t) {
             TreeNode<K,V> tp = t.parent, tl = t.left, tr = t.right,
                     tb = t.prev, tn = (TreeNode<K,V>)t.next;
@@ -2537,3 +2672,4 @@ public class HashMap<K,V> extends AbstractMap<K,V>
     }
 
 }
+*/

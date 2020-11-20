@@ -1,6 +1,6 @@
 package com.gcb.jihe.concurrenthashmap;
 
-import com.gcb.jihe.hashmap.HashMap;
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
