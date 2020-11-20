@@ -2,7 +2,7 @@
 
 
 
-# [点击在线阅读](https://gu_chun_bo.gitee.io/java-construct)
+# [点击在线阅读，如遇报错，Ctrl+F5刷新即可！](https://gu_chun_bo.gitee.io/java-construct)
 
 
 
@@ -67,22 +67,22 @@
 ### 并发
 1. **[synchronized详解和park(),unpark()方法](java并发编程/java并发1.md)**
 2. **[volatile 和 cas](java并发编程/java并发2.md)**
-3. [线程池和ReadWriteLock和juc下其它组件](java并发编程/并发3.md)
+3. **[线程池和ReadWriteLock和juc下其它组件](java并发编程/并发3.md)**
 
 一些javadoc文档的翻译
 1. **[Condition类文档翻译](java并发编程/javadoc文档/condition.md)**
 2. **[Lock类文档翻译](java并发编程/javadoc文档/Lock.md)**
-3. [Thread和Runnable类文档翻译](java并发编程/javadoc文档/Thread和Runnable.md)
-4. [wait()和notify()方法文档翻译](java并发编程/javadoc文档/wait()和notify()方法.md)
+3. **[Thread和Runnable类文档翻译](java并发编程/javadoc文档/Thread和Runnable.md)**
+4. **[wait()和notify()方法文档翻译](java并发编程/javadoc文档/wait()和notify()方法.md)**
 
 
 ### JVM
 1. **[jvm-垃圾回收](jvm学习/jvm-垃圾回收.md)**
 2. **[jvm-类加载过程](jvm学习/jvm-类加载过程)**
-3. [jvm-内存结构](jvm学习/jvm-内存结构.md)
-4. [jvm-字节码](jvm学习/jvm-字节码.md)
+3. **[jvm-内存结构](jvm学习/jvm-内存结构.md)**
+4. **[jvm-字节码](jvm学习/jvm-字节码.md)**
 5. **[G1详解](jvm学习/SubFolder/G1详解.md)**
-6. [jvm-一天一夜搞懂String Pool字符串常量池](jvm学习/SubFolder/jvm-一天一夜搞懂StringPool字符串常量池.md)
+6. [**jvm-一天一夜搞懂String Pool字符串常量池**](jvm学习/SubFolder/jvm-一天一夜搞懂StringPool字符串常量池.md)
 
 
 
