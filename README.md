@@ -27,6 +27,7 @@
     - [Netty](#netty)
   - [认证授权](#认证授权)
     - [JWT](#jwt)
+    - [springSercurity](#springSercurity)
     - [SSO(单点登录)](#sso单点登录)
   - [分布式](#分布式)
     - [搜索引擎](#搜索引擎)
@@ -129,6 +130,11 @@
 #### Netty
 
 ### 认证授权
+
+#### springSercurity
+1. **[SpringSecurity上手与源码解析](框架学习/SpringSecurity/权限管理.md)**
+
+
 
 #### JWT
 
