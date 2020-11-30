@@ -1,13 +1,49 @@
+
+
+# mall-tiny学习路径
+
+1. [mall整合SpringBoot+MyBatis搭建基本骨架](http://www.macrozheng.com/#/architect/mall_arch_01?id=mall整合springbootmybatis搭建基本骨架)  
+2. [MyBatis Generator使用过程中踩过的一个坑](http://www.macrozheng.com/#/technology/mybatis_mapper?id=mybatis-generator使用过程中踩过的一个坑)
+3. [mall整合Swagger-UI实现在线API文档](http://www.macrozheng.com/#/architect/mall_arch_02?id=mall整合swagger-ui实现在线api文档)
+4. [mall整合Redis实现缓存功能](http://www.macrozheng.com/#/architect/mall_arch_03?id=mall整合redis实现缓存功能)
+5. [认证授权基础:搞清Authentication,Authorization以及Cookie、Session、Token、OAuth 2、SSO](https://snailclimb.gitee.io/javaguide/#/docs/system-design/authority-certification/basis-of-authority-certification)
+6. [session原理](https://blog.csdn.net/weixin_42217767/article/details/92760353)
+7. [spring security 视频](https://www.bilibili.com/video/BV1VE411h7aL?from=search&seid=791912643187913019)
+8. [spring security 博客](https://gitee.com/gu_chun_bo/java-construct/blob/master/Construct/md%E6%96%87%E6%A1%A3/springSecurity%E6%95%B4%E5%90%88jwt.md) 
+9. [mall整合SpringSecurity和JWT实现认证和授权（一）](http://www.macrozheng.com/#/architect/mall_arch_04?id=mall整合springsecurity和jwt实现认证和授权（一）)
+10. [mall整合SpringSecurity和JWT实现认证和授权（二）](http://www.macrozheng.com/#/architect/mall_arch_05?id=mall整合springsecurity和jwt实现认证和授权（二）)
+11. [手把手教你搞定权限管理，结合Spring Security实现接口的动态权限控制！](http://www.macrozheng.com/#/technology/permission_back?id=手把手教你搞定权限管理，结合spring-security实现接口的动态权限控制！)
+12. [使用Redis+AOP优化权限管理功能，这波操作贼爽！](http://www.macrozheng.com/#/technology/redis_permission?id=使用redisaop优化权限管理功能，这波操作贼爽！)
+13. [SpringBoot中处理校验逻辑的两种方式，真的很机智！](http://www.macrozheng.com/#/technology/springboot_validator?id=springboot中处理校验逻辑的两种方式，真的很机智！)
+14. [参数校验](https://snailclimb.gitee.io/javaguide/#/./docs/system-design/framework/spring/spring-annotations?id=_6-%e5%8f%82%e6%95%b0%e6%a0%a1%e9%aa%8c)
+15. [SpringBoot应用中使用AOP记录接口访问日志](http://www.macrozheng.com/#/technology/aop_log?id=springboot应用中使用aop记录接口访问日志)
+16. [前后端分离项目，如何解决跨域问题](http://www.macrozheng.com/#/technology/springboot_cors?id=前后端分离项目，如何解决跨域问题)
+17. [前后端分离项目，如何优雅实现文件存储！](http://www.macrozheng.com/#/technology/minio_use?id=前后端分离项目，如何优雅实现文件存储！)
+18. [RabbitMQ博客地址](https://snailclimb.gitee.io/javaguide/#/?id=%e6%b6%88%e6%81%af%e9%98%9f%e5%88%97)
+19. [RabbitMQ视频](https://www.bilibili.com/video/BV1KJ411z7ke?p=167)
+20. [mall整合RabbitMQ实现延迟消息](http://www.macrozheng.com/#/architect/mall_arch_09?id=mall整合rabbitmq实现延迟消息)
+21. [我常用的IDEA插件大公开，个个是精品！](http://www.macrozheng.com/#/reference/idea_plugins?id=我常用的idea插件大公开，个个是精品！)
+22. [Java 8都出那么久了，Stream API了解下？](http://www.macrozheng.com/#/technology/java_stream?id=java-8都出那么久了，stream-api了解下？)
+23. [IDEA中的Git操作，看这一篇就够了！](http://www.macrozheng.com/#/reference/idea_git?id=idea中的git操作，看这一篇就够了！)
+
+
+
+
+
 # 环境安装
 
-- [ ] idea的lombok插件的安装，[无法安装？](https://blog.csdn.net/chenpeng0708/article/details/105862193?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase)
-- [ ] idea中mybatis插件的安装，[Free MyBatis plugin](http://www.macrozheng.com/#/reference/idea?id=free-mybatis-plugin)
-- [ ] [设置新建类文件的类注释模版](https://www.cnblogs.com/xiaostudy/p/11253510.html)
-- [ ] [使用idea查看类继承关系](https://www.cnblogs.com/deng-cc/p/6927447.html)
-- [ ] [我常用的IDEA插件大公开，个个是精品！](http://www.macrozheng.com/#/reference/idea_plugins?id=我常用的idea插件大公开，个个是精品！)
-- [ ] idea 查看类的字段和属性：ctrl+F12  查看类的继承关系ctrl+h  查看方法的具体实现 ctrl+alt+b   在进行源码追踪时，返回上一层ctal+alt+左键     ctrl+alt +t 环绕代码块  
-
-
+1. idea的lombok插件的安装，[无法安装？](https://blog.csdn.net/chenpeng0708/article/details/105862193?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase)
+2. idea中mybatis插件的安装，[Free MyBatis plugin](http://www.macrozheng.com/#/reference/idea?id=free-mybatis-plugin)
+3. [设置新建类文件的类注释模版](https://www.cnblogs.com/xiaostudy/p/11253510.html)
+4. [使用idea查看类继承关系](https://www.cnblogs.com/deng-cc/p/6927447.html)
+5. [我常用的IDEA插件大公开，个个是精品！](http://www.macrozheng.com/#/reference/idea_plugins?id=我常用的idea插件大公开，个个是精品！)
+6. idea 
+   1. 查看类的字段和属性：ctrl+F12 
+   2. 查看类的继承关系；ctrl+h  
+   3. 查看方法的具体实现 ctrl+alt+b   
+   4. 在进行源码追踪时，返回上一层ctal+alt+左键     
+   5. ctrl+alt +t 环绕代码块  
+   6. ctrl + e 打开最近的文件
 
 # java基础
 
@@ -19,49 +55,49 @@
 
 ### 枚举类的使用
 
-- [ ] ResultCode 类中枚举类的使用
+- ResultCode 类中枚举类的使用
 
 
 ### 范型类和范型方法的使用
 
-- [ ] CommentPage，CommentResult类中范型的使用
+- CommentPage，CommentResult类中范型的使用
 
 ### String类的使用
 
-- [ ] 非空校验 StringUtils.isEmpty()  UmsMemberServiceImpl类
-- [ ] 检验字符串a是否以xx开头，使用a.startsWith() 方法  JwtAuthenticationTokenFilter类
-- [ ] StringBuilder类的使用，用来构建字符串  UmsMemberServiceImpl类
-- [ ] 不可变类了解：[地址](https://www.cnblogs.com/dolphin0520/p/10693891.html)
+- 非空校验 StringUtils.isEmpty()  UmsMemberServiceImpl类
+- 检验字符串a是否以xx开头，使用a.startsWith() 方法  JwtAuthenticationTokenFilter类
+- StringBuilder类的使用，用来构建字符串  UmsMemberServiceImpl类
+- 不可变类了解：[地址](https://www.cnblogs.com/dolphin0520/p/10693891.html)
 
 
 
 ### final关键字
 
-- [ ] 快速入门：[博客地址](https://www.cnblogs.com/xiaoxi/p/6392154.html)
+- 快速入门：[博客地址](https://www.cnblogs.com/xiaoxi/p/6392154.html)
 
 
 ## 集合
 
-- [ ] 判断list集合是否为空，使用list!= null和list.size()方法  UmsAdminServiceImpl类
-- [ ] 集合类判空，使用（hutoos工具包）CollUtil.isEmpty(collection)  DynamicAccessDecisionManager类
-- [ ] 遍历集合List 使用迭代器
-- [ ] Map<String, String> tokenMap = new HashMap<>();   map的使用  UserAdminController类
-- [ ] 创建一个指定元素的ArrayList   List<String> MENU = Arrays.asList("a","b", "c", "d");
-- [ ] hashmap原理：[地址](https://blog.csdn.net/woshimaxiao1/article/details/83661464)
+- 判断list集合是否为空，使用list!= null和list.size()方法  UmsAdminServiceImpl类
+- 集合类判空，使用（hutoos工具包）CollUtil.isEmpty(collection)  DynamicAccessDecisionManager类
+- 遍历集合List 使用迭代器
+- Map<String, String> tokenMap = new HashMap<>();   map的使用  UserAdminController类
+- 创建一个指定元素的ArrayList   List<String> MENU = Arrays.asList("a","b", "c", "d");
+- hashmap原理：[地址](https://blog.csdn.net/woshimaxiao1/article/details/83661464)
 
 
 
 ## 异常
 
-- [ ] 异常入门：[地址](https://www.cnblogs.com/hysum/p/7112011.html)
+- 异常入门：[地址](https://www.cnblogs.com/hysum/p/7112011.html)
 
 
 
 ## 反射
 
-- [ ] 反射入门和反射的一些api：[地址](https://snailclimb.gitee.io/javaguide/#/docs/java/basic/reflection)
-- [ ] 反射的应用：
-  - [ ] 反射在spring中的使用-->spring ioc的实现原理，spring aop的实现原理（使用的是代理模式，包括动态代理和静态代理,介绍动静态代理[地址](https://blog.csdn.net/yinni11/article/details/80217241)，介绍aop[地址](https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/SpringInterviewQuestions?id=aop)）
+- 反射入门和反射的一些api：[地址](https://snailclimb.gitee.io/javaguide/#/docs/java/basic/reflection)
+- 反射的应用：
+  - 反射在spring中的使用-->spring ioc的实现原理，spring aop的实现原理（使用的是代理模式，包括动态代理和静态代理,介绍动静态代理[地址](https://blog.csdn.net/yinni11/article/details/80217241)，介绍aop[地址](https://snailclimb.gitee.io/javaguide/#/docs/system-design/framework/spring/SpringInterviewQuestions?id=aop)）
     - [ ] spring aop中的动态代理可以通过jdk或者cglib实现
       - [ ] 两种动态代理的视频教程：[地址](https://www.bilibili.com/video/BV1KW411R7F5?p=21)
       - [ ] 代码小案例：[地址](https://gitee.com/gu_chun_bo/java-construct/tree/master/%E4%BB%A3%E7%A0%81%E5%B0%8F%E5%AE%9E%E4%BE%8B/reflexandproxy)
@@ -225,10 +261,6 @@
   - [ ] GlobalCorsConfig 全局跨域配置类
   - [ ] SecurityConfig  springsecurity配置类中
 
-
-
-
-
 # git
 
 - [ ] git commit的规范：[地址](https://juejin.im/post/5e0c82a15188253a907111dc)
@@ -261,8 +293,6 @@
 
   
 
-
-
 # 学习方法
 
 - [ ] 如何学习一门技术？先看大佬的总结文章再下载项目进行实战，再看视频理解项目可以做好笔记。如果想进一步深入那么就要看书学习。
@@ -285,46 +315,6 @@
   - 笔记：我平时使用 Trello 记录一些自己想写的文章或者代码，以及一些读者的投稿情况和个人突然冒出来的idea。
 
 - [ ] 经验：[地址](https://www.nowcoder.com/discuss/188241?type=2&order=1&pos=9&page=2)
-
-
-
-# 待解决
-
-- [x] 范型的使用，看书深入
-
-  
-
-  
-
-  
-
-
-
-
-
-# 本项目学习路径
-
-1. 整合MyBatis [mall整合SpringBoot+MyBatis搭建基本骨架](http://www.macrozheng.com/#/architect/mall_arch_01?id=mall整合springbootmybatis搭建基本骨架)  
-2. [MyBatis Generator使用过程中踩过的一个坑](http://www.macrozheng.com/#/technology/mybatis_mapper?id=mybatis-generator使用过程中踩过的一个坑)
-3. [mall整合Swagger-UI实现在线API文档](http://www.macrozheng.com/#/architect/mall_arch_02?id=mall整合swagger-ui实现在线api文档)
-4. [mall整合Redis实现缓存功能](http://www.macrozheng.com/#/architect/mall_arch_03?id=mall整合redis实现缓存功能)
-5. [认证授权基础:搞清Authentication,Authorization以及Cookie、Session、Token、OAuth 2、SSO](https://snailclimb.gitee.io/javaguide/#/docs/system-design/authority-certification/basis-of-authority-certification)
-6. [session原理](https://blog.csdn.net/weixin_42217767/article/details/92760353)
-7. [spring security 视频](https://www.bilibili.com/video/BV1VE411h7aL?from=search&seid=791912643187913019)
-8. [mall整合SpringSecurity和JWT实现认证和授权（一）](http://www.macrozheng.com/#/architect/mall_arch_04?id=mall整合springsecurity和jwt实现认证和授权（一）)
-9. [mall整合SpringSecurity和JWT实现认证和授权（二）](http://www.macrozheng.com/#/architect/mall_arch_05?id=mall整合springsecurity和jwt实现认证和授权（二）)
-10. [spring security 博客](https://gitee.com/gu_chun_bo/java-construct/blob/master/Construct/md%E6%96%87%E6%A1%A3/springSecurity%E6%95%B4%E5%90%88jwt.md) 
-11. [手把手教你搞定权限管理，结合Spring Security实现接口的动态权限控制！](http://www.macrozheng.com/#/technology/permission_back?id=手把手教你搞定权限管理，结合spring-security实现接口的动态权限控制！)
-12. [使用Redis+AOP优化权限管理功能，这波操作贼爽！](http://www.macrozheng.com/#/technology/redis_permission?id=使用redisaop优化权限管理功能，这波操作贼爽！)
-13. [SpringBoot中处理校验逻辑的两种方式，真的很机智！](http://www.macrozheng.com/#/technology/springboot_validator?id=springboot中处理校验逻辑的两种方式，真的很机智！)
-14. [参数校验](https://snailclimb.gitee.io/javaguide/#/./docs/system-design/framework/spring/spring-annotations?id=_6-%e5%8f%82%e6%95%b0%e6%a0%a1%e9%aa%8c)
-15. [SpringBoot应用中使用AOP记录接口访问日志](http://www.macrozheng.com/#/technology/aop_log?id=springboot应用中使用aop记录接口访问日志)
-16. [前后端分离项目，如何解决跨域问题](http://www.macrozheng.com/#/technology/springboot_cors?id=前后端分离项目，如何解决跨域问题)
-17. [前后端分离项目，如何优雅实现文件存储！](http://www.macrozheng.com/#/technology/minio_use?id=前后端分离项目，如何优雅实现文件存储！)
-18. [RabbitMQ博客地址](https://snailclimb.gitee.io/javaguide/#/docs/system-design/data-communication/rabbitmq)
-19. [mall整合RabbitMQ实现延迟消息](http://www.macrozheng.com/#/architect/mall_arch_09?id=mall整合rabbitmq实现延迟消息)
-20. [我常用的IDEA插件大公开，个个是精品！](http://www.macrozheng.com/#/reference/idea_plugins?id=我常用的idea插件大公开，个个是精品！)
-21. [Java 8都出那么久了，Stream API了解下？](http://www.macrozheng.com/#/technology/java_stream?id=java-8都出那么久了，stream-api了解下？)
 
 
 
