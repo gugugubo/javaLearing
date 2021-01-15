@@ -2,29 +2,41 @@
 
 # mall-tiny学习路径
 
-1. [mall整合SpringBoot+MyBatis搭建基本骨架](http://www.macrozheng.com/#/architect/mall_arch_01?id=mall整合springbootmybatis搭建基本骨架)  
-2. [MyBatis Generator使用过程中踩过的一个坑](http://www.macrozheng.com/#/technology/mybatis_mapper?id=mybatis-generator使用过程中踩过的一个坑)
-3. [mall整合Swagger-UI实现在线API文档](http://www.macrozheng.com/#/architect/mall_arch_02?id=mall整合swagger-ui实现在线api文档)
-4. [mall整合Redis实现缓存功能](http://www.macrozheng.com/#/architect/mall_arch_03?id=mall整合redis实现缓存功能)
-5. [认证授权基础:搞清Authentication,Authorization以及Cookie、Session、Token、OAuth 2、SSO](https://snailclimb.gitee.io/javaguide/#/docs/system-design/authority-certification/basis-of-authority-certification)
-6. [session原理](https://blog.csdn.net/weixin_42217767/article/details/92760353)
-7. [spring security 视频](https://www.bilibili.com/video/BV1VE411h7aL?from=search&seid=791912643187913019)
-8. [spring security 博客](https://gitee.com/gu_chun_bo/java-construct/blob/master/Construct/md%E6%96%87%E6%A1%A3/springSecurity%E6%95%B4%E5%90%88jwt.md) 
-9. [mall整合SpringSecurity和JWT实现认证和授权（一）](http://www.macrozheng.com/#/architect/mall_arch_04?id=mall整合springsecurity和jwt实现认证和授权（一）)
-10. [mall整合SpringSecurity和JWT实现认证和授权（二）](http://www.macrozheng.com/#/architect/mall_arch_05?id=mall整合springsecurity和jwt实现认证和授权（二）)
-11. [手把手教你搞定权限管理，结合Spring Security实现接口的动态权限控制！](http://www.macrozheng.com/#/technology/permission_back?id=手把手教你搞定权限管理，结合spring-security实现接口的动态权限控制！)
-12. [使用Redis+AOP优化权限管理功能，这波操作贼爽！](http://www.macrozheng.com/#/technology/redis_permission?id=使用redisaop优化权限管理功能，这波操作贼爽！)
-13. [SpringBoot中处理校验逻辑的两种方式，真的很机智！](http://www.macrozheng.com/#/technology/springboot_validator?id=springboot中处理校验逻辑的两种方式，真的很机智！)
-14. [参数校验](https://snailclimb.gitee.io/javaguide/#/./docs/system-design/framework/spring/spring-annotations?id=_6-%e5%8f%82%e6%95%b0%e6%a0%a1%e9%aa%8c)
-15. [SpringBoot应用中使用AOP记录接口访问日志](http://www.macrozheng.com/#/technology/aop_log?id=springboot应用中使用aop记录接口访问日志)
-16. [前后端分离项目，如何解决跨域问题](http://www.macrozheng.com/#/technology/springboot_cors?id=前后端分离项目，如何解决跨域问题)
-17. [前后端分离项目，如何优雅实现文件存储！](http://www.macrozheng.com/#/technology/minio_use?id=前后端分离项目，如何优雅实现文件存储！)
-18. [RabbitMQ博客地址](https://snailclimb.gitee.io/javaguide/#/?id=%e6%b6%88%e6%81%af%e9%98%9f%e5%88%97)
-19. [RabbitMQ视频](https://www.bilibili.com/video/BV1KJ411z7ke?p=167)
-20. [mall整合RabbitMQ实现延迟消息](http://www.macrozheng.com/#/architect/mall_arch_09?id=mall整合rabbitmq实现延迟消息)
-21. [我常用的IDEA插件大公开，个个是精品！](http://www.macrozheng.com/#/reference/idea_plugins?id=我常用的idea插件大公开，个个是精品！)
-22. [Java 8都出那么久了，Stream API了解下？](http://www.macrozheng.com/#/technology/java_stream?id=java-8都出那么久了，stream-api了解下？)
-23. [IDEA中的Git操作，看这一篇就够了！](http://www.macrozheng.com/#/reference/idea_git?id=idea中的git操作，看这一篇就够了！)
+1. 每一个文章整合一个具体的功能，总的代码是在这里：https://github.com/macrozheng/mall-learning，在每一篇文章的末尾也可以看到具体每个小项目的地址！
+2. [mall整合SpringBoot+MyBatis搭建基本骨架](http://www.macrozheng.com/#/architect/mall_arch_01?id=mall整合springbootmybatis搭建基本骨架)  
+3. [MyBatis Generator使用过程中踩过的一个坑](http://www.macrozheng.com/#/technology/mybatis_mapper?id=mybatis-generator使用过程中踩过的一个坑)
+4. [mall整合Swagger-UI实现在线API文档](http://www.macrozheng.com/#/architect/mall_arch_02?id=mall整合swagger-ui实现在线api文档)
+5. [mall整合Redis实现缓存功能](http://www.macrozheng.com/#/architect/mall_arch_03?id=mall整合redis实现缓存功能)
+6. [认证授权基础:搞清Authentication,Authorization以及Cookie、Session、Token、OAuth 2、SSO](https://snailclimb.gitee.io/javaguide/#/docs/system-design/authority-certification/basis-of-authority-certification)
+7. [session原理](https://blog.csdn.net/weixin_42217767/article/details/92760353)
+8. [spring security 视频](https://www.bilibili.com/video/BV1VE411h7aL?from=search&seid=791912643187913019)
+9. [spring security 博客](https://gitee.com/gu_chun_bo/java-construct/blob/master/Construct/md%E6%96%87%E6%A1%A3/springSecurity%E6%95%B4%E5%90%88jwt.md) 
+10. [mall整合SpringSecurity和JWT实现认证和授权（一）](http://www.macrozheng.com/#/architect/mall_arch_04?id=mall整合springsecurity和jwt实现认证和授权（一）)
+11. [mall整合SpringSecurity和JWT实现认证和授权（二）](http://www.macrozheng.com/#/architect/mall_arch_05?id=mall整合springsecurity和jwt实现认证和授权（二）)
+12. [手把手教你搞定权限管理，结合Spring Security实现接口的动态权限控制！](http://www.macrozheng.com/#/technology/permission_back?id=手把手教你搞定权限管理，结合spring-security实现接口的动态权限控制！)
+13. [使用Redis+AOP优化权限管理功能，这波操作贼爽！](http://www.macrozheng.com/#/technology/redis_permission?id=使用redisaop优化权限管理功能，这波操作贼爽！)
+14. [SpringBoot中处理校验逻辑的两种方式，真的很机智！](http://www.macrozheng.com/#/technology/springboot_validator?id=springboot中处理校验逻辑的两种方式，真的很机智！)
+15. [参数校验](https://snailclimb.gitee.io/javaguide/#/./docs/system-design/framework/spring/spring-annotations?id=_6-%e5%8f%82%e6%95%b0%e6%a0%a1%e9%aa%8c)
+16. [SpringBoot应用中使用AOP记录接口访问日志](http://www.macrozheng.com/#/technology/aop_log?id=springboot应用中使用aop记录接口访问日志)
+17. [前后端分离项目，如何解决跨域问题](http://www.macrozheng.com/#/technology/springboot_cors?id=前后端分离项目，如何解决跨域问题)
+18. [前后端分离项目，如何优雅实现文件存储！](http://www.macrozheng.com/#/technology/minio_use?id=前后端分离项目，如何优雅实现文件存储！)
+19. [RabbitMQ博客地址](https://snailclimb.gitee.io/javaguide/#/?id=%e6%b6%88%e6%81%af%e9%98%9f%e5%88%97)
+20. [RabbitMQ视频](https://www.bilibili.com/video/BV1KJ411z7ke?p=167)
+21. [mall整合RabbitMQ实现延迟消息](http://www.macrozheng.com/#/architect/mall_arch_09?id=mall整合rabbitmq实现延迟消息)
+22. [我常用的IDEA插件大公开，个个是精品！](http://www.macrozheng.com/#/reference/idea_plugins?id=我常用的idea插件大公开，个个是精品！)
+23. [Java 8都出那么久了，Stream API了解下？](http://www.macrozheng.com/#/technology/java_stream?id=java-8都出那么久了，stream-api了解下？)
+24. [IDEA中的Git操作，看这一篇就够了！](http://www.macrozheng.com/#/reference/idea_git?id=idea中的git操作，看这一篇就够了！)
+25. **[Spring/Spring 常用注解总结！安排！](https://snailclimb.gitee.io/javaguide/#/./docs/system-design/framework/spring/SpringBoot+Spring常用注解总结)**
+26. 
+
+# mall环境部署必看！
+
+1. [mall在Linux环境下的部署（基于Docker容器）](http://www.macrozheng.com/#/deploy/mall_deploy_docker?id=mall在linux环境下的部署（基于docker容器）) 2. 结合  这个看[地址](https://gitee.com/gu_chun_bo/java-construct/blob/master/%E6%90%9E%E4%B8%83%E6%90%9E%E5%85%AB/%E5%BC%80%E5%8F%91%E9%83%A8%E7%BD%B2.docx)
+2. [开发者必备Docker命令](http://www.macrozheng.com/#/reference/docker?id=开发者必备docker命令)
+3. [开发者必备Linux命令](http://www.macrozheng.com/#/reference/linux?id=开发者必备linux命令)
+4. [Linux防火墙Firewall和Iptables的使用](http://www.macrozheng.com/#/reference/linux_firewall?id=linux防火墙firewall和iptables的使用)
+
+
 
 
 

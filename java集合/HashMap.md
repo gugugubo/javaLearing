@@ -65,11 +65,11 @@ public class HashMap<K,V> extends AbstractMap<K,V>    implements Map<K,V>, Clone
      * 
      * 最大容量，当通过构造函数隐式指定了一个大于MAXIMUM_CAPACITY的时候使用
      */
-    static final int MAXIMUM_CAPACITY = 1 << 30;
+    static final int  MAXIMUM_CAPACITY = 1 << 30;
 
     /**
      * The load factor used when none specified in constructor.
-     * 加载因子，当构造函数没有指定加载因子的时候的默认值的时候使用
+     * 默认加载因子，当构造函数没有指定加载因子的时候的默认值的时候使用
      */
     static final float DEFAULT_LOAD_FACTOR = 0.75f;
 
@@ -340,7 +340,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
         int oldCap = (oldTab == null) ? 0 : oldTab.length;
         // oldThr表示本次扩容之前的阈值，触发本次扩容操作的阈值
         int oldThr = threshold;
-        // newCap：表示扩容之后table数组的大小； newThr表示扩容之后，下次出发扩容的条件
+        // newCap：表示扩容之后table数组的大小； newThr表示扩容之后，下次触发扩容的条件
         int newCap, newThr = 0;
         //===================给newCap和newThr赋值start=============================
         // oldCap大于零，说明之前已经初始化过了（hashmap中的散列表不是null），要进行正常的扩容操作
