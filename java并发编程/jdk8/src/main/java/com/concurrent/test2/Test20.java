@@ -16,7 +16,10 @@ public class Test20 {
         new Thread(() -> {
             try {
                 log.debug("putting {} ", 1);
-                integers.put(1);
+//                integers.put(1);
+                // 对比一下两种方法的区别
+                boolean offer = integers.offer(1);
+                System.out.println(offer);
                 log.debug("{} putted...", 1);
                 log.debug("putting...{} ", 2);
                 integers.put(2);
@@ -25,7 +28,7 @@ public class Test20 {
                 e.printStackTrace();
             }
         },"t1").start();
-        utils.sleep(1);
+        utils.sleep(2);
         new Thread(() -> {
             try {
                 log.debug("taking {}", 1);

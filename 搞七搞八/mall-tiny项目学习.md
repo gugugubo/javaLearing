@@ -1,6 +1,24 @@
 
 
-# mall-tiny学习路径
+# 前言
+
+很多介绍很难从初学者的角度出发，大部分都只是简单地跑起来截几个图，然后说一下功能就结束了，说实话这样的项目介绍除了让人知道有这个项目之外对如何掌握这个项目并没有什么实质的帮助！
+
+mall-tiny 项目文档完善，但是比较乱，下面是我整理的一些必看的一些文章和对应的一些顺序！由浅入深地学习了这个项目！
+
+
+
+# 1. 总体框架
+
+## 1.1 mall-tiny数据库er图
+
+[在线预览地址](https://viewer.diagrams.net/?highlight=0000ff&edit=_blank&layers=1&nav=1&title=#R7X1Zd6JM1PWvca3vvehezMMlg6CgKCBON89CJlEGZXD69W%2BRSLpjjF%2FSMUp47QvbFIMMu84%2B59SuUw2UC3diYq7m3dh2ggYC2bsGyjcQBMYIFPxXtOyfWyiMeG7wEt8%2B7vSnQfcPzrEROrbmvu2kr3bM4jjI%2FNXrRiuOIsfKXrWZSRJvX%2B%2FmxsHrX12ZnvOmQbfM4G3ryLez%2BfEuEPJPe8vxvXn5yzBBP28JzXLn452kc9OOt381oc0GyiVxnD1%2FC3ecExQPr3wuz8cJ72w9XtjGDPLjpTaaVIMVGnSz0SQaVLPB4I0m2WCZovF4sYkTZR85OfL25AgRgENZNwZnADeT7Y9PiFjncbnhV%2Fr0%2FhgEX%2B3KJtcM%2FQC8fEb3Qz2PQLMVB3ECGhoI6j79A222n4C358dgOxNkYCsbOFnmJL%2FSlWn5kQeaoadzBn7k%2FJofnzgDF%2FeBg%2Ba42C0rfgb%2Bc0ngm1f8n4fpf6Yd%2BlF5E7OkuPXj1rIRND3fXNmMvLpPZOMkmQ%2BAwQS%2BBy6TD33bLrax5rHBAg%2FXKS59k9q7Ng9a4OIh%2BEHAPd8xOAuKz%2BiZXVyxl5i2D44ot0VxVJwMoGRV%2FGCaOZHlB%2F8vmrIdPmY8vqn1oQOqt%2FcLZwvphubp4HRsJ6eX3Wk87sy3Ct0DDVm%2BZIJEWUkerB%2F4FqaOwH2BvZWJNx0sFwxmLLeS4Ylj8EwRluDH8KHjhvE%2BtMcxTO7m%2BCHUJELFEHbEuRYSS67NgKfFTjbgg%2BnT3IzsSWgLnBSRRLiliAfwlcKWwWDeH3IWuPL%2FKe4iS%2BKl89dtv7zowJw5AWtaSy%2BJ88g%2BufunNqcAIQT%2BmmdhcHyK27mfOTp4ycWz2QJT8%2FKG%2FgZ12SfAm3J2fzUdQS46cehkyR7sctxKQ8feerROKE49%2F73909dh4tiB53%2F3c%2BjYaB7ti%2Fdy7j%2FdCnw59qzzvQx9i7ESOcjXkbMZtjp82vaa%2Fa258NU2obkGeIdzapYjiMSJGltcKUEvRdg3Dzuc4s1DF7Rs2osFm4U%2B50PcKuAWjjWbUtHEwjkTHJ5GkpR2muvJYDWHOMxYzLHxJmya6wPoOxjsLTs0EZmxPZYTUSAmuqtmhg%2F1xmN%2BGKz7rqT0iTyNM2M%2BmUltoxuqM%2FCTopgwu5UWLIZ7i2dzC57LXaRjBWPwNgSyRUeCC942SyGcjeEDcNlsaKUrS9fCHBN%2BFN6w13gDTPIWb8gZvJHI1%2BGGvQ839OtwG0%2FovwwVgnTHYt%2FxqIEx8WR2I6DOXrDlHh4imY1wvoqiJiQb4oHNodBeeZS5ZqbNCTneS0tVgBle2o6XsJO4s2iDmtJAXu00eLWlhoeV4S3kHtnN4kNvF%2BFqh%2B9Ba76N%2BBtL3BXwLR5IFPj%2BuAA77jXfM0kvN%2FitEEE%2FDJFbQACvFa%2BDu%2FoKoYMXkv3N1qc29wiA9%2FD%2FCk%2FHxitC6ePuxutzVR2CxPtWCH%2BQXh1Jj4LgV6QH08TtSI98H27E1%2BFmHIZIJ8XbneZ8qAzacceP5AOEZQdou9oPGdgOmnA3Tbp7yMv2%2FpZNA10ZD0dKZPf3PtwZ%2BODypQ4Ft4EzLrSl5rIZqzIwtYjAixrHGrq7VoW2jwuspCZj3mxD0qHb181wvpyGjjcIZWvNiNP%2BkGHTtuOzPQ23eZtldfBc2K47EVTmvvRHVMr2UF%2BjPxirFP3lqZNEZuhclQRPbXBdSLBaQKTft0rkgwTrSIIwVLLePUK%2FMpt6DnDUD6bB3DfBo9ZE2Vp2O8wBHnQRNVOZGSfHXrJ0xmqkGoYXLSSENZg70iBdKesDn8kd%2F2AeXJlpuo2T6waDp2a4LjxYMSQi79sl%2BkGEtSTCl3x6mXMvw8ObAO5Czh2GfjIT5iAgTPURYEKFnxygzpSFi6AQgLgIClmb1Z6DwsX9g8Ky11fFCGHv0uHqLBcejS7zYnRDM%2FH86FfguAVrQX9akiOR%2FdWUxasXtjs2zeIsi8OX1oKKfvngAUfloZvyF1%2Fs%2FltCfcuLP5nTG020QUENCvnQl%2Fc4%2Fqv3P5g7YQHzO9z%2Fp3yZl%2BbVh%2F2bU3ati39TNdvyxRGXynVLskHTDRZ8wRss36Dxm0sqrqOpUPjY8Pj2s6bCYWQXTZVm0Jw0C96dAyeB3dqrRdsUONQ60L18yYscTLSmo3bX0DfsZjgIUNUDP86qy%2FVuFC0lcLqhBw%2FyDZvTI4QUXQRSQ2W2zCRtTw2xNdROx1I251MRmSiIapO8Do7GXFE8gBvaW8gUMXcDVELT%2FXyREYeNomPz7tjfGO5Pcu8I5ERRQZ1J9kPf1dsuDC7BnxzeO8GM%2B2p4u8BMR3Bwvw2t50yzBd4kKtCysGuPyNA14UhtI2Hho9OsHyKisk8Hu7XPjHasnkgii60kRk%2BYaaSxA6qV2SFfqGugXZjN4sWMnGODXJXkEY4odt7bT4apOpz5Cwj1%2B1Zrtc8wdOAnO5nwnH9y4v4Gz63hQZ7AAyvt9d%2FwoM7AA7mC3gYmv2iM4Q8aY9w6voFvNcbwVRMen%2B0fn%2FAI%2FhlwV3QLPp7%2FLw0Z%2FJukXmH1F%2FIbe4tWnPiNYWfwiv2msCtAtmZDVqUS878g9p4%2Fb%2B5AXGGA5SHK%2FE6OQBHktQtBnuGIbxNlwhfG5uDTsZKHD3EHfGDUa3yc9SHKaQbX9iHKc9TEh%2FiaJP6ND%2FHJ%2FvHDfIiPj52USMV%2FlwnnO%2FoQZQ87qzO%2FgvL3McpSfQ59cYBvkfQqf%2Fss4LCvA248oWd8rAIeHY6LwSOWn6mTMSZ2XUmWVdFqMoewXxhRNmwRCp05CE5ytNaK0Ykii20ZXP96CT7sJSaaDNsksG1PCQ1BYTqwv6UJ3sW3Xdoh5VDTwiIXBDBV%2BFZ9Q9%2FF%2Fbm9jyMtQI2hnOXhcmeZIzpqJ9F0aQ1Jf9kfp5G%2FLo7iugDHwtOMr7sOt3wCPTdBR6lHrkdI8xzOXFuKfmqW65KerxoWL8yJQR5y9FpSI3aSgrwtNeIXAPeTBel5e7LS21D30B8oh2nvSZBu%2Bkyu4Tb3JEh3qiBHL%2Ft7VcxPmZWsBxX6q%2BuSYF216FVD4YU5MshDjl5LEoRp%2FI4kSF0A3BXk6M9TkY3n%2BJCIWCVsW%2BBV0WHL1%2BdNdtLH%2Bkk6htIWr5BZdkDgjWevBgvM4gTR3c6C4aa7NRSYEf10uMKbRJsj4paJjEPYablT38kWA1HTczQPeK2IC4e6NDVaWxe3%2BHga7sXAVzszFsOCRFbtESFhkSMXiDeLtDzs73Y6rbnb7p2pkKyWESqTazWhwivHg3WVo1cMheiFeTLIQ5BeSyrEcfI1FeI3pEL0Qm4evYIeHVCh8pQqbQ%2F7EGGIwOC0qJ7lSAuJG%2FJcu4smpDdW53mUZRvaKYaTFyNSXEwkuTXbkFxRUcPZqPKaGTZnUw1CPEuAmSZcjFZulnhvN9fWBNqeSlriTmYKfkhlaATFHc%2BZAsoV4niJcNP5OMQn3VxO16vBHGZRycKm%2FIpcbYHJBPv4RP%2F%2BSdKy51fFECG1osN%2FknNfhznrKnSuGmDrldUvhEpJHHxtbv0%2FqJPQUxXeQ51UMXeBPkkfU9hNS8Y95ipVzlY8ldtkn8ptEg2aa1B0UYmTIRv0U0lO8Cf7SU77ufOW%2Fgg8C%2Bv5X%2BIE5tNP1e9Orz5D61%2FY4gojRo%2FJMN%2FIFSflHnH0DFecm%2B0AlyTzJa64MNaIfjKhdAIae0JLzy7GsARNy8G5ZyWr7M6KmcYR1x63ULfIXhQ6GE8a%2BbDgeDutw4uk0UPHGgM8DGkYLhhqtGTYDbOObJanxCwL%2B5uhbh7CDBkpuy0ATEyVgBkhkygFjoWQ%2BtDB76etVZTAm0gY%2BEOSwxnmC4Hkv2tawaMM%2FNXwXV%2F988ChT6bJnKlLe86Th6EruPLYQ%2BL6fjz52Y7zsySupcn4OFJ%2FwdRvBHkF1l8EenuRK3YhkYadBlUPY1clYwcCo9fWjsDRj1m7chDzS8D5qgajztbusz3nZ1k77NNQPWftYBh6abudufvqVNZqhdBP6TYnjfPEunnKDbuC4uCRcvtWsQqOvJ5FQ8G3zLlh9ZuDW%2Fa1%2Fywzc7y4eB637XT4FcY2H53uWzsdhWP37HTv64Eeie5KJbpZvAE8GtDCMg0a%2Br%2BU6D6muI%2Bm9DTXfc%2FEMH6dYcRHYvjbimCS9P%2FXuJ6PectM4JeWgflqhq9qdgkrSpJRzaeqZHCxAt6t3ZkrTKN%2B9Ldv7G8kfDpqf8OyZPiF3CRwsh4lRe5eUgQmqJMI80zNmTI5fu2SIjjyyEC%2Bvx7JJ%2FvHz8pA4v%2BQgYR%2Bl4C5Y00R%2FEIdbfyTksuHSfue%2BP2U8m5p0t6Xqf1Ek3bdSouf7R8%2FzKR9fLnBipm0C3IZ4uGlVcGkQdSJSSOwt158ed6r27THQPH7Nu2zHeSH2bRPy2JQ5DdZAZP2%2FijxI4leqSQ6JRTfm3iD%2BnxR%2FRok0UMnyiuVQCdP7dkjoVephB5Gn%2Bbzbqmsxi8UsCA%2FWbXm4Sq%2BJzFsvcvHn1%2BVAn9dyp2izgy3kN%2FkOBJfnRpZZ8fxs93lhzmO1GeR%2Bgsm0N%2Bva%2FPcw3MkvprAqZbTVTgahY9x63FB6iFzqrgjAeOvO9ttp%2FMSF3JO1OlKVw9H4v6OBAqfwOWcIwGds8tXQAv5mJj1viPx2e7ysxwJ4h8mZqHQ7%2FunoMgL2gf6YeGqkFVHT4OjM5NNYeKbRgrLLOnDpp2xaZ%2FtID%2FLppGfhiqO%2FUaJ%2B5u0C9oH%2BgoVGR5FAqsXJlAnlRxgCL1hlUDywjIF9BUqNI%2BNYoazuuVbmbJYc7rJENbIJVitbY%2B6pB4HPRRVumsWH01IO28zw1kfhJdIjM8X1NNbRRZbM2aXgwSEl4jkDQxGGLpFiKiq4KMnEdiw3xoszcUYjfhOEvYxz19jkDBLXSLL4WVn6EyNfr6belP%2FYImGnou4dHA3KapnEjXvwtL9KwSSHxc23AQT9VpZ%2BsoFc9%2FY4bqU%2FasaCi%2BsuExfYWLtgwurx4U0%2BjoHcmMuvLBaAX2FEs2AC1k%2B7r5woddRybRFeZnNrmNoFEzAi%2BsDNoxZpAsjZFcFfdgiO8xUTfRQBFcqLIlI36kstuiNdoq993ywa9JqdiFjS9kJZm2YwXJ6QFoLfoDKSsGERYLWdCcRRLpkAe%2F9apWTa4nrCEusvQutFTEIbHfqytBm39wYrXuy4McXUr4JGuo1Nzsyw6%2FVP3jDg6c2uDY8WDEcXlo1GLrCKNCDCKtHhDCE3DMqLOUt5zF3mjr6SYuJaVG8DPxQslWCmegMN2eoOYMw2k7qtK18nTPqnHHFWcp9qQTWlQjx46sC3wQUJYrrQYhpZmZ5elVKfGuOa8OJFYMicsk%2BIQ9OrCUnvsDphRPPKSq%2BDXMXcvOAna8QHk6K8FB9LgZJGCIx5T0kauUTvS0bVtPrHtZPw45Ej0Dd4s3T7GiLoCYk95Scs%2FG%2BOdAoCGNTTIEnyQySDI%2BDwVH%2BRsvBWy%2F0O2ubIDV5CvekYs0wS2H7qajPZ31wssTdqr15PosnQywwOg4lS9zIigka0naoKRexqbOfyuQslpBd%2F46sWPb9qpiiesnZbr6KyltzXRfOrBpQLwjCgCV9cGYdObP02cvytzcNIi8k8GHoCkugv16BDGGFuQOITpiFLX%2Fgq8aAax%2BiOdkeQt1DToAHIQxJkssG%2BTTbQrEyX1BiQaLpsAupLOSNQhtK%2BeYqZok4GqNq8qRJVVCRXkyjrrkZRuiGDcZ7ZM9aY1hmbFEo4CkPm6up4faZdCgOjbUR%2BDa1GgRRr3g8vUBIipJBggrdN5SkPi7yugk06lVj9sojjG%2BtcW0osWIwvDDZCoYeeptaUiJMnJSEvyknXkzmX0Nv84oToXln2o%2BLIFIFQSSkNvlDu1SvgjDyhRO1VnyYKLLYlt2soKvefsLTjNYksG1PCQ1BYXh4uaUJfkMutDWGDi3fRzf4TNkcpvSOF7xQBkcFHC0On8LMIT%2BbjMNFOuWUgLQW%2FqarzgHK6eGI3GkH1bonE3583tQtAEHXq17i85P%2B7%2BqEWFfNTdXQeEFSD0MP0U0tCRG5JyHSFzP5VxDd3G2kMY8nohPqomz5Sqd5gAZNRM1UZsbJsZcsnbEaqYbhRQsJYQ3mjoRIfxwwNwFEvVb7vUM%2Bta66nKoB9YJyHoYfupxaciWMnehyiHI20E0gdymFD19BllMMQTbj7tMQ5JIAlLUI2cy1t5q%2F7grz%2FTKxgWvAdoWwTUaETuNdFxOJwxZZM1Yz3R16s2gX6mwL4pcbfqytzD0DiJLlc8GUp5PNAjOcFSyLmkaCO2UyEZ3tTH072uaK3veGdiTTqmb73ibnjfXSXCGrjuAYKx1OFDJR9npALorj7j9fo%2Bz6VbFEXy0fWC3KvHbw%2BMYW14YQKwbDC%2FJ5GH6IcupJiPgpISI31OTQlxL48BU0OfeJHkdmGETrpuCH8aKLdGkOypYtgxG3vtlu460AEiBBaHewveINK6BTLTt%2BVezQ%2B%2Bt7%2FUQ6vPrEjbe2uDaEWC0gvtRxOm%2BeHpKbejIiAZ%2BGiMjtGLGYnXEBc1dR3YBr0PinKLGo%2F7Zag3clZlKStQrwCQNR52eMvCJ6M%2Fdp%2FXLeEosxR3IWZZ0p65CaqsRCPJjjLp7zwTRmMTWaOeLYimWT4fUFxYf7UeuQ0tpODjVNpxedeTGPEesFRrpu452emhB2gnPrWWR3DhwCt7SJSHaw1lTu0s62GNQUSUk96PccZ3zp%2FJUxRkitaDFPgiuzYl1FN9VD4iUlPfyQ3dSTFk%2FXybsxLV7M1l9FeHNCizF1WLHojtkdCuhhQddn4qY1wsG2PuS5mkLnCNqfjQg270J91ROlDmQVsEzF7l7laCbrkrEpKCOVWcdFxJjHq%2BJMqIK27fmyPcrcVR9x2SDaDQQvl1B5nD1LUtc015ppyWTcksBhhi5vs9F0H%2FVEg84pV%2B6MCQlmqfvGjC9GoDJGqV5Fb24%2F7vjGcNeHP6sG1UvCevih0qknf1Jluv%2FInyQK3ZI%2FLyb3r1Ec5%2FXQI%2B%2FbE37USvtTghMMS2Dh%2FgyZWwFn953BpuA1immNElGbKLIyKbhX9vpros06nuzbxqQl4l2OiEUiK%2BJBohC1HkJBcTvLbphOC4MX8UPwiSi6NDP62xyfbLT9LOaS0XgItUcjWd4gxmCt9zh6t29JyAAfAhALbAt27z8A%2BWICKmOS6lUs5%2BpDkHXV5FQPiJcE9shDlVNPbqRPJKy35Ub4Upof%2BcnVcoJobUh%2BKPFtqEtbB2XJP41Cym2xGIVki1FIqSqjkC9dvyqmCK5XvZzrj0O%2BMcf1YcWqQRG5ZKEe0pxasiICnay%2BcGNWvJTlR36sNqeY2ZFOQ8dXQ9ladhf6AT60qzmz46XbV8YMPWrlfJEx66rcuTNUwZ9JXLzbl20iuMN5N7adYo%2F%2FBQ%3D%3D)
+
+![绘图1](assets/绘图1.png)
+
+
+
+## 1.2 mall-tiny学习路径
 
 1. 每一个文章整合一个具体的功能，总的代码是在这里：https://github.com/macrozheng/mall-learning，在每一篇文章的末尾也可以看到具体每个小项目的地址！
 2. [mall整合SpringBoot+MyBatis搭建基本骨架](http://www.macrozheng.com/#/architect/mall_arch_01?id=mall整合springbootmybatis搭建基本骨架)  
@@ -27,9 +45,8 @@
 23. [Java 8都出那么久了，Stream API了解下？](http://www.macrozheng.com/#/technology/java_stream?id=java-8都出那么久了，stream-api了解下？)
 24. [IDEA中的Git操作，看这一篇就够了！](http://www.macrozheng.com/#/reference/idea_git?id=idea中的git操作，看这一篇就够了！)
 25. **[Spring/Spring 常用注解总结！安排！](https://snailclimb.gitee.io/javaguide/#/./docs/system-design/framework/spring/SpringBoot+Spring常用注解总结)**
-26. 
 
-# mall环境部署必看！
+## 1.3 mall环境部署必看！
 
 1. [mall在Linux环境下的部署（基于Docker容器）](http://www.macrozheng.com/#/deploy/mall_deploy_docker?id=mall在linux环境下的部署（基于docker容器）) 2. 结合  这个看[地址](https://gitee.com/gu_chun_bo/java-construct/blob/master/%E6%90%9E%E4%B8%83%E6%90%9E%E5%85%AB/%E5%BC%80%E5%8F%91%E9%83%A8%E7%BD%B2.docx)
 2. [开发者必备Docker命令](http://www.macrozheng.com/#/reference/docker?id=开发者必备docker命令)
@@ -38,11 +55,7 @@
 
 
 
-
-
-
-
-# 环境安装
+## 1.4 环境安装
 
 1. idea的lombok插件的安装，[无法安装？](https://blog.csdn.net/chenpeng0708/article/details/105862193?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase)
 2. idea中mybatis插件的安装，[Free MyBatis plugin](http://www.macrozheng.com/#/reference/idea?id=free-mybatis-plugin)
@@ -57,24 +70,24 @@
    5. ctrl+alt +t 环绕代码块  
    6. ctrl + e 打开最近的文件
 
-# java基础
 
 
+# 2. mall-tiny里面用到的一些知识点
 
+## 2.1 java基础
 
+### 面向对象
 
-## 面向对象
-
-### 枚举类的使用
+#### 枚举类的使用
 
 - ResultCode 类中枚举类的使用
 
 
-### 范型类和范型方法的使用
+#### 范型类和范型方法的使用
 
 - CommentPage，CommentResult类中范型的使用
 
-### String类的使用
+#### String类的使用
 
 - 非空校验 StringUtils.isEmpty()  UmsMemberServiceImpl类
 - 检验字符串a是否以xx开头，使用a.startsWith() 方法  JwtAuthenticationTokenFilter类
@@ -83,12 +96,12 @@
 
 
 
-### final关键字
+#### final关键字
 
 - 快速入门：[博客地址](https://www.cnblogs.com/xiaoxi/p/6392154.html)
 
 
-## 集合
+### 集合
 
 - 判断list集合是否为空，使用list!= null和list.size()方法  UmsAdminServiceImpl类
 - 集合类判空，使用（hutoos工具包）CollUtil.isEmpty(collection)  DynamicAccessDecisionManager类
@@ -99,13 +112,13 @@
 
 
 
-## 异常
+### 异常
 
 - 异常入门：[地址](https://www.cnblogs.com/hysum/p/7112011.html)
 
 
 
-## 反射
+### 反射
 
 - 反射入门和反射的一些api：[地址](https://snailclimb.gitee.io/javaguide/#/docs/java/basic/reflection)
 - 反射的应用：
@@ -118,20 +131,20 @@
 
 
 
-## 注解
+### 注解
 
 - [ ] 注解快速入门[地址](https://www.cnblogs.com/liangweiping/p/3837332.html)
 - [ ] 自定义注解  FlagValidator类   CacheException 类
 
 
 
-## 其它
+### 其它
 
 - [ ] 函数式编程：[地址](https://www.cnblogs.com/snowInPluto/p/5981400.html#11-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E7%AE%80%E4%BB%8B)
 
-# 框架的使用
+## 2.2 框架的使用
 
-## mybatis
+### mybatis
 
 - [ ] 更新方法中的updateByPrimaryKeySelective()如何使用
 - [ ] 查询
@@ -146,7 +159,7 @@
 
 
 
-## spring
+### spring
 
 - [ ] 实体对象属性的复制 BeanUtils.copyProperties()方法   UmsAdminServiceImpl类
 - [ ] **循环依赖问题 JwtAuthenticationTokenFilter加入Bean**
@@ -164,12 +177,12 @@
 
 
 
-## spring MVC
+### spring MVC
 
 - [ ] spring mvc 原理(看之前记得温习上面的servlet)：[地址](https://www.cnblogs.com/xiaoxi/p/6164383.html)
 - [ ] 关于视图和视图解析器，数据模型model等相关springmvc组件可以参看书籍：Java EE互联网轻量级框架整合开发 SSM框架
 
-## springboot
+### springboot
 
 - [ ] @ConditionalOnBean注解  SecurityConfig类
 
@@ -196,7 +209,7 @@
 
 
 
-## rabbitmq 消息中间件
+### rabbitmq 消息中间件
 
 - [ ] 快速入门：[博客地址](https://snailclimb.gitee.io/javaguide/#/docs/system-design/data-communication/rabbitmq)
 - [ ] 快速上手项目：[地址](http://www.macrozheng.com/#/architect/mall_arch_09)
@@ -212,20 +225,20 @@
 
 
 
-# 数据库
+## 2.3 数据库
 
-## redis
+### redis
 
 - [ ] 快速入门：[博客地址](http://www.macrozheng.com/#/architect/mall_arch_03)
 - [ ] Spring Data Redis 最佳实践！：[地址](https://mp.weixin.qq.com/s/9j3exBtZ9FWWlyZkxlWaOA)
 
   
 
-## mysql
+### mysql
 
 - [ ] 索引优化
 
-# servlet和jsp
+## 2.3 servlet和jsp
 
 - [x] servlet和jsp快速入门：[博客地址](https://snailclimb.gitee.io/javaguide/#/docs/java/J2EE%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86)   [视频地址](https://www.bilibili.com/video/BV18s411u7EH?p=20)
   - [x] servlet api继承体系图（servlet中拥有的对象应该是和jsp一模一样的，因为jsp本质就是简易的servlet）：[地址](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200616233938-747558.png)
@@ -240,13 +253,13 @@
 
 
 
-## 拦截器和过滤器
+### 拦截器和过滤器
 
 - [ ] 拦截器和过滤器的区别：[博客地址](https://mp.weixin.qq.com/s/KwlqFezzTkOfg97M59n3GA)  [代码地址](https://gitee.com/gu_chun_bo/java-construct/tree/master/%E4%BB%A3%E7%A0%81%E5%B0%8F%E5%AE%9E%E4%BE%8B/Interceptorandfilter)
 
 
 
-# 设计模式
+## 2.4 设计模式
 
 - [ ] JPA、Hibernate、Spring data jpa之间的关系：[地址](https://my.oschina.net/u/3080373/blog/1828589)
   - [ ] jap详解：[地址](https://www.cnblogs.com/holbrook/archive/2012/12/30/2839842.html)
@@ -262,9 +275,9 @@
 
 
 
-# 计算机网络
+## 2.5计算机网络
 
-## 跨域访问问题
+### 跨域访问问题
 
 - [ ] **此项目在多处对跨域进行了处理，处理的原理是什么？**
   - [ ] DynamicSecurityFilter 类中
@@ -273,14 +286,14 @@
   - [ ] GlobalCorsConfig 全局跨域配置类
   - [ ] SecurityConfig  springsecurity配置类中
 
-# git
+## 2.6 git
 
 - [ ] git commit的规范：[地址](https://juejin.im/post/5e0c82a15188253a907111dc)
 - [ ] git 分支管理：[视频地址](https://www.bilibili.com/video/BV1KE411b7Br?t=461)
 
 
 
-# docker
+## 2.7 docker
 
 - [ ] dokcer基本命令 ：[地址](http://www.macrozheng.com/#/reference/docker)
 - [ ] docker安装一些开发环境 ：[地址](http://www.macrozheng.com/#/deploy/mall_deploy_docker)
@@ -289,7 +302,7 @@
 
 
 
-# 项目部署
+## 2.8项目部署
 
 - [ ] maven项目依赖管理：[地址](https://www.cnblogs.com/1995hxt/p/5254448.html)
 
@@ -330,10 +343,3 @@
 
 
 
-# 调优
-
-推荐文章
-
-1. [记一次线上商城系统高并发的优化](https://mp.weixin.qq.com/s/QKCJS8RyKTgI67tDhaz-OQ)
-
-   

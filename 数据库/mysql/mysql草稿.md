@@ -6,7 +6,7 @@
 
 ### [索引](https://snailclimb.gitee.io/javaguide/#/docs/database/MySQL?id=索引)
 
-什么是数据库引索？https://www.cnblogs.com/wwxzdl/p/11116446.html
+什么是数据库索引？https://www.cnblogs.com/wwxzdl/p/11116446.html
 
 
 
@@ -63,8 +63,6 @@
 - ##### [分库分表之后,id 主键如何处理？](https://snailclimb.gitee.io/javaguide/#/docs/database/MySQL?id=分库分表之后id-主键如何处理？)
 
 - 更多相关知识：https://www.cnblogs.com/shizhuoping/p/11563948.html
-
-##### 
 
 
 

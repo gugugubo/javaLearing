@@ -86,20 +86,7 @@
       <visibility group="yarn" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="应用程序.Test19">
-    <configuration name="Test18" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test18" />
-      <module name="jdk8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.concurrent.test2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="应用程序.Test20">
     <configuration name="Test19" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test19" />
       <module name="jdk8" />
@@ -107,6 +94,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.concurrent.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test20" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test20" />
+      <module name="jdk8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.concurrent.test2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -154,19 +154,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="应用程序.Test18" />
       <item itemvalue="应用程序.Test32" />
       <item itemvalue="应用程序.Test41" />
       <item itemvalue="应用程序.Test42" />
       <item itemvalue="应用程序.Test19" />
+      <item itemvalue="应用程序.Test20" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.Test20" />
         <item itemvalue="应用程序.Test19" />
         <item itemvalue="应用程序.Test42" />
         <item itemvalue="应用程序.Test41" />
         <item itemvalue="应用程序.Test32" />
-        <item itemvalue="应用程序.Test18" />
       </list>
     </recent_temporary>
   </component>
@@ -224,6 +224,7 @@
       <workItem from="1605451989656" duration="3186000" />
       <workItem from="1605487012110" duration="24956000" />
       <workItem from="1610240139459" duration="1392000" />
+      <workItem from="1611052858933" duration="4072000" />
     </task>
     <servers />
   </component>
@@ -247,25 +248,25 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605368605767" />
-    <state width="1493" height="204" key="GridCell.Tab.0.bottom" timestamp="1610243933375">
+    <state width="1493" height="247" key="GridCell.Tab.0.bottom" timestamp="1611053623998">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1610243933375" />
+    <state width="1493" height="247" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1611053623998" />
     <state width="1877" height="200" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
-    <state width="1493" height="204" key="GridCell.Tab.0.center" timestamp="1610243933373">
+    <state width="1493" height="247" key="GridCell.Tab.0.center" timestamp="1611053623998">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1610243933373" />
+    <state width="1493" height="247" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1611053623998" />
     <state width="1877" height="200" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
-    <state width="1493" height="204" key="GridCell.Tab.0.left" timestamp="1610243933372">
+    <state width="1493" height="247" key="GridCell.Tab.0.left" timestamp="1611053623998">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1610243933372" />
+    <state width="1493" height="247" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1611053623998" />
     <state width="1877" height="200" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
-    <state width="1493" height="204" key="GridCell.Tab.0.right" timestamp="1610243933375">
+    <state width="1493" height="247" key="GridCell.Tab.0.right" timestamp="1611053623998">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="204" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1610243933375" />
+    <state width="1493" height="247" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1611053623998" />
     <state width="1877" height="200" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
     <state width="1493" height="247" key="GridCell.Tab.1.bottom" timestamp="1605535258286">
       <screen x="0" y="0" width="1536" height="824" />
@@ -291,15 +292,15 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605324257162" />
-    <state x="474" y="190" width="514" height="416" key="StructurePopup" timestamp="1605529161037">
+    <state x="474" y="190" width="514" height="416" key="StructurePopup" timestamp="1611053580222">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="474" y="190" width="514" height="416" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1605529161037" />
+    <state x="474" y="190" width="514" height="416" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1611053580222" />
     <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1605144817913" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1605511965816">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1611064498036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1605511965816" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1611064498036" />
     <state width="623" height="563" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1605150640561" />
     <state x="466" y="144" width="603" height="665" key="find.popup" timestamp="1605491768174">
       <screen x="0" y="0" width="1536" height="824" />
@@ -310,10 +311,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="322" y="73" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1605368614937" />
-    <state x="431" y="146" width="672" height="678" key="search.everywhere.popup" timestamp="1605524518383">
+    <state x="431" y="146" width="672" height="678" key="search.everywhere.popup" timestamp="1611052888679">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="146" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605524518383" />
+    <state x="431" y="146" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1611052888679" />
     <state x="539" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605144789592" />
   </component>
   <component name="XDebuggerManager">
