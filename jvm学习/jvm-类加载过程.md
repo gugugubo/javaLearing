@@ -1,6 +1,8 @@
-## 类的生命周期
+前言：文中出现的示例代码地址为：[gitee代码地址](https://gitee.com/gu_chun_bo/java-construct/tree/master/jvm%E5%AD%A6%E4%B9%A0/jvm)
 
-#### 生命周期详解
+## 1. 类的生命周期
+
+#### 1.1生命周期详解
 
 生命周期中的类加载阶段可细分为类型的加载，连接，和初始化三个阶段。在java代码中，类型的加载，类型的连接和初始化过程都是在**程序运行期间**完成的，这使代码提供了更多的可能性(比如可以动态生成类呀)。
 
@@ -56,23 +58,23 @@
 
 - 卸载
 
-#### 生命周期图
+#### 1.2 生命周期图
 
 ![img](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/类加载过程-完善.png)
 
 ![1582708437476](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115330-815834.png)
 
-#### 生命周期时序图
+#### 1.3 生命周期时序图
 
 ![1581513570895](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115323-982445.png)
 
-#### 什么是类型
+#### 1.4 什么是类型
 
 指的是具体地class，类或者接口
 
-## 类的加载器
+## 2. 类的加载器
 
-#### java虚拟机自带的加载器
+#### 2.1 java虚拟机自带的加载器
 
 - 根类加载器(Bootstrap)
 - 拓展类加载器(Extemnsion)
@@ -89,14 +91,14 @@
 
 
 
-#### 用户自定义加载器
+#### 2.2 用户自定义加载器
 
 - java.lang.ClassLoader的子类
 - 自定义类加载器的一般操作是用户可以自定义类的加载方式，一般仅此而已，而不是说要重写很多方法什么的。
 
 类加载器并不需要等到某个类被“首次主动使用”时再去加载它，jvm规范允许类加载器在预料某个类将要被使用时就预先加载它，如果在预先加载的过程中遇到了.class文件缺失或者存在错误，那么类加载器将在程序首次主动使用该类时才报告错误（LingkageError错误），如果一直都没有被程序主动使用，那么类加载器就不会报告错误。
 
-#### 获取classloader的途径
+#### 2.3 获取classloader的途径
 
 ![1581581884052](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115144-297217.png)
 
@@ -113,7 +115,7 @@
 
 实验代码（classloadTest13.java, classloadTest12.java）
 
-#### Classloader 类的javadoc文档
+#### 2.4 Classloader 类的javadoc文档
 
 A class loader is an object that is responsible for loading classes. The class ClassLoader is an abstract class. Given the binary name of a class, a class loader should attempt to locate or generate data that constitutes a definition for the class. A typical strategy is to transform the name into a file name and then read a "class file" of that name from a file system.
 Every Class object contains a reference to the ClassLoader that defined it.
@@ -186,7 +188,7 @@ class NetworkClassLoader extends ClassLoader {
        }
 ```
 
-#### 自定义类加载器
+#### 2.5 自定义类加载器
 
 继承ClassLoader类，只需要重写findClass方法，findClass方法返回一个Class对象，findClass里面真正起作用的是defineClass方法，关于fingClass()方法和defineClass()方法的javadoc文档如下：
 
@@ -266,7 +268,7 @@ public class classloadTest16 extends ClassLoader {
 
 ​     
 
-#### 类加载器的(双亲委派机制)父亲委托机制
+#### 2.6 类加载器的(双亲委派机制)父亲委托机制
 
 ![1581517870929](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115226-969443.png)
 
@@ -274,7 +276,7 @@ public class classloadTest16 extends ClassLoader {
 
 ![1582079158522](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115148-998718.png)
 
-#### 双亲委托模型的好处
+#### 2.7 双亲委托模型的好处
 
 - 可以确保java核心库的类型安全，所有的java应用都至少引用java.lang.Object类，也就是说在运行期，java.lang.Object这个类会被加载到java虚拟机中，用户自定义的类加载器不可能加载由父加载器加载的Object类，从而保证不可靠代码甚至恶意代码代替父加载器加载的可靠代码。
 - 可以确保java核心类型所提供的类不会被自定义的类所覆盖掉(因为会先向上查找)
@@ -283,7 +285,7 @@ public class classloadTest16 extends ClassLoader {
   
 
 
-#### 类加载器的命名空间
+#### 2.8 类加载器的命名空间
 
 - 每个类加载器都有自己的命名空间，命名空间由该加载器及所有父加载器所加载的类组成（一个类加载器加载的类只供它自己和它的子加载器加载的类使用）。如果一个类加载器已经加载过A类那么此加载器和此加载器的子类都不会再重复加载A类(子加载器可以访问父类加载的类)，但是父加载器是看不到子加载器加载的类，察觉不到子类加载器加载生成的的Class对象, 所以如果在父加载器加载的类中引用子加载器加载的Class对象就会报错（classloadTest16.java ，classloadTest17_1.class）
   - 上面的话正式一点说法如下：子加载器的命名空间包含所有父加载器的命名空间，因此子加载器能看见父加载器加载的类，例如系统加载器加载的类能看见根加载器加载的类。由父加载器加载的类无法看到子加载器加载的类，如果两个加载器没有直接或者间接的父子关系，那么 它们各自加载的类互不可见(classloadTest21.java)
@@ -291,7 +293,7 @@ public class classloadTest16 extends ClassLoader {
 - 在同一个命名空间中，不会出现类的完整名字（包括类的包名）相同的两个类
 - 在不同的命名空间中，有可能会出现类的完整名字（包括类的包名）相同的两个类
 
-#### **类的上下文类加载器**
+#### **2.9 类的上下文类加载器**
 
 - 首先要明确知道一个知识点：如果一个类有类加载器A加载，那么这个类的依赖类也是由相同的类加载器加载的(classloadTest17_1模块二)
 
@@ -303,7 +305,7 @@ public class classloadTest16 extends ClassLoader {
 
 
 
-## 类的卸载
+## 3. 类的卸载
 
 - 当MySample类被加载连接和初始化后它的生命周期就开始了，当代表MySample类的Class对象不再被引用，即不可触及时，Class对象就会结束周期，MyClass对象在方法区的数据也会被卸载，从而结束MySample的生命周期。
 - 一个类何时结束它的生命周期取决于代表它的Class对象何时结束生命周期。

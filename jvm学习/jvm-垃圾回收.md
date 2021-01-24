@@ -1,4 +1,8 @@
+前言：文中出现的示例代码地址为：[gitee代码地址](https://gitee.com/gu_chun_bo/java-construct/tree/master/jvm%E5%AD%A6%E4%B9%A0/jvm)
+
 # 一 JVM垃圾回收模型
+
+
 
 
 
@@ -256,7 +260,7 @@ HotSpot虚拟机的组成成分
 
 ##### 根搜索算法( Root Tracing)
 
-在实际生产语言中（java，C#等）都使用跟搜索算法判断对象是否存活。算法的基本思路就是通过一系列被称作“GC ROOTS “ 的点作为起始进行向下搜索，当一个对象到GC ROOTS 没有任何引用链相连，则证明此对象是不可用的。
+在实际生产语言中（java，C#等）都使用根搜索算法判断对象是否存活。算法的基本思路就是通过一系列被称作“GC ROOTS “ 的点作为起始进行向下搜索，当一个对象到GC ROOTS 没有任何引用链相连，则证明此对象是不可用的。
 
 其中的GC ROOTS 包括：
 

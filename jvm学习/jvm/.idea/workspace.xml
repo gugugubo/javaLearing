@@ -23,12 +23,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32eda6ef-f5cf-4e9d-aea3-7662ddd04bab" name="Default Changelist" comment="test">
+      <change beforePath="$PROJECT_DIR$/../../java并发编程/java并发1.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/java并发1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java并发编程/java并发2.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/java并发2.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../java并发编程/jdk8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/jdk8/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../java并发编程/jdk8/target/classes/META-INF/jdk8.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../java集合/HashMap.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../java集合/HashMap.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java并发编程/并发3.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../java并发编程/并发3.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jvm-内存结构.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jvm-内存结构.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jvm-垃圾回收.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jvm-垃圾回收.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jvm-字节码.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jvm-字节码.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../jvm-类加载过程.md" beforeDir="false" afterPath="$PROJECT_DIR$/../jvm-类加载过程.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../搞七搞八/mall-tiny项目学习.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../搞七搞八/mall-tiny项目学习.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,6 +238,7 @@
       <workItem from="1595810502631" duration="285000" />
       <workItem from="1595819356667" duration="2847000" />
       <workItem from="1610352207649" duration="639000" />
+      <workItem from="1611464125342" duration="2430000" />
     </task>
     <task id="LOCAL-00001" summary="冲冲冲！！！">
       <created>1581516673544</created>

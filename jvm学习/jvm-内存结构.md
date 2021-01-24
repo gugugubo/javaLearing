@@ -1,3 +1,5 @@
+前言：文中出现的示例代码地址为：[gitee代码地址](https://gitee.com/gu_chun_bo/java-construct/tree/master/jvm%E5%AD%A6%E4%B9%A0/jvm)
+
 本文结构：
 
 ![1583852076452](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200310225437-924504.png)
