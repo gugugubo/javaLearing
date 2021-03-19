@@ -1,6 +1,6 @@
 # spring 常用注解 原理 逻辑 代码演示
 
-[这是自己观看视频的笔记](https://www.bilibili.com/video/BV1oW41167AV?p=2)
+[这是观看视频的笔记](https://www.bilibili.com/video/BV1oW41167AV?p=2)
 
 
 
@@ -448,6 +448,15 @@ public boolean isSingleton() {
 */
 ```
 
+
+
+### 1.9 总结
+
+1. 通过xml的容器需要一个xml作为主配置类；通过配置的容器需要一个@Configuration注解的类作为主类
+2. 然后通过主类配置包扫描，或者在到已经被包扫描扫到的类实例中使用@Bean，@Import，@Condition，@FactoryBean将实例加入容器。
+
+
+
 ## 二、生命周期
 
 ### 2.1-生命周期 @Bean指定初始化和销毁方法
@@ -835,7 +844,7 @@ ApplicationContext applicationContext2 = new ClassPathXmlApplicationContext("bea
 
 ## 四、自动装配
 
-### 4.1-自动装配 @Autowired & @Qualifier & @Primary
+### 4.1-自动装配：@Autowired & @Qualifier & @Primary
 
 #### @Autowired注解
 
@@ -927,7 +936,7 @@ ApplicationContext applicationContext2 = new ClassPathXmlApplicationContext("bea
 
 ![image-20200515162356891](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doLzEzOTI1MTcxMzgvaW1nUmVwb3NpdG9yeUBtYXN0ZXIvaW1hZ2UtMjAyMDA1MTUxNjIzNTY4OTEucG5n?x-oss-process=image/format,png)
 
-### 4.2-自动装配 JSR250-@Resource、JSR330-@Inject
+### 4.2-自动装配：JSR250-@Resource、JSR330-@Inject
 
 #### @Resource注解
 
@@ -949,7 +958,7 @@ ApplicationContext applicationContext2 = new ClassPathXmlApplicationContext("bea
 
 ![image-20200517181854598](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doLzEzOTI1MTcxMzgvaW1nUmVwb3NpdG9yeUBtYXN0ZXIvaW1hZ2UtMjAyMDA1MTcxODE4NTQ1OTgucG5n?x-oss-process=image/format,png)
 
-### 4.3-自动装配 方法、构造器位置的自动装配 & Aware注入Spring底层组件 & 原理
+### 4.3-自动装配：方法,构造器位置的自动装配 & Aware注入Spring底层组件 & 原理
 
 `@Autowired：`
 

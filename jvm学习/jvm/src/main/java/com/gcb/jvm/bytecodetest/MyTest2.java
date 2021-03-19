@@ -18,9 +18,29 @@ public class MyTest2 {
 
         in = 20;
 
+  
+        double d = 0.123;
+
     }
 
     private void setX(int x) {
         this.x = x;
+    }
+}
+
+class A {
+    static {
+        System.out.println("init A");
+    }
+    public A() {
+        System.out.println("sout A");
+    }
+}
+ class B {
+    static {
+        System.out.println("init B");
+    }
+    public B() {
+        System.out.println("sout B");
     }
 }

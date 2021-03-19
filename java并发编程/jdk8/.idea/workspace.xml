@@ -86,7 +86,7 @@
       <visibility group="yarn" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="应用程序.Test20">
+  <component name="RunManager" selected="应用程序.Test35">
     <configuration name="Test19" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test19" />
       <module name="jdk8" />
@@ -114,12 +114,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test32" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test32" />
+    <configuration name="Test35" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test35" />
       <module name="jdk8" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="PATTERN" value="com.concurrent.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -127,12 +127,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test41" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test41" />
+    <configuration name="Test36" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test36" />
       <module name="jdk8" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="PATTERN" value="com.concurrent.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,12 +140,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test42" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.concurrent.test2.Test42" />
+    <configuration name="Test37" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.concurrent.test.Test37" />
       <module name="jdk8" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.concurrent.test2.*" />
+          <option name="PATTERN" value="com.concurrent.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -154,19 +154,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="应用程序.Test32" />
-      <item itemvalue="应用程序.Test41" />
-      <item itemvalue="应用程序.Test42" />
       <item itemvalue="应用程序.Test19" />
       <item itemvalue="应用程序.Test20" />
+      <item itemvalue="应用程序.Test36" />
+      <item itemvalue="应用程序.Test35" />
+      <item itemvalue="应用程序.Test37" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.Test35" />
+        <item itemvalue="应用程序.Test37" />
+        <item itemvalue="应用程序.Test36" />
         <item itemvalue="应用程序.Test20" />
         <item itemvalue="应用程序.Test19" />
-        <item itemvalue="应用程序.Test42" />
-        <item itemvalue="应用程序.Test41" />
-        <item itemvalue="应用程序.Test32" />
       </list>
     </recent_temporary>
   </component>
@@ -226,6 +226,7 @@
       <workItem from="1610240139459" duration="1392000" />
       <workItem from="1611052858933" duration="65689000" />
       <workItem from="1611464065758" duration="56000" />
+      <workItem from="1615770327974" duration="2490000" />
     </task>
     <servers />
   </component>
@@ -237,86 +238,50 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1610240279016" />
-    <state x="574" y="118" key="#com.intellij.ide.util.MemberChooser" timestamp="1604759344430">
+    <state width="1493" height="161" key="GridCell.Tab.0.bottom" timestamp="1615775951672">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="118" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1604759344430" />
-    <state x="539" y="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1604747840818">
+    <state width="1493" height="161" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615775951672" />
+    <state width="1493" height="161" key="GridCell.Tab.0.center" timestamp="1615775951672">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="539" y="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1604747840818" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1605368605767">
+    <state width="1493" height="161" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1615775951672" />
+    <state width="1493" height="161" key="GridCell.Tab.0.left" timestamp="1615775951671">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605368605767" />
-    <state width="1493" height="247" key="GridCell.Tab.0.bottom" timestamp="1611331646780">
+    <state width="1493" height="161" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1615775951671" />
+    <state width="1493" height="161" key="GridCell.Tab.0.right" timestamp="1615775951672">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="247" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1611331646780" />
-    <state width="1877" height="200" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
-    <state width="1493" height="247" key="GridCell.Tab.0.center" timestamp="1611331646780">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="247" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1611331646780" />
-    <state width="1877" height="200" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
-    <state width="1493" height="247" key="GridCell.Tab.0.left" timestamp="1611331646780">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="247" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1611331646780" />
-    <state width="1877" height="200" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
-    <state width="1493" height="247" key="GridCell.Tab.0.right" timestamp="1611331646780">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="247" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1611331646780" />
-    <state width="1877" height="200" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605150657891" />
+    <state width="1493" height="161" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1615775951672" />
     <state width="1493" height="247" key="GridCell.Tab.1.bottom" timestamp="1611331646780">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="247" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1611331646780" />
-    <state width="1877" height="444" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604717989637" />
     <state width="1493" height="247" key="GridCell.Tab.1.center" timestamp="1611331646780">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="247" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1611331646780" />
-    <state width="1877" height="444" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604717989637" />
     <state width="1493" height="247" key="GridCell.Tab.1.left" timestamp="1611331646780">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="247" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1611331646780" />
-    <state width="1877" height="444" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604717989637" />
     <state width="1493" height="247" key="GridCell.Tab.1.right" timestamp="1611331646780">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="247" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1611331646780" />
-    <state width="1877" height="444" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604717989637" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1605324257162">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605324257162" />
     <state x="474" y="190" width="514" height="416" key="StructurePopup" timestamp="1611053580222">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="474" y="190" width="514" height="416" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1611053580222" />
-    <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1605144817913" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1611064498036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1611064498036" />
-    <state width="623" height="563" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1605150640561" />
-    <state x="466" y="144" width="603" height="665" key="find.popup" timestamp="1605491768174">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="466" y="144" width="603" height="665" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1605491768174" />
-    <state x="583" y="182" width="754" height="840" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605150012013" />
-    <state x="322" y="73" key="new project wizard" timestamp="1605368614937">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="322" y="73" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1605368614937" />
     <state x="431" y="146" width="672" height="678" key="search.everywhere.popup" timestamp="1611052888679">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="146" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1611052888679" />
-    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605144789592" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

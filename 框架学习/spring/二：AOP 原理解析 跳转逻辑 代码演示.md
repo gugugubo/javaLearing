@@ -417,9 +417,7 @@ c）调用refresh
 
 ![image-20200601170259348](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doLzEzOTI1MTcxMzgvaW1nUmVwb3NpdG9yeUBtYXN0ZXIvaW1hZ2UtMjAyMDA2MDExNzAyNTkzNDgucG5n?x-oss-process=image/format,png)
 
-在beanFactory容器中拿到我们所有已经定义
-
-的且需要创建的后置处理器。为什么说已经定义了呢？因为我们那个test文件中传入了配置类，然后配置类里边有一个**`@EnableAspectJAutoProxy`**，之前说过这个注解会为我们容器注入一个**`AnnotationAwareAspectJAutoProxyCreator`**,包括容器中某人的一些后置处理器的定义。来到这一步的时候，只是有这么一些定义，还没有创建对象
+在beanFactory容器中拿到我们所有已经定义的且需要创建的后置处理器。为什么说已经定义了呢？因为我们那个test文件中传入了配置类，然后配置类里边有一个**`@EnableAspectJAutoProxy`**，之前说过这个注解会为我们容器注入一个**`AnnotationAwareAspectJAutoProxyCreator`**,包括容器中某人的一些后置处理器的定义。来到这一步的时候，只是有这么一些定义，还没有创建对象
 
 ![image-20200601170507034](https://imgconvert.csdnimg.cn/aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doLzEzOTI1MTcxMzgvaW1nUmVwb3NpdG9yeUBtYXN0ZXIvaW1hZ2UtMjAyMDA2MDExNzA1MDcwMzQucG5n?x-oss-process=image/format,png)
 

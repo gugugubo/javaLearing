@@ -450,7 +450,7 @@ INSTANCE 变量的值
 
    1.   
         
-          ```
+          ```java
           static int x;
           Thread t1 = new Thread(()->{
            x = 10;
@@ -465,7 +465,7 @@ INSTANCE 变量的值
 5.  线程 t1 打断 t2（interrupt）前对变量的写，对于其他线程得知 t2 被打断后对变量的读可见（通过
    t2.interrupted 或 t2.isInterrupted）
 
-   1. ```
+   1. ```java
           
                   static int x;
                   public static void main(String[] args) {
@@ -497,25 +497,28 @@ INSTANCE 变量的值
 
 7. 具有传递性，如果 x hb-> y 并且 y hb-> z 那么有 x hb-> z ，配合 volatile 的防指令重排，有下面的例子
 
-   1. 
-      ​    
-      ​    ```
-      ​      volatile static int x;
-      ​            static int y;
-      ​            new Thread(()->{
-      ​                y = 10;
-      ​                x = 20;
-      ​            },"t1").start();
-      ​            new Thread(()->{
-      ​                // x=20 对 t2 可见, 同时 y=10 也对 t2 可见
-      ​                System.out.println(x);
-      ​            },"t2").start();
-      ​    ```
+   1.   
       
+      ```java
+            volatile static int x;
+                 static int y;
+                 new Thread(()->{
+                      y = 10;
+                      x = 20;
+                 },"t1").start();
+                 new Thread(()->{
+                     // x=20 对 t2 可见, 同时 y=10 也对 t2 可见
+                     System.out.println(x);
+                  },"t2").start();
+      ```
+      
+      
+      ​    
       
    
+   
    ​    
-
+   
    
    
    
