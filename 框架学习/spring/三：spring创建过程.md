@@ -122,7 +122,7 @@ BeanFactory准备工作完成后进行的后置处理工作；
 
 ​      再执行BeanFactoryPostProcessor的方法
 ​      1）、获取所有的BeanFactoryPostProcessor
-​      2）、看先执行实现了PriorityOrdered优先级接口的BeanFactoryPostProcessor、
+​      2）、先执行实现了PriorityOrdered优先级接口的BeanFactoryPostProcessor、
 ​         postProcessor.postProcessBeanFactory()
 ​      3）、在执行实现了Ordered顺序接口的BeanFactoryPostProcessor；
 ​         postProcessor.postProcessBeanFactory()

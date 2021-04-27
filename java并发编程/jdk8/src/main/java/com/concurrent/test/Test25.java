@@ -1,95 +1,68 @@
-package com.concurrent.test;
-
-import lombok.extern.slf4j.Slf4j;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
-
-@Slf4j(topic = "main")
-public class Test25 {
-    public static void main(String[] args) {
-        // 容量比生产者生产的少一点可以看到队列满的效果
-        MessageQueue messageQueue = new MessageQueue(2);
-
-        for (int i =0;i<100;i++){
-            // 这里是因为lambda表达式只能放一个final类型的变量，int i在不断变化
-            //或者如果没有定义成final，那么变量在初始化以后，不允许再有任何赋值的情况出现
-            int id = i;
-            new Thread(()->{
-                log.debug("download...");
-                List<String> response=utils.download();
-                log.debug("try put message({})", id);
-                messageQueue.put(new Message(id, response));
-            },"生产者" + id).start();
-        }
-
-        // 1 个消费者线程, 处理结果
-        new Thread(()->{
-           while (true){
-               Message message = messageQueue.take();
-               List<String> response = (List<String>) message.getMessage();
-               log.debug("take message({}): [{}] lines", message.getId(), response.size());
-           }
-        },"消费者").start();
-    }
-    
-}
-
-
-@Slf4j(topic = "MessageQueue")
-class MessageQueue{
-    private LinkedList<Message> queue;
-    private int capacity;
-    public MessageQueue( int capacity) {
-        this.capacity = capacity;
-        this.queue = new LinkedList<>();
-    }
-    
-    public Message take(){
-        synchronized (queue){
-            while (queue.size()==0){
-                log.debug("没货了, wait");
-                try {
-                    queue.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            Message message = queue.removeLast();
-            queue.notifyAll();
-            return message;
-        }
-    }
-    
-    public void put(Message message){
-        synchronized (queue){
-            while (queue.size()==capacity){
-                try {
-                    log.debug("库存已达上限, wait");
-                    queue.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            queue.addLast(message);
-            queue.notifyAll();
-        }
-    }
-}
-
-class Message{
-    private int id;
-    private Object message;
-    public Message(int id, Object message) {
-        this.id = id;
-        this.message = message;
-    }
-    public int getId() {
-        return id;
-    }
-    public Object getMessage() {
-        return message;
-    }
-}
+//import java.util.Arrays;
+//import java.util.Scanner;
+//public class test{
+//
+//    public static void main(String[] args){
+//        Scanner scanner = new Scanner(System.in);
+//        int n = scanner.nextInt();
+//        int m = scanner.nextInt();
+//        int[] nums = new int[n];
+//        for(int i=0; i<n; i++){
+//            nums[i] = scanner.nextInt();
+//        }
+//        Arrays.sort(nums);
+//        for(int i =0; i<m ; i++){
+//            int temp = scanner.nextInt();
+//            int left  = getLeft(nums, temp);
+//            int right = getRight(nums, temp);
+//            System.out.println(left + " "+  right);
+//        }
+//
+//    }
+//
+//
+//
+//    // 寻找第一个出现的数字和最后一个出现的位置
+//    public static int getRight (int[] nums , int target){
+//        int left =0; int right = nums.length-1;
+//        while(left<=right){
+//            int mid = left + (right -left)/2;
+//            if(nums[mid] < target){
+//                left = mid +1;
+//            }else if(nums[mid] > target){
+//                right = mid -1;
+//            }else{
+//                left = mid +1;
+//            }
+//        }
+//        if(right < 0 || nums[right]!=target){
+//            return 0;
+//        }
+//        return right;
+//    }
+//
+//
+//    public static int getLeft(int[] nums, int target){
+//        int left =0; int right = nums.length -1;
+//
+//        while(left <=right ){
+//            int mid = left + (right -left)/2;
+//
+//            if(nums[mid] < target){
+//                left = mid +1;
+//            }else if(nums[mid] > target){
+//                right = mid -1;
+//            }else{
+//                right = mid -1;
+//            }
+//        }
+//        if(left >= nums.length || nums[left] != target){
+//            return 0;
+//        }
+//        return left;
+//    }
+//
+//
+//}
+//
+//

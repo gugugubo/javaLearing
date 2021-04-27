@@ -269,14 +269,27 @@ JVM 中内置了三个重要的 ClassLoader，除了 BootstrapClassLoader 其他
 7. 垃圾回收器？
 
    1. Serial收集器：简单高效
+
    2. Serial Old：Serial 的老年版本
+
    3. ParNew 收集器：其实就是 Serial 收集器的多线程版本，除了使用多线程进行垃圾收集外，其余行为（控制参数、收集算法、回收策略等等）和 Serial 收集器完全一样
+
    4. Parallel Scavenge ：吞吐量高
+
    5. Parallel Old ：收集器的老年代版本
+
    6. CMS（Concurrent Mark Sweep）收集器是一种以获取最短回收停顿时间为目标的收集器
       1. MS以牺牲CPU资源的代价来减少用户线程的停顿。当CPU个数少于4的时候,有可能对吞吐量影响非常大；
       2. CMS收集器无法处理浮动垃圾（Floating Garbage）,即第一次标记，认为某个对象不是垃圾，但是在CMS线程和用户线程在并发执行的过程中此对象可能变成了垃圾，那么CMS无法在这次的垃圾回收中将它回收掉。
       3. 由于基于MS算法即Mark-Sweep，收集结束时会带来碎片问题，空间碎片过多会给大对象分配带来很大麻烦，望往往出现老年代还有很大的空间剩余，但是无法找到足够大的连续空间来分配当前对象，不得不提前进行一次Full GC。无法处理这些垃圾可能出现”concurrent mode failure“失败而导致另一次Full GC的产生。
+      
+   7. 拓展：并行和并发
+
+      1. ![图片](https://mmbiz.qpic.cn/mmbiz_jpg/Z6bicxIx5naJr6V2cHcuYObZ7sh4aHQKLsXsibtn5q5PLEvACtCkB2DVTEZ5MyRC4KnKL8uVBEoZMYFAHyle3WJA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+      2. ![图片](https://mmbiz.qpic.cn/mmbiz_jpg/Z6bicxIx5naJr6V2cHcuYObZ7sh4aHQKLd3GJNGMLYtEAXgjlU8OeNThEZyacDlkXP3mleQjhfeWic2wsWT7zElA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+      3. ![图片](https://mmbiz.qpic.cn/mmbiz_png/Z6bicxIx5naJr6V2cHcuYObZ7sh4aHQKLiaNovQyk5kTDpKyZY4bSJicn9HMl0OPvUWPwqmI89uicBY1LRbNNNoicyw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
+      
 
 8. JVM内存分配与回收?
 
