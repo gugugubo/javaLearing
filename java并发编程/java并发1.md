@@ -592,6 +592,24 @@ public static void main(String[] args) throws InterruptedException {
 
 ```
 
+
+### 思考
+
+synchronized实际是 用对象锁保证了临界区中代码的原子性，临界区内的代对码对外是不可分割的，不会被线程切换所打断。
+
+为了加深理解思考下面的问题：
+
+- 如果吧synchronized（obj）放在for循环外面如何理解？
+
+  <span style="color:red">放在外面相当于给整个循环加上了锁那么就是保护了循环次数*++/--的指令这期间不会被其他线程干扰</span>
+
+- 如果t1 synchronized(obj1）但她synchronized(obj2)会怎么样？
+
+  <span style="color:red">不可以，t1，t2如果锁的不是一个对象，那么当发生上下文切换的时候，别的线程不会被阻塞</span>
+
+- 如果t1synchronized（obj）t2没有会怎么样？如何理解
+
+  <span style="color:red">t2不加锁的话他可以直接拿到共享变量，不会被阻塞住</span>
 #### synchronized原理
 
 synchronized实际上利用对象保证了临界区代码的原子性，临界区内的代码在外界看来是不可分割的，不会被线程切换所打断
