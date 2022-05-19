@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:master" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c9bf2e0-18f2-4a07-993e-8b2aa199eb5d" name="默认的" comment="" />
+    <list default="true" id="7c9bf2e0-18f2-4a07-993e-8b2aa199eb5d" name="默认的" comment="xxx">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java并发编程/java并发1.md" beforeDir="false" afterPath="$PROJECT_DIR$/java并发编程/java并发1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java并发编程/jdk8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/java并发编程/jdk8/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jvm学习/jvm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/jvm学习/jvm/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jvm学习/jvm/src/main/java/com/gcb/jvm/bytecodetest/MyTest1.java" beforeDir="false" afterPath="$PROJECT_DIR$/jvm学习/jvm/src/main/java/com/gcb/jvm/bytecodetest/MyTest1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jvm学习/jvm/src/main/java/com/gcb/jvm/bytecodetest/MyTest2.java" beforeDir="false" afterPath="$PROJECT_DIR$/jvm学习/jvm/src/main/java/com/gcb/jvm/bytecodetest/MyTest2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/面试/面试题/java.md" beforeDir="false" afterPath="$PROJECT_DIR$/面试/面试题/java.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/面试/面试题/算法.md" beforeDir="false" afterPath="$PROJECT_DIR$/面试/面试题/算法.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/面试/面试题/计算机网络.md" beforeDir="false" afterPath="$PROJECT_DIR$/面试/面试题/计算机网络.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +62,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="SvnConfiguration">
@@ -41,7 +76,58 @@
       <option name="presentableId" value="Default" />
       <updated>1602898789114</updated>
       <workItem from="1602898794067" duration="16000" />
+      <workItem from="1619531343033" duration="140000" />
+      <workItem from="1652973598634" duration="315000" />
     </task>
+    <task id="LOCAL-00001" summary="xxx">
+      <created>1619531441688</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1619531441688</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="xxx" />
+    <option name="LAST_COMMIT_MESSAGE" value="xxx" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1619531453150">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1619531453150" />
+    <state x="468" y="199" key="git4idea.merge.GitPullDialog" timestamp="1619531369909">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="468" y="199" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1619531369909" />
   </component>
 </project>

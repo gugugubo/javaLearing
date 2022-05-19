@@ -46,7 +46,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1583824588537" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -88,7 +88,7 @@
       <visibility group="运行配置" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="应用程序.Main">
+  <component name="RunManager" selected="应用程序.Test37">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.concurrent.Main" />
       <module name="jdk8" />
@@ -163,9 +163,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.Test37" />
         <item itemvalue="应用程序.Main" />
         <item itemvalue="应用程序.Test35" />
-        <item itemvalue="应用程序.Test37" />
         <item itemvalue="应用程序.Test36" />
         <item itemvalue="应用程序.Test20" />
       </list>
@@ -232,6 +232,7 @@
       <workItem from="1616673965195" duration="527000" />
       <workItem from="1616831550081" duration="12795000" />
       <workItem from="1616939528141" duration="13000" />
+      <workItem from="1651894292091" duration="3638000" />
     </task>
     <servers />
   </component>
@@ -239,74 +240,30 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1610240279016">
+    <state width="1493" height="136" key="GridCell.Tab.0.bottom" timestamp="1651939386418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1610240279016" />
-    <state width="388" height="466" key="DebuggerActiveHint" timestamp="1616837944517">
+    <state width="1493" height="136" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1651939386418" />
+    <state width="1493" height="136" key="GridCell.Tab.0.center" timestamp="1651939386418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="388" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1616837944517" />
-    <state x="548" y="166" key="FileChooserDialogImpl" timestamp="1616670680301">
+    <state width="1493" height="136" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1651939386418" />
+    <state width="1493" height="136" key="GridCell.Tab.0.left" timestamp="1651939386418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="548" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1616670680301" />
-    <state width="1493" height="247" key="GridCell.Tab.0.bottom" timestamp="1616939483603">
+    <state width="1493" height="136" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1651939386418" />
+    <state width="1493" height="136" key="GridCell.Tab.0.right" timestamp="1651939386418">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="247" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616939483603" />
-    <state width="1493" height="247" key="GridCell.Tab.0.center" timestamp="1616939483603">
+    <state width="1493" height="136" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1651939386418" />
+    <state x="467" y="103" width="601" height="721" key="find.popup" timestamp="1651894605590">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="247" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1616939483603" />
-    <state width="1493" height="247" key="GridCell.Tab.0.left" timestamp="1616939483603">
+    <state x="467" y="103" width="601" height="721" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1651894605590" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1651894299322">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="247" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1616939483603" />
-    <state width="1493" height="247" key="GridCell.Tab.0.right" timestamp="1616939483603">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="247" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1616939483603" />
-    <state width="1493" height="247" key="GridCell.Tab.1.bottom" timestamp="1616939483603">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="247" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616939483603" />
-    <state width="1493" height="247" key="GridCell.Tab.1.center" timestamp="1616939483603">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="247" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1616939483603" />
-    <state width="1493" height="247" key="GridCell.Tab.1.left" timestamp="1616939483603">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="247" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1616939483603" />
-    <state width="1493" height="247" key="GridCell.Tab.1.right" timestamp="1616939483603">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="247" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1616939483603" />
-    <state x="474" y="190" width="514" height="416" key="StructurePopup" timestamp="1616666014443">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="474" y="190" width="514" height="416" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1616666014443" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1616674009777">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1616674009777" />
-    <state x="377" y="136" width="601" height="536" key="find.popup" timestamp="1616831618903">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="377" y="136" width="601" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1616831618903" />
-    <state x="322" y="72" key="new project wizard" timestamp="1616670697600">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="322" y="72" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1616670697600" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1616838529272">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1616838529272" />
-    <state x="431" y="146" width="672" height="678" key="search.everywhere.popup" timestamp="1616845049754">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="146" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1616845049754" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1651894299322" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
