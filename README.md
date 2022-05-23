@@ -87,20 +87,23 @@
 
 
 ## 网络
-
+看《计算机网络自顶向下方法》
+1. **[计网笔记](https://bithachi.blog.csdn.net/article/details/104722679)**
 
 
 ## 操作系统
-
+看完《现操作系统》
+1. **[操作系统笔记](https://bithachi.blog.csdn.net/article/details/104415990)**
 
 
 ## 数据结构与算法
 
 ### 数据结构
-
+1. **[labuladong的算法](https://github.com/labuladong/fucking-algorithm)**
 
 
 ### 算法
+1. **[labuladong的算法](https://github.com/labuladong/fucking-algorithm)**
 
 
 
