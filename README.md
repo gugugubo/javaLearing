@@ -1,6 +1,6 @@
 
 
-# [求Star！点击在线阅读，如遇报错，Ctrl+F5刷新即可！](https://gu_chun_bo.gitee.io/java-construct)
+# [求Star！点击在线阅读](https://gugugubo.github.io/javaLearing/)
 
 
 - [Java](#java)

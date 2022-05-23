@@ -24,50 +24,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c9bf2e0-18f2-4a07-993e-8b2aa199eb5d" name="默认的" comment="xxx">
+    <list default="true" id="7c9bf2e0-18f2-4a07-993e-8b2aa199eb5d" name="默认的" comment="更换图床">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Construct/md文档/springSecurity整合jwt.md" beforeDir="false" afterPath="$PROJECT_DIR$/Construct/md文档/springSecurity整合jwt.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Construct/md文档/swagger项目整合.md" beforeDir="false" afterPath="$PROJECT_DIR$/Construct/md文档/swagger项目整合.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Construct/md文档/分布式.md" beforeDir="false" afterPath="$PROJECT_DIR$/Construct/md文档/分布式.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java基础/java基础.md" beforeDir="false" afterPath="$PROJECT_DIR$/java基础/java基础.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java并发编程/java并发1.md" beforeDir="false" afterPath="$PROJECT_DIR$/java并发编程/java并发1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java并发编程/java并发2.md" beforeDir="false" afterPath="$PROJECT_DIR$/java并发编程/java并发2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java并发编程/并发3.md" beforeDir="false" afterPath="$PROJECT_DIR$/java并发编程/并发3.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java集合/HashMap.md" beforeDir="false" afterPath="$PROJECT_DIR$/java集合/HashMap.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java集合/并发集合.md" beforeDir="false" afterPath="$PROJECT_DIR$/java集合/并发集合.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jvm学习/SubFolder/G1详解.md" beforeDir="false" afterPath="$PROJECT_DIR$/jvm学习/SubFolder/G1详解.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jvm学习/jvm-内存结构.md" beforeDir="false" afterPath="$PROJECT_DIR$/jvm学习/jvm-内存结构.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jvm学习/jvm-垃圾回收.md" beforeDir="false" afterPath="$PROJECT_DIR$/jvm学习/jvm-垃圾回收.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jvm学习/jvm-字节码.md" beforeDir="false" afterPath="$PROJECT_DIR$/jvm学习/jvm-字节码.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jvm学习/jvm-类加载过程.md" beforeDir="false" afterPath="$PROJECT_DIR$/jvm学习/jvm-类加载过程.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/分布式/分布式.md" beforeDir="false" afterPath="$PROJECT_DIR$/分布式/分布式.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/搞七搞八/mall-tiny项目学习.md" beforeDir="false" afterPath="$PROJECT_DIR$/搞七搞八/mall-tiny项目学习.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/搞七搞八/我的建站之旅.md" beforeDir="false" afterPath="$PROJECT_DIR$/搞七搞八/我的建站之旅.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/操作系统/linux基础知识.md" beforeDir="false" afterPath="$PROJECT_DIR$/操作系统/linux基础知识.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/mysql/MySql视频.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/mysql/MySql视频.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/mysql/事务详解.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/mysql/事务详解.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/mysql/深入浅出mysql读书笔记/SubFolder/表空间的理解.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/mysql/深入浅出mysql读书笔记/SubFolder/表空间的理解.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/mysql/深入浅出mysql读书笔记/第三章 mysql支持的数据类型.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/mysql/深入浅出mysql读书笔记/第三章 mysql支持的数据类型.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/mysql/深入浅出mysql读书笔记/第二十章 锁问题.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/mysql/深入浅出mysql读书笔记/第二十章 锁问题.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/redis/redis小功能/redis为什么这么秀？.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/redis/redis小功能/redis为什么这么秀？.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/redis/redis小功能/事务与Lua.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/redis/redis小功能/事务与Lua.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/redis/redis小功能/发布订阅.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/redis/redis小功能/发布订阅.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/redis/内存管理.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/redis/内存管理.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/redis/哨兵.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/redis/哨兵.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/redis/复制.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/redis/复制.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/redis/持久化.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/redis/持久化.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/redis/数据结构和内部编码.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/redis/数据结构和内部编码.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/redis/缓存设计.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/redis/缓存设计.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据库/redis/集群.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据库/redis/集群.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据结构与算法/数据结构.md" beforeDir="false" afterPath="$PROJECT_DIR$/数据结构与算法/数据结构.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/框架学习/SpringSecurity/权限管理.md" beforeDir="false" afterPath="$PROJECT_DIR$/框架学习/SpringSecurity/权限管理.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/框架学习/spring/spring拓展原理.md" beforeDir="false" afterPath="$PROJECT_DIR$/框架学习/spring/spring拓展原理.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/框架学习/spring/二：AOP 原理解析 跳转逻辑 代码演示.md" beforeDir="false" afterPath="$PROJECT_DIR$/框架学习/spring/二：AOP 原理解析 跳转逻辑 代码演示.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/框架学习/spring/四：事务分析.md" beforeDir="false" afterPath="$PROJECT_DIR$/框架学习/spring/四：事务分析.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/面试/面试题/redis.md" beforeDir="false" afterPath="$PROJECT_DIR$/面试/面试题/redis.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/面试/面试题/并发.md" beforeDir="false" afterPath="$PROJECT_DIR$/面试/面试题/并发.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/面试/面试题/框架.md" beforeDir="false" afterPath="$PROJECT_DIR$/面试/面试题/框架.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/面试/面试题/算法.md" beforeDir="false" afterPath="$PROJECT_DIR$/面试/面试题/算法.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +73,7 @@
       <workItem from="1602898794067" duration="16000" />
       <workItem from="1619531343033" duration="140000" />
       <workItem from="1652973598634" duration="1730000" />
-      <workItem from="1653303942720" duration="674000" />
+      <workItem from="1653303942720" duration="2530000" />
     </task>
     <task id="LOCAL-00001" summary="xxx">
       <created>1619531441688</created>
@@ -130,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652974006868</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="更换图床">
+      <created>1653304885303</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1653304885303</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,9 +115,12 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="xxx" />
     <MESSAGE value="更新" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新" />
+    <MESSAGE value="更换图床" />
+    <option name="LAST_COMMIT_MESSAGE" value="更换图床" />
   </component>
   <component name="WindowStateProjectService">
     <state x="533" y="113" key="RollbackChangesDialog" timestamp="1652973784394">
@@ -162,9 +131,21 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1652974026303" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1653307004956">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1653307004956" />
     <state x="467" y="144" width="868" height="618" key="find.popup" timestamp="1653304012554">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="467" y="144" width="868" height="618" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1653304012554" />
+    <state x="468" y="199" key="git4idea.merge.GitPullDialog" timestamp="1653304906912">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="468" y="199" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1653304906912" />
+    <state x="541" y="290" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1653306998087">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="541" y="290" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.824@0.0.1536.824" timestamp="1653306998087" />
   </component>
 </project>
