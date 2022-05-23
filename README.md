@@ -92,7 +92,7 @@
 
 
 ## 操作系统
-看完《现操作系统》
+看《现代操作系统》
 1. **[操作系统笔记](https://bithachi.blog.csdn.net/article/details/104415990)**
 
 
