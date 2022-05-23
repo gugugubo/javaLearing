@@ -5,7 +5,7 @@
  1、BeanFactoryPostProcessor：beanFactory的后置处理器；
 		在BeanFactory标准初始化之后调用，来定制和修改BeanFactory的内容；所有的bean定义已经保存加载到beanFactory，但是bean的实例还未创建
 
-![1602727056656](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015095817-545011.png)
+![1602727056656](http://img.pina.fun/20201015095817-545011.png)
 
 运行测试，可以发现BeanFactoryPostProcessor在BeanFactory标准初始化之后调用，此时bean的实例还未创建
 
@@ -31,17 +31,17 @@ BeanFactoryPostProcessor原理:
 
 
 
-![1602729018186](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015103018-233921.png)
+![1602729018186](http://img.pina.fun/20201015103018-233921.png)
 
 invokeBeanFactoryPostProcessors(beanFactory);执行BeanFactoryPostProcessors(beanFactory)
 
-![1602729035591](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015103035-224761.png)
+![1602729035591](http://img.pina.fun/20201015103035-224761.png)
 
 ![1602729047228](assets/1602729047228.png)
 
 然后跳转到这里
 
-![1602729135631](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015103217-958159.png)
+![1602729135631](http://img.pina.fun/20201015103217-958159.png)
 
 来看看上图的代码的下面
 
@@ -49,31 +49,31 @@ invokeBeanFactoryPostProcessors(beanFactory);执行BeanFactoryPostProcessors(bea
 
 直接在BeanFactory中找到所有类型是BeanFactoryPostProcessor的组件先进行分类，然后再执行他们的方法 ；
 
-![1602730970839](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015110323-814898.png)
+![1602730970839](http://img.pina.fun/20201015110323-814898.png)
 
 将上面分好组的postProcessorNames再转化为BeanFactotyPostPorcessor
 
-![1602730043855](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015104724-320527.png)
+![1602730043855](http://img.pina.fun/20201015104724-320527.png)
 
 
 
-![1602730947519](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015110228-939902.png)
+![1602730947519](http://img.pina.fun/20201015110228-939902.png)
 
 
 
 然后执行inovokeBeanFactoryPostProcessors()方法
 
-![1602730220336](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015105021-419734.png)
+![1602730220336](http://img.pina.fun/20201015105021-419734.png)
 
 
 
 让我们看看这个方法
 
-![1602730289393](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015105130-159784.png)
+![1602730289393](http://img.pina.fun/20201015105130-159784.png)
 
 我们可以看到BeanFactoryPostProcessors是在初始化创建其他组件前面执行
 
-![1602730824615](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015110025-215615.png)
+![1602730824615](http://img.pina.fun/20201015110025-215615.png)
 
 
 
@@ -87,19 +87,19 @@ BeanDefinitionRegistryPostProcessor 是BeanFactoryPostProcessor的子接口，�
 
 postProcessBeanDefinitionRegistry()方法。这个方法的执行时机：在所有bean定义信息将要被加载，bean实例还未创建的；利用BeanDefinitionRegistryPostProcessor给容器中再额外添加一些组件
 
-![1602746251542](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015193155-260171.png)
+![1602746251542](http://img.pina.fun/20201015193155-260171.png)
 
 
 
 我们来实现BeanDefinitionRegistryPostProcessor接口：
 
-![1602746480796](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015193218-407149.png)
+![1602746480796](http://img.pina.fun/20201015193218-407149.png)
 
 
 
 可以看到，在我们注册了一个bean之后，数量增加了一个；BeanDefinitionRegistryPostProcessor 是先于BeanFactoryPostProcessor执行的
 
-![1602747002908](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015193152-802463.png)
+![1602747002908](http://img.pina.fun/20201015193152-802463.png)
 
 
 
@@ -116,35 +116,35 @@ postProcessBeanDefinitionRegistry()方法。这个方法的执行时机：在所
 
 refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 
-![1602747253595](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015193149-793913.png)
+![1602747253595](http://img.pina.fun/20201015193149-793913.png)
 
 
 
 
 
-![1602747270161](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015193145-209777.png)
+![1602747270161](http://img.pina.fun/20201015193145-209777.png)
 
 
 
 从容器中获取到所有的BeanDefinitionRegistryPostProcessor组件
 
-![1602747452450](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015153841-871608.png)
+![1602747452450](http://img.pina.fun/20201015153841-871608.png)
 
 
 
 1、依次触发所有的postProcessBeanDefinitionRegistry()方法
 
-![1602747429077](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015153837-504473.png)
+![1602747429077](http://img.pina.fun/20201015153837-504473.png)
 
 
 
 2、再来触发postProcessBeanFactory()方法BeanFactoryPostProcessor；
 
-![1602747810482](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015154332-218492.png)
+![1602747810482](http://img.pina.fun/20201015154332-218492.png)
 
 4）、再来从容器中找到BeanFactoryPostProcessor组件；然后依次触发postProcessBeanFactory()方法
 
-![1602747895240](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015154456-259908.png)
+![1602747895240](http://img.pina.fun/20201015154456-259908.png)
 
 
 
@@ -172,11 +172,11 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 
 我们这里监听ApplicationEvent及其子类
 
-![1602748985255](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015160306-911389.png)
+![1602748985255](http://img.pina.fun/20201015160306-911389.png)
 
 
 
-![1602749178871](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015160619-239358.png)
+![1602749178871](http://img.pina.fun/20201015160619-239358.png)
 
 我们写一个监听器（ApplicationListener实现类）来监听某个事件（必须是ApplicationEvent及其子类）；把监听器加入到容器；只要容器中有相关事件的发布，我们就能监听到这个事件；
 
@@ -184,7 +184,7 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 
 我们也可以自己发布一个事件：applicationContext.publishEvent()；
 
-![1602749464894](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015161105-653906.png)
+![1602749464894](http://img.pina.fun/20201015161105-653906.png)
 
 
 
@@ -192,7 +192,7 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 
 打个断点
 
-![1602762100523](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015194144-581874.png)
+![1602762100523](http://img.pina.fun/20201015194144-581874.png)
 
 
 
@@ -203,11 +203,11 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 
  	2）、finishRefresh();容器刷新完成会发布ContextRefreshedEvent事件
 
-![1602768821736](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015213342-7529.png)
+![1602768821736](http://img.pina.fun/20201015213342-7529.png)
 
 
 
-![1602768916852](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015213517-392266.png)
+![1602768916852](http://img.pina.fun/20201015213517-392266.png)
 
 
 
@@ -216,7 +216,7 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
  	3）、publishEvent(new ContextRefreshedEvent(this));
  			1）、获取事件的多播器（即派发器，多播器就是把时间发布到多个监听器，让他们同时感知）：getApplicationEventMulticaster()
 
-![1602768968206](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015213608-811687.png)
+![1602768968206](http://img.pina.fun/20201015213608-811687.png)
 
 ​		2）、multicastEvent派发事件：
 
@@ -227,33 +227,33 @@ refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
 for (final ApplicationListener<?> listener : getApplicationListeners(event, type)) { }
 ```
 
-![1602769334723](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015214216-258681.png)
+![1602769334723](http://img.pina.fun/20201015214216-258681.png)
 
 拿到listener回调onApplicationEvent方法；
 
-![1602769485504](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015214446-188589.png)
+![1602769485504](http://img.pina.fun/20201015214446-188589.png)
 
 拿到listener回调onApplicationEvent方法；
 
-![1602769500620](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015214501-743776.png)
+![1602769500620](http://img.pina.fun/20201015214501-743776.png)
 
 ​	然后监听器收到事件
 
-![1602769875482](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015215117-421697.png)
+![1602769875482](http://img.pina.fun/20201015215117-421697.png)
 
 上面的事件是容器发布的事件
 
 放行，查看第二个事件的监听：第二个事件是我们自己发布的事件
 
-![1602770192183](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015215633-865444.png)
+![1602770192183](http://img.pina.fun/20201015215633-865444.png)
 
 ![1602770312248](assets/1602770312248.png)
 
-![1602770321911](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015215842-709626.png)
+![1602770321911](http://img.pina.fun/20201015215842-709626.png)
 
 又是同样的流程啦
 
-![1602769957268](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015215237-88390.png)
+![1602769957268](http://img.pina.fun/20201015215237-88390.png)
 
 容器关闭也会发布ContextClosedEvent；流程同上
 
@@ -263,7 +263,7 @@ for (final ApplicationListener<?> listener : getApplicationListeners(event, type
 
 initApplicationEventMulticaster();初始化ApplicationEventMulticaster；
 
-![1602774393225](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015230633-821407.png)
+![1602774393225](http://img.pina.fun/20201015230633-821407.png)
 
 先去容器中找有没有id=“applicationEventMulticaster”的组件；
 
@@ -274,7 +274,7 @@ initApplicationEventMulticaster();初始化ApplicationEventMulticaster；
 如果没有this.applicationEventMulticaster = new SimpleApplicationEventMulticaster(beanFactory);
  			并且加入到容器中，我们就可以在其他组件要派发事件，自动注入这个applicationEventMulticaster；
 
-![1602774559327](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015230920-287721.png)
+![1602774559327](http://img.pina.fun/20201015230920-287721.png)
 
 
 
@@ -284,7 +284,7 @@ initApplicationEventMulticaster();初始化ApplicationEventMulticaster；
 
 首先是我们将监听器加入到了容器中
 
-![1602775067759](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015231748-435416.png)
+![1602775067759](http://img.pina.fun/20201015231748-435416.png)
 
  	1）、容器创建对象：refresh();
 
@@ -302,27 +302,27 @@ initApplicationEventMulticaster();初始化ApplicationEventMulticaster；
 
 在这里还发布了一个事件：
 
-![1602775317950](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015232200-705258.png)
+![1602775317950](http://img.pina.fun/20201015232200-705258.png)
 
 
 
 我们也可以通过注解监听事件：
 
-![1602775411777](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015232334-406395.png)
+![1602775411777](http://img.pina.fun/20201015232334-406395.png)
 
  		
 
 让我们来看看他的原理：EventListenerMethodProcessor
 
-![1602775754110](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015232915-487123.png)
+![1602775754110](http://img.pina.fun/20201015232915-487123.png)
 
 
 
-![1602775827894](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015233028-285221.png)
+![1602775827894](http://img.pina.fun/20201015233028-285221.png)
 
 
 
-![1602775841702](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015233042-312184.png)
+![1602775841702](http://img.pina.fun/20201015233042-312184.png)
 
 
 
@@ -330,7 +330,7 @@ initApplicationEventMulticaster();初始化ApplicationEventMulticaster；
 
 
 
-![1602775990581](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015233313-161018.png)
+![1602775990581](http://img.pina.fun/20201015233313-161018.png)
 
 ​	1）、ioc容器创建对象并refresh()；
 
@@ -344,14 +344,14 @@ initApplicationEventMulticaster();初始化ApplicationEventMulticaster；
 
 ​			
 
-![1602776265116](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015233746-35917.png)
+![1602776265116](http://img.pina.fun/20201015233746-35917.png)
 
 1）、先创建所有的单实例bean；getBean();
 
 2）、获取所有创建好的单实例bean，判断是否是SmartInitializingSingleton类型的；
   				如果是就调用afterSingletonsInstantiated();
 
-![1602776318566](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201015233838-866836.png)
+![1602776318566](http://img.pina.fun/20201015233838-866836.png)
 
 
   	

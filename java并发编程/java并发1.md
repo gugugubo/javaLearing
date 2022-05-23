@@ -37,13 +37,13 @@
 下时间片最小约为 15 毫秒）分给不同的程序使用，只是由于 cpu 在线程间（时间片很短）的切换非常快，人类感
 觉是同时运行的 。一般会将这种线程轮流使用 CPU 的做法称为并发（concurrent）
 
-![1583408729416](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200305194534-433138.png)
+![1583408729416](http://img.pina.fun/20200305194534-433138.png)
 
 ### 并行
 
 多核 cpu下，每个核（core） 都可以调度运行线程，这时候线程可以是并行的，不同的线程同时使用不同的cpu在执行。
 
-![1583408812725](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200305194655-483025.png)
+![1583408812725](http://img.pina.fun/20200305194655-483025.png)
 
 ### 二者对比
 
@@ -186,7 +186,7 @@ public interface Future<V> {
 
 ## 3.3 Thread的常见方法
 
-![1583466371181](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200306114615-258720.png)
+![1583466371181](http://img.pina.fun/20200306114615-258720.png)
 
 ### 3.3.1 start 与 run
 
@@ -277,7 +277,7 @@ yield使cpu调用其它线程，但是cpu可能会再分配时间片给该线程
     }
 ```
 
-![1583483843354](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200306163734-131567.png)
+![1583483843354](http://img.pina.fun/20200306163734-131567.png)
 
 ### 3.3.5 interrupt 方法详解
 
@@ -350,7 +350,7 @@ Two Phase Termination，就是考虑在一个线程T1中如何优雅地终止另
 
 如下所示：那么线程的`isInterrupted()`方法可以取得线程的打断标记，如果线程在睡眠`sleep`期间被打断，打断标记是不会变的，为false，但是`sleep`期间被打断会抛出异常，我们据此手动设置打断标记为`true`；如果是在程序正常运行期间被打断的，那么打断标记就被自动设置为`true`。处理好这两种情况那我们就可以放心地来料理后事啦！
 
-![1583496991915](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200306201632-731186.png)
+![1583496991915](http://img.pina.fun/20200306201632-731186.png)
 
 代码实现如下：
 
@@ -420,7 +420,7 @@ class TwoParseTermination{
 
 五种状态的划分主要是从操作系统的层面进行划分的
 
-![1583507073055](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307093417-638644.png)
+![1583507073055](http://img.pina.fun/20200307093417-638644.png)
 
 1. 初始状态，仅仅是在语言层面上创建了线程对象，即`Thead thread = new Thead();`，还未与操作系统线程关联
 2. 可运行状态，也称就绪状态，指该线程已经被创建，与操作系统相关联，等待cpu给它分配时间片就可运行
@@ -437,7 +437,7 @@ class TwoParseTermination{
 这是从 Java API 层面来描述的，我们主要研究的就是这种。状态转换详情图：[地址](https://www.jianshu.com/p/ec94ed32895f)
 根据 Thread.State 枚举，分为六种状态 Test12.java
 
-![1583507709834](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307093352-614933.png)
+![1583507709834](http://img.pina.fun/20200307093352-614933.png)
 
 1. NEW 跟五种状态里的初始状态是一个意思
 2. RUNNABLE 是当调用了 `start()` 方法之后的状态，注意，Java API 层面的 `RUNNABLE` 状态涵盖了操作系统层面的【可运行状态】、【运行状态】和【io阻塞状态】（由于 BIO 导致的线程阻塞，在 Java 里无法区分，仍然认为是可运行）
@@ -479,9 +479,9 @@ class TwoParseTermination{
 
 我将从字节码的层面进行分析：
 
-![1583568350082](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307160551-757236.png)
+![1583568350082](http://img.pina.fun/20200307160551-757236.png)
 
-![1583568587168](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307160948-54298.png)
+![1583568587168](http://img.pina.fun/20200307160948-54298.png)
 
 ```java
 getstatic i // 获取静态变量i的值
@@ -497,19 +497,19 @@ putstatic i // 将修改后的值存入静态变量i
 
 可以看到`count++` 和 `count--` 操作实际都是需要这个4个指令完成的，那么这里问题就来了！Java 的内存模型如下，完成静态变量的自增，自减需要在主存和工作内存中进行数据交换：
 
-![1583569253392](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309204444-155703.png)
+![1583569253392](http://img.pina.fun/20200309204444-155703.png)
 
 如果代码是正常按顺序运行的，那么count的值不会计算错
 
-![1583569326977](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307162207-752990.png)
+![1583569326977](http://img.pina.fun/20200307162207-752990.png)
 
 出现负数的情况：
 
-![1583569380639](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307162301-374560.png)
+![1583569380639](http://img.pina.fun/20200307162301-374560.png)
 
 出现正数的情况：
 
-![1583569416016](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307162337-43718.png)
+![1583569416016](http://img.pina.fun/20200307162337-43718.png)
 
 ### 问题的进一步描述
 
@@ -596,7 +596,7 @@ public static void main(String[] args) throws InterruptedException {
 
 synchronized实际上利用对象保证了临界区代码的原子性，临界区内的代码在外界看来是不可分割的，不会被线程切换所打断
 
-![1583571633729](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307170035-215697.png)
+![1583571633729](http://img.pina.fun/20200307170035-215697.png)
 
 ### synchronized 加在方法上
 
@@ -661,7 +661,7 @@ public static void test1() {
 
 每个线程调用 test1() 方法时局部变量 i，会在每个线程的栈帧内存中被创建多份，因此不存在共享
 
-![1583587166210](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307211927-566637.png)
+![1583587166210](http://img.pina.fun/20200307211927-566637.png)
 
 #### 线程不安全的情况
 
@@ -704,9 +704,9 @@ class UnsafeTest{
 
 
 
-![1583589268096](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307215429-139261.png)
+![1583589268096](http://img.pina.fun/20200307215429-139261.png)
 
-![1583587571334](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307212611-483979.png)
+![1583587571334](http://img.pina.fun/20200307212611-483979.png)
 
 ##### 解决方法
 
@@ -796,7 +796,7 @@ if( table.get("key") == null) {
 }
 ```
 
-![1583590979975](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200307222301-656435.png)
+![1583590979975](http://img.pina.fun/20200307222301-656435.png)
 
 #### 不可变类的线程安全
 
@@ -981,19 +981,19 @@ Test16.java
 
 以 32 位虚拟机为例,普通对象的对象头结构如下，其中的Klass Word为指针，指向对应的Class对象；
 
-![1583651065372](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200308223951-617147.png)
+![1583651065372](http://img.pina.fun/20200308223951-617147.png)
 
 数组对象
 
-![1583651088663](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200308150448-901728.png)
+![1583651088663](http://img.pina.fun/20200308150448-901728.png)
 
 其中 Mark Word 结构为
 
-![1583651590160](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200308151311-525787.png)
+![1583651590160](http://img.pina.fun/20200308151311-525787.png)
 
 所以一个对象的结构如下：
 
-![1583678624634](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200308224345-655905.png)
+![1583678624634](http://img.pina.fun/20200308224345-655905.png)
 
 
 
@@ -1003,7 +1003,7 @@ Monitor被翻译为监视器或者说管程
 
 每个java对象都可以关联一个Monitor，如果使用`synchronized`给对象上锁（重量级），该对象头的Mark Word中就被设置为指向Monitor对象的指针
 
-![1583652360228](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309172316-799735.png)
+![1583652360228](http://img.pina.fun/20200309172316-799735.png)
 
 - 刚开始时Monitor中的Owner为null
 - 当Thread-2 执行synchronized(obj){}代码时就会将Monitor的所有者Owner 设置为 Thread-2，上锁成功，Monitor中同一时刻只能有一个Owner
@@ -1081,17 +1081,17 @@ public static void method2() {
 ```
 
 1. 每次指向到synchronized代码块时，都会创建锁记录（Lock Record）对象，每个线程都会包括一个锁记录的结构，锁记录内部可以储存对象的Mark Word和对象引用reference
-   1. ![1583755737580](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309200902-382362.png)
+   1. ![1583755737580](http://img.pina.fun/20200309200902-382362.png)
 2. 让锁记录中的Object reference指向对象，并且尝试用cas(compare and sweep)替换Object对象的Mark Word ，将Mark Word 的值存入锁记录中
-   1. ![1583755888236](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309201132-961387.png)
+   1. ![1583755888236](http://img.pina.fun/20200309201132-961387.png)
 3. 如果cas替换成功，那么对象的对象头储存的就是锁记录的地址和状态01，如下所示
-   1. ![1583755964276](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309201247-989088.png)
+   1. ![1583755964276](http://img.pina.fun/20200309201247-989088.png)
 4. 如果cas失败，有两种情况
    1. 如果是其它线程已经持有了该Object的轻量级锁，那么表示有竞争，将进入锁膨胀阶段
    2. 如果是自己的线程已经执行了synchronized进行加锁，那么那么再添加一条 Lock Record 作为重入的计数
-      1. ![1583756190177](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309201634-451646.png)
+      1. ![1583756190177](http://img.pina.fun/20200309201634-451646.png)
 5. 当线程退出synchronized代码块的时候，**如果获取的是取值为 null 的锁记录 **，表示有重入，这时重置锁记录，表示重入计数减一
-   1. ![1583756357835](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309201919-357425.png)
+   1. ![1583756357835](http://img.pina.fun/20200309201919-357425.png)
 6. 当线程退出synchronized代码块的时候，如果获取的锁记录取值不为 null，那么使用cas将Mark Word的值恢复给对象
    1. 成功则解锁成功
    2. 失败，则说明轻量级锁进行了锁膨胀或已经升级为重量级锁，进入重量级锁解锁流程
@@ -1101,10 +1101,10 @@ public static void method2() {
 如果在尝试加轻量级锁的过程中，cas操作无法成功，这是有一种情况就是其它线程已经为这个对象加上了轻量级锁，这是就要进行锁膨胀，将轻量级锁变成重量级锁。
 
 1. 当 Thread-1 进行轻量级加锁时，Thread-0 已经对该对象加了轻量级锁
-   1. ![1583757433691](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309203715-909034.png)
+   1. ![1583757433691](http://img.pina.fun/20200309203715-909034.png)
 2. 这时 Thread-1 加轻量级锁失败，进入锁膨胀流程
    1. 即为对象申请Monitor锁，让Object指向重量级锁地址，然后自己进入Monitor 的EntryList 变成BLOCKED状态
-   2. ![1583757586447](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309203947-654193.png)
+   2. ![1583757586447](http://img.pina.fun/20200309203947-654193.png)
 3. 当Thread-0 推出synchronized同步块时，使用cas将Mark Word的值恢复给对象头，失败，那么会进入重量级锁的解锁过程，即按照Monitor的地址找到Monitor对象，将Owner设置为null，唤醒EntryList 中的Thread-1线程
 
 #### 自旋优化
@@ -1112,9 +1112,9 @@ public static void method2() {
 重量级锁竞争的时候，还可以使用自旋来进行优化，如果当前线程自旋成功（即在自旋的时候持锁的线程释放了锁），那么当前线程就可以不用进行上下文切换就获得了锁
 
 1. 自旋重试成功的情况
-   1. ![1583758113724](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309204835-425698.png)
+   1. ![1583758113724](http://img.pina.fun/20200309204835-425698.png)
 2. 自旋重试失败的情况，自旋了一定次数还是没有等到持锁的线程释放锁
-   1. ![1583758136650](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309204915-424942.png)
+   1. ![1583758136650](http://img.pina.fun/20200309204915-424942.png)
 
 自旋会占用 CPU 时间，单核 CPU 自旋就是浪费，多核 CPU 自旋才能发挥优势。在 Java 6 之后自旋锁是自适应的，比如对象刚刚的一次自旋操作成功过，那么认为这次自旋成功的可能性会高，就多自旋几次；反之，就少自旋甚至不自旋，总之，比较智能。Java 7 之后不能控制是否开启自旋功能
 
@@ -1122,13 +1122,13 @@ public static void method2() {
 
 ​	在轻量级的锁中，我们可以发现，如果同一个线程对同一个2对象进行重入锁时，也需要执行CAS操作，这是有点耗时滴，那么java6开始引入了偏向锁的东东，只有第一次使用CAS时将对象的Mark Word头设置为入锁线程ID，**之后这个入锁线程再进行重入锁时，发现线程ID是自己的，那么就不用再进行CAS了**
 
-![1583760728806](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309213209-28609.png)
+![1583760728806](http://img.pina.fun/20200309213209-28609.png)
 
  
 
 ##### 偏向状态
 
-![1583762169169](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200309215610-51761.png)
+![1583762169169](http://img.pina.fun/20200309215610-51761.png)
 
 一个对象的创建过程
 
@@ -1356,7 +1356,7 @@ LockSupport.unpark;
 3. 线程进入 _cond 条件变量阻塞
 4. 设置 _counter = 0
 
-![1594531894163](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200712133136-910801.png)
+![1594531894163](http://img.pina.fun/20200712133136-910801.png)
 
 2.调用upark
 
@@ -1374,7 +1374,7 @@ LockSupport.unpark;
 3. 检查 _counter ，本情况为 1，这时线程无需阻塞，继续运行
 4. 设置 _counter 为 0
 
-![1594532135616](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200712133539-357066.png)
+![1594532135616](http://img.pina.fun/20200712133539-357066.png)
 
 
 
@@ -1511,7 +1511,7 @@ Java stack information for the threads listed above:
 
 很多教程中把饥饿定义为，一个线程由于优先级太低，始终得不到 CPU 调度执行，也不能够结束，饥饿的情况不易演示，讲读写锁时会涉及饥饿问题下面我讲一下一个线程饥饿的例子，先来看看使用顺序加锁的方式解决之前的死锁问题，就是两个线程对两个不同的对象加锁的时候都使用相同的顺序进行加锁。 但是会产生饥饿问题Test29
 
-![1594558469826](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200712205431-675389.png)
+![1594558469826](http://img.pina.fun/20200712205431-675389.png)
 
 顺序加锁的解决方案
 

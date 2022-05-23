@@ -16,13 +16,13 @@
 
 示例如下，从GCROOT开始找到存活的对象，红色的就是未被标记要回收的，并且红色的区域被回收之后，绿色的还在“原地”，并不会对内存区域进行整理。
 
-![1582787561817](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164655-908837.png)
+![1582787561817](http://img.pina.fun/20200304164655-908837.png)
 
 ### 1.2 标记-整理算法（Mark-Compact）
 
 标记过程仍然一样，但后续步骤不是进行直接清理，而是令所有存活的对象一端移动，然后直接清理掉这端边界以外的内存。
 
-![1582786327947](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164628-260953.png)
+![1582786327947](http://img.pina.fun/20200304164628-260953.png)
 
 ### 1.3 复制搜集算法（Coping）
 
@@ -34,17 +34,17 @@
 
 #### 现在的复制搜集算法
 
-![1583848735097](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200310215856-280171.png)
+![1583848735097](http://img.pina.fun/20200310215856-280171.png)
 
 描述：现在的商业虚拟机都是采用复制搜集算法来回收**新生代**，将内存分为一块较大的eden空间和两块较小的survivor空间，每次只是用eden和其中一块survivor空间，当回收时将eden和survivor空间中还存活的对象一次性拷贝到另一个survivor空间上，然后清理用过的eden和survivor空间，oracle hotspot虚拟机默认eden 和 survivor的比例是 8:1 ,也就是每次只有百分之十的内存被浪费。示例图如下（最开始A被引用，A引用了C，C引用了H，GC的最后清除了D和G）
 
-![1582787476606](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164632-195319.png)
+![1582787476606](http://img.pina.fun/20200304164632-195319.png)
 
-![1582787495319](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164635-766946.png)
+![1582787495319](http://img.pina.fun/20200304164635-766946.png)
 
-![1582961769604](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164648-218229.png)
+![1582961769604](http://img.pina.fun/20200304164648-218229.png)
 
-![1582961922126](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164650-924632.png)
+![1582961922126](http://img.pina.fun/20200304164650-924632.png)
 
 好处：1.只需要扫描存活的对象，效率更高；2.不会产生碎片 3.复制算法非常适合对象存活时间比较短的对象，因为每次GC总能回收大部分的对象，复制的开销比较小。根据IBM的专门研究，98%的Java对象只会存活1个GC周期，对这些对象很适合用复制算法。而且不用1:1的划分工作区和复制区的空间
 
@@ -54,7 +54,7 @@
 
 ### 1.4 分代算法（Generational）
 
-![1582786672708](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164921-907201.png)
+![1582786672708](http://img.pina.fun/20200304164921-907201.png)
 
 描述：当前商业虚拟机的垃圾收集都是采用“分代收集”( Generational Collecting)算法根据对象不同的存活周期将内存划分为几块；一般是把Java堆分作新生代和老年代，这样就可以根据各个年代的特点采用最适当的收集算法，1. 譬如新生代每次GC都有大批对象死去，只有少量存活，那就选用复制算法只需要付出少量存活对象的复制成本就可以完成收集  2. 并且有老年代作为空间分配担保；老年代采用Mark- Sweep或者Mark- Compact算法
 
@@ -81,7 +81,7 @@
 
 - 是最早的收集器,单线程收集器，Hotspot Client模式缺省的收集器，收集时会暂停所有工作线程(Stop The World,简称STW)，因为是单线程GC，没有多线程切换的额外开销，简单实用
 - New和 Old Generation都可以使用在新生代，采用复制算法，在老年代,采用Mark-Compact算法;
-- ![1582791530489](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164918-434894.png)
+- ![1582791530489](http://img.pina.fun/20200304164918-434894.png)
 
 ### 2.2 Serial Old 收集器
 
@@ -116,7 +116,7 @@ JVM1.6提供，在此之前，新生代使用PS收集器的话，老年代除了
 - Parallel Scavenge在**老年代**的实现；
 - 采用多线程,Mark-Compact算法；
 - 更注重吞吐量Parallel Scavenge+ Parallel Old = 高吞吐量,但GC停顿可能不理想
-- ![1582792519271](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164916-517287.png)
+- ![1582792519271](http://img.pina.fun/20200304164916-517287.png)
 
 
 
@@ -138,7 +138,7 @@ CMS是基于“**标记--清除**”算法实现的，在老年代中的整个�
 - 重新标记（CMS remark），重新标记阶段则是为了修正并发标记期间因为用户程序继续运作而导致标记产生变动的那一部分对象的标记记录（ 这部分对象是指从 GC Roots 不可达的对象，因为用户程序的并发运行，又可达了），这个阶段的停顿时间一般会比初始标记阶段稍长一些，但是远比并发标记的时间短。
 - 并发清除（CMS concurrent sweep），收集在标记阶段被标识为不可访问的对象。The collection of a dead object adds the space for the object to a free list for later allocation. Coalescing of dead objects may occur at this point. Note that live objects are not moved.死亡对象收集为空闲列表增加了更多的空间，以便以后分配。在这一点上可能会发生死物体空间的的合并。请注意，不会移动活动对象。
 - CMS收集器的运作步骤如下图所示，在整个过程中耗时最长的并发标记和并发清除过程收集器线程都可以和用户线程一起工作，因此从整体上看，CMS收集器线程的内存回收过程是与用户线程一起并发执行的。
-  - ![1582892656658](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164913-9221.png)
+  - ![1582892656658](http://img.pina.fun/20200304164913-9221.png)
 
 #### CMS缺点
 
@@ -153,15 +153,15 @@ CMS是基于“**标记--清除**”算法实现的，在老年代中的整个�
 CMS收集器收集步骤，以下是将上面的四个步骤进一步细分为7个步骤，但是其中有stw的还是只有两个步骤，减少了stw的时间。
 
 - Phase 1: Initial Mark，这个是CMS两次stop-the-world事件的其中一次,这个阶段的目标是:标记那些直接被GCroot引用或者被年轻代存活对象所引用的所有对象（CMS是针对老年代的）
-  - ![1583929967459](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200311203248-360957.png)
+  - ![1583929967459](http://img.pina.fun/20200311203248-360957.png)
 - Phase 2：Concurrent Mark，在这个阶段 Garbage Collector会遍历老年代,然后标记所有存活的对象,它会根据上个阶段找到的 GC Roots遍历査找。并发标记阶段，它会与用户的应用程序并发运行并不是老年代所有的存活对象都会被标记，因为在标记期间用户的程序可能会改变一些引用。在下的图中,与阶段1的图进行对比,就会发现有一个对象的引用已经发生了变化
-  - ![1582896958721](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164910-509868.png)
+  - ![1582896958721](http://img.pina.fun/20200304164910-509868.png)
 - Phase 3: Concurrent Preclean，这也是一个并发阶段,与应用的线程并发运行,并不会stop用户线程。在并发运行的过程中,一些对象的引用可能会发生变化,但是这种情况发生时,JVM会将包含这个对象的区域(Card)标记为Diy，这个动作称为Card Marking，在pre-clean阶段，那些能够从Dirty对象到达的对象也会被标记,这个标记做完之后, dirty card标记就会被清除了
-  - ![1582940994952](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164710-663159.png)
+  - ![1582940994952](http://img.pina.fun/20200304164710-663159.png)
 - Phase 4: Concurrent Abortable Preclean，这也是一个并发阶段,但是同样不会影响用户的应用线程,这个阶段是为了尽量承担STW(stop-the-world)中最终标记阶段的工作。这个阶段持续时间依赖于很多的因素由于这个阶段是在重复做很多相同的工作(比如:重复迭代的次数、完成的工作量或者时钟时间等）
 - Phase 5: Final Remark，这是第二个STW阶段,也是CMS中的最后一个，这个阶段的目标是标记老年代所有的存活对象，由于之前的阶段是并发执行的，GC线程可能跟不上应用程序的变化为了完成标记老年代所有存活对象的目标，STW就非常有必要了，这个阶段会比前面的几个阶段更复杂一些
 - Phase 6: Concurrent Sweep，这里不需要STW,它是与用户的应用程序并发运行,这个阶段是:清除那些不再使用的对象,回收它们的占用空间为将来使用
-  - ![1582941954201](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164851-267408.png)
+  - ![1582941954201](http://img.pina.fun/20200304164851-267408.png)
 - Phase 7: Concurrent Reset，这个阶段也是并发执行的,它会重设CMS内部的数据结构,为下次的GC做准备
 
 #### 实验
@@ -216,7 +216,7 @@ Heap
 
 HotSpot虚拟机的组成成分
 
-![1582976665504](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164752-567723.png)
+![1582976665504](http://img.pina.fun/20200304164752-567723.png)
 
 
 
@@ -324,17 +324,17 @@ Safepoint的选定既不能太少以至于让GC等待时间太长，也不能过
 
 ###### 对象定义在错误的范围( Wrong Scope)；
 
-![1582794952530](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164846-878102.png)
+![1582794952530](http://img.pina.fun/20200304164846-878102.png)
 
 ###### 异常( Exception)处理不当
 
-![1582795049517](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164816-77853.png)
+![1582795049517](http://img.pina.fun/20200304164816-77853.png)
 
-![1582795085858](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164833-867525.png)
+![1582795085858](http://img.pina.fun/20200304164833-867525.png)
 
 ###### 集合数据管理不当
 
-![1582795166640](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164712-132297.png)
+![1582795166640](http://img.pina.fun/20200304164712-132297.png)
 
 
 
@@ -370,7 +370,7 @@ Safepoint的选定既不能太少以至于让GC等待时间太长，也不能过
 
 - -XX:+PrintTenuringDistribution  （Distribution是分配的意思）打印出各年龄阶段的对象的占有内存
 
-- ![1582814508681](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304164720-262990.png)
+- ![1582814508681](http://img.pina.fun/20200304164720-262990.png)
 
   
 

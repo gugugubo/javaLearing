@@ -43,12 +43,12 @@ public class Test1 {
 为什么呢？分析一下：
 
 1. 初始状态， t 线程刚开始从主内存读取了 run 的值到工作内存。
-   1. ![1594646434877](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200713222445-555075.png)
+   1. ![1594646434877](http://img.pina.fun/20200713222445-555075.png)
 2. 因为t1线程频繁地从主存中读取run的值，jit即时编译器会将run的值缓存至自己工作内存中的高速缓存中，减少对主存中run的访问以提高效率
-   1. ![1594646562777](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200713212457-709749.png)
+   1. ![1594646562777](http://img.pina.fun/20200713212457-709749.png)
 3.  1 秒之后，main 线程修改了 run 的值，并同步至主存，而 t 是从自己工作内存中的高速缓存中读取这个变量
    的值，结果永远是旧值
-   1. ![1594646581590](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200713212306-584613.png)
+   1. ![1594646581590](http://img.pina.fun/20200713212306-584613.png)
 
 
 
@@ -189,7 +189,7 @@ volatile 的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
    }
    ```
 
-![1594698374315](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200714114615-934315.png)
+![1594698374315](http://img.pina.fun/20200714114615-934315.png)
 
 
 
@@ -219,7 +219,7 @@ volatile 的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
    }
    ```
 
-   ![1594698559052](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200714114921-56542.png)
+   ![1594698559052](http://img.pina.fun/20200714114921-56542.png)
 
 
 
@@ -228,7 +228,7 @@ volatile 的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
 1. 写屏障仅仅是保证之后的读能够读到最新的结果，但不能保证其它线程的读跑到它前面去
 2. 而有序性的保证也只是保证了本线程内相关代码不被重排序
 
-![1594698671628](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200714115112-322421.png)
+![1594698671628](http://img.pina.fun/20200714115112-322421.png)
 
 
 
@@ -321,7 +321,7 @@ volatile 的底层实现原理是内存屏障，Memory Barrier（Memory Fence）
 
 也许 jvm 会优化为：先执行 24，再执行 21。如果两个线程 t1，t2 按如下时间序列执行：
 
-![1594701748458](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200714124230-412629.png)
+![1594701748458](http://img.pina.fun/20200714124230-412629.png)
 
 关键在于 `0: getstatic` 这行代码在 monitor 控制之外，它就像之前举例中不守规则的人，可以越过 monitor 读取
 INSTANCE 变量的值
@@ -394,7 +394,7 @@ INSTANCE 变量的值
    2. 读屏障会确保指令重排序时，不会将读屏障之后的代码排在读屏障之前
 3. 更底层是读写变量时使用 lock 指令来多核 CPU 之间的可见性与有序性
 
-![1594703228878](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200714130925-543886.png)
+![1594703228878](http://img.pina.fun/20200714130925-543886.png)
 
 
 
@@ -808,7 +808,7 @@ class AccountSafe implements Account{
 
 其中的关键是 compareAndSet，它的简称就是 CAS （也有 Compare And Swap 的说法），它必须是原子操作。
 
-![1594776811158](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200715093333-972226.png)
+![1594776811158](http://img.pina.fun/20200715093333-972226.png)
 
 ### volatile
 
@@ -1248,14 +1248,14 @@ static final class Cell {
 
 得从缓存说起，缓存与内存的速度比较
 
-![1594821128208](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200715215209-330421.png)
+![1594821128208](http://img.pina.fun/20200715215209-330421.png)
 
 
 
 因为 CPU 与 内存的速度差异很大，需要靠预读数据至缓存来提升效率。缓存离cpu越近速度越快。
 而缓存以缓存行为单位，每个缓存行对应着一块内存，一般是 64 byte（8 个 long），缓存的加入会造成数据副本的产生，即同一份数据会缓存在不同核心的缓存行中，CPU 要保证数据的一致性，如果某个 CPU 核心更改了数据，其它 CPU 核心对应的整个缓存行必须失效。
 
-![1594821188387](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200716135941-626948.png)
+![1594821188387](http://img.pina.fun/20200716135941-626948.png)
 
 因为 Cell 是数组形式，在内存中是连续存储的，一个 Cell 为 24 字节（16 字节的对象头和 8 字节的 value），因
 此缓存行可以存下 2 个的 Cell 对象。这样问题来了：
@@ -1264,7 +1264,7 @@ Core-0 要修改 Cell[0]，Core-1 要修改 Cell[1]
 无论谁修改成功，都会导致对方 Core 的缓存行失效，比如 Core-0 中 Cell[0]=6000, Cell[1]=8000 要累加
 Cell[0]=6001, Cell[1]=8000 ，这时会让 Core-1 的缓存行失效，@sun.misc.Contended 用来解决这个问题，它的原理是在使用此注解的对象或字段的前后各增加 128 字节大小的padding，从而让 CPU 将对象预读至缓存时占用不同的缓存行，这样，不会造成对方缓存行的失效
 
-![1594821225708](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200716135939-234417.png)
+![1594821225708](http://img.pina.fun/20200716135939-234417.png)
 
 
 
@@ -1399,7 +1399,7 @@ add 流程图
 
 上图中的第一个else if 中代码的逻辑，这是cells未创建时的处理逻辑。
 
-![1594825327345](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200715230208-829688.png)
+![1594825327345](http://img.pina.fun/20200715230208-829688.png)
 
 上图中的if 中代码的逻辑，里面包含线程对应的cell已经创建好和没创建好的两种情况。
 
@@ -1407,11 +1407,11 @@ add 流程图
 
 线程对应的cell还没创建好，则执行的是第一个红框里的代码，逻辑如下
 
-![1594826082009](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200715231442-249345.png)
+![1594826082009](http://img.pina.fun/20200715231442-249345.png)
 
 线程对应的cell已经创建好，则执行的是第二个红框里的代码，逻辑如下
 
-![1594826936970](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200715232859-416098.png)
+![1594826936970](http://img.pina.fun/20200715232859-416098.png)
 
 
 

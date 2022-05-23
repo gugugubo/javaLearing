@@ -227,7 +227,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 
 然后这个`bean`的名就叫`org.springframework.aop.config.internalAutoProxyCreator`它的类型就是：`AnnotationAwareAspectJAutoProxyCreator.class`
 
-![1602319562807](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201010164604-456340.png)
+![1602319562807](http://img.pina.fun/20201010164604-456340.png)
 
 4.1好了，这个`beanDefinition`就返回了，我们进行下一步
 
@@ -812,27 +812,27 @@ postProcessBeforeInitialization
 
 判断是否是基础的类型，点进去看一下。
 
-![1602388307685](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011115148-669785.png)
+![1602388307685](http://img.pina.fun/20201011115148-669785.png)
 
 ctrl + alt +b点进去看，发现会判断是否为切面
 
-![1602388196698](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011115013-558735.png)
+![1602388196698](http://img.pina.fun/20201011115013-558735.png)
 
 判断是不是`Advice`,`PointCut`,`Advisor`,`AopInfrastructureBean`这些接口
 
-![1602393578178](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011131939-642543.png)
+![1602393578178](http://img.pina.fun/20201011131939-642543.png)
 
 判断是否有切面(`@Aspect`)这个注解，即实现和注解都算作切面
 
-![1602388336103](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011115217-21027.png)
+![1602388336103](http://img.pina.fun/20201011115217-21027.png)
 
 判断是否需要跳过，即不处理这个bean
 
-![1602388375381](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011115256-318771.png)
+![1602388375381](http://img.pina.fun/20201011115256-318771.png)
 
 `findCandidateAdvisors`找到候选的增强器
 
-![1602388398852](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011115320-548915.png)
+![1602388398852](http://img.pina.fun/20201011115320-548915.png)
 
 
 
@@ -858,7 +858,7 @@ ctrl + alt +b点进去看，发现会判断是否为切面
 
 最终又调用父类的`shouldSkip`，直接返回`false`
 
-![1602394009353](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011132700-13721.png)
+![1602394009353](http://img.pina.fun/20201011132700-13721.png)
 
 从上面的过程我们可以i知道，这两个判断都是返回的false
 
@@ -866,9 +866,9 @@ ctrl + alt +b点进去看，发现会判断是否为切面
 
 然后返回到这里：
 
-![1602394221346](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011133024-381028.png)
+![1602394221346](http://img.pina.fun/20201011133024-381028.png)
 
-![1602394236392](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011133037-697477.png)
+![1602394236392](http://img.pina.fun/20201011133037-697477.png)
 
 看这个方法的在`AbstractAutoProxyCreator`类中的实现
 
@@ -888,15 +888,15 @@ ctrl + alt +b点进去看，发现会判断是否为切面
 
 然后进去这个方法：这个方法的作用是获取当前beans的所有通知方法和增强器
 
-![1602394972457](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011134258-353612.png)
+![1602394972457](http://img.pina.fun/20201011134258-353612.png)
 
 `findEligibleAdvisors`找到可用的增强器
 
-![1602394992653](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011134313-741476.png)
+![1602394992653](http://img.pina.fun/20201011134313-741476.png)
 
 `findCandidateAdvisors()`：拿到候选的增强器
 
-![1602395015464](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201011134537-589779.png)
+![1602395015464](http://img.pina.fun/20201011134537-589779.png)
 
 `findAdvisorsTahtCanApply()`：来找到可以应用到`beanClass`的增强器
 
@@ -936,7 +936,7 @@ ctrl + alt +b点进去看，发现会判断是否为切面
 
 继续返回上上上层：
 
-![1602404368209](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201016132518-683831.png)
+![1602404368209](http://img.pina.fun/20201016132518-683831.png)
 
 然后就是这
 
@@ -977,7 +977,7 @@ ctrl + alt +b点进去看，发现会判断是否为切面
 
 这个代理对象怎么创建呢？
 
-![1602404653486](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201014104225-804615.png)
+![1602404653486](http://img.pina.fun/20201014104225-804615.png)
 
 还是拿到这个增强器，保存到代理工程`proxyFactory`
 

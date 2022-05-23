@@ -6,7 +6,7 @@
 
 MySQL 支持所有标准 SQL 中的数值类型，其中包括严格数值类型（INTEGER、SMALLINT、DECIMAL （即NUMERIC）），以及近似数值数据类型（FLOAT、REAL 和 DOUBLE PRECISION）表 3-1 中列出了 MySQL 5.0 中支持的所有数值类型，其中 INT 是 INTEGER 的同名词，DEC 是 DECIMAL 的同名词。
 
-![1584924399447](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200323084639-514541.png)
+![1584924399447](http://img.pina.fun/20200323084639-514541.png)
 
 在整数类型中，按照取值范围和存储方式不同，分为 tinyint、smallint、mediumint、int、bigint 这 5 个类型。如果超出类型范围的操作，会发生“Out of range”错误提示。为了避免此类问题发生，在选择数据类型时要根据应用的实际情况确定其取值范围，最后根据确定的结果慎重选择数据类型。
 对于整型数据，MySQL 还支持在类型名称后面的小括号内指定显示宽度，例如 int(5)表示当数值宽度小于 5 位的时候在数字前面填满宽度，如果不显示指定宽度则默认为 int(11)。一般配合 zerofill 使用，顾名思义，zerofill 就是用“0”填充的意思，也就是在数字位数不够的空间用字符“0”填满（如果一个列指定为 zerofill，则 MySQL 自动为该列添加 UNSIGNED 属性）
@@ -252,7 +252,7 @@ mysql> select bin(id),hex(id) from t2;
 
 MySQL 中有多种数据类型可以用于日期和时间的表示，不同的版本可能有所差异，表 3-2 中列出了 MySQL 5.0 中所支持的日期和时间类型。
 
-![1584930839785](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200324155327-403493.png)
+![1584930839785](http://img.pina.fun/20200324155327-403493.png)
 
 这些数据类型的主要区别如下：
  如果要用来表示年月日，通常用 DATE 来表示。
@@ -277,7 +277,7 @@ TIMESTAMP 值返回后显示为“YYYY-MM-DD HH:MM:SS”格式的字符串，显
 
 MySQL 中提供了多种对字符数据的存储类型，不同的版本可能有所差异。以 5.0 版本为例，MySQL 包括了 CHAR、VARCHAR、BINARY、VARBINARY、BLOB、TEXT、ENUM 和 SET 等多种字符串类型。表 3-4 中详细列出了这些字符类型的比较。
 
-![1584934259522](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200323113107-133040.png)
+![1584934259522](http://img.pina.fun/20200323113107-133040.png)
 
 ### 3.3.1 CHAR 和 VARCHAR 类型
 

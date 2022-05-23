@@ -129,7 +129,7 @@
     
 11. redis底层数据结构和为什么使用跳表而不使用红黑树原因：https://mp.weixin.qq.com/s/FtfAqXXDef6-bhuGyPDK7w  https://mp.weixin.qq.com/s/JvL2IOUu8mGLfeahHaRBFg   https://mp.weixin.qq.com/s/gRtiSNDCuS0c8nF_Q8Tv9A
 
-    ![https://gitee.com/gu_chun_bo/picture/raw/master/image/20200417125108-879609.png](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200417125108-879609.png)
+    ![http://img.pina.fun/20200417125108-879609.png](http://img.pina.fun/20200417125108-879609.png)
 
     1. 简单动态字符串
 
@@ -228,7 +228,7 @@
 
        3.  bgsave执行流程
 
-          1. ![1586178005704](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200406210007-114578.png)
+          1. ![1586178005704](http://img.pina.fun/20200406210007-114578.png)
           2. 父进程执行`fork`操作创建子进程，`fork`命令执行过程中父进程会阻塞
           3. 操作系统的**`COW`机制**来进行**数据段页面**的分离。数据段是由很多操作系统的页面组合而成，当父进程对其中一个页面的数据进行修改时，会将被共享的页面复制一份分离出来，然后对这个复制的页面进行修改（因此，避免在大量写入时做子进程重写操作，这样将导致父进程维护大量页副本，造成内存消耗）。这时子进程相应的页面是没有变化的，还是进程产生时那一瞬间的数据
 
@@ -250,7 +250,7 @@
 
        2. aop 默认的配置？
 
-          1. ![https://gitee.com/gu_chun_bo/picture/raw/master/image/20200406221107-431235.png](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200406221107-431235.png)
+          1. ![http://img.pina.fun/20200406221107-431235.png](http://img.pina.fun/20200406221107-431235.png)
 
        3. aop 执行流程
 
@@ -261,11 +261,11 @@
              3. 随着`AOF`文件越来越大，需要定期对`AOF`文件进行重写，达到压缩的目的。
              4. 当`Redis`服务器重启时，可以加载`AOF`文件进行数据恢复。
 
-             ![https://gitee.com/gu_chun_bo/picture/raw/master/image/20200406214619-703862.png](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200406214619-703862.png)
+             ![http://img.pina.fun/20200406214619-703862.png](http://img.pina.fun/20200406214619-703862.png)
 
              我们对`everysec`同步策略进行进一步的讨论
 
-             ![1586248933156](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200414220126-329857.png)
+             ![1586248933156](http://img.pina.fun/20200414220126-329857.png)
 
              当开启`AOF`持久化时，常用的同步硬盘的策略是`everysec`，用于平衡性能和数据安全性。对于这种方式，`Redis`使用另一条线程每秒执行`fsync`同步硬盘。当系统硬盘资源繁忙时，会造成`Redis`主线程阻塞。
 
@@ -279,7 +279,7 @@
 
        4. aop重写机制
 
-          ![1586184662612](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200414220102-710483.png)
+          ![1586184662612](http://img.pina.fun/20200414220102-710483.png)
 
           1. 父进程执行`fork`创建子进程，开销等同于`bgsave`过程。
           2. 主进程`fork`操作完成后，继续响应其他命令。所有修改命令依然写入`AOF`缓冲区并根据`appendfsync`策略同步到**硬盘**，保证原有`AOF`机制正确性。
@@ -311,7 +311,7 @@
 
     4. 实现原理
 
-       ![1586428999785](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200418181628-819186.png)
+       ![1586428999785](http://img.pina.fun/20200418181628-819186.png)
 
        1. Redis Sentinel三个定时监控任务
           1. 每隔10秒，每个`Sentinel`节点会**向主节点和从节点**发送`info`命令获取最新的拓扑结构这个定时任务的作用具体可以表现在三个方面：

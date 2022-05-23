@@ -6,7 +6,7 @@
 
 底层结构其实就是数组+链表+红黑树
 
-![1601357648567](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201003110314-282089.png)
+![1601357648567](http://img.pina.fun/20201003110314-282089.png)
 
 
 
@@ -28,13 +28,13 @@ public class HashMap<K,V> extends AbstractMap<K,V>    implements Map<K,V>, Clone
 - `implements Cloneable`：表明其可以调用`clone()`方法来返回实例的`field-for-field`拷贝。
 - `implements Serializable`：表明该类是可以序列化的。
 
-![1601693853158](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201003105734-514068.png)
+![1601693853158](http://img.pina.fun/20201003105734-514068.png)
 
 
 
 ## 1.3 put()数据原理分析图解
 
-![1601357215805](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200929132656-232566.png)
+![1601357215805](http://img.pina.fun/20200929132656-232566.png)
 
 
 
@@ -326,7 +326,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
 
 当在table长度位16中的元素移到table长度位32的table中的时候；我们可以知道，原来在15这个槽位的元素的hash()值的后四位一定是1111（因为跟1111即table长度-1  进行与运算得到了1111）。所以所以当table长度变为32的时候，原来在15这个槽位的元素要么还在15这个槽位，要么在31这个操作（因为原来15这个槽位的元素后五位一定是11111或者01111，跟 11111即table新长度-1 进行与运算一定得到 01111或者11111）
 
-![1601638246856](https://gitee.com/gu_chun_bo/picture/raw/master/image/20201002193049-143709.png)
+![1601638246856](http://img.pina.fun/20201002193049-143709.png)
 
 ```java
 /**

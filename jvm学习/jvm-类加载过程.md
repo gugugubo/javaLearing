@@ -62,11 +62,11 @@
 
 ![img](https://my-blog-to-use.oss-cn-beijing.aliyuncs.com/2019-11/类加载过程-完善.png)
 
-![1582708437476](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115330-815834.png)
+![1582708437476](http://img.pina.fun/20200304115330-815834.png)
 
 #### 1.3 生命周期时序图
 
-![1581513570895](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115323-982445.png)
+![1581513570895](http://img.pina.fun/20200304115323-982445.png)
 
 #### 1.4 什么是类型
 
@@ -80,8 +80,8 @@
 - 拓展类加载器(Extemnsion)
 - 系统类加载器(System)：加载classpath或者java.lang.path下的类，一般来说就由系统类加载我们写的类
 - 以上几个加载器呈父子关系（classloadTest14.java）
-  - ![1581559224452](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115122-567156.png)
-- ![1581517657115](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115124-502372.png)
+  - ![1581559224452](http://img.pina.fun/20200304115122-567156.png)
+- ![1581517657115](http://img.pina.fun/20200304115124-502372.png)
   - Bootstrap classloader 启动类加载器：加载的是$JAVE_HOME(就是jdk的目录)中jre/lib/rt.jar 或者系统属性sun.boot.class.path所指定的目录里所有的class（即我们jdk常有的一些类如Object类），由c++实现，不是classloader的子类
   - Extension classloader 拓展类加载器：负责加载java平台中拓展功能的一些jar包，包括$JAVE_HOME中jre/lib/*.jar 或 系统属性 java.ext.dirs 指定目录下的jar包(classloadTest19.java)
   - System classloader 系统类加载器： 负责加载classpath目录下的class 和系统属性java.class.path所指定目录的jar包（比如我们自己写的类）(classloadTest7.java) 
@@ -100,7 +100,7 @@
 
 #### 2.3 获取classloader的途径
 
-![1581581884052](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115144-297217.png)
+![1581581884052](http://img.pina.fun/20200304115144-297217.png)
 
 - 1.当前上下文的classloader
   - getContextClassLoader 的javadoc文档如下：上下文类加载器由线程的创建者提供，供此线程中运行的代码在加载类和资源时使用。如果未设置，则默认为父线程的上下文类加载器。原始线程的上下文类加载器通常设置为用于加载应用程序的类加载器(即system classloader)。
@@ -270,11 +270,11 @@ public class classloadTest16 extends ClassLoader {
 
 #### 2.6 类加载器的(双亲委派机制)父亲委托机制
 
-![1581517870929](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115226-969443.png)
+![1581517870929](http://img.pina.fun/20200304115226-969443.png)
 
 先自下而上检查是否已经加载，再自上而下尝试加载类。特别注意如下（此观点证明代码可参考classloadTest16.java）：
 
-![1582079158522](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304115148-998718.png)
+![1582079158522](http://img.pina.fun/20200304115148-998718.png)
 
 #### 2.7 双亲委托模型的好处
 

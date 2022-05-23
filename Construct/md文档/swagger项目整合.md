@@ -225,14 +225,14 @@ public class ProductBrandController {
 
 查看控制器信息
 
-![1580717481231](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304161232-123185.png)
+![1580717481231](http://img.pina.fun/20200304161232-123185.png)
 
 可以查看接口传递的参数的注解
 
-![1580717705066](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304161155-135043.png)
+![1580717705066](http://img.pina.fun/20200304161155-135043.png)
 
 在接口文档进行测试
 
-![1580718171443](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200304161157-223405.png)
+![1580718171443](http://img.pina.fun/20200304161157-223405.png)
 
 项目代码在这里

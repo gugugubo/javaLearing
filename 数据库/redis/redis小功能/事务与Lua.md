@@ -263,7 +263,7 @@ print(contact("hello ", "world"))
 
 除了使用eval，Redis还提供了evalsha命令来执行Lua脚本。如下图所示，首先要将Lua脚本加载到Redis服务端，得到该脚本的`SHA1`校验和，`evalsha`命令使用SHA1作为参数可以直接执行对应Lua脚本，避免每次发送Lua脚本的开销。这样客户端就不需要每次执行脚本内容，而脚本也会常驻在服务端，脚本功能得到了复用。
 
-![1586916005238](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200415100006-398987.png)
+![1586916005238](http://img.pina.fun/20200415100006-398987.png)
 
 1. 加载脚本：`script load`命令可以将脚本内容加载到Redis内存中，例如下面将lua_get.lua加载到Redis中，得到SHA1为："7413dc2440db1fea7c0a0bde841fa68eefaf149c"
 

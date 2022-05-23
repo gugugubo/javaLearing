@@ -688,7 +688,7 @@ AccessDecisionManager决策管理器
 
 
 
-![1591537106375](https://gitee.com/gu_chun_bo/picture/raw/master/image/20200607213827-702655.png)
+![1591537106375](http://img.pina.fun/20200607213827-702655.png)
 
 
 
