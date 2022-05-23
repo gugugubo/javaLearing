@@ -24,10 +24,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7c9bf2e0-18f2-4a07-993e-8b2aa199eb5d" name="默认的" comment="更新redis/mysql">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="7c9bf2e0-18f2-4a07-993e-8b2aa199eb5d" name="默认的" comment="更新redis/mysql" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +70,7 @@
       <workItem from="1602898794067" duration="16000" />
       <workItem from="1619531343033" duration="140000" />
       <workItem from="1652973598634" duration="1730000" />
-      <workItem from="1653303942720" duration="4496000" />
+      <workItem from="1653303942720" duration="5402000" />
     </task>
     <task id="LOCAL-00001" summary="xxx">
       <created>1619531441688</created>
@@ -117,7 +114,21 @@
       <option name="project" value="LOCAL" />
       <updated>1653317969126</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="更新redis/mysql">
+      <created>1653318473303</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1653318473304</updated>
+    </task>
+    <task id="LOCAL-00008" summary="更新redis/mysql">
+      <created>1653319702678</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1653319702678</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,10 +165,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1652974026303" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1653317982342">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1653319722175">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1653317982342" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1653319722175" />
     <state x="467" y="144" width="868" height="618" key="find.popup" timestamp="1653304012554">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
